@@ -7,7 +7,7 @@
 #include "platform/ChsOpenGL.h"
 
 namespace Chaos {
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	class ChsTexture2D {
 		friend class ChsTextureFactory;
 	public:
@@ -29,7 +29,7 @@ namespace Chaos {
 		PROPERTY( std::string, sampleName );
 	};
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	SYNTHESIZE_READONLY_CONST( ChsTexture2D, GLuint, handle );
 	SYNTHESIZE_READONLY_CONST( ChsTexture2D, GLuint, width );
 	SYNTHESIZE_READONLY_CONST( ChsTexture2D, GLuint, height );
@@ -41,7 +41,7 @@ namespace Chaos {
 	SYNTHESIZE( ChsTexture2D, GLint, activeUnit );
 	SYNTHESIZE( ChsTexture2D, std::string, sampleName );
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 }
 
 

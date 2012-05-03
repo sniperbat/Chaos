@@ -9,9 +9,11 @@
 #include "ChsUtility.h"
 #include "ChsMaterial.h"
 #include "ChsTexture2D.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
-	//----------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------
 	template<typename T>
 	T readData( char ** data ){
 		T value = *(reinterpret_cast<T*>(*data));
@@ -19,7 +21,7 @@ namespace Chaos {
 		return value;
 	}
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	std::string readString( char ** data );
 	std::string readString( char ** data ){
 		int strCount = readData<int>( data );
@@ -31,7 +33,7 @@ namespace Chaos {
 		return str;
 	}
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::loadAsXML( const char *filename ){
 		char * data;
 		ChsFileSystem::sharedInstance()->readFileAsUTF8( filename, &data );
@@ -52,16 +54,16 @@ namespace Chaos {
 			return NULL;
 		}
 		
-		std::string modelName = modelElement->Attribute( "name" );
+		std::string modelName = modelElement->Attribute( "id" );
 		model = new ChsModel( modelName );
 		tinyxml2::XMLElement * meshElement = modelElement->FirstChildElement( "ChsMesh" );
 		while( meshElement ){
-			std::string meshName = meshElement->Attribute( "name" );
+			std::string meshName = meshElement->Attribute( "id" );
 			boost::shared_ptr<ChsMesh> mesh( new ChsMesh( meshName ) );
 			
 			tinyxml2::XMLElement * attrElement = meshElement->FirstChildElement( "ChsAttribute" );
 			while ( attrElement ) {
-				std::string attrName = attrElement->Attribute( "name" );
+				std::string attrName = attrElement->Attribute( "id" );
 				int stride = attrElement->IntAttribute( "stride" );
 				bool isNormalized = false;
 				if( !attrName.compare( "normal" ) )
@@ -83,39 +85,47 @@ namespace Chaos {
 			tinyxml2::XMLElement * materialElement = meshElement->FirstChildElement( "ChsMaterial" );
 			if( materialElement ){
 				ChsMaterial * material = new ChsMaterial();
-				std::string vsName = materialElement->FirstChildElement( "ChsVertexShader" )->Attribute( "src" );
-				std::string fsName = materialElement->FirstChildElement( "ChsFragmentShader" )->Attribute( "src" );
-				material->setShader( vsName, fsName );
-				tinyxml2::XMLElement * textureElement = materialElement->FirstChildElement( "ChsTexture" );
-				while( textureElement ){
-					std::string textureFileName = textureElement->Attribute( "src" );
-					boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
-					texture->sampleName( textureElement->Attribute( "sampleName" ) );
-					texture->activeUnit( textureElement->IntAttribute( "activeUnit" ) );
-					material->addTexture( texture );
-					textureElement = textureElement->NextSiblingElement( "ChsTexture");
+
+				const char * src = materialElement->Attribute( "src" );
+				if( src ){
+					//1: from external material file, reference from src	
 				}
-				
-				tinyxml2::XMLElement * propertyElement = materialElement->FirstChildElement( "ChsProperty" );
-				while( propertyElement ){
-					std::string propertyName = propertyElement->Attribute( "name" );
-					std::string type = propertyElement->Attribute( "type" );
-					if( !type.compare( "bool" )){
-						material->addProperty( propertyName, CHS_SHADER_UNIFORM_1_INT, 1 );
-						bool value = propertyElement->BoolAttribute( "value" );
-						material->setProperty( propertyName, value );
+				else{
+					//2: embed material
+					
+					std::string vsName = materialElement->FirstChildElement( "ChsVertexShader" )->Attribute( "src" );
+					std::string fsName = materialElement->FirstChildElement( "ChsFragmentShader" )->Attribute( "src" );
+					material->setShader( vsName, fsName );
+					tinyxml2::XMLElement * textureElement = materialElement->FirstChildElement( "ChsTexture" );
+					while( textureElement ){
+						std::string textureFileName = textureElement->Attribute( "src" );
+						boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
+						texture->sampleName( textureElement->Attribute( "sampleName" ) );
+						texture->activeUnit( textureElement->IntAttribute( "activeUnit" ) );
+						material->addTexture( texture );
+						textureElement = textureElement->NextSiblingElement( "ChsTexture");
 					}
-					propertyElement = propertyElement->NextSiblingElement( "ChsProperty");
+					
+					tinyxml2::XMLElement * propertyElement = materialElement->FirstChildElement( "ChsProperty" );
+					while( propertyElement ){
+						std::string propertyName = propertyElement->Attribute( "name" );
+						std::string type = propertyElement->Attribute( "type" );
+						if( !type.compare( "bool" )){
+							material->addProperty( propertyName, CHS_SHADER_UNIFORM_1_INT, 1 );
+							bool value = propertyElement->BoolAttribute( "value" );
+							material->setProperty( propertyName, value );
+						}
+						propertyElement = propertyElement->NextSiblingElement( "ChsProperty");
+					}
+					
+					tinyxml2::XMLElement * renderStateElement = materialElement->FirstChildElement( "ChsRenderState" );
+					while( renderStateElement ){
+						int index = renderStateElement->IntAttribute( "index" );
+						int value = renderStateElement->IntAttribute( "value" );
+						material->setRenderState( static_cast<ChsRenderState>( index ), value );
+						renderStateElement = renderStateElement->NextSiblingElement( "ChsRenderState");
+					}
 				}
-				
-				tinyxml2::XMLElement * renderStateElement = materialElement->FirstChildElement( "ChsRenderState" );
-				while( renderStateElement ){
-					int index = renderStateElement->IntAttribute( "index" );
-					int value = renderStateElement->IntAttribute( "value" );
-					material->setRenderState( static_cast<ChsRenderState>( index ), value );
-					renderStateElement = renderStateElement->NextSiblingElement( "ChsRenderState");
-				}
-				
 				mesh->setMaterial( material );
 			}
 
@@ -126,7 +136,7 @@ namespace Chaos {
 		return model;
 	}
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::loadAsBinary( const char *filename ){
 		char * data;
 		ChsFileSystem::sharedInstance()->readFileAsRaw( filename, &data );
@@ -166,7 +176,7 @@ namespace Chaos {
 		return model;
 	}
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::load( const char *filename ){
 		std::string fileName = filename;
 		if( fileName.find( ".chsmodelx" ) != std::string::npos )
@@ -174,4 +184,7 @@ namespace Chaos {
 		else 
 			return this->loadAsBinary( filename );
 	}
+  
+  //------------------------------------------------------------------------------------------------
+  
 }

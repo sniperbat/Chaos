@@ -7,9 +7,8 @@
 
 namespace Chaos {
 
-	//----------------------------------------------------------------------------------------------
-	class ChsVector4 : boost::additive<ChsVector4>,
-								 boost::equality_comparable<ChsVector4> {
+	//------------------------------------------------------------------------------------------------
+	class ChsVector4 : boost::additive<ChsVector4>, boost::equality_comparable<ChsVector4> {
 	public:
 		union{
 			float value[4];
@@ -61,7 +60,7 @@ namespace Chaos {
 		//void				Transform(ChsMatrix &mtx);
 	};
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	typedef ChsVector4 ChsColor4;
 
 }//namespace

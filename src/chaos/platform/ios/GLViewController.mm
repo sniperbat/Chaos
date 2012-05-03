@@ -3,7 +3,7 @@
 #import "EAGLView.h"
 #include "chaos/Chaos.h"
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 @interface GLViewController(){
 	Chaos::ChsEngine * engine;
 }
@@ -17,34 +17,36 @@
 
 @end
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 @implementation GLViewController
 
 @synthesize displayLink = _displayLink;
 @synthesize isPresenting = _isPresenting;
 @synthesize frameInterval = _frameInterval;
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 update
 {
 	engine->run();
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 setDisplayLinkToPresent
 {
 	if ( !self.isPresenting ) {
-		CADisplayLink * aDisplayLink = [[UIScreen mainScreen] displayLinkWithTarget: self selector: @selector( update )];
+		CADisplayLink * aDisplayLink = [[UIScreen mainScreen] displayLinkWithTarget: self
+                                                                       selector: @selector( update )];
 		[aDisplayLink setFrameInterval: self.frameInterval];
-		[aDisplayLink addToRunLoop: [NSRunLoop currentRunLoop] forMode: NSDefaultRunLoopMode];
+		[aDisplayLink addToRunLoop: [NSRunLoop currentRunLoop]
+                       forMode: NSDefaultRunLoopMode];
 		self.displayLink = aDisplayLink;
 		self.isPresenting = TRUE;
 	}
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 resetDisplayLink
 {
@@ -55,7 +57,7 @@ resetDisplayLink
 	}
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 didReceiveMemoryWarning
 {
@@ -63,7 +65,7 @@ didReceiveMemoryWarning
     // Release any cached data, images, etc that aren't in use.
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 #pragma mark - View lifecycle
 
 -( void ) 
@@ -75,10 +77,9 @@ viewDidLoad
 	self.frameInterval = 1;
 	Chaos::ChsRenderSystemIOSSetTargetGLLayer( ( CAEAGLLayer * )self.view.layer );
 	engine = Chaos::ChsEngine::sharedInstance();
-	
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 viewDidUnload
 {
@@ -86,14 +87,14 @@ viewDidUnload
 	engine->shutdown();
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 viewWillAppear: ( BOOL )animated
 {
 	[super viewWillAppear:animated];
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 viewDidAppear: ( BOOL )animated
 {
@@ -104,7 +105,7 @@ viewDidAppear: ( BOOL )animated
 	[self setDisplayLinkToPresent];
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 viewWillDisappear: ( BOOL )animated
 {
@@ -112,14 +113,14 @@ viewWillDisappear: ( BOOL )animated
 	[self resetDisplayLink];
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( void )
 viewDidDisappear: ( BOOL )animated
 {
 	[super viewDidDisappear:animated];
 }
 
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 -( BOOL )
 shouldAutorotateToInterfaceOrientation: ( UIInterfaceOrientation )interfaceOrientation
 {
@@ -127,4 +128,5 @@ shouldAutorotateToInterfaceOrientation: ( UIInterfaceOrientation )interfaceOrien
 			interfaceOrientation == UIInterfaceOrientationLandscapeRight );
 }
 
+//--------------------------------------------------------------------------------------------------
 @end

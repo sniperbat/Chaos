@@ -5,8 +5,10 @@ using namespace boost::assign;
 #include "ChsModelLoader.h"
 #include "ChsModel.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
-	
+
+	//------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsModel> ChsModelManager::getModel( std::string name ){
 		boost::shared_ptr<ChsModel> model = this->getFromCache( name );
 		if( !model ){
@@ -19,4 +21,6 @@ namespace Chaos {
 		return model;
 	}
 	
+  //------------------------------------------------------------------------------------------------
+  
 }

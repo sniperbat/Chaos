@@ -8,13 +8,15 @@
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	class ChsFileSystem : public ChsSingleton< ChsFileSystem >{
 	public:
-    	virtual int readFileAsUTF8( const char *  path , char ** data ) = 0;
+   	virtual int readFileAsUTF8( const char *  path , char ** data ) = 0;
 		virtual int readFileAsRaw( const char *  path , char ** data ) = 0;
 		
 	};
+  
+  //------------------------------------------------------------------------------------------------
 
 }//namespace
 

@@ -5,11 +5,11 @@
 #include "ChsVertexBuffer.h"
 #include "ChsIndexBuffer.h"
 #include "ChsMaterial.h"
-#include "ChsResourceManager.h"
-#include "shader/ChsShaderProgram.h"
 #include "ChsMesh.h"
+
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	ChsCoordinatePlane::ChsCoordinatePlane( float size, int divide ) : ChsModel( "Coordinate Plane" ){
 		struct Vertex{
 			float x;
@@ -24,17 +24,14 @@ namespace Chaos {
 				g = 1.0f;//g
 				b = 1.0f;//b
 				a = 0.9f;//a
-	//			vertices[k].y = 0.0f;
-	//			vertices[k+1].y = 0.0f;
-	//			vertices[k+2].y = 0.0f;
-	//			vertices[k+3].y = 0.0f;
 			}
 		};
 		int vertexCount = 2 * ( divide + 1 ) * 2 + 6;
 		boost::scoped_array<Vertex> vertices( new Vertex[vertexCount] );
 		float stepSize = size / divide;
 		float width = size / 2;
-		for( int i = -divide / 2, k = 0; i <= divide / 2; ++i, k += 4 ){
+    int halfDiveide = divide >> 1;
+		for( int i = -halfDiveide, k = 0; i <= halfDiveide; ++i, k += 4 ){
 			float w = width;
 			if( i == 0 ){
 				for( int j = 0; j < 4; j++ ){
@@ -126,5 +123,5 @@ namespace Chaos {
 		material->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
 		this->addMesh(mesh);
 	}
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 }

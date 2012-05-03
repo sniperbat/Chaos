@@ -8,26 +8,28 @@ using namespace boost::assign;
 #include "ChsTexture2D.h"
 #include "ChsRenderStates.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	ChsMaterial::ChsMaterial( void ) {
 		this->shaderUniformSet.reset();
 		this->textures.clear();
 		this->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_ENABLE );
 	}
-	//----------------------------------------------------------------------------------------------
+  
+	//------------------------------------------------------------------------------------------------
 	ChsMaterial::~ChsMaterial( void ) {
 		this->textures.clear();
 		this->shaderUniformSet.reset();
 	}
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::addProperty( std::string name, ChsShaderUniformDataType type, int count ){
 		this->shaderUniformSet.add( name, type, count );
 	}
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::addTexture( boost::shared_ptr<ChsTexture2D> texture ){
 		if( !texture )
 			return;
@@ -36,7 +38,7 @@ namespace Chaos {
 		this->textures += texture;
 	}
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	ChsShaderProgram * ChsMaterial::apply( ChsShaderProgram * sysProgram ) {
 		ChsShaderProgram * currentProgram = sysProgram;
 		if( !this->_shaderProgram.expired() || currentProgram ){
@@ -60,7 +62,7 @@ namespace Chaos {
 		return currentProgram;
 	}
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	#if 0
 	void ChsMaterial::validate( void ) {
 	// Validate program before drawing. This is a good check, but only really necessary in a debug build.
@@ -70,12 +72,12 @@ namespace Chaos {
 	}
 	#endif
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::setShader( std::string vshName, std::string fshName ){
 		this->_shaderProgram = ChsResourceManager::sharedInstance()->getShaderProgram( vshName, fshName );
 	}
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::linkShader( void ){
 		if( !this->_shaderProgram.expired() ){
 			boost::shared_ptr<ChsShaderProgram> shaderProgram = this->_shaderProgram.lock();
@@ -83,7 +85,7 @@ namespace Chaos {
 		}
 	}
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::setRenderState( ChsRenderState state, unsigned int value ){
 		auto iter = this->renderStates.find( state );
 		if( iter != this->renderStates.end() ){
@@ -93,4 +95,7 @@ namespace Chaos {
 			insert( this->renderStates )( state, value );
 		}
 	}
+  
+  //------------------------------------------------------------------------------------------------
+  
 }//namespace

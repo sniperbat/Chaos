@@ -5,7 +5,7 @@
 #include "geometry/ChsPlane.h"
 #include "ChsMaterial.h"
 #include "ChsShaderProgram.h"
-#include "camera/ChsCameraBase.h"
+#include "camera/ChsCamera.h"
 #include "math/ChsMath.h"
 #include "ChsDaeLoader.h"
 #include <boost/shared_ptr.hpp>
@@ -17,7 +17,7 @@ using namespace Chaos;
 #include <math.h>
 
 GameDemo game;
-boost::scoped_ptr<ChsCameraBase> camera(new ChsCameraBase());
+boost::scoped_ptr<ChsCamera> camera(new ChsCamera());
 static float transY = 0.0f;
 ChsMaterial * material;
 ChsPlane * planeMesh1;

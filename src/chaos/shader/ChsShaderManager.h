@@ -11,7 +11,8 @@ namespace Chaos {
 	class ChsVertexShader;
 	class ChsFragmentShader;
 	class ChsShaderProgram;
-	//----------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------
 	class ChsShaderManager : public ChsManagerWithCache< ChsShader >{
 	public:
 		boost::shared_ptr<ChsShaderProgram> getShaderProgram( const std::string & vertexShaderName, const std::string & fragmentShaderName );
@@ -22,6 +23,7 @@ namespace Chaos {
 		boost::shared_ptr<ChsFragmentShader> getFragmentShader( const std::string & name );
 	};
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+
 }//namespace
 #endif//_CHS_SHADERMANAGER_H

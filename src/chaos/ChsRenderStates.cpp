@@ -1,10 +1,11 @@
+#include <memory.h>
 #include "ChsRenderStates.h"
-
 #include "platform/ChsOpenGL.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 	
-	//----------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 	GLenum glStates[]={
 		GL_TEXTURE_2D,
 		GL_CULL_FACE,
@@ -18,12 +19,7 @@ namespace Chaos {
 		GL_SAMPLE_COVERAGE,
 	};
 	
-	//----------------------------------------------------------------------------------------------
-	void getEnableOrDisable( ChsRenderState index, unsigned int & value );
-	void getEnableOrDisable( ChsRenderState index, unsigned int & value ){
-		
-	}
-	//----------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 	void setEnableOrDisable( ChsRenderState index, unsigned int value );
 	void setEnableOrDisable( ChsRenderState index, unsigned int value ){
 		if( value )
@@ -32,7 +28,7 @@ namespace Chaos {
 			glDisable( glStates[index] );
 	}
 	
-	//----------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 	void ChsRenderStates::set( ChsRenderState index, unsigned int value ){
 		if( this->states[ index ] != value ){
 			this->states[ index ] = value;
@@ -41,7 +37,7 @@ namespace Chaos {
 		}
 	}
 	
-	//----------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 	void ChsRenderStates::queryCurrentStates( void ){
 		for( ChsRenderState i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ ) {
 			if( i <= CHS_RS_ENABLECAP){
@@ -53,6 +49,16 @@ namespace Chaos {
 		}
 	}
 	
-	//----------------------------------------------------------------------------------------------
-	
+  //------------------------------------------------------------------------------------------------
+  void ChsRenderStates::save( void ){
+    memcpy( this->statesBackup, this->states, sizeof( this->statesBackup ) );
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  void ChsRenderStates::restore( void ){
+    memcpy( this->states, this->statesBackup, sizeof( this->statesBackup ) );
+  }
+
+  //------------------------------------------------------------------------------------------------
+  
 }

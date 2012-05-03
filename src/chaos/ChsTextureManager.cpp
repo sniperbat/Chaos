@@ -5,8 +5,10 @@ using namespace boost::assign;
 #include "ChsTextureFactory.h"
 #include "ChsTexture2D.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
-	//----------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsTexture2D> ChsTextureManager::getTexture2D( std::string name ){
 		boost::shared_ptr<ChsTexture2D> texture = this->getFromCache( name );
 		if( !texture ){
@@ -16,9 +18,9 @@ namespace Chaos {
 				insert( this->cache )( name, texture );
 			}
 		}
-	    return texture;
+	  return texture;
 	}
 	
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	
 }

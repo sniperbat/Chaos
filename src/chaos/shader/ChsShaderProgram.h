@@ -7,11 +7,13 @@
 #include <boost/shared_ptr.hpp>
 
 namespace Chaos {
-	//----------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------
 	class ChsShaderProgram : public ChsShader{
 	public:
 		ChsShaderProgram( void );
 		~ChsShaderProgram( void );
+    
 		bool link( void );
 		void use( void );
 		bool validate( void );
@@ -24,4 +26,5 @@ namespace Chaos {
 	};
 
 }//namespace
+
 #endif //_CHS_SHADERPROGRAM_H

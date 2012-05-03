@@ -6,7 +6,8 @@ using namespace boost::assign;
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
-	//----------------------------------------------------------------------------------------------
+
+	//------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntity( std::string entityName ){
 		boost::shared_ptr<ChsEntity> entityPtr = this->getFromCache( entityName );
 		if( !entityPtr ){
@@ -16,8 +17,9 @@ namespace Chaos {
 		}
 		return entityPtr;
 	}
+  
 #if 0
-	//----------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModel( std::string entityName,
 													 std::string modelName ){
 		if( entityName.empty() )
@@ -28,7 +30,7 @@ namespace Chaos {
 	}
 
 
-	//----------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModelAndAnimation( std::string entityName,
 																 std::string modelName,
 																 std::string animationName ){
@@ -39,6 +41,7 @@ namespace Chaos {
 		return entity;
 	}
 #endif
-	//----------------------------------------------------------------------------------------------
+  
+	//------------------------------------------------------------------------------------------------
 	
 }//namespace

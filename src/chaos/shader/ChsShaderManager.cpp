@@ -8,9 +8,11 @@ using namespace boost::assign;
 #include "ChsShaderProgram.h"
 #include "io/ChsFileSystem.h"
 #include "ChsUtility.h"
+//--------------------------------------------------------------------------------------------------
 
 namespace Chaos{
-	//----------------------------------------------------------------------------------------------
+
+	//------------------------------------------------------------------------------------------------
 	template < typename ShaderType >
 	shared_ptr<ShaderType> ChsShaderManager::getShader( const std::string & name ) {
 		shared_ptr<ShaderType> shader = dynamic_pointer_cast<ShaderType>( this->getFromCache( name ) );
@@ -27,22 +29,21 @@ namespace Chaos{
 				}
 			}
 		}
-	    return shader;
+	  return shader;
 	}
 
-	//----------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 	shared_ptr<ChsVertexShader> ChsShaderManager::getVertexShader( const std::string & name ){
     	return this->getShader< ChsVertexShader >( name );
 	}
 
-	//----------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 	shared_ptr<ChsFragmentShader> ChsShaderManager::getFragmentShader( const std::string & name ){
     	return this->getShader< ChsFragmentShader >( name );
 	}
 
-	//----------------------------------------------------------------------------------------------
-	shared_ptr<ChsShaderProgram> ChsShaderManager::getShaderProgram( const std::string & vsName,
-															 const std::string & fsName ){
+  //------------------------------------------------------------------------------------------------
+	shared_ptr<ChsShaderProgram> ChsShaderManager::getShaderProgram( const std::string & vsName, const std::string & fsName ){
 		std::string name  = vsName + "+" + fsName;
 		shared_ptr<ChsShaderProgram> program = dynamic_pointer_cast<ChsShaderProgram>( this->getFromCache( name ) );
 		if( !program ){
@@ -58,5 +59,7 @@ namespace Chaos{
 		}
 		return program;
 	}
+
+  //------------------------------------------------------------------------------------------------
 
 }//namespace
