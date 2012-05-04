@@ -68,19 +68,19 @@ namespace Chaos {
 				bool isNormalized = false;
 				if( !attrName.compare( "normal" ) )
 					isNormalized = true;
-				mesh->vertexBuffer->addAttrib( stride, GL_FLOAT, isNormalized, attrName );
+				mesh->getVertexBuffer()->addAttrib( stride, GL_FLOAT, isNormalized, attrName );
 				attrElement = attrElement->NextSiblingElement( "ChsAttribute" );
 			}
 			
 			std::vector<float> vertices;
 			lexicalCastToArray( vertices, meshElement->FirstChildElement( "ChsVertexBuffer" )->GetText() );
-			mesh->vertexBuffer->setData( vertices );
+			mesh->getVertexBuffer()->setData( vertices );
 			vertices.clear();
 			std::vector<unsigned short> indeices;
 			lexicalCastToArray( indeices, meshElement->FirstChildElement( "ChsIndexBuffer" )->GetText() );
-			mesh->indexBuffer->setData( indeices );
+			mesh->getIndexBuffer()->setData( indeices );
 			indeices.clear();
-			mesh->indexBuffer->mode( GL_TRIANGLES );
+			mesh->getIndexBuffer()->setMode( GL_TRIANGLES );
 			
 			tinyxml2::XMLElement * materialElement = meshElement->FirstChildElement( "ChsMaterial" );
 			if( materialElement ){
@@ -100,8 +100,8 @@ namespace Chaos {
 					while( textureElement ){
 						std::string textureFileName = textureElement->Attribute( "src" );
 						boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
-						texture->sampleName( textureElement->Attribute( "sampleName" ) );
-						texture->activeUnit( textureElement->IntAttribute( "activeUnit" ) );
+						texture->setSampleName( textureElement->Attribute( "sampleName" ) );
+						texture->setActiveUnit( textureElement->IntAttribute( "activeUnit" ) );
 						material->addTexture( texture );
 						textureElement = textureElement->NextSiblingElement( "ChsTexture");
 					}
@@ -159,15 +159,15 @@ namespace Chaos {
 				bool isNormalized = false;
 				if( !attrName.compare( "normal" ) )
 					isNormalized = true;
-				mesh->vertexBuffer->addAttrib( stride, GL_FLOAT, isNormalized, attrName );
+				mesh->getVertexBuffer()->addAttrib( stride, GL_FLOAT, isNormalized, attrName );
 			}
 			int count = readData<int>( &data );
-			mesh->vertexBuffer->setData( data, count*sizeof(float) );
+			mesh->getVertexBuffer()->setData( data, count*sizeof(float) );
 			skipData( &data, count*sizeof(float) );
 			count = readData<int>( &data );
-			mesh->indexBuffer->setData( data, count );	
+			mesh->getIndexBuffer()->setData( data, count );	
 			skipData( &data, count*sizeof(unsigned short) );
-			mesh->indexBuffer->mode( GL_TRIANGLES );
+			mesh->getIndexBuffer()->setMode( GL_TRIANGLES );
 			ChsMaterial * material = new ChsMaterial();
 			material->setShader( "Shader.vsh", "Shader.fsh" );
 			mesh->setMaterial( material );

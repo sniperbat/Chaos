@@ -2,97 +2,103 @@
 #define _CHS_SPRITE2D_H
 
 #include <string>
-#include <boost/shared_ptr.hpp>
-#include "ChsMacro.h"
-#include "ChsRenderNode.h"
+#include <boost/scoped_ptr.hpp>
+#include "ChsDefine.h"
+#include "ChsMesh.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
-  class ChsTexture2D;
-
+  class ChsMaterial;
  	//------------------------------------------------------------------------------------------------
-  class ChsSprite2D : public ChsRenderNode {
+  class ChsSprite2D : public ChsMesh {
   private:
     std::string name;
-    boost::shared_ptr<ChsTexture2D> imageTexture;
     bool needUpdate;
+  protected:
+    //锚点，Sprite的中心点。默认左上角(0, 0)
+    ChsPoint anchor;
+    //Sprite中心点在父节点空间中的位置,默认(0, 0)
+    ChsPoint position;
+    //Sprite的大小。
+    ChsSize size;
+    //缩放比率，
+    ChsSize zoom;
+    //在Image内的位置，用于计算UV
+    ChsRect imageBound;
+    //图像的大小，
+    ChsSize imageSize;
+    ChsRect bound;
+    float depth;
+    
   public:
     ChsSprite2D( std::string name );
     ~ChsSprite2D( void );
     
+    void render( ChsRenderSystem * render );
+    
     void setImage( std::string imageName, float ox, float oy, float w, float h );
     void setImage( std::string imageName );
+
+    void moveTo( float x, float y );
+    void anchorAt( float x, float y );
+    //改变Sprite缩放比率的时候，子节点跟随做相应的缩放
+    void zoomAs( float w, float h );
+    //改变Sprite的大小的时候，子节点Sprite保持不变
+    void changeSizeTo( float w, float h );
     
-    inline void moveTo( float x, float y );
-    inline void moveToX( float x );
-    inline void moveToY( float y );
+    inline ChsPoint getAnchor( void )const;
+    inline ChsPoint getPosition( void )const;
+    inline ChsSize getSize( void )const;
+    inline ChsSize getZoom( void )const;
     
-    inline void zoom( float xZoomRatio, float yZoomRatio );
-    inline void zoomWithX( float xZoomRatio );
-    inline void zoomWithY( float yZoomRatio );
+    inline float getDepth( void )const;
+    inline void setDepth( float depth );
     
-    PROPERTY_READONLY( float, x );
-    PROPERTY_READONLY( float, y );
-    
-    PROPERTY( float, depth );
-    PROPERTY( float, width );
-    PROPERTY( float, height );
-    PROPERTY( float, xZoomRatio );
-    PROPERTY( float, yZoomRatio );
-    
+    //图像的大小，不能修改。只读
+    inline ChsSize getImageSize( void )const;
+    //这个Sprite2D的Bound范围，没有Setter，由内部计算获得，
+    ChsRect getBound( void )const;
   };
   
  	//------------------------------------------------------------------------------------------------
-  SYNTHESIZE_GETTER( ChsSprite2D, float, x );
-  SYNTHESIZE_GETTER( ChsSprite2D, float, y );
-  
-  SYNTHESIZE_GETTER( ChsSprite2D, float, depth );
-  SYNTHESIZE_GETTER( ChsSprite2D, float, width );
-  SYNTHESIZE_GETTER( ChsSprite2D, float, height );
-  SYNTHESIZE_GETTER( ChsSprite2D, float, xZoomRatio );
-  SYNTHESIZE_GETTER( ChsSprite2D, float, yZoomRatio );
-  
-	//------------------------------------------------------------------------------------------------
-  inline void ChsSprite2D::moveTo( float x, float y ){
-    this->_x = x;
-    this->_y = y;
-    this->needUpdate = true;
-  }
-  
- 	//------------------------------------------------------------------------------------------------
-  inline void ChsSprite2D::moveToX( float x ){
-    this->_x = x;
-    this->needUpdate = true;
-  }
-  
- 	//------------------------------------------------------------------------------------------------
-  inline void ChsSprite2D::moveToY( float y ){
-    this->_y = y;
-    this->needUpdate = true;
-  }
-  
-	//------------------------------------------------------------------------------------------------
-  inline void ChsSprite2D::zoom( float xZoomRatio, float yZoomRatio ){
-    this->_xZoomRatio = xZoomRatio;
-    this->_yZoomRatio = yZoomRatio;
-    this->needUpdate = true;
-  }
-  
-	//------------------------------------------------------------------------------------------------
-  inline void ChsSprite2D::zoomWithX( float xZoomRatio ){
-    this->_xZoomRatio = xZoomRatio;
-    this->needUpdate = true;
+  inline float ChsSprite2D::getDepth( void )const{
+    return this->depth;
   }
   
   //------------------------------------------------------------------------------------------------
-  inline void ChsSprite2D::zoomWithY( float yZoomRatio ){
-    this->_yZoomRatio = yZoomRatio;
-    this->needUpdate = true;
+  inline void ChsSprite2D::setDepth( float depth ){
+    this->depth = depth;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsPoint ChsSprite2D::getAnchor( void )const{
+    return this->anchor;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsPoint ChsSprite2D::getPosition( void )const{
+    return this->position;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsSize ChsSprite2D::getSize( void )const{
+    return this->size;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsSize ChsSprite2D::getZoom( void )const{
+    return this->zoom;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsSize ChsSprite2D::getImageSize( void )const{
+    return this->imageSize;
   }
   
 	//------------------------------------------------------------------------------------------------
+  
 }
 
 

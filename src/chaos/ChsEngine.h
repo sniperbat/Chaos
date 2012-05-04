@@ -2,7 +2,6 @@
 #define _CHS_ENGINE_H
 
 #include <boost/noncopyable.hpp>
-#include "ChsMacro.h"
 #include "ChsSingleton.h"
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -18,16 +17,33 @@ namespace Chaos {
 		~ChsEngine();
 		
 		void start( void );
-		void run( void );
+		void run( void )const;
 		void shutdown( void );
-		
-		PROPERTY_READONLY( ChsRenderSystem *, renderSystem );
-		PROPERTY( ChsGameBase *, game );
+    
+    inline ChsRenderSystem * getRenderSystem( void )const;
+    
+    inline ChsGameBase * getGame( void )const;
+    inline void setGame( ChsGameBase * game );
+    
+  private:
+    ChsRenderSystem * renderSystem;
+    ChsGameBase * game;
 	};
 
   //------------------------------------------------------------------------------------------------
-	SYNTHESIZE_READONLY( ChsEngine, ChsRenderSystem *, renderSystem )
-	SYNTHESIZE( ChsEngine, ChsGameBase *, game )
+	inline ChsRenderSystem * ChsEngine::getRenderSystem( void )const{
+    return this->renderSystem;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsGameBase * ChsEngine::getGame( void )const{
+    return this->game;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline void ChsEngine::setGame( ChsGameBase * game ){
+    this->game = game;
+  }
 
 }
 

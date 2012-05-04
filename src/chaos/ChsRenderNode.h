@@ -18,15 +18,22 @@ namespace Chaos{
 		virtual ~ChsRenderNode( void );
 
 		void renderNodes( ChsRenderSystem * render );
-		
+		inline bool isVisible( void )const;
+    inline void setVisible( bool visibel );
 	private:
+		bool visible;
 		
-		PROPERTY( bool , visible );
 	};
-	
+  
 	//------------------------------------------------------------------------------------------------
-	SYNTHESIZE( ChsRenderNode, bool, visible );
-	
+	inline bool ChsRenderNode::isVisible( void )const{
+    return this->visible;
+  }
+  //------------------------------------------------------------------------------------------------
+  inline void ChsRenderNode::setVisible( bool visible ){
+    this->visible = visible;
+  }
+  
   //------------------------------------------------------------------------------------------------
   
 }//namespace

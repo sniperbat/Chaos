@@ -6,7 +6,8 @@ using namespace boost::assign;
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsNode::ChsNode( std::string name ) : _name( name ){
+	ChsNode::ChsNode( std::string name ){
+    this->name = name;
 		this->children.clear();
 	}
 	

@@ -2,7 +2,6 @@
 #define _CHS_SHADER_H
 #pragma once
 
-#include "ChsMacro.h"
 #include "platform/ChsOpenGL.h"
 //------------------------------------------------------------------------------------------------
 
@@ -14,18 +13,21 @@ namespace Chaos {
 		ChsShader( int type );
 		virtual ~ChsShader( void );
 		bool load( const char * source );
-		
+    inline unsigned int getHandle( void )const;
+
 	protected:
 		int type;
-
-	private:
+    unsigned int shaderHandle;	
+  private:
 		bool compile( void );
 		int getStatus( void );
 
-		PROPERTY_CONST( GLuint, handle )
-
 	};
-	SYNTHESIZE_CONST( ChsShader, GLuint, handle )
+  
+  //------------------------------------------------------------------------------------------------
+	inline unsigned int ChsShader::getHandle( void )const{
+    return this->shaderHandle;
+  }
 	
   //------------------------------------------------------------------------------------------------
 	class ChsFragmentShader : public ChsShader{

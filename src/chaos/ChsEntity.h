@@ -21,11 +21,7 @@ namespace Chaos {
 		boost::weak_ptr<ChsModel> model;
 		inline void setModel( const boost::shared_ptr<ChsModel> & model );
 		
-		PROPERTY_READONLY( std::string , name );
 	};
-	
-	//------------------------------------------------------------------------------------------------
-	SYNTHESIZE_READONLY( ChsEntity, std::string, name );
   
 	//------------------------------------------------------------------------------------------------
 	inline void ChsEntity::setModel( const boost::shared_ptr<ChsModel> & model ){

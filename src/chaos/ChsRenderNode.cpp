@@ -8,7 +8,7 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
 	ChsRenderNode::ChsRenderNode( std::string name ) : ChsNode( name ) {
-		this->visible( true );
+		this->visible = true;
 	}
 
   //------------------------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
 	void ChsRenderNode::renderNodes( ChsRenderSystem * render ){
-		if( !this->visible() )
+		if( !this->visible )
 			return;//if this node is invisible,then all chilren are invisible too
 		this->render( render );
 		std::pair<std::string, ChsNode *> p;

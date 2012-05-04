@@ -88,17 +88,17 @@ namespace Chaos {
 		
 		boost::shared_ptr<ChsMesh> mesh( new ChsMesh() );
 		
-		mesh->vertexBuffer->addAttrib( 3, GL_FLOAT, false, "position" );
-		mesh->vertexBuffer->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
-		mesh->vertexBuffer->setData( vertices.get(), sizeof( Vertex ) * (vertexCount-6) );
+		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
+		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
+		mesh->getVertexBuffer()->setData( vertices.get(), sizeof( Vertex ) * (vertexCount-6) );
 		
 		int indexCount = vertexCount-6;
 		boost::scoped_array<GLushort> indices( new GLushort [indexCount] );
 		for( int i = 0; i < indexCount; i++ )
 			indices[i] = ( GLushort )i;
 		
-		mesh->indexBuffer->setData( indices.get(), indexCount, GL_UNSIGNED_SHORT );
-		mesh->indexBuffer->mode( GL_LINES );
+		mesh->getIndexBuffer()->setData( indices.get(), indexCount, GL_UNSIGNED_SHORT );
+		mesh->getIndexBuffer()->setMode( GL_LINES );
 		
 		ChsMaterial * material = new ChsMaterial();
 		material->setShader( "Wireframe.vsh", "Wireframe.fsh" );
@@ -108,13 +108,13 @@ namespace Chaos {
 		this->addMesh(mesh);
 		
 		mesh.reset( new ChsMesh() );
-		mesh->vertexBuffer->addAttrib( 3, GL_FLOAT, false, "position" );
-		mesh->vertexBuffer->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
-		mesh->vertexBuffer->setData( vertices.get()+(vertexCount-6), sizeof( Vertex ) * 6 );
+		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
+		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
+		mesh->getVertexBuffer()->setData( vertices.get()+(vertexCount-6), sizeof( Vertex ) * 6 );
 		for( int i = 0; i < 6; i++ )
 			indices[i] = ( GLushort )i;
-		mesh->indexBuffer->setData( indices.get(), 6, GL_UNSIGNED_SHORT );
-		mesh->indexBuffer->mode( GL_LINES );
+		mesh->getIndexBuffer()->setData( indices.get(), 6, GL_UNSIGNED_SHORT );
+		mesh->getIndexBuffer()->setMode( GL_LINES );
 		material = new ChsMaterial();
 		material->setShader( "Wireframe.vsh", "Wireframe.fsh" );
 		material->addProperty( "hasVertexColor", CHS_SHADER_UNIFORM_1_INT, 1 );

@@ -56,7 +56,7 @@ namespace Chaos {
 		void rotateYTo( float theta );
 		void rotateZTo( float theta );
 			
-		ChsMatrix operator * ( ChsMatrix & m );
+		ChsMatrix operator * ( const ChsMatrix & m );
 	};
 
 	//------------------------------------------------------------------------------------------------

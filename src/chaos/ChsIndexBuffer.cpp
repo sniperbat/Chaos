@@ -35,7 +35,7 @@ namespace Chaos {
 			glBufferData( GL_ELEMENT_ARRAY_BUFFER, this->size, this->triangles, GL_STATIC_DRAW ); 
 			this->isNeedUpdate = false;
 		}
-    glDrawElements( this->_mode, this->count, this->type, 0 );
+    glDrawElements( this->mode, this->count, this->type, 0 );
 	}
 
   //------------------------------------------------------------------------------------------------

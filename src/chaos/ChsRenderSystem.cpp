@@ -22,7 +22,7 @@ using namespace boost::assign;
 namespace Chaos {
 
 	typedef std::vector<ChsRenderUnit> ChsRenderUnitList;
-	typedef std::map<ChsMaterial *, boost::shared_ptr<ChsRenderUnitList>> ChsRenderChain;
+	typedef std::map<ChsMaterial *, boost::shared_ptr<ChsRenderUnitList> > ChsRenderChain;
 	ChsRenderChain renderChain;
 	ChsShaderUniformSet globalUniformSet;
 	ChsMatrix wvp;
@@ -37,7 +37,7 @@ namespace Chaos {
 												renderbuffer( 0 ),
 												renderbufferWidth( 0 ),
 												renderbufferHeight( 0 ),
-												_currentCamera( NULL ),
+												currentCamera( NULL ),
                         renderStates( NULL ),
                         hudManager( NULL )
 	{
@@ -76,17 +76,17 @@ namespace Chaos {
 		
     //以下内容在渲染过程中可能会被更改，如何更改，
 		//depth
-		ChsRSDepthTest( CHS_RS_ENABLE);
+    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_ENABLE );
 		glDepthFunc( GL_LESS );
 		glClearDepthf( 1.0f );
 		
 		//cull
-		ChsRSCullFace( CHS_RS_ENABLE );
+		this->renderStates->set( CHS_RS_BLEND, CHS_RS_ENABLE );
 		glCullFace( GL_BACK );
 		glFrontFace( GL_CCW );
 		
 		//blend
-		ChsRSBlend( CHS_RS_ENABLE );
+		this->renderStates->set( CHS_RS_CULL_FACE, CHS_RS_ENABLE );
 		glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 	}
   
@@ -98,10 +98,10 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::preRender( void ){
-		if( this->currentCamera() ){
-			this->currentCamera()->update();
-			wvp = mtxWorld * this->currentCamera()->getViewProjectionMatrix();
-			wvit = mtxWorld * this->currentCamera()->getViewMatrix();
+		if( this->currentCamera ){
+			this->currentCamera->update();
+			wvp = mtxWorld * this->currentCamera->getViewProjectionMatrix();
+			wvit = mtxWorld * this->currentCamera->getViewMatrix();
 			wvit.inverse();
 			wvit.transpose();
 		}
@@ -115,7 +115,7 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::render( void ){
-		std::pair<ChsMaterial *, boost::shared_ptr<ChsRenderUnitList>> p;
+		std::pair<ChsMaterial *, boost::shared_ptr<ChsRenderUnitList> > p;
 		BOOST_FOREACH( p, renderChain ){
 			ChsMaterial * material = p.first;
 			currentShaderProgram = material->apply( currentShaderProgram );
@@ -232,12 +232,12 @@ namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::showDebugCoordinate( bool isShow ){
-		if( this->showDebugCoordinate() != isShow ){
+		if( this->isShowDebugCoordinate != isShow ){
 			if( isShow )
-				this->root()->add( debugCoordinatePlane->name(), debugCoordinatePlane );
+				this->root()->add( debugCoordinatePlane->getName(), debugCoordinatePlane );
 			else
-				this->root()->remove( debugCoordinatePlane->name() );
-			this->_showDebugCoordinate = isShow;
+				this->root()->remove( debugCoordinatePlane->getName() );
+			this->isShowDebugCoordinate = isShow;
 		}
 	}
 	

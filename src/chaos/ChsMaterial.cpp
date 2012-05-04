@@ -33,17 +33,17 @@ namespace Chaos {
 	void ChsMaterial::addTexture( boost::shared_ptr<ChsTexture2D> texture ){
 		if( !texture )
 			return;
-		this->addProperty( texture->sampleName(), CHS_SHADER_UNIFORM_1_INT, 1);
-		this->setProperty( texture->sampleName(), texture->activeUnit() );
+		this->addProperty( texture->getSampleName(), CHS_SHADER_UNIFORM_1_INT, 1);
+		this->setProperty( texture->getSampleName(), texture->getActiveUnit() );
 		this->textures += texture;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ChsShaderProgram * ChsMaterial::apply( ChsShaderProgram * sysProgram ) {
 		ChsShaderProgram * currentProgram = sysProgram;
-		if( !this->_shaderProgram.expired() || currentProgram ){
-			if( !this->_shaderProgram.expired() ){
-				currentProgram = this->_shaderProgram.lock().get();
+		if( !this->shaderProgram.expired() || currentProgram ){
+			if( !this->shaderProgram.expired() ){
+				currentProgram = this->shaderProgram.lock().get();
 				if( currentProgram != sysProgram ){
 //					printf( "use new program\n" );
 					currentProgram->use();
@@ -74,13 +74,13 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::setShader( std::string vshName, std::string fshName ){
-		this->_shaderProgram = ChsResourceManager::sharedInstance()->getShaderProgram( vshName, fshName );
+		this->shaderProgram = ChsResourceManager::sharedInstance()->getShaderProgram( vshName, fshName );
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::linkShader( void ){
-		if( !this->_shaderProgram.expired() ){
-			boost::shared_ptr<ChsShaderProgram> shaderProgram = this->_shaderProgram.lock();
+		if( !this->shaderProgram.expired() ){
+			boost::shared_ptr<ChsShaderProgram> shaderProgram = this->shaderProgram.lock();
 			shaderProgram->link();
 		}
 	}

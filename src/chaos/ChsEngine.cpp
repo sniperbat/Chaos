@@ -7,7 +7,7 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsEngine::ChsEngine( void ) : _renderSystem( NULL ), _game( NULL ){
+	ChsEngine::ChsEngine( void ) : renderSystem( NULL ), game( NULL ){
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -17,22 +17,24 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsEngine::start( void ){
 		//init rendersystem
-		this->_renderSystem = ChsRenderFactory::create();
+		this->renderSystem = ChsRenderFactory::create();
 		//init game
-		assert( this->game() );
-		this->game()->onInit();
+		assert( this->getGame() );
+		this->getGame()->onInit();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ChsEngine::run( void ){
-		this->game()->onUpdate();
-		this->renderSystem()->update();
+	void ChsEngine::run( void )const{
+    assert( this->getGame() );
+		this->getGame()->onUpdate();
+		this->getRenderSystem()->update();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsEngine::shutdown( void ){
-		this->game()->onShutdown();
-		this->game( NULL );
+    assert( this->getGame() );
+		this->getGame()->onShutdown();
+		this->setGame( NULL );
 		ChsRenderFactory::shutdown();
 		ChsResourceManager::sharedInstance()->purge();
 	}

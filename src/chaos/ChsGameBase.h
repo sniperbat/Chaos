@@ -1,7 +1,6 @@
 #ifndef _CHS_GAMEBASE_H
 #define _CHS_GAMEBASE_H
 
-#include "ChsMacro.h"
 //--------------------------------------------------------------------------------------------------
 
 namespace Chaos {
@@ -12,19 +11,16 @@ namespace Chaos {
   
 	//------------------------------------------------------------------------------------------------
 	class ChsGameBase {
+  protected:
+    ChsRenderSystem * renderer;
+    ChsEngine * engine;
 	public:
 		ChsGameBase( void );
 		virtual void onInit( void ) = 0;
 		virtual void onUpdate( void ) = 0;
 		virtual void onShutdown( void ) = 0;
-
-		PROPERTY_READONLY( ChsRenderSystem *, renderer );
-		PROPERTY_READONLY( ChsEngine *, engine );
+    ChsRenderSystem * getRender( void );
 	};
-
-  //------------------------------------------------------------------------------------------------
-	SYNTHESIZE_GETTER( ChsGameBase, ChsEngine *, engine );
-  
 }//namespace
 
 //--------------------------------------------------------------------------------------------------

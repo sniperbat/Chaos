@@ -8,10 +8,10 @@
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
-  
-  ChsShaderUniformSet hudUniformSet;
+
   //------------------------------------------------------------------------------------------------
-  ChsHUDManager::ChsHUDManager( void ) : hudCamera( new ChsCamera() )
+  ChsHUDManager::ChsHUDManager( void ) : hudCamera( new ChsCamera() ),
+                                         hudUniformSet( new ChsShaderUniformSet() )
   {
   }
   
@@ -19,7 +19,7 @@ namespace Chaos {
   ChsHUDManager::~ChsHUDManager( void ){
   }
 
-  ChsMatrix hudWVP;
+  static ChsMatrix hudWVP;
   //------------------------------------------------------------------------------------------------
   void ChsHUDManager::init( const ChsRect & viewport ){
     this->hudCamera->ortho( viewport.x, viewport.w, viewport.h, viewport.y, 0.1f, 1000.0f);
@@ -27,8 +27,8 @@ namespace Chaos {
 
     hudWVP = this->hudCamera->getViewProjectionMatrix();
     
-    hudUniformSet.reset();
-    hudUniformSet.add( "wvp", CHS_SHADER_UNIFORM_MAT4, 1, &hudWVP);
+    this->hudUniformSet->reset();
+    this->hudUniformSet->add( "wvp", CHS_SHADER_UNIFORM_MAT4, 1, &hudWVP);
    
   }
 
@@ -38,7 +38,7 @@ namespace Chaos {
     std::pair< std::string, ChsHUD * > p;
     BOOST_FOREACH( p, this->hudRenderList ){
       
-      hudUniformSet.apply( hudShaderProgram );
+      this->hudUniformSet->apply( hudShaderProgram );
       
     }
   }
@@ -62,5 +62,6 @@ namespace Chaos {
     }
   }
   
+  //------------------------------------------------------------------------------------------------
   
 }

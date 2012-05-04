@@ -3,7 +3,6 @@
 
 #include <map>
 #include <string>
-#include "ChsMacro.h"
 //--------------------------------------------------------------------------------------------------
 
 namespace Chaos {
@@ -17,19 +16,21 @@ namespace Chaos {
 		inline void add( ChsNode * node );
 		ChsNode * remove( std::string name );
 		ChsNode * get( std::string name );
+    inline const std::string & getName( void )const;
 	protected:
 		std::map< std::string, ChsNode * >  children;
-	
-		PROPERTY( std::string, name );
+    std::string name;
 	};
 
 	//------------------------------------------------------------------------------------------------
 	inline void ChsNode::add( ChsNode * node ){
-		this->add( node->name(), node );
+		this->add( node->getName(), node );
 	}
 
 	//------------------------------------------------------------------------------------------------
-	SYNTHESIZE( ChsNode, std::string , name )	
+	inline const std::string & ChsNode::getName( void )const{
+    return this->name;
+  }
 
 	//------------------------------------------------------------------------------------------------
 	typedef std::map< std::string, ChsNode * > ChsNodeList;

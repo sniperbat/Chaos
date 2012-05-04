@@ -14,7 +14,7 @@ namespace Chaos {
 												isNeedUpdate( false )
 	{
    	glGenBuffers( 1, &this->vboHandle );
-    glGenVertexArraysOES( 1, &this->vaoHandle);
+    glGenVertexArrays( 1, &this->vaoHandle);
 	}
 
   //------------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ namespace Chaos {
   	if( this->vboHandle )
      	glDeleteBuffers( 1, &this->vboHandle );
     if( this->vaoHandle )
- 	    glDeleteVertexArraysOES( 1, &this->vaoHandle);
+ 	    glDeleteVertexArrays( 1, &this->vaoHandle);
 		attribs.clear();
 		safeDeleteArray( &this->vertices );
 	}
@@ -30,7 +30,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::bindAttribLocations( const ChsShaderProgram * program ) {
 		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
-			glBindAttribLocation( program->handle(), attrib->index, attrib->name.c_str() );
+			glBindAttribLocation( program->getHandle(), attrib->index, attrib->name.c_str() );
     }
 	}
 
@@ -81,12 +81,12 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::bindVertexArray( void ){
-   	glBindVertexArrayOES( this->vaoHandle );
+   	glBindVertexArray( this->vaoHandle );
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::unbindVertexArray( void ){
-   	glBindVertexArrayOES( 0 );
+   	glBindVertexArray( 0 );
 	}
 
   //------------------------------------------------------------------------------------------------

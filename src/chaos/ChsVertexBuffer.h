@@ -7,7 +7,6 @@
 #include <vector>
 #include <boost/shared_ptr.hpp>
 
-#include "ChsMacro.h"
 #include "ChsUtility.h"
 #include "platform/ChsOpenGL.h"
 
@@ -61,7 +60,7 @@ namespace Chaos {
 		void unbindAttribArrays( void );
 		void update( void );
 		
-		std::vector<boost::shared_ptr<ChsAttribUnit>> attribs;
+		std::vector< boost::shared_ptr<ChsAttribUnit> > attribs;
 		unsigned int vboHandle;
 		unsigned int vaoHandle;
 		char * vertices;

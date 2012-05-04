@@ -7,14 +7,14 @@
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
-	ChsGameBase::ChsGameBase( void ) : _renderer( NULL ){
-		this->_engine = ChsEngine::sharedInstance();
-		this->_engine->game( this );
+	ChsGameBase::ChsGameBase( void ) : renderer( NULL ){
+		this->engine = ChsEngine::sharedInstance();
+		this->engine->setGame( this );
 	}
 
 	//------------------------------------------------------------------------------------------------
-	ChsRenderSystem * ChsGameBase::renderer( void ) {
-		return this->_renderer ? this->_renderer : this->_renderer = this->engine()->renderSystem();
+	ChsRenderSystem * ChsGameBase::getRender( void ){
+		return this->renderer ? this->renderer : this->renderer = this->engine->getRenderSystem();
 	}
 	
   //------------------------------------------------------------------------------------------------

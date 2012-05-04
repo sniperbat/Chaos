@@ -3,8 +3,6 @@
 #pragma once
 
 #include <boost/weak_ptr.hpp>
-
-#include "ChsMacro.h"
 #include "shader/ChsShaderUniformSet.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -17,26 +15,33 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	class ChsMaterial {
 	public:
-    	ChsMaterial( void );
-	    virtual ~ChsMaterial( void );
-    	ChsShaderProgram * apply( ChsShaderProgram * program );
-		void addProperty( std::string name, ChsShaderUniformDataType type, int count );
+    ChsMaterial( void );
+	  virtual ~ChsMaterial( void );
+    
+    ChsShaderProgram * apply( ChsShaderProgram * program );
+		
+    void addProperty( std::string name, ChsShaderUniformDataType type, int count );
 		template<typename T> void setProperty( std::string name, T value );
 		template<typename T> T getProperty( std::string name );
-	    void setShader( std::string vshName, std::string fshName );
+	  
+    void setShader( std::string vshName, std::string fshName );
 		void setRenderState( ChsRenderState state, unsigned int value );
 		void addTexture( boost::shared_ptr<ChsTexture2D> texture );
 		void linkShader( void );
+    
+    inline boost::weak_ptr<ChsShaderProgram> getShaderProgram( void )const;
 	private:
 		std::map<ChsRenderState,unsigned int> renderStates;
-		std::vector<boost::shared_ptr<ChsTexture2D>> textures;
+		std::vector<boost::shared_ptr<ChsTexture2D> > textures;
 		
 		ChsShaderUniformSet shaderUniformSet;
-		PROPERTY_READONLY( boost::weak_ptr<ChsShaderProgram>, shaderProgram );
+    boost::weak_ptr<ChsShaderProgram> shaderProgram;
 	};
 
   //------------------------------------------------------------------------------------------------
-	SYNTHESIZE_READONLY( ChsMaterial, boost::weak_ptr<ChsShaderProgram>, shaderProgram );
+	boost::weak_ptr<ChsShaderProgram> ChsMaterial::getShaderProgram( void )const{
+    return this->shaderProgram;
+  }
 
   //------------------------------------------------------------------------------------------------
 	template<typename T> void ChsMaterial::setProperty( std::string name, T value ){

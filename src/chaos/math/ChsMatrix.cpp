@@ -269,7 +269,7 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	ChsMatrix ChsMatrix::operator * ( ChsMatrix & m ){
+	ChsMatrix ChsMatrix::operator * ( const ChsMatrix & m ){
 		ChsMatrix r;
 		multiply( &r, * this, m );
 		return r;

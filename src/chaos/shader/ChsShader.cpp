@@ -5,18 +5,18 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsShader::ChsShader( int type ) : _handle( 0 ){
+	ChsShader::ChsShader( int type ) : shaderHandle( 0 ){
 		if( type ){
     	this->type = type;
-	    this->_handle = glCreateShader( type );
+	    this->shaderHandle = glCreateShader( type );
 		}
 	}
 
 	//------------------------------------------------------------------------------------------------
 	ChsShader::~ChsShader( void ){
-		if( this->_handle ){
-	   	glDeleteShader( this->_handle );
-    	this->_handle = 0;
+		if( this->shaderHandle ){
+	   	glDeleteShader( this->shaderHandle );
+    	this->shaderHandle = 0;
 		}
 	}
 
@@ -26,13 +26,13 @@ namespace Chaos {
      	printf("Failed to load vertex shader" );
       return false;
    	}
-    glShaderSource( this->handle(), 1, &source, NULL );
+    glShaderSource( this->shaderHandle, 1, &source, NULL );
    	return this->compile();
 	}
 
   //------------------------------------------------------------------------------------------------
 	bool ChsShader::compile( void ) {
-   	glCompileShader( this->handle() );
+   	glCompileShader( this->shaderHandle );
     return this->getStatus();
 	}
 
@@ -40,15 +40,15 @@ namespace Chaos {
 	int ChsShader::getStatus( void ) {
 	#if defined( DEBUG )
    	GLint logLength;
-    glGetShaderiv( this->handle(), GL_INFO_LOG_LENGTH, &logLength );
+    glGetShaderiv( this->shaderHandle, GL_INFO_LOG_LENGTH, &logLength );
    	if ( logLength > 0 ) {
       boost::scoped_ptr<GLchar> log( new GLchar[logLength] );
-      glGetShaderInfoLog( this->handle(), logLength, &logLength, log.get() );
+      glGetShaderInfoLog( this->shaderHandle, logLength, &logLength, log.get() );
     	printf( "Shader compile log:\n%s", log.get() );
 	  }
 	#endif
     GLint status;
-	  glGetShaderiv( this->handle(), GL_COMPILE_STATUS, &status );
+	  glGetShaderiv( this->shaderHandle, GL_COMPILE_STATUS, &status );
     return status;
 	}
 

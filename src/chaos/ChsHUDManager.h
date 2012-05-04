@@ -11,6 +11,7 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   class ChsRenderNode;
+  class ChsShaderUniformSet;
   class ChsCamera;
   class ChsHUD;
   //------------------------------------------------------------------------------------------------
@@ -18,6 +19,7 @@ namespace Chaos {
   private:
     boost::scoped_ptr<ChsCamera> hudCamera;
     boost::scoped_ptr<ChsRenderNode> root;
+    boost::scoped_ptr<ChsShaderUniformSet> hudUniformSet;
     std::map< std::string, ChsHUD * > hudRenderList;
     std::map< std::string, ChsHUD * > hudList;
   public:

@@ -3,7 +3,6 @@
 #pragma once
 
 #include <vector>
-#include "ChsMacro.h"
 #include "platform/ChsOpenGL.h"
 //--------------------------------------------------------------------------------------------------
 
@@ -17,6 +16,7 @@ namespace Chaos {
 		void setData( const void * triangles, int count, int type = GL_UNSIGNED_SHORT );
 		inline void setData( std::vector<unsigned short> & triangles );
 		void draw( void );
+    inline void setMode( int mode );
 	private:
 		unsigned int handle;
 		int count;
@@ -24,12 +24,13 @@ namespace Chaos {
 		int size;
 		char * triangles;
 		bool isNeedUpdate;
-		
-		PROPERTY_WRITEONLY( int, mode );
+		int mode;
 	};
 
   //------------------------------------------------------------------------------------------------
-	SYNTHESIZE_WRITEONLY( ChsIndexBuffer, int, mode );
+	inline void ChsIndexBuffer::setMode( int mode ){
+    this->mode = mode;
+  }
 	
   //------------------------------------------------------------------------------------------------
 	inline void ChsIndexBuffer::setData( std::vector<unsigned short> & triangles ){

@@ -5,7 +5,7 @@
 namespace Chaos {
 
  	//------------------------------------------------------------------------------------------------
-	ChsEntity::ChsEntity( std::string name ) : _name( name ) {
+	ChsEntity::ChsEntity( std::string name ) : ChsRenderNode( name ) {
 	}
 	
   //------------------------------------------------------------------------------------------------

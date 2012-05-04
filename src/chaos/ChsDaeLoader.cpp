@@ -157,15 +157,15 @@ namespace Chaos {
 			for( int i = 0; i < vertexAttributeCount ; i++ ){
 				const VertexAttribute & attribute = vertexAttributes[i];
 				bool isNormalized = attribute.name.compare( "normal" ) ? false : true;
-				mesh->vertexBuffer->addAttrib( attribute.stride, GL_FLOAT, isNormalized, attribute.name );
+				mesh->getVertexBuffer()->addAttrib( attribute.stride, GL_FLOAT, isNormalized, attribute.name );
 			}
 			
-			mesh->vertexBuffer->setData( vertexList );
+			mesh->getVertexBuffer()->setData( vertexList );
 			vertexList.clear();
 			
-			mesh->indexBuffer->setData( triangleList );
+			mesh->getIndexBuffer()->setData( triangleList );
 			triangleList.clear();
-			mesh->indexBuffer->mode( GL_TRIANGLES );
+			mesh->getIndexBuffer()->setMode( GL_TRIANGLES );
 
 			ChsMaterial * material = new ChsMaterial();
 			mesh->setMaterial( material );

@@ -3,7 +3,6 @@
 #pragma once
 
 #include "ChsDefine.h"
-#include "ChsMacro.h"
 #include "platform/ChsOpenGL.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -35,8 +34,7 @@ namespace Chaos {
 		virtual void releaseContext( void ) = 0;
 		virtual void attachContext( void ) = 0;
 		virtual void initRenderBuffer( void ) = 0;
-	
-		
+			
 		// The OpenGL ES names for the framebuffer and renderbuffer used to render to this view.
 	  GLuint framebuffer;
 		GLuint renderbuffer;
@@ -52,7 +50,9 @@ namespace Chaos {
 		boost::scoped_ptr<ChsRenderNode> _root;
     ChsRenderStates * renderStates; 
     ChsHUDManager * hudManager;
-		
+		ChsCamera * currentCamera;
+    bool isShowDebugCoordinate;
+    
 		void preRender( void );
 		void render( void );
 	  void postRender( void );
@@ -82,8 +82,12 @@ namespace Chaos {
 		
 		inline ChsRenderNode * root( void );
     
-		PROPERTY( ChsCamera *, currentCamera );
-		PROPERTY( bool, showDebugCoordinate );
+    
+		inline void setCurrentCamera( ChsCamera * camera );
+    inline ChsCamera * getCurrentCamera( void )const;
+    
+		void showDebugCoordinate( bool isShow );
+    inline bool isDebugCoordinateShowing( void )const;
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -97,8 +101,19 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	SYNTHESIZE( ChsRenderSystem, ChsCamera *, currentCamera );
-	SYNTHESIZE_GETTER( ChsRenderSystem, bool, showDebugCoordinate );
+	inline void ChsRenderSystem::setCurrentCamera( Chaos::ChsCamera *camera ){
+    this->currentCamera = camera;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsCamera * ChsRenderSystem::getCurrentCamera( void )const{
+    return this->currentCamera;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline bool ChsRenderSystem::isDebugCoordinateShowing( void )const{
+    return this->isShowDebugCoordinate;
+  }
   
   //------------------------------------------------------------------------------------------------
   
