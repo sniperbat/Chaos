@@ -36,15 +36,16 @@ void GameDemo::onInit( void ) {
 	
 	//this->renderer()->root()->add( plane1->name(), plane1 );
 	
-	ChsRect viewport = this->renderer->getViewPort();
+	ChsRect viewport = this->getRender()->getViewPort();
 	camera->perspective( degree2Radian(39.6), viewport.w/(float)viewport.h, 0.1f, 1000.0f  );
-	//camera->ortho( viewport.w, viewport.h, 0.1f, 1000.0f );
-	//camera->lookAt( -10,10,10,0,0,0 );
-	this->renderer->setCurrentCamera( camera.get() );
-	this->renderer->showDebugCoordinate( true );
+	//camera->ortho( 0.0f, viewport.w/10, 0.0f, viewport.h/10, 0.1f, 1000.0f );
+//	camera->moveTo( 5, 5, 5 );
+  //camera->targetTo( 1,1,1);
+	this->getRender()->setCurrentCamera( camera.get() );
+	this->getRender()->showDebugCoordinate( true );
 	
 	ChsModel * model = ChsResourceManager::sharedInstance()->getModel( "sofa.chsmodelx" ).get();
-	this->renderer->root()->add( model->getName(), model );
+	this->getRender()->root()->add( model->getName(), model );
 }
 
 //--------------------------------------------------------------------------------------------------

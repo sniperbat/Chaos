@@ -11,7 +11,7 @@ namespace Chaos {
   
 	//------------------------------------------------------------------------------------------------
 	class ChsGameBase {
-  protected:
+  private:
     ChsRenderSystem * renderer;
     ChsEngine * engine;
 	public:

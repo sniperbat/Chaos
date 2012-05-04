@@ -78,7 +78,7 @@ namespace Chaos {
 		void setClearColor( unsigned int rgba );
 		
 		void setViewPort( int x, int y, int w, int h );
-		inline ChsRect getViewPort( void );
+		inline ChsRect getViewPort( void )const;
 		
 		inline ChsRenderNode * root( void );
     
@@ -91,7 +91,7 @@ namespace Chaos {
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	inline ChsRect ChsRenderSystem::getViewPort( void ){
+	inline ChsRect ChsRenderSystem::getViewPort( void )const{
 		return this->viewport;
 	}
 
