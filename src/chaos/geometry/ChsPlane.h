@@ -19,6 +19,8 @@ namespace Chaos {
 		ChsPlane( std::string name, float w, float h );
 		ChsPlane( float w, float h );
 	private:
+    void init( float w, float h );
+    
 		float w,h;
 		ChsPlaneVertex vertices[4];
 	};
