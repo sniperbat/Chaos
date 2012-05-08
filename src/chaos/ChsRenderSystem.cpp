@@ -35,6 +35,7 @@ namespace Chaos {
                         _root( new ChsRenderNode() ),
 												framebuffer( 0 ),
 												renderbuffer( 0 ),
+                        depthRenderbuffer( 0 ),
 												renderbufferWidth( 0 ),
 												renderbufferHeight( 0 ),
 												currentCamera( NULL ),
@@ -227,7 +228,7 @@ namespace Chaos {
 		this->viewport.y = y;
 		this->viewport.w = w;
 		this->viewport.h = h;
-		glViewport( this->viewport.x, this->viewport.y, this->viewport.w, this->viewport.h );
+		glViewport( x, y, w, h );
 	}
 	
   //------------------------------------------------------------------------------------------------
