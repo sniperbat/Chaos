@@ -39,7 +39,7 @@ namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
 	void ChsRenderStates::queryCurrentStates( void ){
-		for( ChsRenderState i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ ) {
+		for( int i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ ) {
 			if( i <= CHS_RS_ENABLECAP){
 				if( glIsEnabled( glStates[i] ))
 					this->states[i] = CHS_RS_ENABLE;
