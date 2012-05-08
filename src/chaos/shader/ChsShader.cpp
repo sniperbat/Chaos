@@ -33,7 +33,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	bool ChsShader::compile( void ) {
    	glCompileShader( this->shaderHandle );
-    return this->getStatus();
+    return this->getStatus() != 0;
 	}
 
   //------------------------------------------------------------------------------------------------

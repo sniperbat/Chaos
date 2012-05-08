@@ -20,7 +20,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	bool ChsShaderProgram::link( void ){
     glLinkProgram( this->shaderHandle );
-	  return this->getStatus();
+	  return this->getStatus() != 0;
 	}
 
   //------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	bool ChsShaderProgram::validate( void ){
    	glValidateProgram( this->shaderHandle );
-    return this->getStatus();
+    return this->getStatus() != 0;
 	}
 
   //------------------------------------------------------------------------------------------------
