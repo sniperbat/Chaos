@@ -8,7 +8,7 @@
 #include "ChsResourceManager.h"
 #include "ChsUtility.h"
 #include "ChsMaterial.h"
-#include "ChsTexture2D.h"
+#include "ChsTextureEntity.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -99,7 +99,7 @@ namespace Chaos {
 					tinyxml2::XMLElement * textureElement = materialElement->FirstChildElement( "ChsTexture2D" );
 					while( textureElement ){
 						std::string textureFileName = textureElement->Attribute( "src" );
-						boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
+						boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( ChsResourceManager::sharedInstance()->getTexture2D( textureFileName ) ) );
 						texture->setSampleName( textureElement->Attribute( "sampleName" ) );
 						texture->setActiveUnit( textureElement->IntAttribute( "activeUnit" ) );
 						material->addTexture( texture );

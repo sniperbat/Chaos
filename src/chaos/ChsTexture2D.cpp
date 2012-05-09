@@ -21,11 +21,11 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	GLuint currentTextureHandle = -1;
 	//------------------------------------------------------------------------------------------------
-	void ChsTexture2D::bind( void )const{
+	void ChsTexture2D::bindToUnit( GLint unit )const{
 		if( currentTextureHandle == this->textureHandle )
 			return;
 		glBindTexture( GL_TEXTURE_2D, this->textureHandle );
-		glActiveTexture( this->activeUnit );
+		glActiveTexture( unit );
 		currentTextureHandle = this->textureHandle;
 	}
 	

@@ -5,7 +5,7 @@ using namespace boost::assign;
 #include "ChsMaterial.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsResourceManager.h"
-#include "ChsTexture2D.h"
+#include "ChsTextureEntity.h"
 #include "ChsRenderStates.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ChsMaterial::addTexture( boost::shared_ptr<ChsTexture2D> texture ){
+	void ChsMaterial::addTexture( boost::shared_ptr<ChsTextureEntity> & texture ){
 		if( !texture )
 			return;
 		this->addProperty( texture->getSampleName(), CHS_SHADER_UNIFORM_1_INT, 1);
@@ -49,8 +49,9 @@ namespace Chaos {
 			BOOST_FOREACH( p, this->renderStates )
 				ChsRenderStates::sharedInstance()->set( p.first,p.second );
 			this->shaderUniformSet.apply( currentProgram );
-			BOOST_FOREACH( boost::shared_ptr<ChsTexture2D> & texture, this->textures )
-				texture->bind();
+			BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures ){
+				texture->apply();
+      }
 		}
 		return currentProgram;
 	}

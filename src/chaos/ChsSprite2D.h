@@ -12,14 +12,14 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
   class ChsMaterial;
-  class ChsTexture2D;
+  class ChsTextureEntity;
   class ChsRenderSystem;
  	//------------------------------------------------------------------------------------------------
   class ChsSprite2D : public ChsMesh {
   private:
     std::string name;
     bool needUpdate;
-    boost::shared_ptr<ChsTexture2D> texture;
+    boost::shared_ptr<ChsTextureEntity> texture;
   protected:
     //锚点，Sprite的中心点。默认左上角(0, 0)
     ChsPoint anchor;
@@ -42,7 +42,7 @@ namespace Chaos {
     
     void update( void );
     
-    void setImage( boost::shared_ptr<ChsTexture2D> texture, float ox, float oy, float w, float h );
+    void setImage( boost::shared_ptr<ChsTextureEntity> texture, float ox, float oy, float w, float h );
     //void setImage( std::string imageName, float ox, float oy, float w, float h );
     //void setImage( std::string imageName );
 
