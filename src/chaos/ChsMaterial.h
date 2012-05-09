@@ -4,13 +4,14 @@
 
 #include <boost/weak_ptr.hpp>
 #include "shader/ChsShaderUniformSet.h"
+#include "ChsTextureEntity.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
   class ChsShaderProgram;
-	class ChsTexture2D;
+	class ChsTextureEntity;
 	
   //------------------------------------------------------------------------------------------------
 	class ChsMaterial {
@@ -26,13 +27,13 @@ namespace Chaos {
 	  
     void setShader( std::string vshName, std::string fshName );
 		void setRenderState( ChsRenderState state, unsigned int value );
-		void addTexture( boost::shared_ptr<ChsTexture2D> texture );
+		void addTexture( boost::shared_ptr<ChsTextureEntity> & texture );
 		void linkShader( void );
     
     inline boost::weak_ptr<ChsShaderProgram> getShaderProgram( void )const;
 	private:
 		std::map<ChsRenderState,unsigned int> renderStates;
-		std::vector<boost::shared_ptr<ChsTexture2D> > textures;
+		std::vector< boost::shared_ptr<ChsTextureEntity> > textures;
 		
 		ChsShaderUniformSet shaderUniformSet;
     boost::weak_ptr<ChsShaderProgram> shaderProgram;

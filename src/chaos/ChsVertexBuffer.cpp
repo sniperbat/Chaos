@@ -80,35 +80,21 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::bindVertexArray( void ){
+	void ChsVertexBuffer::bind( void ){
    	glBindVertexArray( this->vaoHandle );
+    if( this->isNeedUpdate ){
+      this->bindAttribArrays();
+      glBindBuffer( GL_ARRAY_BUFFER, this->vboHandle );
+      glBufferData( GL_ARRAY_BUFFER, this->size, this->vertices,  GL_STATIC_DRAW );
+      this->isNeedUpdate = false;
+    }
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::unbindVertexArray( void ){
+	void ChsVertexBuffer::unbind( void ){
    	glBindVertexArray( 0 );
 	}
-
-  //------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::update( void ){
-		this->bindAttribArrays();
-		glBindBuffer( GL_ARRAY_BUFFER, this->vboHandle );
-   	glBufferData( GL_ARRAY_BUFFER, this->size, this->vertices,  GL_STATIC_DRAW );
-		this->isNeedUpdate = false;
-	}
 	
-  //------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::preDraw( void ){
-		this->bindVertexArray();
-		if( this->isNeedUpdate )
-			this->update();
-	}
-	
-  //------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::postDraw( void ){
-		this->unbindVertexArray();
-	}
-  
   //------------------------------------------------------------------------------------------------
   
 }//namespace

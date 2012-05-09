@@ -12,28 +12,14 @@ namespace Chaos{
 	class ChsRenderSystem;
 
   //------------------------------------------------------------------------------------------------
-	class ChsRenderNode : public ChsNode, ChsRenderable{
+	class ChsRenderNode : public ChsNode, public ChsRenderable{
 	public:
 		ChsRenderNode( std::string name = "unnamed" );
 		virtual ~ChsRenderNode( void );
-
-		void renderNodes( ChsRenderSystem * render );
-		inline bool isVisible( void )const;
-    inline void setVisible( bool visibel );
-	private:
-		bool visible;
-		
+    void updateTree( void );
 	};
   
-	//------------------------------------------------------------------------------------------------
-	inline bool ChsRenderNode::isVisible( void )const{
-    return this->visible;
-  }
-  //------------------------------------------------------------------------------------------------
-  inline void ChsRenderNode::setVisible( bool visible ){
-    this->visible = visible;
-  }
-  
+	
   //------------------------------------------------------------------------------------------------
   
 }//namespace

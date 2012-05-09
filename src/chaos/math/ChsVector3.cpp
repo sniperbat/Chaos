@@ -4,32 +4,21 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsVector3::ChsVector3( float x, float y, float z){
-    this->init( x, y, z );
+	ChsVector3::ChsVector3( float _x, float _y, float _z) : x( _x ), y( _y ), z( _z ){
 	}
 	
   //------------------------------------------------------------------------------------------------
-	ChsVector3::ChsVector3( void ){
-    this->init( 0.0f, 0.0f, 0.0f );
+	ChsVector3::ChsVector3( void ) : ChsVector3( 0.0f, 0.0f, 0.0f ){
 	}
 	
   //------------------------------------------------------------------------------------------------
-	ChsVector3::ChsVector3( const float vec[3] ){
-    this->init( vec[0], vec[1], vec[2] );
+	ChsVector3::ChsVector3( const float vec[3] ) : ChsVector3( vec[0], vec[1], vec[2] ){
 	}
 	
   //------------------------------------------------------------------------------------------------
-	ChsVector3::ChsVector3( const ChsVector3 & vec ){
-    this->init( vec.x, vec.y, vec.z );
+	ChsVector3::ChsVector3( const ChsVector3 & vec ) : ChsVector3( vec.x, vec.y, vec.z ){
 	}
 	
-  //------------------------------------------------------------------------------------------------
-  void ChsVector3::init( float x, float y, float z ){
-    this->x = x;
-    this->y = y;
-    this->z = z;
-  }
-
   //------------------------------------------------------------------------------------------------
 	ChsVector3 & ChsVector3::operator = ( const ChsVector3 & vec ){
 		this->x = vec.x;

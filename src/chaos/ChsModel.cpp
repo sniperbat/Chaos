@@ -18,10 +18,10 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ChsModel::render( ChsRenderSystem * render ) {
+	void ChsModel::update( void ) {
 		BOOST_FOREACH( boost::shared_ptr<ChsMesh> & mesh, this->meshs )
 			if( mesh )
-				mesh->render( render );
+				mesh->update();
 	}
 
 	//------------------------------------------------------------------------------------------------

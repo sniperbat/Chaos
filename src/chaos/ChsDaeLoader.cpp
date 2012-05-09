@@ -20,6 +20,7 @@ namespace Chaos {
 	void reduceTriangleListAndVertexIndexList( DaeMesh & daeMesh, std::vector<int> & vertexIndexList, std::vector<unsigned short> & triangleList ){
 		int triangleIndexCount = daeMesh.triangles.p.size();
 		int vertexComponentCount = daeMesh.triangles.input.size();
+    assert(vertexComponentCount);
 		std::map<std::string, int> vertexLookupList;//store vertex whitch be use,
 		std::vector<int> vertexIndex;
 		for( int triangleIndex = 0; triangleIndex < triangleIndexCount; triangleIndex += vertexComponentCount ){

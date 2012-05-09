@@ -3,6 +3,9 @@
 #include "ChsRenderSystem.h"
 #include "ChsGameBase.h"
 #include "ChsResourceManager.h"
+#include "ChsHUDManager.h"
+#include "ChsSceneManager.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 	
@@ -25,17 +28,19 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsEngine::run( void )const{
-    assert( this->getGame() );
 		this->getGame()->onUpdate();
-		this->getRenderSystem()->update();
+    ChsSceneManager::sharedInstance()->update();
+    ChsHUDManager::sharedInstance()->update();
+ 		this->getRenderSystem()->render();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsEngine::shutdown( void ){
-    assert( this->getGame() );
 		this->getGame()->onShutdown();
 		this->setGame( NULL );
 		ChsRenderFactory::shutdown();
+    ChsSceneManager::sharedInstance()->purge();
+    ChsHUDManager::sharedInstance()->purge();
 		ChsResourceManager::sharedInstance()->purge();
 	}
   

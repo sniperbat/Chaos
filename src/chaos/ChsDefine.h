@@ -92,6 +92,14 @@ namespace Chaos {
 	};
 
   //------------------------------------------------------------------------------------------------
+  enum ChsRenderTag{
+    CHS_RENDER_TAG_OPACITY,
+    CHS_RENDER_TAG_TRANSPARENT,
+    CHS_RENDER_TAG_HUD,
+    CHS_RENDER_TAG_MAX,
+  };
+
+  //------------------------------------------------------------------------------------------------
 	
 }//namespace
 

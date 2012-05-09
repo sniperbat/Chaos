@@ -5,7 +5,7 @@ using namespace boost::assign;
 #include "ChsMaterial.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsResourceManager.h"
-#include "ChsTexture2D.h"
+#include "ChsTextureEntity.h"
 #include "ChsRenderStates.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -15,7 +15,6 @@ namespace Chaos {
 	ChsMaterial::ChsMaterial( void ) {
 		this->shaderUniformSet.reset();
 		this->textures.clear();
-		this->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_ENABLE );
 	}
   
 	//------------------------------------------------------------------------------------------------
@@ -30,7 +29,7 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ChsMaterial::addTexture( boost::shared_ptr<ChsTexture2D> texture ){
+	void ChsMaterial::addTexture( boost::shared_ptr<ChsTextureEntity> & texture ){
 		if( !texture )
 			return;
 		this->addProperty( texture->getSampleName(), CHS_SHADER_UNIFORM_1_INT, 1);
@@ -41,23 +40,18 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	ChsShaderProgram * ChsMaterial::apply( ChsShaderProgram * sysProgram ) {
 		ChsShaderProgram * currentProgram = sysProgram;
-		if( !this->shaderProgram.expired() || currentProgram ){
-			if( !this->shaderProgram.expired() ){
-				currentProgram = this->shaderProgram.lock().get();
-				if( currentProgram != sysProgram ){
-//					printf( "use new program\n" );
-					currentProgram->use();
-				}
-				else{
-//					printf( "use last program\n" );
-				}
-			}
+    if( !this->shaderProgram.expired() )
+				currentProgram = this->shaderProgram.lock().get();      
+		if( currentProgram ){
+      if( currentProgram != sysProgram )
+        currentProgram->use();
 			std::pair<ChsRenderState,unsigned int> p;
 			BOOST_FOREACH( p, this->renderStates )
 				ChsRenderStates::sharedInstance()->set( p.first,p.second );
 			this->shaderUniformSet.apply( currentProgram );
-			BOOST_FOREACH( boost::shared_ptr<ChsTexture2D> & texture, this->textures )
-				texture->bind();
+			BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures ){
+				texture->apply();
+      }
 		}
 		return currentProgram;
 	}

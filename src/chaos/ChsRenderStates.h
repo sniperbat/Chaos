@@ -14,6 +14,9 @@ namespace Chaos {
 		void set( ChsRenderState state, unsigned int value );
     void save( void );
     void restore( void );
+    void save( ChsRenderState state );
+    void restore( ChsRenderState state );
+
 	private:
 		unsigned int states[CHS_RS_MAX];
     unsigned int statesBackup[CHS_RS_MAX];

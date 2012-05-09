@@ -4,6 +4,8 @@
 			<ChsVertexShader src="Shader.vsh" />
 			<ChsFragmentShader src="Shader.fsh" />
 			<ChsTexture src="sofaLeather.png" sampleName="diffuseTexture" activeUnit="0" />
+			<ChsRenderStates id="chs_rs_texture_2d" value="enable" />
+			<ChsRenderStates id="chs_res_depth_test" value="enable" />
 		</ChsMaterial>
         <ChsAttribute name="position" stride="3" type="GL_FLOAT"/>
         <ChsAttribute name="normal" stride="3" type="GL_FLOAT"/>

@@ -8,35 +8,38 @@
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
-  
+
   //------------------------------------------------------------------------------------------------
-  class ChsRenderNode;
-  class ChsShaderUniformSet;
-  class ChsCamera;
   class ChsHUD;
+  class ChsCamera;
+  
   //------------------------------------------------------------------------------------------------
   class ChsHUDManager : public ChsSingleton<ChsHUDManager> {
   private:
-    boost::scoped_ptr<ChsCamera> hudCamera;
-    boost::scoped_ptr<ChsRenderNode> root;
-    boost::scoped_ptr<ChsShaderUniformSet> hudUniformSet;
+    boost::scoped_ptr<ChsCamera> camera;
     std::map< std::string, ChsHUD * > hudRenderList;
     std::map< std::string, ChsHUD * > hudList;
   public:
     ChsHUDManager( void );
     ~ChsHUDManager( void );
     void init( const ChsRect & viewport );
+    void update( void );
     void render( void );
     
     void showHUD( std::string hudName );
     void hideHUD( std::string hudName );
+
+    void loadHUD( std::string hudName );
+    void unloadHUD( std::string hudName );
+    void purge( void );
     
-    void createHUD( std::string hudName );
-    void loadHUDFromFile( std::string hudName, std::string hudFileName );
-    
+    inline const ChsCamera * getCamera( void )const;
   };
-  
+
   //------------------------------------------------------------------------------------------------
+  inline const ChsCamera * ChsHUDManager::getCamera( void )const{
+    return this->camera.get();
+  }
   
 }
 

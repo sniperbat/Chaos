@@ -17,17 +17,14 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	class ChsMesh : public ChsRenderNode{
-		friend class ChsDaeLoader;
-		friend class ChsModelLoader;
 	public:
 		ChsMesh( std::string name = "unnamed" );
 		virtual ~ChsMesh( void );
 		void setMaterial( ChsMaterial * material );
 		inline ChsMaterial * getMaterial( void );
-		void render( ChsRenderSystem * render );
+		void update( void );
     inline ChsVertexBuffer * getVertexBuffer( void )const;
     inline ChsIndexBuffer * getIndexBuffer( void )const;
-    
 	protected:
 		boost::shared_ptr<ChsMaterial> material;
     boost::scoped_ptr<ChsVertexBuffer> vertexBuffer;

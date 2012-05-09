@@ -13,7 +13,7 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	class ChsEntity : public ChsRenderNode {
 	private:
-		void render( ChsRenderSystem * render );
+		void update( void );
 	public:
 		ChsEntity( std::string name );
 		virtual ~ChsEntity( void );
