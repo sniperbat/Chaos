@@ -1,4 +1,4 @@
-#ifndef _CHS_QUATERNION_H
+﻿#ifndef _CHS_QUATERNION_H
 #define _CHS_QUATERNION_H
 #pragma once
 

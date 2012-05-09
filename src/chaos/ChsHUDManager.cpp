@@ -3,10 +3,10 @@
 using namespace boost::assign;
 #include <tinyxml2/tinyxml2.h>
 #include "ChsHUDManager.h"
-#include "ChsCamera.h"
+#include "camera/ChsCamera.h"
 #include "ChsRenderNode.h"
 #include "ChsHUD.h"
-#include "ChsFileSystem.h"
+#include "io/ChsFileSystem.h"
 #include "ChsSprite2D.h"
 #include "ChsTextureEntity.h"
 #include "ChsResourceManager.h"

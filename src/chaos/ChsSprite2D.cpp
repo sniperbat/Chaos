@@ -24,7 +24,8 @@ namespace Chaos {
     this->vertexBuffer->addAttrib( 3, GL_FLOAT, false, "position" );
 		this->vertexBuffer->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
     this->vertexBuffer->addAttrib( 2, GL_FLOAT, true, "texcoord0" );
-    this->indexBuffer->setData( (const GLubyte[]){0,1,2,3}, 4, GL_UNSIGNED_BYTE );
+    const GLubyte index[]={0,1,2,3};
+    this->indexBuffer->setData( index, 4, GL_UNSIGNED_BYTE );
 		this->indexBuffer->setMode( GL_TRIANGLE_STRIP );
 
     ChsMaterial * material = new ChsMaterial();
@@ -41,8 +42,8 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------ 
   void ChsSprite2D::setImage( boost::shared_ptr<ChsTextureEntity> texture, float ox, float oy, float w, float h ){
     this->texture = texture;
-    this->imageSize.w = texture->instance()->getWidth();
-    this->imageSize.h = texture->instance()->getHeight();
+    this->imageSize.w = static_cast<float>( texture->instance()->getWidth() );
+    this->imageSize.h = static_cast<float>( texture->instance()->getHeight() );
     this->imageBound.x = ox;
     this->imageBound.y = oy;
     this->imageBound.w = w;

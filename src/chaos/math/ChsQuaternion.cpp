@@ -1,4 +1,4 @@
-#include "ChsQuaternion.h"
+﻿#include "ChsQuaternion.h"
 #include "ChsVector3.h"
 
 namespace Chaos {

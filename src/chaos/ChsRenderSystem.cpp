@@ -225,10 +225,10 @@ namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::setViewPort( int x, int y, int w, int h ){
-		this->viewport.x = x;
-		this->viewport.y = y;
-		this->viewport.w = w;
-		this->viewport.h = h;
+		this->viewport.x = static_cast<float>( x );
+		this->viewport.y = static_cast<float>( y );
+		this->viewport.w = static_cast<float>( w );
+		this->viewport.h = static_cast<float>( h );
 		glViewport( x, y, w, h );
 	}
 	

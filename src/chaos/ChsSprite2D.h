@@ -1,4 +1,4 @@
-#ifndef _CHS_SPRITE2D_H
+﻿#ifndef _CHS_SPRITE2D_H
 #define _CHS_SPRITE2D_H
 
 #include <string>

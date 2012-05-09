@@ -4,7 +4,7 @@
 #include "ChsRenderSystem.h"
 #include "geometry/ChsPlane.h"
 #include "ChsMaterial.h"
-#include "ChsShaderProgram.h"
+#include "shader/ChsShaderProgram.h"
 #include "camera/ChsCamera.h"
 #include "math/ChsMath.h"
 #include "ChsDaeLoader.h"
@@ -25,7 +25,7 @@ ChsPlane * planeMesh1;
 //--------------------------------------------------------------------------------------------------
 void GameDemo::onInit( void ) {
 	ChsRect viewport = this->getRender()->getViewPort();
-	camera->perspective( degree2Radian(39.6), viewport.w/(float)viewport.h, 0.1f, 1000.0f  );
+	camera->perspective( degree2Radian(39.6f), viewport.w/(float)viewport.h, 0.1f, 1000.0f  );
 	
   this->getRender()->setCurrentCamera( camera.get() );
 	this->getRender()->showDebugCoordinate( true );

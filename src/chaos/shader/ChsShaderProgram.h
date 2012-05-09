@@ -22,7 +22,7 @@ namespace Chaos {
 		
 	private:
 		int getStatus( void );
-		bool load( const char * source ){ return false; }
+		bool load( const char * source ){ (void)source;return false; }
 	};
 
 }//namespace

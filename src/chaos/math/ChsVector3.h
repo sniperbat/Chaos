@@ -1,4 +1,4 @@
-#ifndef _CHS_VECTOR3_H
+﻿#ifndef _CHS_VECTOR3_H
 #define	_CHS_VECTOR3_H
 #pragma once
 

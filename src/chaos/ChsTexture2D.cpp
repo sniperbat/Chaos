@@ -19,7 +19,7 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	GLuint currentTextureHandle = -1;
+	GLuint currentTextureHandle = 0;
 	//------------------------------------------------------------------------------------------------
 	void ChsTexture2D::bindToUnit( GLint unit )const{
 		if( currentTextureHandle == this->textureHandle )
