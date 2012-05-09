@@ -10,8 +10,6 @@ namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
 	class ChsVector3 : boost::additive<ChsVector3>, boost::equality_comparable<ChsVector3> {
-  private:
-    void init( float x, float y, float z );
 	public:
 		union{
 			float value[3];
