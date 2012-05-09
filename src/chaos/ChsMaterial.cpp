@@ -40,17 +40,11 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	ChsShaderProgram * ChsMaterial::apply( ChsShaderProgram * sysProgram ) {
 		ChsShaderProgram * currentProgram = sysProgram;
-		if( !this->shaderProgram.expired() || currentProgram ){
-			if( !this->shaderProgram.expired() ){
-				currentProgram = this->shaderProgram.lock().get();
-				if( currentProgram != sysProgram ){
-//					printf( "use new program\n" );
-					currentProgram->use();
-				}
-				else{
-//					printf( "use last program\n" );
-				}
-			}
+    if( !this->shaderProgram.expired() )
+				currentProgram = this->shaderProgram.lock().get();      
+		if( currentProgram ){
+      if( currentProgram != sysProgram )
+        currentProgram->use();
 			std::pair<ChsRenderState,unsigned int> p;
 			BOOST_FOREACH( p, this->renderStates )
 				ChsRenderStates::sharedInstance()->set( p.first,p.second );
