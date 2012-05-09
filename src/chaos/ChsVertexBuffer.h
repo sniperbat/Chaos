@@ -50,16 +50,14 @@ namespace Chaos {
 		void addAttrib( int count, int type, bool isNormalized, std::string name );
 		void setData( const void * vertices, int size );
 		inline void setData( const std::vector<float> & vertices );
-		void preDraw( void );
-		void postDraw( void );
+
+		void bind( void );
+		void unbind( void );
 		
 	private:
-		void bindVertexArray( void );
-		void unbindVertexArray( void );
 		void bindAttribArrays( void );
 		void unbindAttribArrays( void );
-		void update( void );
-		
+    
 		std::vector< boost::shared_ptr<ChsAttribUnit> > attribs;
 		unsigned int vboHandle;
 		unsigned int vaoHandle;
