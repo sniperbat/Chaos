@@ -1,7 +1,7 @@
 #ifndef _CHS_DAE_H
 #define _CHS_DAE_H
 
-#include <tinyxml2.h>
+#include <tinyxml2/tinyxml2.h>
 #include <map>
 #include "ChsUtility.h"
 //----------------------------------------------------------------------------------------------

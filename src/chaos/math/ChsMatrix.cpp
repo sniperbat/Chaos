@@ -69,23 +69,23 @@ namespace Chaos {
 		width=right-left;
 		height=top-bottom;
 		depth=zfar-znear;
-		this->m[0]=2.0/width;		this->m[1]=0.0;           this->m[2]=0.0;           this->m[3]=0.0;
-		this->m[4]=0.0;         this->m[5]=2.0/height;		this->m[6]=0.0;           this->m[7]=0.0;
-		this->m[8]=0.0;         this->m[9]=0.0;           this->m[10]=-2.0/depth;		this->m[11]=0.0;
-		this->m[12]=(-right-left)/width;		this->m[13]=(-top-bottom)/height;		this->m[14]=(-zfar-znear)/depth;		this->m[15]=1.0;
+		this->m[0]=2.0f/width;		this->m[1]=0.0f;           this->m[2]=0.0f;           this->m[3]=0.0f;
+		this->m[4]=0.0f;         this->m[5]=2.0f/height;		this->m[6]=0.0f;           this->m[7]=0.0f;
+		this->m[8]=0.0f;         this->m[9]=0.0f;           this->m[10]=-2.0f/depth;		this->m[11]=0.0f;
+		this->m[12]=(-right-left)/width;		this->m[13]=(-top-bottom)/height;		this->m[14]=(-zfar-znear)/depth;		this->m[15]=1.0f;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ChsMatrix::frustum( float left, float right, float bottom, float top, float znear, float zfar ){
 		float temp, width, height, depth;
-		temp=2.0*znear;
+		temp=2.0f*znear;
 		width=right-left;
 		height=top-bottom;
 		depth=zfar-znear;
-		this->m[0]=temp/width;		this->m[1]=0.0;           this->m[2]=0.0;		this->m[3]=0.0;
-		this->m[4]=0.0;           this->m[5]=temp/height;		this->m[6]=0.0;		this->m[7]=0.0;
-		this->m[8]=(right+left)/width;		this->m[9]=(top+bottom)/width;      this->m[10]=(-zfar-znear)/depth;		this->m[11]=-1.0;
-		this->m[12]=0.0;          this->m[13]=0.0;          this->m[14]=(-temp*zfar)/depth;		this->m[15]=0.0;
+		this->m[0]=temp/width;		this->m[1]=0.0f;           this->m[2]=0.0f;		this->m[3]=0.0f;
+		this->m[4]=0.0f;           this->m[5]=temp/height;		this->m[6]=0.0f;		this->m[7]=0.0f;
+		this->m[8]=(right+left)/width;		this->m[9]=(top+bottom)/width;      this->m[10]=(-zfar-znear)/depth;		this->m[11]=-1.0f;
+		this->m[12]=0.0f;          this->m[13]=0.0f;          this->m[14]=(-temp*zfar)/depth;		this->m[15]=0.0f;
 	}
 
 	//------------------------------------------------------------------------------------------------
