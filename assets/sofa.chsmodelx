@@ -8,7 +8,7 @@
         <ChsMaterial>
           <ChsVertexShader src="Shader.vsh" />
           <ChsFragmentShader src="Shader.fsh" />
-          <ChsTexture src="sofaLeather.png" sampleName="diffuseTexture" activeUnit="0" />
+          <ChsTexture2D src="sofaLeather.png" sampleName="diffuseTexture" activeUnit="0" />
           <ChsProperty name="hasTexture" type="bool" value="true" />
         </ChsMaterial>
         <ChsMaterial src="sofa.chsmaterial" />
