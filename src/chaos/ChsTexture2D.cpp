@@ -1,7 +1,7 @@
 #include <boost/scoped_array.hpp>
 
 #include "ChsTexture2D.h"
-#include "ChsFileSystem.h"
+#include "io/ChsFileSystem.h"
 #include "ChsUtility.h"
 #include "shader/ChsShaderProgram.h"
 
