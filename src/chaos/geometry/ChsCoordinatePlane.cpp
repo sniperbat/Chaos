@@ -120,7 +120,7 @@ namespace Chaos {
 		material->addProperty( "hasVertexColor", CHS_SHADER_UNIFORM_1_INT, 1 );
 		material->setProperty( "hasVertexColor", true );
 		mesh->setMaterial( material );
-		material->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
+//		material->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
 		this->addMesh(mesh);
 	}
 	//------------------------------------------------------------------------------------------------

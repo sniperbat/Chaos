@@ -80,12 +80,11 @@ namespace Chaos {
 		glClearDepthf( 1.0f );
 		
 		//cull
-		this->renderStates->set( CHS_RS_BLEND, CHS_RS_ENABLE );
+ 		this->renderStates->set( CHS_RS_CULL_FACE, CHS_RS_ENABLE );
 		glCullFace( GL_BACK );
 		glFrontFace( GL_CCW );
 		
 		//blend
-		this->renderStates->set( CHS_RS_CULL_FACE, CHS_RS_ENABLE );
 		glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 	}
   
@@ -123,19 +122,37 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
+  void ChsRenderSystem::renderOpacity( void ){
+    //先从前往后渲染不透明物体
+ 		this->renderStates->set( CHS_RS_BLEND, CHS_RS_DISABLE );
+    renderByTag( CHS_RENDER_TAG_OPACITY );
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  void ChsRenderSystem::renderTransparent( void ){
+    //再从后往前渲染透明物体
+ 		this->renderStates->set( CHS_RS_BLEND, CHS_RS_ENABLE );
+    renderByTag( CHS_RENDER_TAG_TRANSPARENT );
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  void ChsRenderSystem::renderHUD( void ){
+    //render hud
+    this->renderStates->save();
+    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
+		wvp = ChsHUDManager::sharedInstance()->getCamera()->getViewProjectionMatrix();
+    renderByTag( CHS_RENDER_TAG_HUD );
+    this->renderStates->restore();
+  }
+
+  //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::render( void ){
     this->updateCamera();
     this->attachContext();
 		this->preRender();
-    //先从前往后渲染不透明物体
-    renderByTag( CHS_RENDER_TAG_OPACITY );
-    //再从后往前渲染透明物体
-    renderByTag( CHS_RENDER_TAG_TRANSPARENT );
-    //render hud
-    this->renderStates->save();
-		wvp = ChsHUDManager::sharedInstance()->getCamera()->getViewProjectionMatrix();
-    renderByTag( CHS_RENDER_TAG_HUD );
-    this->renderStates->restore();
+    this->renderOpacity();
+    this->renderTransparent();
+    this->renderHUD();
     this->postRender();
     this->present();
 	}

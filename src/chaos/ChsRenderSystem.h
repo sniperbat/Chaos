@@ -61,7 +61,10 @@ namespace Chaos {
 		void initDepthBuffer( void );
 		void initGL( void );
     void deleteAllBuffers( void );
-    
+
+    void renderOpacity( void );
+    void renderTransparent( void );
+    void renderHUD( void );
 	public:
 		ChsRenderSystem( void );
 		virtual ~ChsRenderSystem( void );

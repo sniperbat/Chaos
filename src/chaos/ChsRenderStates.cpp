@@ -39,7 +39,7 @@ namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
 	void ChsRenderStates::queryCurrentStates( void ){
-		for( ChsRenderState i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ ) {
+		for( int i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ ) {
 			if( i <= CHS_RS_ENABLECAP){
 				if( glIsEnabled( glStates[i] ))
 					this->states[i] = CHS_RS_ENABLE;
@@ -56,9 +56,18 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   void ChsRenderStates::restore( void ){
-    memcpy( this->states, this->statesBackup, sizeof( this->statesBackup ) );
+    for( int i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ )
+      this->set( static_cast<ChsRenderState>( i ), this->statesBackup[i] );
   }
 
   //------------------------------------------------------------------------------------------------
+  void ChsRenderStates::save( ChsRenderState state ){
+    this->statesBackup[state] = this->states[state];
+  }
   
+  //------------------------------------------------------------------------------------------------//------------------------------------------------------------------------------------------------
+  void ChsRenderStates::restore( ChsRenderState state ){
+    this->set( state, this->statesBackup[state] );
+  }
+
 }

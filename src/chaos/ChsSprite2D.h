@@ -3,6 +3,7 @@
 
 #include <string>
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 #include "ChsDefine.h"
 #include "ChsMesh.h"
 
@@ -11,11 +12,14 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
   class ChsMaterial;
+  class ChsTexture2D;
+  class ChsRenderSystem;
  	//------------------------------------------------------------------------------------------------
   class ChsSprite2D : public ChsMesh {
   private:
     std::string name;
     bool needUpdate;
+    boost::shared_ptr<ChsTexture2D> texture;
   protected:
     //锚点，Sprite的中心点。默认左上角(0, 0)
     ChsPoint anchor;
@@ -36,10 +40,11 @@ namespace Chaos {
     ChsSprite2D( std::string name );
     ~ChsSprite2D( void );
     
-    void render( ChsRenderSystem * render );
+    void update( void );
     
-    void setImage( std::string imageName, float ox, float oy, float w, float h );
-    void setImage( std::string imageName );
+    void setImage( boost::shared_ptr<ChsTexture2D> texture, float ox, float oy, float w, float h );
+    //void setImage( std::string imageName, float ox, float oy, float w, float h );
+    //void setImage( std::string imageName );
 
     void moveTo( float x, float y );
     void anchorAt( float x, float y );
