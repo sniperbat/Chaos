@@ -72,19 +72,19 @@ namespace Chaos {
       const GLfloat vertices[] = {
         this->position.x, this->position.y, this->depth,
         1.0f, 1.0f, 1.0f, 1.0f,
-        this->imageBound.x, this->imageBound.y,
+        this->imageBound.x, this->imageBound.h,
         
         this->position.x, this->position.y + this->size.h, this->depth,
         1.0f, 1.0f, 1.0f, 1.0f,
-        this->imageBound.x, this->imageBound.h,
+        this->imageBound.x, this->imageBound.y,
         
         this->position.x + this->size.w,  this->position.y, this->depth,
         1.0f, 1.0f, 1.0f, 1.0f,
-        this->imageBound.w, this->imageBound.y,
+        this->imageBound.w, this->imageBound.h ,
         
         this->position.x + this->size.w,  this->position.y + this->size.h, this->depth,
         1.0f, 1.0f, 1.0f, 1.0f,
-        this->imageBound.w, this->imageBound.h ,
+        this->imageBound.w, this->imageBound.y,
       };
    		this->vertexBuffer->setData( vertices, sizeof( vertices ) );
       this->needUpdate = false;
