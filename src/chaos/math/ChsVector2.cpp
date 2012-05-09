@@ -4,17 +4,24 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsVector2::ChsVector2( float _x, float _y ) : x( _x ), y( _y ){
+	ChsVector2::ChsVector2( float x, float y ){
+    this->init( x, y );
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	ChsVector2::ChsVector2( void ) : ChsVector2( 0.0f, 0.0f ){
+	ChsVector2::ChsVector2( void ){
+    this->init( 0.0f, 0.0f );
 	}
 
 	//------------------------------------------------------------------------------------------------
-	ChsVector2::ChsVector2( const ChsVector2 & vec ) : ChsVector2( vec.x, vec.y ){
+	ChsVector2::ChsVector2( const ChsVector2 & vec ){
+    this->init( vec.x, vec.y );
 	}
 	
+  void ChsVector2::init( float x, float y ){
+    this->x = x;
+    this->y = y;
+  }
 	//------------------------------------------------------------------------------------------------
 	ChsVector2 & ChsVector2::operator += ( const ChsVector2 & vec2 ){
 		this->x += vec2.x;

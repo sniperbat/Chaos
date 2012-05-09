@@ -5,21 +5,32 @@
 namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
-	ChsVector4::ChsVector4( float _x, float _y, float _z, float _w ) : x( _x ), y( _y ), z( _z ), w( _w ){
+	ChsVector4::ChsVector4( float x, float y, float z, float w ){
+    this->init( x, y, z, w );
 	}
 	
   //------------------------------------------------------------------------------------------------
-	ChsVector4::ChsVector4( void ): ChsVector4( 0.0f, 0.0f, 0.0f, 0.0f ){
+	ChsVector4::ChsVector4( void ){
+    this->init( 0.0f, 0.0f, 0.0f, 0.0f );
 	}
 	
   //------------------------------------------------------------------------------------------------
-	ChsVector4::ChsVector4( const float vec[4] ) : ChsVector4( vec[0], vec[1], vec[2], vec[3] ){
+	ChsVector4::ChsVector4( const float vec[4] ){
+    this->init( vec[0], vec[1], vec[2], vec[3] );
 	}
 	
   //------------------------------------------------------------------------------------------------
-	ChsVector4::ChsVector4( const ChsVector4 & vec ) : ChsVector4( vec.x, vec.y, vec.z, vec.w ){
+	ChsVector4::ChsVector4( const ChsVector4 & vec ){
+    this->init( vec.x, vec.y, vec.z, vec.w );
 	}
-	
+
+  //------------------------------------------------------------------------------------------------
+  void ChsVector4::init( float x, float y, float z, float w ){
+    this->x = x;
+    this->y = y;
+    this->z = z;
+    this->w = w;
+  }
   //------------------------------------------------------------------------------------------------
 	ChsVector4 & ChsVector4::operator += ( const ChsVector4 & vec ){
 		this->x += vec.x;

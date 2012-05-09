@@ -6,6 +6,8 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	class ChsVector2 {
+  private:
+    void init( float x, float y );
 	public:
 		float x;
 		float y;
