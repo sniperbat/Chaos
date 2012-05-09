@@ -2,10 +2,9 @@
 #define _CHS_RENDERSYSTEM_H
 #pragma once
 
+#include <vector>
 #include "ChsDefine.h"
 #include "platform/ChsOpenGL.h"
-
-#include <boost/scoped_ptr.hpp>
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -15,16 +14,16 @@ namespace Chaos {
 	class ChsVertexBuffer;
 	class ChsCamera;
   class ChsRenderStates;
-  class ChsHUDManager;
-	
+//  class ChsHUDManager;
 
-	//------------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
   struct ChsRenderUnit{
 		ChsMaterial * material;
 		ChsVertexBuffer * vertexBuffer;
 		ChsIndexBuffer * indexBuffer;
 	};
-	
+  typedef std::vector<ChsRenderUnit> ChsRenderChain;
+
 	//------------------------------------------------------------------------------------------------
 	class ChsRenderSystem {
 	protected:
@@ -47,21 +46,21 @@ namespace Chaos {
 	private:
 		//viewport
 		ChsRect viewport;
-		boost::scoped_ptr<ChsRenderNode> _root;
-    ChsRenderStates * renderStates; 
-    ChsHUDManager * hudManager;
+    ChsRenderStates * renderStates;
 		ChsCamera * currentCamera;
+    
     bool isShowDebugCoordinate;
     
 		void preRender( void );
-		void render( void );
 	  void postRender( void );
 
+    void updateCamera( void );
+    
 		void initAllBuffers( void );
-		void deleteAllBuffers( void );
 		void initFrameBuffer( void );
 		void initDepthBuffer( void );
 		void initGL( void );
+    void deleteAllBuffers( void );
     
 	public:
 		ChsRenderSystem( void );
@@ -69,19 +68,14 @@ namespace Chaos {
 		
 		void init( void );
 		void shutdown( void );
-		void update( void );
-	
-		void sendToRender( ChsRenderUnit unit );
-		
+		void render( void );
+
 		void setClearColor( float r, float g, float b, float a );
 		void setClearColor( unsigned char r, unsigned char g, unsigned char b, unsigned char a );
 		void setClearColor( unsigned int rgba );
 		
 		void setViewPort( int x, int y, int w, int h );
 		inline ChsRect getViewPort( void )const;
-		
-		inline ChsRenderNode * root( void );
-    
     
 		inline void setCurrentCamera( ChsCamera * camera );
     inline ChsCamera * getCurrentCamera( void )const;
@@ -93,11 +87,6 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	inline ChsRect ChsRenderSystem::getViewPort( void )const{
 		return this->viewport;
-	}
-
-  //------------------------------------------------------------------------------------------------
-	inline ChsRenderNode * ChsRenderSystem::root( void ){
-		return this->_root.get();
 	}
 
   //------------------------------------------------------------------------------------------------

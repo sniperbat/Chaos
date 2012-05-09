@@ -1,8 +1,6 @@
 #include <map>
 #include <vector>
 #include <boost/foreach.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
 
 #include "ChsRenderSystem.h"
 #include "ChsRenderStates.h"
@@ -17,29 +15,31 @@ using namespace boost::assign;
 #include "math/ChsMath.h"
 #include "geometry/ChsCoordinatePlane.h"
 #include "ChsHUDManager.h"
+#include "ChsSceneManager.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
-	typedef std::vector<ChsRenderUnit> ChsRenderUnitList;
-	typedef std::map<ChsMaterial *, boost::shared_ptr<ChsRenderUnitList> > ChsRenderChain;
-	ChsRenderChain renderChain;
-	ChsShaderUniformSet globalUniformSet;
-	ChsMatrix wvp;
-	ChsMatrix wvit;
-	ChsMatrix mtxWorld;
-	ChsCoordinatePlane * debugCoordinatePlane;
-	
+  ChsRenderChain renderChains[CHS_RENDER_TAG_MAX];
+  
+	static ChsShaderUniformSet globalUniformSet;
+	static ChsMatrix wvp;
+	static ChsMatrix wvit;
+	static ChsMatrix mtxWorld;
+  static ChsShaderProgram * currentShaderProgram;
+	static ChsCoordinatePlane * debugCoordinatePlane;
+
+  //------------------------------------------------------------------------------------------------
+  void renderByTag( ChsRenderTag tag );
+  
   //------------------------------------------------------------------------------------------------
 	ChsRenderSystem::ChsRenderSystem( void ) :
-                        _root( new ChsRenderNode() ),
 												framebuffer( 0 ),
 												renderbuffer( 0 ),
 												renderbufferWidth( 0 ),
 												renderbufferHeight( 0 ),
 												currentCamera( NULL ),
-                        renderStates( NULL ),
-                        hudManager( NULL )
+                        renderStates( NULL )
 	{
 	}
 
@@ -53,8 +53,7 @@ namespace Chaos {
 		this->initContext();
 		this->initAllBuffers();
 		this->initGL();
-    this->hudManager = ChsHUDManager::sharedInstance();
-    this->hudManager->init( this->viewport );
+    ChsHUDManager::sharedInstance()->init( this->viewport );
     
 		globalUniformSet.reset();
 		globalUniformSet.add( "wvp", CHS_SHADER_UNIFORM_MAT4, 1, &wvp);
@@ -66,7 +65,7 @@ namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::initGL( void ){
-		this->setClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
+		this->setClearColor( 0.3f, 0.3f, 0.7f, 1.0f );
 		this->setViewPort( 0, 0, this->renderbufferWidth, this->renderbufferHeight );
 
 		glHint( GL_GENERATE_MIPMAP_HINT, GL_FASTEST );
@@ -96,70 +95,55 @@ namespace Chaos {
 		this->releaseContext();
 	}
 
-	//------------------------------------------------------------------------------------------------
-	void ChsRenderSystem::preRender( void ){
-		if( this->currentCamera ){
+  //------------------------------------------------------------------------------------------------
+  void ChsRenderSystem::updateCamera( void ){
+    if( this->currentCamera ){
 			this->currentCamera->update();
 			wvp = mtxWorld * this->currentCamera->getViewProjectionMatrix();
 			wvit = mtxWorld * this->currentCamera->getViewMatrix();
 			wvit.inverse();
 			wvit.transpose();
 		}
-		this->root()->renderNodes( this );
+  }
+	//------------------------------------------------------------------------------------------------
+	void ChsRenderSystem::preRender( void ){
 		glBindFramebuffer( GL_FRAMEBUFFER, this->framebuffer );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	}
 
-	//------------------------------------------------------------------------------------------------
-	static ChsShaderProgram * currentShaderProgram;
-
+  //------------------------------------------------------------------------------------------------
+  void renderByTag( ChsRenderTag tag ){
+    BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
+      currentShaderProgram = unit.material->apply( currentShaderProgram );
+      globalUniformSet.apply( currentShaderProgram );
+      unit.vertexBuffer->bind();
+      unit.indexBuffer->draw();
+      unit.vertexBuffer->unbind();
+    }
+  }
+  
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::render( void ){
-		std::pair<ChsMaterial *, boost::shared_ptr<ChsRenderUnitList> > p;
-		BOOST_FOREACH( p, renderChain ){
-			ChsMaterial * material = p.first;
-			currentShaderProgram = material->apply( currentShaderProgram );
-			globalUniformSet.apply( currentShaderProgram );
-			BOOST_FOREACH( const ChsRenderUnit & unit, *p.second ){
-				unit.vertexBuffer->preDraw();
-				unit.indexBuffer->draw();
-				unit.vertexBuffer->postDraw();
-			}
-		}
-    
+    this->updateCamera();
+    this->attachContext();
+		this->preRender();
+    //先从前往后渲染不透明物体
+    renderByTag( CHS_RENDER_TAG_OPACITY );
+    //再从后往前渲染透明物体
+    renderByTag( CHS_RENDER_TAG_TRANSPARENT );
     //render hud
     this->renderStates->save();
-    //this->hudManager->render( this );
+		wvp = ChsHUDManager::sharedInstance()->getCamera()->getViewProjectionMatrix();
+    renderByTag( CHS_RENDER_TAG_HUD );
     this->renderStates->restore();
+    this->postRender();
+    this->present();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::postRender( void ) {
-		renderChain.clear();
-	}
-	
-  //------------------------------------------------------------------------------------------------
-	void ChsRenderSystem::update( void ) {
-		this->attachContext();
-		this->preRender();
-		this->render();
-		this->present();
-		this->postRender();
-	}
-	
-  //------------------------------------------------------------------------------------------------
-	void ChsRenderSystem::sendToRender( ChsRenderUnit unit ){
-		ChsMaterial * material = unit.material;
-		auto iter = renderChain.find( material );
-		if( iter != renderChain.end() ){
-			boost::shared_ptr<ChsRenderUnitList> & list = iter->second;
-			list->push_back( unit );
-		}
-		else{
-			boost::shared_ptr<ChsRenderUnitList> list( new ChsRenderUnitList() );
-			list->push_back( unit );
-			insert( renderChain )( material, list );
-		}
+    for( int i=CHS_RENDER_TAG_OPACITY; i<CHS_RENDER_TAG_MAX;i++)
+      renderChains[i].clear();
 	}
 	
   //------------------------------------------------------------------------------------------------
@@ -216,9 +200,9 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::setClearColor( unsigned int rgba ){
 		this->setClearColor( static_cast<unsigned char>( ( rgba & 0xff0000 ) >> 16 ),
-							static_cast<unsigned char>( ( rgba & 0xff00 ) >> 8 ),
-							static_cast<unsigned char>( ( rgba & 0xff ) ),
-							static_cast<unsigned char>( ( rgba & 0xff000000 ) >> 24 ) );
+                         static_cast<unsigned char>( ( rgba & 0xff00 ) >> 8 ),
+                         static_cast<unsigned char>( ( rgba & 0xff ) ),
+                         static_cast<unsigned char>( ( rgba & 0xff000000 ) >> 24 ) );
 	}
 	
   //------------------------------------------------------------------------------------------------
@@ -233,10 +217,11 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::showDebugCoordinate( bool isShow ){
 		if( this->isShowDebugCoordinate != isShow ){
+      ChsNode * sceneRoot = ChsSceneManager::sharedInstance()->getRoot();
 			if( isShow )
-				this->root()->add( debugCoordinatePlane->getName(), debugCoordinatePlane );
+				sceneRoot->add( debugCoordinatePlane->getName(), debugCoordinatePlane );
 			else
-				this->root()->remove( debugCoordinatePlane->getName() );
+				sceneRoot->remove( debugCoordinatePlane->getName() );
 			this->isShowDebugCoordinate = isShow;
 		}
 	}
