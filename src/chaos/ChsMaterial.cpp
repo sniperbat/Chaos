@@ -15,7 +15,6 @@ namespace Chaos {
 	ChsMaterial::ChsMaterial( void ) {
 		this->shaderUniformSet.reset();
 		this->textures.clear();
-		this->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_ENABLE );
 	}
   
 	//------------------------------------------------------------------------------------------------
