@@ -21,12 +21,12 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void ChsMesh::render( ChsRenderSystem * render ) {
+	void ChsMesh::update( void ) {
 		ChsRenderUnit unit;
 		unit.material = this->material.get();
 		unit.vertexBuffer = this->vertexBuffer.get();
 		unit.indexBuffer = this->indexBuffer.get();
-		render->sendToRender(unit);
+		this->sendToRender( CHS_RENDER_TAG_OPACITY, unit );
 	}
 	
 	//------------------------------------------------------------------------------------------------
