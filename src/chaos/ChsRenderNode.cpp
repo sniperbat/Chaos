@@ -8,7 +8,7 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
 	ChsRenderNode::ChsRenderNode( std::string name ) : ChsNode( name ) {
-		this->visible = true;
+		this->setVisible( true );
 	}
 
   //------------------------------------------------------------------------------------------------
@@ -16,14 +16,14 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	void ChsRenderNode::renderNodes( ChsRenderSystem * render ){
-		if( !this->visible )
+  void ChsRenderNode::updateTree( void ){
+    if( !this->isVisible() )
 			return;//if this node is invisible,then all chilren are invisible too
-		this->render( render );
+		this->update();
 		std::pair<std::string, ChsNode *> p;
 		BOOST_FOREACH( p, this->children )
-			( ( ChsRenderNode * )p.second )->renderNodes( render );
-	}
+    ( ( ChsRenderNode * )p.second )->updateTree();
+  }
 
   //------------------------------------------------------------------------------------------------
   

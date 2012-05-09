@@ -36,7 +36,7 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::loadAsXML( const char *filename ){
 		char * data;
-		ChsFileSystem::sharedInstance()->readFileAsUTF8( filename, &data );
+		ChsFileSystem::sharedInstance()->readFileAsRaw( filename, &data );
 		boost::scoped_ptr<char> modelData( data );
 		tinyxml2::XMLDocument doc;
 		int ret = doc.Parse( data );
@@ -96,14 +96,14 @@ namespace Chaos {
 					std::string vsName = materialElement->FirstChildElement( "ChsVertexShader" )->Attribute( "src" );
 					std::string fsName = materialElement->FirstChildElement( "ChsFragmentShader" )->Attribute( "src" );
 					material->setShader( vsName, fsName );
-					tinyxml2::XMLElement * textureElement = materialElement->FirstChildElement( "ChsTexture" );
+					tinyxml2::XMLElement * textureElement = materialElement->FirstChildElement( "ChsTexture2D" );
 					while( textureElement ){
 						std::string textureFileName = textureElement->Attribute( "src" );
 						boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
 						texture->setSampleName( textureElement->Attribute( "sampleName" ) );
 						texture->setActiveUnit( textureElement->IntAttribute( "activeUnit" ) );
 						material->addTexture( texture );
-						textureElement = textureElement->NextSiblingElement( "ChsTexture");
+						textureElement = textureElement->NextSiblingElement( "ChsTexture2D");
 					}
 					
 					tinyxml2::XMLElement * propertyElement = materialElement->FirstChildElement( "ChsProperty" );

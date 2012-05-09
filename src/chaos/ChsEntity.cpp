@@ -13,11 +13,11 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
-	void ChsEntity::render( ChsRenderSystem * render ){
+	void ChsEntity::update( void ){
 		if( this->model.expired() )
 			return;
 		boost::shared_ptr<ChsModel> model = this->model.lock();
-		model->renderNodes( render );
+		model->update();
 	}
 	
   //------------------------------------------------------------------------------------------------

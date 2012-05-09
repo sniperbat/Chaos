@@ -17,9 +17,9 @@ namespace Chaos {
 		ChsModel( std::string name = "unnamed" );
 		virtual ~ChsModel( void );
 		void addMesh( boost::shared_ptr<ChsMesh> mesh );
+    void update( void );
 	private:
 		std::vector< boost::shared_ptr<ChsMesh> > meshs;
-		void render( ChsRenderSystem * render );
 	};
 
 	//------------------------------------------------------------------------------------------------
