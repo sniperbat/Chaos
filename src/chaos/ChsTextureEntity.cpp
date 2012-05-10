@@ -5,10 +5,12 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   ChsTextureEntity::ChsTextureEntity( boost::shared_ptr<ChsTexture2D> texture ){
-    this->texture = texture;
-    for( int index = 0; index < CHS_TEXPARAM_MAX; index++ ){
-      ChsTexParameterType type = static_cast<ChsTexParameterType>( index );
-      this->parameters[index] = texture->getParameter( type );
+    if( texture ){
+      this->texture = texture;
+      for( int index = 0; index < CHS_TEXPARAM_MAX; index++ ){
+        ChsTexParameterType type = static_cast<ChsTexParameterType>( index );
+        this->parameters[index] = texture->getParameter( type );
+      }
     }
   }
   
@@ -38,6 +40,5 @@ namespace Chaos {
       return 0;
     return this->texture.lock()->getHeight();
   }
-  
 
 }
