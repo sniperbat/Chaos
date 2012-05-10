@@ -42,8 +42,8 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------ 
   void ChsSprite2D::setImage( boost::shared_ptr<ChsTextureEntity> texture, float ox, float oy, float w, float h ){
     this->texture = texture;
-    this->imageSize.w = static_cast<float>( texture->instance()->getWidth() );
-    this->imageSize.h = static_cast<float>( texture->instance()->getHeight() );
+    this->imageSize.w = static_cast<float>( texture->getWidth() );
+    this->imageSize.h = static_cast<float>( texture->getHeight() );
     this->imageBound.x = ox;
     this->imageBound.y = oy;
     this->imageBound.w = w;

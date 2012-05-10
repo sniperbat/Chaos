@@ -23,19 +23,18 @@ namespace Chaos {
     inline const std::string & getSampleName( void )const;
     inline void setSampleName( const std::string & sampleName );
 
-    inline const boost::shared_ptr<ChsTexture2D> & instance( void )const;
-    void apply( void );
+    void apply( void )const;
     
     inline void setParameter( ChsTexParameterType type, int value );
+    
+    int getWidth( void )const;
+    int getHeight( void )const;
+    
   };
 
   //------------------------------------------------------------------------------------------------
   inline void ChsTextureEntity::setParameter( ChsTexParameterType type, int value ){
     this->parameters[type] = value;
-  }
-  //------------------------------------------------------------------------------------------------
-  inline const boost::shared_ptr<ChsTexture2D> & ChsTextureEntity::instance( void )const{
-    return this->texture;
   }
 
   //------------------------------------------------------------------------------------------------
@@ -48,7 +47,6 @@ namespace Chaos {
     return this->activeUnit;
   }
 
-
   //------------------------------------------------------------------------------------------------
   inline const std::string & ChsTextureEntity::getSampleName( void )const{
     return this->sampleName;
@@ -58,7 +56,7 @@ namespace Chaos {
   inline void ChsTextureEntity::setSampleName( const std::string & sampleName ){
     this->sampleName = sampleName;
   }
-  
+
 }
 
 #endif//_CHS_TEXTUREENTITY_H
