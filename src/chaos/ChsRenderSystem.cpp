@@ -31,7 +31,15 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
   void renderByTag( ChsRenderTag tag );
-  
+  void renderByTag( ChsRenderTag tag ){
+    BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
+      currentShaderProgram = unit.material->apply( currentShaderProgram );
+      globalUniformSet.apply( currentShaderProgram );
+      unit.vertexBuffer->bind();
+      unit.indexBuffer->draw();
+      unit.vertexBuffer->unbind();
+    }
+  }
   //------------------------------------------------------------------------------------------------
 	ChsRenderSystem::ChsRenderSystem( void ) :
 												framebuffer( 0 ),
@@ -110,17 +118,6 @@ namespace Chaos {
 		glBindFramebuffer( GL_FRAMEBUFFER, this->framebuffer );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	}
-
-  //------------------------------------------------------------------------------------------------
-  void renderByTag( ChsRenderTag tag ){
-    BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
-      currentShaderProgram = unit.material->apply( currentShaderProgram );
-      globalUniformSet.apply( currentShaderProgram );
-      unit.vertexBuffer->bind();
-      unit.indexBuffer->draw();
-      unit.vertexBuffer->unbind();
-    }
-  }
   
   //------------------------------------------------------------------------------------------------
   void ChsRenderSystem::renderOpacity( void ){
@@ -140,7 +137,8 @@ namespace Chaos {
   void ChsRenderSystem::renderHUD( void ){
     //render hud
     this->renderStates->save();
-    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
+    glClear( GL_DEPTH_BUFFER_BIT );
+//    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
 		wvp = ChsHUDManager::sharedInstance()->getCamera()->getViewProjectionMatrix();
     renderByTag( CHS_RENDER_TAG_HUD );
     this->renderStates->restore();
