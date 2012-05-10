@@ -6,8 +6,9 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   ChsTextureEntity::ChsTextureEntity( boost::shared_ptr<ChsTexture2D> texture ){
     this->texture = texture;
-    for( ChsTexParameterType type = CHS_TEXPARAM_WRAP_T; type < CHS_TEXPARAM_MAX; type++ ){
-      this->parameters[type] = texture->getParameter( type );
+    for( int index = 0; index < CHS_TEXPARAM_MAX; index++ ){
+      ChsTexParameterType type = static_cast<ChsTexParameterType>( index );
+      this->parameters[index] = texture->getParameter( type );
     }
   }
   
@@ -16,9 +17,10 @@ namespace Chaos {
     if( this->texture.expired() )
       return;
     boost::shared_ptr<ChsTexture2D> texture = this->texture.lock();
-    for( ChsTexParameterType type = CHS_TEXPARAM_WRAP_T; type < CHS_TEXPARAM_MAX; type++ ){
-      if( texture->getParameter( type ) != this->parameters[type]){
-        texture->setParameter( type, this->parameters[type] );
+    for( int index = 0; index < CHS_TEXPARAM_MAX; index++ ){
+      ChsTexParameterType type = static_cast<ChsTexParameterType>( index );
+      if( texture->getParameter( type ) != this->parameters[index]){
+        texture->setParameter( type, this->parameters[index] );
       }
     }
     texture->bindToUnit( this->activeUnit );
