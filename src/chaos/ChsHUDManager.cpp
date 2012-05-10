@@ -10,7 +10,7 @@ using namespace boost::assign;
 #include "ChsSprite2D.h"
 #include "ChsTextureEntity.h"
 #include "ChsResourceManager.h"
-
+#include "ChsUtility.h"
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
@@ -100,6 +100,13 @@ namespace Chaos {
       y = texEntityElement->FloatAttribute( "y" );
       w = texEntityElement->FloatAttribute( "w" );
       h = texEntityElement->FloatAttribute( "h" );
+      tinyxml2::XMLElement * texParamElement = texEntityElement->FirstChildElement( "ChsTexParameter" );      
+      while( texParamElement != NULL ){
+        ChsTexParameterType type = getTexParamterType( texParamElement->Attribute( "type" ) );
+        int value = getTexParamterValue( texParamElement->Attribute( "value" ) );
+        texture->setParameter( type, value );
+        texParamElement = texParamElement->NextSiblingElement( "ChsTexParameter" );
+      }
       sprite2D->setImage( texture, x, y, w, h );
       texEntityElement = texEntityElement->NextSiblingElement( "ChsTexture2D" );
     }

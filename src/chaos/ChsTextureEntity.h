@@ -3,6 +3,7 @@
 
 #include <boost/shared_ptr.hpp>
 #include <string>
+#include "ChsDefine.h"
 
 namespace Chaos {
 
@@ -13,7 +14,7 @@ namespace Chaos {
     boost::shared_ptr<ChsTexture2D> texture;
 		int activeUnit;
 		std::string sampleName;
-
+    int parameters[CHS_TEXPARAM_MAX];
   public:
     ChsTextureEntity( boost::shared_ptr<ChsTexture2D> texture );
     inline int getActiveUnit( void )const;
@@ -24,8 +25,14 @@ namespace Chaos {
 
     inline const boost::shared_ptr<ChsTexture2D> & instance( void )const;
     void apply( void );
+    
+    inline void setParameter( ChsTexParameterType type, int value );
   };
 
+  //------------------------------------------------------------------------------------------------
+  inline void ChsTextureEntity::setParameter( ChsTexParameterType type, int value ){
+    this->parameters[type] = value;
+  }
   //------------------------------------------------------------------------------------------------
   inline const boost::shared_ptr<ChsTexture2D> & ChsTextureEntity::instance( void )const{
     return this->texture;

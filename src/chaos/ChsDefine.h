@@ -100,7 +100,14 @@ namespace Chaos {
   };
 
   //------------------------------------------------------------------------------------------------
-	
+  enum ChsTexParameterType{
+    CHS_TEXPARAM_MAG_FILTER,
+    CHS_TEXPARAM_MIN_FILTER,
+    CHS_TEXPARAM_WRAP_S,
+    CHS_TEXPARAM_WRAP_T,
+    CHS_TEXPARAM_MAX,
+  };
+
 }//namespace
 
 #endif//_CHSDEFINE_H

@@ -10,13 +10,14 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
 #include <boost/algorithm/string.hpp>
-
+#include "ChsDefine.h"
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	size_t getGLDataTypeSize( int type );
-
+  ChsTexParameterType getTexParamterType( std::string typeName );
+  int getTexParamterValue( std::string valueName );
 	//------------------------------------------------------------------------------------------------
 	template< typename Type > void safeRelease( Type **pptr ) {
 		if ( * pptr ) {
