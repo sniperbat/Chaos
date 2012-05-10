@@ -2,6 +2,7 @@
 #define _CHS_TEXTUREENTITY_H
 
 #include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 #include <string>
 #include "ChsDefine.h"
 
@@ -11,7 +12,7 @@ namespace Chaos {
   
   class ChsTextureEntity {
   private:
-    boost::shared_ptr<ChsTexture2D> texture;
+    boost::weak_ptr<ChsTexture2D> texture;
 		int activeUnit;
 		std::string sampleName;
     int parameters[CHS_TEXPARAM_MAX];
