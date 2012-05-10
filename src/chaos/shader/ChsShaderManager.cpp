@@ -18,14 +18,18 @@ namespace Chaos{
 		shared_ptr<ShaderType> shader = dynamic_pointer_cast<ShaderType>( this->getFromCache( name ) );
 		if( !shader ){
 			//not in cache, so load source from file
-			char * source ;
+			char * source = NULL ;
 			ChsFileSystem::sharedInstance()->readFileAsUTF8( name.c_str(), &source );
 			if( source ){
 				scoped_array<char> sourcePtr( source );
-				shader = shared_ptr<ShaderType>( new ShaderType() );
-				if( shader->load( source ) ){
+        ShaderType * shaderInstance = new ShaderType();
+				if( shaderInstance->load( source ) ){
 					printf( "生成Shader:%s\n", name.c_str() );
+          shader = shared_ptr<ShaderType>( shaderInstance );
 					insert( this->cache )( name, shader );
+				}
+				else{
+					safeDelete( &shaderInstance );
 				}
 			}
 		}

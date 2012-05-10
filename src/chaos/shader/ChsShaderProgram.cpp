@@ -39,7 +39,7 @@ namespace Chaos {
 	#if defined(DEBUG)
    	GLint logLength;
     glGetProgramiv( this->shaderHandle, GL_INFO_LOG_LENGTH, &logLength );
-   	if ( logLength > 0 ){
+   	if ( logLength > 1 ){
       boost::scoped_ptr<GLchar> log( new GLchar[logLength] );
 	    glGetProgramInfoLog( this->shaderHandle, logLength, &logLength, log.get() );
     	printf( "Program link log:\n%s", log.get() );

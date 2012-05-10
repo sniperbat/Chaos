@@ -41,7 +41,7 @@ namespace Chaos {
 	#if defined( DEBUG )
    	GLint logLength;
     glGetShaderiv( this->shaderHandle, GL_INFO_LOG_LENGTH, &logLength );
-   	if ( logLength > 0 ) {
+   	if ( logLength > 1 ) {
       boost::scoped_ptr<GLchar> log( new GLchar[logLength] );
       glGetShaderInfoLog( this->shaderHandle, logLength, &logLength, log.get() );
     	printf( "Shader compile log:\n%s", log.get() );
