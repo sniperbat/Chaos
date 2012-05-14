@@ -7,39 +7,11 @@
 #include <vector>
 #include <boost/shared_ptr.hpp>
 
-#include "ChsUtility.h"
-#include "platform/ChsOpenGL.h"
-
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	class ChsShaderProgram;
-
-  //------------------------------------------------------------------------------------------------
-	struct ChsAttribUnit{
-		int size;
-		int count;
-		int type;
-		bool isNormalized;
-		int index;
-		int stride;
-		int offset;
-		std::string  name;
-		ChsAttribUnit( int count, int type, bool isNormalized, std::string name ){
-			this->count = count;
-			this->type = type;
-			this->isNormalized = isNormalized;
-			this->size = count * getGLDataTypeSize( type );
-			this->name = name;
-		}
-		void bind( void ){
-			glVertexAttribPointer( index, count, type, isNormalized, stride, (void *)offset );
-			glEnableVertexAttribArray( index );
-		}
-		void unbind( void ){
-			glDisableVertexAttribArray( index );
-		}
-	};
+	struct ChsAttribUnit;
 
   //------------------------------------------------------------------------------------------------
 	class ChsVertexBuffer {
@@ -47,7 +19,7 @@ namespace Chaos {
 		ChsVertexBuffer( void );
 		~ChsVertexBuffer( void );
 		void bindAttribLocations( const ChsShaderProgram * program );
-		void addAttrib( int count, int type, bool isNormalized, std::string name );
+		void addAttrib( int count, int type, bool isNormalized, const std::string & name );
 		void setData( const void * vertices, int size );
 		inline void setData( const std::vector<float> & vertices );
 

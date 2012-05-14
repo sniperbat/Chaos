@@ -37,12 +37,12 @@ namespace Chaos {
     float depth;
     
   public:
-    ChsSprite2D( std::string name );
+    ChsSprite2D( const std::string & name );
     ~ChsSprite2D( void );
     
     void update( void );
     
-    void setImage( boost::shared_ptr<ChsTextureEntity> texture, float ox, float oy, float w, float h );
+    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float ox, float oy, float w, float h );
     //void setImage( std::string imageName, float ox, float oy, float w, float h );
     //void setImage( std::string imageName );
 

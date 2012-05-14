@@ -14,7 +14,7 @@ namespace Chaos{
   //------------------------------------------------------------------------------------------------
 	class ChsRenderNode : public ChsNode, public ChsRenderable{
 	public:
-		ChsRenderNode( std::string name = "unnamed" );
+		ChsRenderNode( const std::string & name = "unnamed" );
 		virtual ~ChsRenderNode( void );
     void updateTree( void );
 	};

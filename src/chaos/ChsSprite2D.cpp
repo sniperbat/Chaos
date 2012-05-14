@@ -10,7 +10,7 @@
 namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
-  ChsSprite2D::ChsSprite2D( std::string name ) : ChsMesh( name ){
+  ChsSprite2D::ChsSprite2D( const std::string & name ) : ChsMesh( name ){
     this->anchor.x = 0.0f;
     this->anchor.y = 0.0f;
     this->position.x = 0.0f;
@@ -40,7 +40,7 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------ 
-  void ChsSprite2D::setImage( boost::shared_ptr<ChsTextureEntity> texture, float ox, float oy, float w, float h ){
+  void ChsSprite2D::setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float ox, float oy, float w, float h ){
     this->texture = texture;
     this->imageSize.w = static_cast<float>( texture->getWidth() );
     this->imageSize.h = static_cast<float>( texture->getHeight() );

@@ -14,15 +14,15 @@ namespace Chaos {
 		ChsShaderProgram( void );
 		~ChsShaderProgram( void );
     
-		bool link( void );
-		void use( void );
-		bool validate( void );
-		void attachShader( const boost::shared_ptr<ChsShader> & shader );
+		bool link( void )const;
+		void use( void )const;
+		bool validate( void )const;
+		void attachShader( const boost::shared_ptr<ChsShader> & shader )const;
 		int getUniformLocation( const char * name );
 		
 	private:
-		int getStatus( void );
-		bool load( const char * source ){ (void)source;return false; }
+		int getStatus( void )const;
+		bool load( const char * source )const{ (void)source;return false; }
 	};
 
 }//namespace

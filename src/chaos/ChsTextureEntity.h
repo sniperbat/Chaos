@@ -17,7 +17,7 @@ namespace Chaos {
 		std::string sampleName;
     int parameters[CHS_TEXPARAM_MAX];
   public:
-    ChsTextureEntity( boost::shared_ptr<ChsTexture2D> texture );
+    ChsTextureEntity( const boost::shared_ptr<ChsTexture2D> & texture );
     inline int getActiveUnit( void )const;
     inline void setActiveUnit( int unit );
     

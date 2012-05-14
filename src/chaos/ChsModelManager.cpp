@@ -9,7 +9,7 @@ using namespace boost::assign;
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
-	boost::shared_ptr<ChsModel> ChsModelManager::getModel( std::string name ){
+	boost::shared_ptr<ChsModel> ChsModelManager::getModel( const std::string & name ){
 		boost::shared_ptr<ChsModel> model = this->getFromCache( name );
 		if( !model ){
 			//load from file

@@ -11,7 +11,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	class ChsModelManager : public ChsManagerWithCache<ChsModel> {
 	public:
-		boost::shared_ptr<ChsModel> getModel( std::string name );
+		boost::shared_ptr<ChsModel> getModel( const std::string & name );
 	};
 	
   //------------------------------------------------------------------------------------------------

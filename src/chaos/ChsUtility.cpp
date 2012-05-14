@@ -23,7 +23,7 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
-  ChsTexParameterType getTexParamterType( std::string typeName ){
+  ChsTexParameterType getTexParamterType( const std::string & typeName ){
     if( !typeName.compare( "WRAP_S" ) )
       return CHS_TEXPARAM_WRAP_S;
     else if( !typeName.compare( "WRAP_T" ) )
@@ -36,7 +36,7 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  int getTexParamterValue( std::string valueName ){
+  int getTexParamterValue( const std::string & valueName ){
     if( !valueName.compare( "NEAREST" ) )
       return GL_NEAREST;
     else if( !valueName.compare( "LINEAR" ) )

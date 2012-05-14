@@ -44,7 +44,7 @@ namespace Chaos {
   }
 
   //------------------------------------------------------------------------------------------------
-  void ChsHUDManager::showHUD( std::string hudName ){
+  void ChsHUDManager::showHUD( const std::string & hudName ){
     auto iter = this->hudRenderList.find( hudName );
     if( iter != this->hudRenderList.end() )
       return;//already on showing
@@ -55,7 +55,7 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsHUDManager::hideHUD( std::string hudName ){
+  void ChsHUDManager::hideHUD( const std::string & hudName ){
     auto iter = this->hudRenderList.find( hudName );
     if( iter != this->hudRenderList.end() ){
       this->hudRenderList.erase( hudName );
@@ -65,8 +65,8 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   static std::vector< boost::shared_ptr<ChsTexture2D> > textureList;
   //------------------------------------------------------------------------------------------------
-  void prepareTextureList( tinyxml2::XMLElement * textureElement );
-  void prepareTextureList( tinyxml2::XMLElement * textureElement ){
+  void prepareTextureList( const tinyxml2::XMLElement * textureElement );
+  void prepareTextureList( const tinyxml2::XMLElement * textureElement ){
     std::string textureFileName = textureElement->Attribute( "src" );
     boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
     textureList += texture;
@@ -114,7 +114,7 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsHUDManager::loadHUD( std::string hudName ){
+  void ChsHUDManager::loadHUD( const std::string & hudName ){
     char * data;
 		ChsFileSystem::sharedInstance()->readFileAsUTF8( hudName.c_str(), &data );
 		boost::scoped_ptr<char> modelData( data );

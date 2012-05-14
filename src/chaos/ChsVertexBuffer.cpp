@@ -7,6 +7,31 @@ using namespace boost::assign;
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
+  struct ChsAttribUnit{
+		int size;
+		int count;
+		int type;
+		bool isNormalized;
+		int index;
+		int stride;
+		int offset;
+		std::string  name;
+		ChsAttribUnit( int count, int type, bool isNormalized, const std::string & name ){
+			this->count = count;
+			this->type = type;
+			this->isNormalized = isNormalized;
+			this->size = count * getGLDataTypeSize( type );
+			this->name = name;
+		}
+		void bind( void ){
+			glVertexAttribPointer( index, count, type, isNormalized, stride, (void *)offset );
+			glEnableVertexAttribArray( index );
+		}
+		void unbind( void ){
+			glDisableVertexAttribArray( index );
+		}
+	};
+  
   //------------------------------------------------------------------------------------------------
 	ChsVertexBuffer::ChsVertexBuffer( void ) :	vboHandle( 0 ) ,
 												vaoHandle( 0 ),
@@ -44,7 +69,7 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::addAttrib( int count, int type, bool isNormalized, std::string name ) {
+	void ChsVertexBuffer::addAttrib( int count, int type, bool isNormalized, const std::string & name ) {
 		boost::shared_ptr<ChsAttribUnit> attrib( new ChsAttribUnit( count, type, isNormalized, name ) );
    	int lastOne = this->attribs.size();
     attrib->index = lastOne;

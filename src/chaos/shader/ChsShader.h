@@ -12,15 +12,15 @@ namespace Chaos {
 	public :
 		ChsShader( int type );
 		virtual ~ChsShader( void );
-		bool load( const char * source );
+		bool load( const char * source )const;
     inline unsigned int getHandle( void )const;
 
 	protected:
 		int type;
     unsigned int shaderHandle;	
   private:
-		bool compile( void );
-		int getStatus( void );
+		bool compile( void )const;
+		int getStatus( void )const;
 
 	};
   

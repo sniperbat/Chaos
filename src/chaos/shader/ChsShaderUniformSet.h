@@ -16,23 +16,23 @@ namespace Chaos {
 		~ChsShaderUniformSet( void );
 		void reset( void );
 		void apply( ChsShaderProgram * program );
-		void add( std::string name, ChsShaderUniformDataType type, unsigned int count, void * varAddr = NULL ); 
-		template<typename T> void set( std::string name, T values );
-		template<typename T> T get( std::string name );
+		void add( const std::string & name, ChsShaderUniformDataType type, unsigned int count, void * varAddr = NULL ); 
+		template<typename T> void set( const std::string & name, T values );
+		template<typename T> T get( const std::string & name )const;
 	private:
-		inline bool isExist( std::string name );
+		inline bool isExist( const std::string & name )const;
 		ChsShaderProgram * program;
 		std::map< std::string, boost::shared_ptr<ChsShaderUniform> > uniforms;
 	};
   
 	//------------------------------------------------------------------------------------------------
-	inline bool ChsShaderUniformSet::isExist( std::string name ){
+	inline bool ChsShaderUniformSet::isExist( const std::string & name )const{
 		return uniforms.find( name ) != uniforms.end();
 	}
 
   //------------------------------------------------------------------------------------------------
 	template<typename T>
-	void ChsShaderUniformSet::set( std::string name, T values ){
+	void ChsShaderUniformSet::set( const std::string & name, T values ){
 		auto iter = this->uniforms.find( name );
 		if( iter == this->uniforms.end() )
 			return;
@@ -40,7 +40,7 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
-	template<typename T> T ChsShaderUniformSet::get( std::string name ){
+	template<typename T> T ChsShaderUniformSet::get( const std::string & name )const{
 		auto iter = this->uniforms.find( name );
 		if( iter == this->uniforms.end() )
 			return 0;

@@ -15,7 +15,7 @@ namespace Chaos {
     ChsSceneManager( void );
     ~ChsSceneManager( void );
     
-    ChsNode * getRoot( void );
+    ChsNode * getRoot( void )const;
     void update( void );
     void purge( void );
   };

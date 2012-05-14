@@ -18,10 +18,10 @@ namespace Chaos {
 	public:
 		ChsShaderUniform( void );
 		~ChsShaderUniform( void );
-		void init( std::string name, ChsShaderUniformDataType type, int count, void * varAddr = NULL );
+		void init( const std::string & name, ChsShaderUniformDataType type, int count, void * varAddr = NULL );
 		void apply( ChsShaderProgram * program, bool needUpdateLocation );
 		template<typename T> void set( T value );
-		template<typename T> T get( void );
+		template<typename T> T get( void )const;
 	private:
 		std::string name;
 		int type;
@@ -47,7 +47,7 @@ namespace Chaos {
   
 	//------------------------------------------------------------------------------------------------
 	template<typename T>
-	T ChsShaderUniform::get( void ){
+	T ChsShaderUniform::get( void )const{
 		if( this->type == CHS_SHADER_UNIFORM_1_INT )
 			return *( this->iValuePtr );
 		else if( this->type == CHS_SHADER_UNIFORM_1_FLOAT )

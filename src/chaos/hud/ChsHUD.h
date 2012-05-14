@@ -7,7 +7,7 @@ namespace Chaos {
   
   class ChsHUD : public ChsRenderNode{
   public:
-    ChsHUD( std::string name );
+    ChsHUD( const std::string & name );
     void update( void );
   };
 

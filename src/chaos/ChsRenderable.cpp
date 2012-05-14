@@ -6,7 +6,7 @@ namespace Chaos {
   
   extern ChsRenderChain renderChains[CHS_RENDER_TAG_MAX];
   
-  void ChsRenderable::sendToRender( ChsRenderTag tag, ChsRenderUnit unit ){
+  void ChsRenderable::sendToRender( ChsRenderTag tag, const ChsRenderUnit & unit ){
     renderChains[tag] += unit;
   }
   

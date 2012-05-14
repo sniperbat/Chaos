@@ -10,7 +10,7 @@
 namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
-	ChsMesh::ChsMesh( std::string name ) : ChsRenderNode( name ),
+	ChsMesh::ChsMesh( const std::string & name ) : ChsRenderNode( name ),
                                          vertexBuffer( new ChsVertexBuffer() ),
                                          indexBuffer( new ChsIndexBuffer() )
 	{
@@ -35,6 +35,7 @@ namespace Chaos {
 		if( this->material ){
 			// Bind attribute locations.
 			// This needs to be done prior to linking.
+      assert( !this->material->getShaderProgram().expired() );
 			this->vertexBuffer->bindAttribLocations( this->material->getShaderProgram().lock().get() );
 			this->material->linkShader();
 		}

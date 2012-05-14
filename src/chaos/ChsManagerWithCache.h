@@ -16,8 +16,8 @@ namespace Chaos {
 	protected:
 		typedef std::map< std::string, boost::shared_ptr<ValueType> > CacheType;
 	  CacheType cache;
-		boost::shared_ptr<ValueType> getFromCache( std::string key );
-		void remove( std::string key );
+		boost::shared_ptr<ValueType> getFromCache( const std::string & key );
+		void remove( const std::string & key );
 	};
 
 	//------------------------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	template < typename ValueType >
-	boost::shared_ptr<ValueType> ChsManagerWithCache< ValueType >::getFromCache( std::string key ){
+	boost::shared_ptr<ValueType> ChsManagerWithCache< ValueType >::getFromCache( const std::string & key ){
 		boost::shared_ptr<ValueType> objPtr;
 		typename CacheType::iterator iter = this->cache.find( key );
 		if( iter != this->cache.end() )
@@ -38,7 +38,7 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	template < typename ValueType >
-	void ChsManagerWithCache< ValueType >::remove( std::string key ){
+	void ChsManagerWithCache< ValueType >::remove( const std::string & key ){
 		this->cache.erase( key );
 	}
   

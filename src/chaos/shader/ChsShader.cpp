@@ -21,7 +21,7 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	bool ChsShader::load( const char * source ) {
+	bool ChsShader::load( const char * source )const{
    	if ( !source ) {
      	printf("Failed to load vertex shader" );
       return false;
@@ -31,13 +31,13 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	bool ChsShader::compile( void ) {
+	bool ChsShader::compile( void )const{
    	glCompileShader( this->shaderHandle );
     return this->getStatus() != 0;
 	}
 
   //------------------------------------------------------------------------------------------------
-	int ChsShader::getStatus( void ) {
+	int ChsShader::getStatus( void )const{
 	#if defined( DEBUG )
    	GLint logLength;
     glGetShaderiv( this->shaderHandle, GL_INFO_LOG_LENGTH, &logLength );

@@ -26,11 +26,11 @@ namespace Chaos {
     void update( void );
     void render( void );
     
-    void showHUD( std::string hudName );
-    void hideHUD( std::string hudName );
+    void showHUD( const std::string & hudName );
+    void hideHUD( const std::string & hudName );
 
-    void loadHUD( std::string hudName );
-    void unloadHUD( std::string hudName );
+    void loadHUD( const std::string & hudName );
+    void unloadHUD( const std::string & shudName );
     void purge( void );
     
     inline const ChsCamera * getCamera( void )const;

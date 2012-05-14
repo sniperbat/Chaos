@@ -49,7 +49,7 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ChsShaderUniform::init( std::string name, ChsShaderUniformDataType type, int count, void * varAddr ){
+	void ChsShaderUniform::init( const std::string & name, ChsShaderUniformDataType type, int count, void * varAddr ){
 		this->location = UNLOCATED;
 		this->name = name;
 		this->type = type;

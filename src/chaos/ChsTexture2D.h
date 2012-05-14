@@ -26,7 +26,7 @@ namespace Chaos {
     inline unsigned int getWidth( void )const;
     inline unsigned int getHeight( void )const;
 
-    inline GLint getParameter( ChsTexParameterType type );
+    inline GLint getParameter( ChsTexParameterType type )const;
     inline void setParameter( ChsTexParameterType type, GLint value );
     
 	private:
@@ -43,7 +43,7 @@ namespace Chaos {
 	};
 	
   //------------------------------------------------------------------------------------------------
-  inline GLint ChsTexture2D::getParameter( ChsTexParameterType type ){
+  inline GLint ChsTexture2D::getParameter( ChsTexParameterType type )const{
     return this->parameters[type].value;
   }
 

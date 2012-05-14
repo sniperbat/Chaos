@@ -12,7 +12,7 @@ namespace Chaos {
     inline void setVisible( bool visibel );
 	protected:
 		virtual void update( void )=0;
-    void sendToRender( ChsRenderTag tag, ChsRenderUnit unit );
+    void sendToRender( ChsRenderTag tag, const ChsRenderUnit & unit );
     
 	private:
 		bool visible;

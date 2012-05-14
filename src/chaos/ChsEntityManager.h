@@ -9,12 +9,12 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	class ChsEntityManager : public ChsManagerWithCache< ChsEntity > {
 	public:
-		boost::shared_ptr<ChsEntity> getEntity( std::string entityName );
+		boost::shared_ptr<ChsEntity> getEntity( const std::string & entityName );
 		
-		boost::shared_ptr<ChsEntity> getEntityWithModel( std::string entityName,
+		boost::shared_ptr<ChsEntity> getEntityWithModel( const std::string & entityName,
 										std::string modelName );
 		
-		boost::shared_ptr<ChsEntity> getEntityWithModelAndAnimation( std::string entityName, 
+		boost::shared_ptr<ChsEntity> getEntityWithModelAndAnimation( const std::string & entityName, 
 												    std::string modelName,
 													std::string animationName );
 	};

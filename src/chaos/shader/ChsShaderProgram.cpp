@@ -18,24 +18,24 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	bool ChsShaderProgram::link( void ){
+	bool ChsShaderProgram::link( void )const{
     glLinkProgram( this->shaderHandle );
 	  return this->getStatus() != 0;
 	}
 
   //------------------------------------------------------------------------------------------------
-	void ChsShaderProgram::use( void ){
+	void ChsShaderProgram::use( void )const{
    	glUseProgram( this->shaderHandle );
 	}
 
   //------------------------------------------------------------------------------------------------
-	bool ChsShaderProgram::validate( void ){
+	bool ChsShaderProgram::validate( void )const{
    	glValidateProgram( this->shaderHandle );
     return this->getStatus() != 0;
 	}
 
   //------------------------------------------------------------------------------------------------
-	int ChsShaderProgram::getStatus( void ) {
+	int ChsShaderProgram::getStatus( void )const{
 	#if defined(DEBUG)
    	GLint logLength;
     glGetProgramiv( this->shaderHandle, GL_INFO_LOG_LENGTH, &logLength );
@@ -51,7 +51,7 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	void ChsShaderProgram::attachShader( const boost::shared_ptr<ChsShader> & shader ) {
+	void ChsShaderProgram::attachShader( const boost::shared_ptr<ChsShader> & shader )const{
    	glAttachShader( this->getHandle(), shader->getHandle() );
 	}
 

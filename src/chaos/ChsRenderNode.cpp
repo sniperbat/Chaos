@@ -7,7 +7,7 @@
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
-	ChsRenderNode::ChsRenderNode( std::string name ) : ChsNode( name ) {
+	ChsRenderNode::ChsRenderNode( const std::string & name ) : ChsNode( name ) {
 		this->setVisible( true );
 	}
 

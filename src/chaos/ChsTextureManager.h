@@ -12,7 +12,7 @@ namespace Chaos{
 	//------------------------------------------------------------------------------------------------
 	class ChsTextureManager : public ChsManagerWithCache< ChsTexture2D > {
 	public:
-		boost::shared_ptr<ChsTexture2D> getTexture2D( std::string name );
+		boost::shared_ptr<ChsTexture2D> getTexture2D( const std::string & name );
 	};
 	
 	//------------------------------------------------------------------------------------------------

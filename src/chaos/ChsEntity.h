@@ -15,7 +15,7 @@ namespace Chaos {
 	private:
 		void update( void );
 	public:
-		ChsEntity( std::string name );
+		ChsEntity( const std::string & name );
 		virtual ~ChsEntity( void );
 		
 		boost::weak_ptr<ChsModel> model;

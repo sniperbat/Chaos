@@ -9,7 +9,7 @@ using namespace boost::assign;
 namespace Chaos {
   
 	//------------------------------------------------------------------------------------------------
-	ChsModel::ChsModel( std::string name ): ChsRenderNode( name ){
+	ChsModel::ChsModel( const std::string & name ): ChsRenderNode( name ){
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void ChsModel::addMesh( boost::shared_ptr<ChsMesh> mesh ){
+	void ChsModel::addMesh( const boost::shared_ptr<ChsMesh> & mesh ){
 		if( mesh )
 			this->meshs += mesh;
 	}

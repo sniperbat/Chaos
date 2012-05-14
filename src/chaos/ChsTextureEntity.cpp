@@ -4,7 +4,7 @@
 namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
-  ChsTextureEntity::ChsTextureEntity( boost::shared_ptr<ChsTexture2D> texture ){
+  ChsTextureEntity::ChsTextureEntity( const boost::shared_ptr<ChsTexture2D> & texture ){
     if( texture ){
       this->texture = texture;
       for( int index = 0; index < CHS_TEXPARAM_MAX; index++ ){

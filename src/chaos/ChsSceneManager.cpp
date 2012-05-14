@@ -5,7 +5,7 @@
 namespace Chaos{
   class ChsSceneRoot : public ChsRenderNode{
   public:
-    ChsSceneRoot( void ) : ChsRenderNode( "root"){}
+    ChsSceneRoot( void ) : ChsRenderNode( "root" ){}
     void update( void ){}
   };
   
@@ -23,7 +23,7 @@ namespace Chaos{
     
   }
   
-  ChsNode * ChsSceneManager::getRoot( void ){
+  ChsNode * ChsSceneManager::getRoot( void )const{
     return this->root.get();
   }
   

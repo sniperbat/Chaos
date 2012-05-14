@@ -10,12 +10,12 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	class ChsNode {
 	public:
-		ChsNode( std::string name );
+		ChsNode( const std::string & name );
 		~ChsNode( void );
-		void add( std::string name, ChsNode * node );
+		void add( const std::string & name, ChsNode * node );
 		inline void add( ChsNode * node );
-		ChsNode * remove( std::string name );
-		ChsNode * get( std::string name );
+		ChsNode * remove( const std::string & name );
+		ChsNode * get( const std::string & name );
     inline const std::string & getName( void )const;
 	protected:
 		std::map< std::string, ChsNode * >  children;

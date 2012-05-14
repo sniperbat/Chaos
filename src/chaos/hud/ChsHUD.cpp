@@ -2,7 +2,7 @@
 
 namespace Chaos {
   
-  ChsHUD::ChsHUD( std::string name ) : ChsRenderNode( name ){
+  ChsHUD::ChsHUD( const std::string & name ) : ChsRenderNode( name ){
   }
   
   void ChsHUD::update( void ){

@@ -40,7 +40,7 @@ namespace Chaos{
 	}
 
   //------------------------------------------------------------------------------------------------
-	void ChsShaderUniformSet::add( std::string name, ChsShaderUniformDataType type, unsigned int count, void * varAddr ){
+	void ChsShaderUniformSet::add( const std::string & name, ChsShaderUniformDataType type, unsigned int count, void * varAddr ){
 		if( this->isExist( name ) )
 			return;
 		boost::shared_ptr<ChsShaderUniform> uniform( new ChsShaderUniform() );

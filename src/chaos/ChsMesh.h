@@ -18,10 +18,10 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	class ChsMesh : public ChsRenderNode{
 	public:
-		ChsMesh( std::string name = "unnamed" );
+		ChsMesh( const std::string & name = "unnamed" );
 		virtual ~ChsMesh( void );
 		void setMaterial( ChsMaterial * material );
-		inline ChsMaterial * getMaterial( void );
+		inline ChsMaterial * getMaterial( void )const;
 		void update( void );
     inline ChsVertexBuffer * getVertexBuffer( void )const;
     inline ChsIndexBuffer * getIndexBuffer( void )const;
@@ -40,7 +40,7 @@ namespace Chaos {
   }
   
 	//------------------------------------------------------------------------------------------------
-	inline ChsMaterial * ChsMesh::getMaterial( ){
+	inline ChsMaterial * ChsMesh::getMaterial( void )const{
 		return this->material.get();
 	}
 	
