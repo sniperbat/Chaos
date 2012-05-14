@@ -16,6 +16,9 @@
 		7412E922151C6926008605BE /* test.dae in Resources */ = {isa = PBXBuildFile; fileRef = 7412E921151C6926008605BE /* test.dae */; };
 		7414711B14FC5F1C00964FA3 /* ChsMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7414711A14FC5F1C00964FA3 /* ChsMaterial.cpp */; };
 		7414711D14FC5FAD00964FA3 /* ChsOpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7414711C14FC5FAD00964FA3 /* ChsOpenGL.cpp */; };
+		7414CFE615579454006597C2 /* demo.chshud in Resources */ = {isa = PBXBuildFile; fileRef = 7414CFE515579454006597C2 /* demo.chshud */; };
+		7414CFEF1557AA1D006597C2 /* HUD.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7414CFEB1557A98C006597C2 /* HUD.fsh */; };
+		7414CFF01557AA1D006597C2 /* HUD.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7414CFEC1557A98C006597C2 /* HUD.vsh */; };
 		741ABD4A14EE37BD00995232 /* ChsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741ABD4814EE37BD00995232 /* ChsEngine.cpp */; };
 		741ABD4F14EE46F300995232 /* ChsRenderFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */; };
 		742F868C14F5ECAB00693E51 /* GameDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F868B14F5ECAB00693E51 /* GameDemo.cpp */; };
@@ -23,11 +26,16 @@
 		742F869514F60A5900693E51 /* ChsEntityManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F869414F60A5900693E51 /* ChsEntityManager.cpp */; };
 		742F869714F60B6300693E51 /* ChsEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F869614F60B6200693E51 /* ChsEntity.cpp */; };
 		742F869914F61F2400693E51 /* ChsResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F869814F61F2300693E51 /* ChsResourceManager.cpp */; };
+		74304D171550FBF600F8F3EE /* ChsSprite2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74304D161550FBF500F8F3EE /* ChsSprite2D.cpp */; };
 		743A296614F337B400486634 /* ChsSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743A296414F337B400486634 /* ChsSingleton.cpp */; };
 		743FF26F152D2D0B003C4E91 /* ChsShaderUniformSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743FF26E152D2D0B003C4E91 /* ChsShaderUniformSet.cpp */; };
 		744EA4AA14F22F2700669446 /* ChsRenderSystemIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 741ABD3D14EE33CD00995232 /* ChsRenderSystemIOS.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		744EA4AB14F22F2700669446 /* ChsFileSystemIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 741ABD4014EE33DA00995232 /* ChsFileSystemIOS.mm */; };
+		745457591560A79F00EC8991 /* ChsHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745457551560A79F00EC8991 /* ChsHUD.cpp */; };
+		7454575A1560A79F00EC8991 /* ChsHUDManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745457561560A79F00EC8991 /* ChsHUDManager.cpp */; };
 		745C30F31516FD8F0061F510 /* ChsTexture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745C30F21516FD8E0061F510 /* ChsTexture2D.cpp */; };
+		746458521558F14A00C3C762 /* ChsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 746458511558F14900C3C762 /* ChsSceneManager.cpp */; };
+		74645854155900B800C3C762 /* ChsRenderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74645853155900B700C3C762 /* ChsRenderable.cpp */; };
 		746A2F9C15244E8900D928B8 /* test.chsmodelx in Resources */ = {isa = PBXBuildFile; fileRef = 746A2F9B15244E8900D928B8 /* test.chsmodelx */; };
 		747B9D00152433B6007AF122 /* ChsModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */; };
 		747B9D0215244663007AF122 /* test.chsmodel in Resources */ = {isa = PBXBuildFile; fileRef = 747B9D0115244652007AF122 /* test.chsmodel */; };
@@ -60,7 +68,7 @@
 		74BC079C151034FB003C4429 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74BC079A151034FB003C4429 /* tinyxml2.cpp */; };
 		74BC079F15103ADC003C4429 /* ChsDaeLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74BC079E15103ADC003C4429 /* ChsDaeLoader.cpp */; };
 		74C7BE02150062E500194E72 /* ChsShaderUniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */; };
-		74C7BE091500727600194E72 /* ChsCameraBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE071500727600194E72 /* ChsCameraBase.cpp */; };
+		74C7BE091500727600194E72 /* ChsCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE071500727600194E72 /* ChsCamera.cpp */; };
 		74C7BE0C1500AF9200194E72 /* ChsNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE0B1500AF9100194E72 /* ChsNode.cpp */; };
 		74DAC52D150F24640078B24F /* Wireframe.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 74DAC528150F21960078B24F /* Wireframe.vsh */; };
 		74DAC52E150F24640078B24F /* Wireframe.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 74DAC52B150F21A80078B24F /* Wireframe.fsh */; };
@@ -73,6 +81,7 @@
 		74EE3A6B15171D7F00FC9420 /* ChsTextureFactoryIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 74EE3A6A15171D7F00FC9420 /* ChsTextureFactoryIOS.mm */; };
 		74EE3A6E1517229400FC9420 /* ChsTextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74EE3A6D1517229300FC9420 /* ChsTextureManager.cpp */; };
 		74EE3A7015172E0B00FC9420 /* ChsTextureFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74EE3A6F15172E0B00FC9420 /* ChsTextureFactory.cpp */; };
+		74EE55E4155A56AF00FE9325 /* ChsTextureEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74EE55E3155A56AB00FE9325 /* ChsTextureEntity.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +101,9 @@
 		7412E921151C6926008605BE /* test.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.dae; sourceTree = "<group>"; };
 		7414711A14FC5F1C00964FA3 /* ChsMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsMaterial.cpp; path = src/chaos/ChsMaterial.cpp; sourceTree = "<group>"; };
 		7414711C14FC5FAD00964FA3 /* ChsOpenGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsOpenGL.cpp; path = src/chaos/platform/ChsOpenGL.cpp; sourceTree = "<group>"; };
+		7414CFE515579454006597C2 /* demo.chshud */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo.chshud; sourceTree = "<group>"; };
+		7414CFEB1557A98C006597C2 /* HUD.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = HUD.fsh; path = shaders/HUD.fsh; sourceTree = "<group>"; };
+		7414CFEC1557A98C006597C2 /* HUD.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = HUD.vsh; path = shaders/HUD.vsh; sourceTree = "<group>"; };
 		741ABD3D14EE33CD00995232 /* ChsRenderSystemIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ChsRenderSystemIOS.mm; path = src/chaos/platform/ios/ChsRenderSystemIOS.mm; sourceTree = "<group>"; };
 		741ABD3E14EE33CD00995232 /* ChsRenderSystemIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsRenderSystemIOS.h; path = src/chaos/platform/ios/ChsRenderSystemIOS.h; sourceTree = "<group>"; };
 		741ABD4014EE33DA00995232 /* ChsFileSystemIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ChsFileSystemIOS.mm; path = src/chaos/platform/ios/io/ChsFileSystemIOS.mm; sourceTree = SOURCE_ROOT; };
@@ -105,20 +117,28 @@
 		742F868B14F5ECAB00693E51 /* GameDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameDemo.cpp; path = src/GameDemo.cpp; sourceTree = "<group>"; };
 		742F868D14F5EF3B00693E51 /* ChsEntityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsEntityManager.h; path = src/chaos/ChsEntityManager.h; sourceTree = "<group>"; };
 		742F868E14F5F25800693E51 /* ChsResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsResourceManager.h; path = src/chaos/ChsResourceManager.h; sourceTree = "<group>"; };
-		742F869014F5F7FE00693E51 /* ChsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsMacro.h; path = src/chaos/ChsMacro.h; sourceTree = "<group>"; };
 		742F869114F602C900693E51 /* ChsGameBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsGameBase.cpp; path = src/chaos/ChsGameBase.cpp; sourceTree = "<group>"; };
 		742F869314F609DB00693E51 /* ChsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsEntity.h; path = src/chaos/ChsEntity.h; sourceTree = "<group>"; };
 		742F869414F60A5900693E51 /* ChsEntityManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsEntityManager.cpp; path = src/chaos/ChsEntityManager.cpp; sourceTree = "<group>"; };
 		742F869614F60B6200693E51 /* ChsEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsEntity.cpp; path = src/chaos/ChsEntity.cpp; sourceTree = "<group>"; };
 		742F869814F61F2300693E51 /* ChsResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsResourceManager.cpp; path = src/chaos/ChsResourceManager.cpp; sourceTree = "<group>"; };
+		74304D141550FBDF00F8F3EE /* ChsSprite2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsSprite2D.h; path = src/chaos/ChsSprite2D.h; sourceTree = "<group>"; };
+		74304D161550FBF500F8F3EE /* ChsSprite2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsSprite2D.cpp; path = src/chaos/ChsSprite2D.cpp; sourceTree = "<group>"; };
 		743A296414F337B400486634 /* ChsSingleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsSingleton.cpp; path = src/chaos/ChsSingleton.cpp; sourceTree = "<group>"; };
 		743A296514F337B400486634 /* Chaos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chaos.h; path = src/chaos/Chaos.h; sourceTree = "<group>"; };
 		743FF26C152D2CFB003C4E91 /* ChsShaderUniformSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChsShaderUniformSet.h; sourceTree = "<group>"; };
 		743FF26E152D2D0B003C4E91 /* ChsShaderUniformSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsShaderUniformSet.cpp; sourceTree = "<group>"; };
+		745457551560A79F00EC8991 /* ChsHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsHUD.cpp; path = src/chaos/hud/ChsHUD.cpp; sourceTree = "<group>"; };
+		745457561560A79F00EC8991 /* ChsHUDManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsHUDManager.cpp; path = src/chaos/hud/ChsHUDManager.cpp; sourceTree = "<group>"; };
+		745457571560A79F00EC8991 /* ChsHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsHUD.h; path = src/chaos/hud/ChsHUD.h; sourceTree = "<group>"; };
+		745457581560A79F00EC8991 /* ChsHUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsHUDManager.h; path = src/chaos/hud/ChsHUDManager.h; sourceTree = "<group>"; };
 		745C30F01516FD290061F510 /* ChsTexture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsTexture2D.h; path = src/chaos/ChsTexture2D.h; sourceTree = "<group>"; };
 		745C30F21516FD8E0061F510 /* ChsTexture2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTexture2D.cpp; path = src/chaos/ChsTexture2D.cpp; sourceTree = "<group>"; };
 		74614B8C14F4BB85003396BA /* ChsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsDefine.h; path = src/chaos/ChsDefine.h; sourceTree = "<group>"; };
 		74614B8E14F4CCD0003396BA /* ChsOpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsOpenGL.h; path = src/chaos/platform/ChsOpenGL.h; sourceTree = "<group>"; };
+		7464584E1558E52100C3C762 /* ChsSceneManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsSceneManager.h; path = src/chaos/ChsSceneManager.h; sourceTree = "<group>"; };
+		746458511558F14900C3C762 /* ChsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsSceneManager.cpp; path = src/chaos/ChsSceneManager.cpp; sourceTree = "<group>"; };
+		74645853155900B700C3C762 /* ChsRenderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsRenderable.cpp; path = src/chaos/ChsRenderable.cpp; sourceTree = "<group>"; };
 		746A2F9B15244E8900D928B8 /* test.chsmodelx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.chsmodelx; sourceTree = "<group>"; };
 		747B9CFC152432B6007AF122 /* ChsDae.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsDae.h; path = src/chaos/ChsDae.h; sourceTree = "<group>"; };
 		747B9CFE15243350007AF122 /* ChsModelLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelLoader.h; path = src/chaos/ChsModelLoader.h; sourceTree = "<group>"; };
@@ -180,8 +200,8 @@
 		74BC079E15103ADC003C4429 /* ChsDaeLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsDaeLoader.cpp; path = src/chaos/ChsDaeLoader.cpp; sourceTree = "<group>"; };
 		74C7BE00150061D800194E72 /* ChsShaderUniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsShaderUniform.h; sourceTree = "<group>"; };
 		74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsShaderUniform.cpp; sourceTree = "<group>"; };
-		74C7BE071500727600194E72 /* ChsCameraBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsCameraBase.cpp; sourceTree = "<group>"; };
-		74C7BE081500727600194E72 /* ChsCameraBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsCameraBase.h; sourceTree = "<group>"; };
+		74C7BE071500727600194E72 /* ChsCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsCamera.cpp; sourceTree = "<group>"; };
+		74C7BE081500727600194E72 /* ChsCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsCamera.h; sourceTree = "<group>"; };
 		74C7BE0A1500AD1200194E72 /* ChsNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsNode.h; path = src/chaos/ChsNode.h; sourceTree = "<group>"; };
 		74C7BE0B1500AF9100194E72 /* ChsNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsNode.cpp; path = src/chaos/ChsNode.cpp; sourceTree = "<group>"; };
 		74DAC528150F21960078B24F /* Wireframe.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Wireframe.vsh; path = shaders/Wireframe.vsh; sourceTree = "<group>"; };
@@ -200,6 +220,8 @@
 		74EE3A6C1517209200FC9420 /* ChsTextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsTextureManager.h; path = src/chaos/ChsTextureManager.h; sourceTree = "<group>"; };
 		74EE3A6D1517229300FC9420 /* ChsTextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTextureManager.cpp; path = src/chaos/ChsTextureManager.cpp; sourceTree = "<group>"; };
 		74EE3A6F15172E0B00FC9420 /* ChsTextureFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTextureFactory.cpp; path = src/chaos/ChsTextureFactory.cpp; sourceTree = "<group>"; };
+		74EE55E1155A552000FE9325 /* ChsTextureEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsTextureEntity.h; path = src/chaos/ChsTextureEntity.h; sourceTree = "<group>"; };
+		74EE55E3155A56AB00FE9325 /* ChsTextureEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTextureEntity.cpp; path = src/chaos/ChsTextureEntity.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +251,17 @@
 				740C3A5B150EDFE40093E952 /* ChsCoordinatePlane.cpp */,
 			);
 			name = geometry;
+			sourceTree = "<group>";
+		};
+		745457531560A72200EC8991 /* hud */ = {
+			isa = PBXGroup;
+			children = (
+				745457551560A79F00EC8991 /* ChsHUD.cpp */,
+				745457561560A79F00EC8991 /* ChsHUDManager.cpp */,
+				745457571560A79F00EC8991 /* ChsHUD.h */,
+				745457581560A79F00EC8991 /* ChsHUDManager.h */,
+			);
+			name = hud;
 			sourceTree = "<group>";
 		};
 		749D799014ECD3AF0046F2D9 /* platform */ = {
@@ -266,6 +299,8 @@
 			children = (
 				749D799C14ECD5D90046F2D9 /* Shader.fsh */,
 				749D799D14ECD5D90046F2D9 /* Shader.vsh */,
+				7414CFEB1557A98C006597C2 /* HUD.fsh */,
+				7414CFEC1557A98C006597C2 /* HUD.vsh */,
 				74DAC528150F21960078B24F /* Wireframe.vsh */,
 				74DAC52B150F21A80078B24F /* Wireframe.fsh */,
 			);
@@ -281,20 +316,28 @@
 				749D79CD14ECD6080046F2D9 /* io */,
 				749D79CF14ECD6080046F2D9 /* math */,
 				749D79BD14ECD6010046F2D9 /* shader */,
+				7464584E1558E52100C3C762 /* ChsSceneManager.h */,
+				746458511558F14900C3C762 /* ChsSceneManager.cpp */,
+				749D79B014ECD5F50046F2D9 /* ChsSingleton.h */,
+				743A296414F337B400486634 /* ChsSingleton.cpp */,
 				741ABD4814EE37BD00995232 /* ChsEngine.cpp */,
 				741ABD4914EE37BD00995232 /* ChsEngine.h */,
 				749D79A114ECD5F50046F2D9 /* ChsIndexBuffer.cpp */,
 				749D79AA14ECD5F50046F2D9 /* ChsIndexBuffer.h */,
 				749D79A814ECD5F50046F2D9 /* ChsVertexBuffer.cpp */,
 				749D79B214ECD5F50046F2D9 /* ChsVertexBuffer.h */,
+				741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */,
+				741ABD4E14EE46F300995232 /* ChsRenderFactory.h */,
 				749D79AE14ECD5F50046F2D9 /* ChsRenderSystem.h */,
 				749D79A514ECD5F50046F2D9 /* ChsRenderSystem.cpp */,
 				749364A31526A143007608F4 /* ChsRenderStates.h */,
 				749364A51526A1C3007608F4 /* ChsRenderStates.cpp */,
-				743A296414F337B400486634 /* ChsSingleton.cpp */,
-				749D79B014ECD5F50046F2D9 /* ChsSingleton.h */,
 				749D79A614ECD5F50046F2D9 /* ChsRenderNode.cpp */,
 				749D79AF14ECD5F50046F2D9 /* ChsRenderNode.h */,
+				7486D9AD152059C000099441 /* ChsRenderable.h */,
+				74645853155900B700C3C762 /* ChsRenderable.cpp */,
+				74C7BE0A1500AD1200194E72 /* ChsNode.h */,
+				74C7BE0B1500AF9100194E72 /* ChsNode.cpp */,
 				742F869114F602C900693E51 /* ChsGameBase.cpp */,
 				742F868914F5E52900693E51 /* ChsGameBase.h */,
 				749D79A714ECD5F50046F2D9 /* ChsUtility.cpp */,
@@ -304,12 +347,9 @@
 				74614B8C14F4BB85003396BA /* ChsDefine.h */,
 				7403104F14FB4D320009FF1B /* ChsMesh.cpp */,
 				7403105014FB4D320009FF1B /* ChsMesh.h */,
-				741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */,
-				741ABD4E14EE46F300995232 /* ChsRenderFactory.h */,
 				743A296514F337B400486634 /* Chaos.h */,
 				7486D9AB1520580800099441 /* ChsModel.cpp */,
 				7486D9AC1520580A00099441 /* ChsModel.h */,
-				742F869014F5F7FE00693E51 /* ChsMacro.h */,
 				742F869414F60A5900693E51 /* ChsEntityManager.cpp */,
 				742F868D14F5EF3B00693E51 /* ChsEntityManager.h */,
 				748936F214F620EF006CDF7B /* ChsManagerWithCache.h */,
@@ -317,13 +357,13 @@
 				742F868E14F5F25800693E51 /* ChsResourceManager.h */,
 				742F869614F60B6200693E51 /* ChsEntity.cpp */,
 				742F869314F609DB00693E51 /* ChsEntity.h */,
-				74C7BE0A1500AD1200194E72 /* ChsNode.h */,
 				747B9CFE15243350007AF122 /* ChsModelLoader.h */,
 				747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */,
-				74C7BE0B1500AF9100194E72 /* ChsNode.cpp */,
 				74BC079D15103A43003C4429 /* ChsDaeLoader.h */,
 				74BC079E15103ADC003C4429 /* ChsDaeLoader.cpp */,
 				747B9CFC152432B6007AF122 /* ChsDae.h */,
+				74EE55E1155A552000FE9325 /* ChsTextureEntity.h */,
+				74EE55E3155A56AB00FE9325 /* ChsTextureEntity.cpp */,
 				745C30F01516FD290061F510 /* ChsTexture2D.h */,
 				745C30F21516FD8E0061F510 /* ChsTexture2D.cpp */,
 				74EE3A6815171BF300FC9420 /* ChsTextureFactory.h */,
@@ -332,7 +372,8 @@
 				74EE3A6D1517229300FC9420 /* ChsTextureManager.cpp */,
 				7486D9A815203A8900099441 /* ChsModelManager.h */,
 				7486D9A91520531400099441 /* ChsModelManager.cpp */,
-				7486D9AD152059C000099441 /* ChsRenderable.h */,
+				74304D141550FBDF00F8F3EE /* ChsSprite2D.h */,
+				74304D161550FBF500F8F3EE /* ChsSprite2D.cpp */,
 			);
 			name = chaos;
 			sourceTree = "<group>";
@@ -410,6 +451,7 @@
 				7405DEB215102E3B00824770 /* sofa.dae */,
 				7405DEB315102E3B00824770 /* sofaLeather.png */,
 				749364AD1526CB39007608F4 /* Makefile */,
+				7414CFE515579454006597C2 /* demo.chshud */,
 				749364B31526CE7A007608F4 /* sofa.chsmodelx */,
 				747B9D0115244652007AF122 /* test.chsmodel */,
 				746A2F9B15244E8900D928B8 /* test.chsmodelx */,
@@ -421,8 +463,8 @@
 		74C7BE061500720F00194E72 /* camera */ = {
 			isa = PBXGroup;
 			children = (
-				74C7BE071500727600194E72 /* ChsCameraBase.cpp */,
-				74C7BE081500727600194E72 /* ChsCameraBase.h */,
+				74C7BE071500727600194E72 /* ChsCamera.cpp */,
+				74C7BE081500727600194E72 /* ChsCamera.h */,
 			);
 			name = camera;
 			path = src/chaos/camera;
@@ -474,6 +516,7 @@
 		74E047EF14ECCA750024586A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				745457531560A72200EC8991 /* hud */,
 				74BC0799151034FB003C4429 /* tinyxml2 */,
 				749D79A014ECD5DF0046F2D9 /* chaos */,
 				742F868A14F5E6AC00693E51 /* GameDemo.h */,
@@ -550,6 +593,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7414CFEF1557AA1D006597C2 /* HUD.fsh in Resources */,
+				7414CFF01557AA1D006597C2 /* HUD.vsh in Resources */,
 				747B9D0215244663007AF122 /* test.chsmodel in Resources */,
 				74DAC52D150F24640078B24F /* Wireframe.vsh in Resources */,
 				74DAC52E150F24640078B24F /* Wireframe.fsh in Resources */,
@@ -563,6 +608,7 @@
 				7412E922151C6926008605BE /* test.dae in Resources */,
 				746A2F9C15244E8900D928B8 /* test.chsmodelx in Resources */,
 				749364B41526CE7A007608F4 /* sofa.chsmodelx in Resources */,
+				7414CFE615579454006597C2 /* demo.chshud in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +671,7 @@
 				7414711B14FC5F1C00964FA3 /* ChsMaterial.cpp in Sources */,
 				7414711D14FC5FAD00964FA3 /* ChsOpenGL.cpp in Sources */,
 				74C7BE02150062E500194E72 /* ChsShaderUniform.cpp in Sources */,
-				74C7BE091500727600194E72 /* ChsCameraBase.cpp in Sources */,
+				74C7BE091500727600194E72 /* ChsCamera.cpp in Sources */,
 				74C7BE0C1500AF9200194E72 /* ChsNode.cpp in Sources */,
 				740C3A5C150EDFE40093E952 /* ChsCoordinatePlane.cpp in Sources */,
 				74BC079C151034FB003C4429 /* tinyxml2.cpp in Sources */,
@@ -638,6 +684,12 @@
 				747B9D00152433B6007AF122 /* ChsModelLoader.cpp in Sources */,
 				749364A61526A1C3007608F4 /* ChsRenderStates.cpp in Sources */,
 				743FF26F152D2D0B003C4E91 /* ChsShaderUniformSet.cpp in Sources */,
+				74304D171550FBF600F8F3EE /* ChsSprite2D.cpp in Sources */,
+				746458521558F14A00C3C762 /* ChsSceneManager.cpp in Sources */,
+				74645854155900B800C3C762 /* ChsRenderable.cpp in Sources */,
+				74EE55E4155A56AF00FE9325 /* ChsTextureEntity.cpp in Sources */,
+				745457591560A79F00EC8991 /* ChsHUD.cpp in Sources */,
+				7454575A1560A79F00EC8991 /* ChsHUDManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,7 +717,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -674,8 +726,13 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = build;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -695,10 +752,15 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = build;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
