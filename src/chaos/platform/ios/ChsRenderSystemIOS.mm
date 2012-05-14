@@ -18,13 +18,12 @@ namespace Chaos {
 	void ChsRenderSystemIOS::initRenderBuffer( void ){
 		glGenRenderbuffers( 1, &(this->renderbuffer) );
 		glBindRenderbuffer( GL_RENDERBUFFER, this->renderbuffer );
-		
 		//connect with layer
 		assert( glLayer );
 		[glContext renderbufferStorage:GL_RENDERBUFFER fromDrawable:glLayer];
-
 		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &(this->renderbufferWidth) );
     glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &(this->renderbufferHeight) );
+    glBindRenderbuffer( GL_RENDERBUFFER, 0 );
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -55,6 +54,7 @@ namespace Chaos {
 	void ChsRenderSystemIOS::attachContext( void ){
 		if( [EAGLContext currentContext] != glContext )
 			[EAGLContext setCurrentContext:glContext];
+    glBindFramebuffer( GL_FRAMEBUFFER, this->framebuffer );
 	}
 
   //------------------------------------------------------------------------------------------------

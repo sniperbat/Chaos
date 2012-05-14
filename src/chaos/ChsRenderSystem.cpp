@@ -115,7 +115,6 @@ namespace Chaos {
   }
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::preRender( void ){
-		glBindFramebuffer( GL_FRAMEBUFFER, this->framebuffer );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	}
   
@@ -166,8 +165,8 @@ namespace Chaos {
 	void ChsRenderSystem::initAllBuffers( void ){
 		this->deleteAllBuffers();
 		this->initRenderBuffer();
-		this->initFrameBuffer();
 		this->initDepthBuffer();
+		this->initFrameBuffer();
 		if ( glCheckFramebufferStatus( GL_FRAMEBUFFER ) != GL_FRAMEBUFFER_COMPLETE )
       printf( "Failed to make complete framebuffer object %x\n", glCheckFramebufferStatus( GL_FRAMEBUFFER ) );
 	}
@@ -177,14 +176,16 @@ namespace Chaos {
 		glGenFramebuffers( 1, &(this->framebuffer) );
 		glBindFramebuffer( GL_FRAMEBUFFER, this->framebuffer );
 		glFramebufferRenderbuffer( GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, this->renderbuffer );
+		glFramebufferRenderbuffer( GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, this->depthRenderbuffer );
+    glBindFramebuffer( GL_FRAMEBUFFER, 0 );
 	}
 	
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::initDepthBuffer( void ){
-		glGenRenderbuffers(1, &(this->depthRenderbuffer) );
+		glGenRenderbuffers( 1, &(this->depthRenderbuffer) );
 		glBindRenderbuffer(GL_RENDERBUFFER, this->depthRenderbuffer);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, this->renderbufferWidth, this->renderbufferHeight );
-		glFramebufferRenderbuffer( GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, this->depthRenderbuffer );
+    glBindRenderbuffer( GL_RENDERBUFFER, 0 );
 	}
 	
   //------------------------------------------------------------------------------------------------
