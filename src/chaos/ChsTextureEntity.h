@@ -15,7 +15,7 @@ namespace Chaos {
     boost::weak_ptr<ChsTexture2D> texture;
 		int activeUnit;
 		std::string sampleName;
-    int parameters[CHS_TEXPARAM_MAX];
+    int wraps[CHS_TEXTURE_WRAP_MAX];
   public:
     ChsTextureEntity( const boost::shared_ptr<ChsTexture2D> & texture );
     inline int getActiveUnit( void )const;
@@ -26,7 +26,7 @@ namespace Chaos {
 
     void apply( void )const;
     
-    inline void setParameter( ChsTexParameterType type, int value );
+    inline void setWrap( ChsTexWrapType type, int value );
     
     int getWidth( void )const;
     int getHeight( void )const;
@@ -34,8 +34,8 @@ namespace Chaos {
   };
 
   //------------------------------------------------------------------------------------------------
-  inline void ChsTextureEntity::setParameter( ChsTexParameterType type, int value ){
-    this->parameters[type] = value;
+  inline void ChsTextureEntity::setWrap( ChsTexWrapType type, int value ){
+    this->wraps[type] = value;
   }
 
   //------------------------------------------------------------------------------------------------

@@ -100,13 +100,16 @@ namespace Chaos {
       y = texEntityElement->FloatAttribute( "y" );
       w = texEntityElement->FloatAttribute( "w" );
       h = texEntityElement->FloatAttribute( "h" );
-      tinyxml2::XMLElement * texParamElement = texEntityElement->FirstChildElement( "ChsTexParameter" );      
-      while( texParamElement != NULL ){
-        ChsTexParameterType type = getTexParamterType( texParamElement->Attribute( "type" ) );
-        int value = getTexParamterValue( texParamElement->Attribute( "value" ) );
-        texture->setParameter( type, value );
-        texParamElement = texParamElement->NextSiblingElement( "ChsTexParameter" );
+      
+      const char * wrap_s = texEntityElement->Attribute( "wrap_s" );
+      if( wrap_s ){
+        texture->setWrap( CHS_TEXTURE_WRAP_S, getTexWrapValue( wrap_s ) );
       }
+      const char * wrap_t = texEntityElement->Attribute( "wrap_t" );
+      if( wrap_t ){
+        texture->setWrap( CHS_TEXTURE_WRAP_T, getTexWrapValue( wrap_t ) );
+      }
+      
       sprite2D->setImage( texture, x, y, w, h );
       texEntityElement = texEntityElement->NextSiblingElement( "ChsTexture2D" );
     }

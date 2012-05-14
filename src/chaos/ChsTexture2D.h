@@ -7,7 +7,7 @@
 
 namespace Chaos {
 
-  struct ChsTexParameter{
+  struct ChsTexWrap{
     bool needUpdate;
     GLint value;
   };
@@ -26,8 +26,8 @@ namespace Chaos {
     inline unsigned int getWidth( void )const;
     inline unsigned int getHeight( void )const;
 
-    inline GLint getParameter( ChsTexParameterType type )const;
-    inline void setParameter( ChsTexParameterType type, GLint value );
+    inline GLint getWrap( ChsTexWrapType st )const;
+    inline void setWrap( ChsTexWrapType st, GLint value );
     
 	private:
     GLuint textureHandle;
@@ -38,21 +38,21 @@ namespace Chaos {
 		std::string name;
 		boolean hasAlpha;
     
-    ChsTexParameter parameters[CHS_TEXPARAM_MAX];
-    void updateParameters( void );
+    ChsTexWrap wraps[CHS_TEXTURE_WRAP_MAX];
+    void updateWrap( void );
 	};
 	
   //------------------------------------------------------------------------------------------------
-  inline GLint ChsTexture2D::getParameter( ChsTexParameterType type )const{
-    return this->parameters[type].value;
-  }
-
-  //------------------------------------------------------------------------------------------------
-  inline void ChsTexture2D::setParameter( ChsTexParameterType type, GLint value ){
-    this->parameters[type].value = value;
-    this->parameters[type].needUpdate = true;
+  GLint ChsTexture2D::getWrap( ChsTexWrapType st )const{
+    return this->wraps[st].value;
   }
   
+  //------------------------------------------------------------------------------------------------
+  void ChsTexture2D::setWrap( ChsTexWrapType st, GLint value ){
+    this->wraps[st].value = value;
+    this->wraps[st].needUpdate = true;
+  }
+
 	//------------------------------------------------------------------------------------------------
 	inline GLuint ChsTexture2D::getHandle( void )const{
     return this->textureHandle;

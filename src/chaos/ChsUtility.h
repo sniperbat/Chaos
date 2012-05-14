@@ -16,8 +16,7 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	size_t getGLDataTypeSize( int type );
-  ChsTexParameterType getTexParamterType( const std::string & typeName );
-  int getTexParamterValue( const std::string & valueName );
+  int getTexWrapValue( const std::string & valueName );
 	//------------------------------------------------------------------------------------------------
 	template< typename Type > void safeRelease( Type **pptr ) {
 		if ( * pptr ) {

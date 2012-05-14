@@ -4,11 +4,6 @@
     <ChsTextureEntity index="0" sampleName="diffuseTexture" activeUnit="0" x="0" y="0" w="1" h="1" />
   </ChsSprite2D>
   <ChsSprite2D depth="1" x="120" y="120" w="128" h="500">
-    <ChsTextureEntity index="0" sampleName="diffuseTexture" activeUnit="0" x="0" y="0" w="1" h="5">
-      <ChsTexParameter type="WRAP_S" value="CLAMP_TO_EDGE" />
-      <ChsTexParameter type="WRAP_T" value="REPEAT" />
-      <ChsTexParameter type="MAG_FILTER" value="LINEAR" />
-      <ChsTexParameter type="MIN_FILTER" value="LINEAR_MIPMAP_LINEAR" />
-    </ChsTextureEntity>
+    <ChsTextureEntity index="0" sampleName="diffuseTexture" activeUnit="0" x="0" y="0" w="1" h="5" wrap_s="CLAMP_TO_EDGE" wrap_t="REPEAT" />
   </ChsSprite2D>
 </ChsHUD>

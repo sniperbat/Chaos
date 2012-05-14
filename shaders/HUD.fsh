@@ -18,5 +18,5 @@ void main(){
 		baseColor *= texture2D( diffuseTexture, texCoordVarying.st, 0.0 );
 	}
 	
-  gl_FragColor = baseColor;//vec4( baseColor.rgb, baseColor.a );
+  gl_FragColor = baseColor;
 }

@@ -18,21 +18,15 @@ namespace Chaos {
 			glDeleteTextures( 1, &(this->textureHandle) );
 	}
 	
-	//------------------------------------------------------------------------------------------------
-  static GLenum glTextureParams[] = {
-    GL_TEXTURE_MAG_FILTER,
-    GL_TEXTURE_MIN_FILTER,
-    GL_TEXTURE_WRAP_S,
-    GL_TEXTURE_WRAP_T,
-  };
-
   //------------------------------------------------------------------------------------------------
-  void ChsTexture2D::updateParameters( void ){
-    for( int i = 0; i < CHS_TEXPARAM_MAX; i++ ){
-      if( this->parameters[i].needUpdate ){
-        this->parameters[i].needUpdate = false;
-        glTexParameteri( GL_TEXTURE_2D, glTextureParams[i], this->parameters[i].value );
-      }
+  void ChsTexture2D::updateWrap( void ){
+    if( this->wraps[CHS_TEXTURE_WRAP_S].needUpdate ){
+      glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, this->wraps[CHS_TEXTURE_WRAP_S].value );
+      this->wraps[CHS_TEXTURE_WRAP_S].needUpdate = false;
+    }
+    if( this->wraps[CHS_TEXTURE_WRAP_T].needUpdate ){
+      glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, this->wraps[CHS_TEXTURE_WRAP_T].value );
+      this->wraps[CHS_TEXTURE_WRAP_T].needUpdate = false;
     }
   }
 
@@ -40,7 +34,7 @@ namespace Chaos {
 	static GLuint currentTextureHandle = 0;
 	//------------------------------------------------------------------------------------------------
 	void ChsTexture2D::bindToUnit( GLint unit ){
-    this->updateParameters();
+    this->updateWrap();
 		if( currentTextureHandle == this->textureHandle )
 			return;
 		glBindTexture( GL_TEXTURE_2D, this->textureHandle );
@@ -58,11 +52,12 @@ namespace Chaos {
 		glGenTextures( 1, &(this->textureHandle) );
 		glBindTexture( GL_TEXTURE_2D, this->textureHandle );
 
-    //获取并保存默认texture parameter
-    for( int i = 0; i < CHS_TEXPARAM_MAX; i++ ){
-      glGetTexParameteriv( GL_TEXTURE_2D, glTextureParams[i], &(this->parameters[i].value) );
-      this->parameters[i].needUpdate = true;
-    }
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glGetTexParameteriv( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, &(this->wraps[CHS_TEXTURE_WRAP_S].value) );
+    glGetTexParameteriv( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, &(this->wraps[CHS_TEXTURE_WRAP_T].value) );
+    this->wraps[CHS_TEXTURE_WRAP_S].needUpdate = false;
+    this->wraps[CHS_TEXTURE_WRAP_T].needUpdate = false;
 
 		//glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
