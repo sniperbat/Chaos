@@ -105,7 +105,16 @@ namespace Chaos {
     CHS_TEXTURE_WRAP_T,
     CHS_TEXTURE_WRAP_MAX,
   };
-
+  
+  //------------------------------------------------------------------------------------------------
+  enum ChsGestureState{
+    CHS_GESTURE_STATE_POSSIBLE,
+    CHS_GESTURE_STATE_BEGAN,
+    CHS_GESTURE_STATE_CHANGED,
+    CHS_GESTURE_STATE_ENDED,
+    CHS_GESTURE_STATE_CANCELLED,
+    CHS_GESTURE_STATE_FAILED,
+  };
 }//namespace
 
 #endif//_CHSDEFINE_H

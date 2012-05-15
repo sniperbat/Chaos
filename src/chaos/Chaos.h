@@ -3,7 +3,7 @@
 #pragma once
 
 #include "ChsEngine.h"
-#include "ChsRenderSystem.h"
+#include "ChsTouchEmitter.h"
 //--------------------------------------------------------------------------------------------------
 
 namespace Chaos {

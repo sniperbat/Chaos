@@ -3,6 +3,7 @@
 #include "ChsRenderStates.h"
 #include "ChsHUDManager.h"
 #include "ChsSceneManager.h"
+#include "ChsTouchEmitter.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -10,6 +11,7 @@ namespace Chaos {
 	static ChsResourceManager gResourceManager;
 	static ChsRenderStates gRenderStates;
   static ChsHUDManager gHudManager;
-  static ChsSceneManager gsceneManager;
+  static ChsSceneManager gSceneManager;
+  static ChsTouchEmitter gTouchEmitter;
 }
 //------------------------------------------------------------------------------------------------
