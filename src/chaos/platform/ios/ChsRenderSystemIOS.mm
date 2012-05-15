@@ -21,9 +21,6 @@ namespace Chaos {
 		//connect with layer
 		assert( glLayer );
 		[glContext renderbufferStorage:GL_RENDERBUFFER fromDrawable:glLayer];
-		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &(this->renderbufferWidth) );
-    glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &(this->renderbufferHeight) );
-    glBindRenderbuffer( GL_RENDERBUFFER, 0 );
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -34,6 +31,9 @@ namespace Chaos {
 		else if( ![EAGLContext setCurrentContext : context ] )
 			NSLog( @"Failed to set ES context current" );
 		glContext = context;
+    CGRect rect = [glLayer bounds];
+    this->renderbufferWidth = rect.size.width;
+    this->renderbufferHeight = rect.size.height;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -46,7 +46,6 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystemIOS::present( void ) {
-		glBindRenderbuffer( GL_RENDERBUFFER, this->renderbuffer );
 		[glContext presentRenderbuffer:GL_RENDERBUFFER];
 	}
 	
@@ -54,7 +53,6 @@ namespace Chaos {
 	void ChsRenderSystemIOS::attachContext( void ){
 		if( [EAGLContext currentContext] != glContext )
 			[EAGLContext setCurrentContext:glContext];
-    glBindFramebuffer( GL_FRAMEBUFFER, this->framebuffer );
 	}
 
   //------------------------------------------------------------------------------------------------
