@@ -78,6 +78,7 @@
 		74EC45041561FD7F0099E122 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EC44FC1561FD7F0099E122 /* AppDelegate.m */; };
 		74EC45051561FD7F0099E122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EC44FD1561FD7F0099E122 /* main.m */; };
 		74EC45081561FE530099E122 /* ChsFileSystemIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 74EC45061561FE530099E122 /* ChsFileSystemIOS.mm */; };
+		74EC450C156223D10099E122 /* ChsTouchEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74EC450B156223D10099E122 /* ChsTouchEmitter.cpp */; };
 		74EE3A651517147600FC9420 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EE3A641517147600FC9420 /* CoreGraphics.framework */; };
 		74EE3A6B15171D7F00FC9420 /* ChsTextureFactoryIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 74EE3A6A15171D7F00FC9420 /* ChsTextureFactoryIOS.mm */; };
 		74EE3A6E1517229400FC9420 /* ChsTextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74EE3A6D1517229300FC9420 /* ChsTextureManager.cpp */; };
@@ -215,6 +216,9 @@
 		74EC45011561FD7F0099E122 /* GLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLViewController.h; path = src/entrance/ios/GLViewController.h; sourceTree = "<group>"; };
 		74EC45061561FE530099E122 /* ChsFileSystemIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ChsFileSystemIOS.mm; path = src/chaos/platform/ios/ChsFileSystemIOS.mm; sourceTree = "<group>"; };
 		74EC45071561FE530099E122 /* ChsFileSystemIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsFileSystemIOS.h; path = src/chaos/platform/ios/ChsFileSystemIOS.h; sourceTree = "<group>"; };
+		74EC450915621A300099E122 /* ChsTouchListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsTouchListener.h; path = src/chaos/ChsTouchListener.h; sourceTree = "<group>"; };
+		74EC450A156222950099E122 /* ChsTouchEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsTouchEmitter.h; path = src/chaos/ChsTouchEmitter.h; sourceTree = "<group>"; };
+		74EC450B156223D10099E122 /* ChsTouchEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTouchEmitter.cpp; path = src/chaos/ChsTouchEmitter.cpp; sourceTree = "<group>"; };
 		74EE3A641517147600FC9420 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		74EE3A6815171BF300FC9420 /* ChsTextureFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsTextureFactory.h; path = src/chaos/ChsTextureFactory.h; sourceTree = "<group>"; };
 		74EE3A6915171CCA00FC9420 /* ChsTextureFactoryIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsTextureFactoryIOS.h; path = src/chaos/platform/ios/ChsTextureFactoryIOS.h; sourceTree = "<group>"; };
@@ -322,6 +326,9 @@
 				749D79AA14ECD5F50046F2D9 /* ChsIndexBuffer.h */,
 				749D79A814ECD5F50046F2D9 /* ChsVertexBuffer.cpp */,
 				749D79B214ECD5F50046F2D9 /* ChsVertexBuffer.h */,
+				74EC450915621A300099E122 /* ChsTouchListener.h */,
+				74EC450A156222950099E122 /* ChsTouchEmitter.h */,
+				74EC450B156223D10099E122 /* ChsTouchEmitter.cpp */,
 				741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */,
 				741ABD4E14EE46F300995232 /* ChsRenderFactory.h */,
 				749D79AE14ECD5F50046F2D9 /* ChsRenderSystem.h */,
@@ -701,6 +708,7 @@
 				74EC45041561FD7F0099E122 /* AppDelegate.m in Sources */,
 				74EC45051561FD7F0099E122 /* main.m in Sources */,
 				74EC45081561FE530099E122 /* ChsFileSystemIOS.mm in Sources */,
+				74EC450C156223D10099E122 /* ChsTouchEmitter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
