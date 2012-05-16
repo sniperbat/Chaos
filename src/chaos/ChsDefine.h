@@ -107,14 +107,59 @@ namespace Chaos {
   };
   
   //------------------------------------------------------------------------------------------------
-  enum ChsGestureState{
-    CHS_GESTURE_STATE_POSSIBLE,
-    CHS_GESTURE_STATE_BEGAN,
-    CHS_GESTURE_STATE_CHANGED,
-    CHS_GESTURE_STATE_ENDED,
-    CHS_GESTURE_STATE_CANCELLED,
-    CHS_GESTURE_STATE_FAILED,
+  enum ChsTouchState{
+    CHS_TOUCH_STATE_POSSIBLE,
+    CHS_TOUCH_STATE_BEGAN,
+    CHS_TOUCH_STATE_CHANGED,
+    CHS_TOUCH_STATE_ENDED,
+    CHS_TOUCH_STATE_CANCELLED,
+    CHS_TOUCH_STATE_FAILED,
   };
+  
+  //------------------------------------------------------------------------------------------------
+  enum ChsTouchType{
+    CHS_TOUCH_TYPE_INVALID = -1,
+
+    CHS_TOUCH_TYPE_BEGAN,
+    CHS_TOUCH_TYPE_CHANGED,
+    CHS_TOUCH_TYPE_ENDED,
+    CHS_TOUCH_TYPE_CANCELLED,
+
+    CHS_TOUCH_TYPE_TAP,
+    CHS_TOUCH_TYPE_SWIPE,
+    CHS_TOUCH_TYPE_PINCH,
+    CHS_TOUCH_TYPE_LONGPRESS,
+    
+    CHS_TOUCH_TYPE_MAX,
+  };
+  
+  //------------------------------------------------------------------------------------------------
+  struct ChsTouch{
+    int state;
+    int numberOfTouches;
+    ChsPoint location;
+    ChsPoint previousLocation;
+  };
+  //------------------------------------------------------------------------------------------------
+  struct ChsTapTouch : ChsTouch{
+    int numberOfTaps;
+  };
+  
+  //------------------------------------------------------------------------------------------------
+  struct ChsSwipeTouch : ChsTouch{
+    int direction;
+  };
+
+  //------------------------------------------------------------------------------------------------
+  struct ChsPinchTouch : ChsTouch{
+    float scale;
+    float velocity;
+  };
+  
+  //------------------------------------------------------------------------------------------------
+  struct ChsLongPressTouch : ChsTouch{
+  };
+  
 }//namespace
 
 #endif//_CHSDEFINE_H

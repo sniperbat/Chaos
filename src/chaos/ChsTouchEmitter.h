@@ -19,19 +19,7 @@ namespace Chaos {
     
     void purge( void );
     
-    //basic touch event
-    void onTouchesBegan();
-    void onTouchesMove();
-    void onTouchesCancelled();
-    void onTouchesEnded();
-
-    //simple gesture
-    void onTap( int numberOfTaps, int numberOfTouches, const ChsPoint & position );
-    void onSwipe( int direction, int numberOfTouches, const ChsPoint & position );
-    void onPinch( int state, float scale, float velocity );
-    void onLongPress( int state, int numberOfTouches, const ChsPoint & position );
-
-    
+    void handleTouches( ChsTouchType type, const ChsTouch & touch );
   };
   
   //------------------------------------------------------------------------------------------------

@@ -39,6 +39,7 @@
 		746A2F9C15244E8900D928B8 /* test.chsmodelx in Resources */ = {isa = PBXBuildFile; fileRef = 746A2F9B15244E8900D928B8 /* test.chsmodelx */; };
 		747B9D00152433B6007AF122 /* ChsModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */; };
 		747B9D0215244663007AF122 /* test.chsmodel in Resources */ = {isa = PBXBuildFile; fileRef = 747B9D0115244652007AF122 /* test.chsmodel */; };
+		747D5E4A15636D30009D766E /* ChsTouchListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D5E4915636D30009D766E /* ChsTouchListener.cpp */; };
 		7486D9AA1520531500099441 /* ChsModelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9A91520531400099441 /* ChsModelManager.cpp */; };
 		7486D9AE1520618E00099441 /* ChsModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9AB1520580800099441 /* ChsModel.cpp */; };
 		749364A61526A1C3007608F4 /* ChsRenderStates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749364A51526A1C3007608F4 /* ChsRenderStates.cpp */; };
@@ -143,6 +144,7 @@
 		747B9CFE15243350007AF122 /* ChsModelLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelLoader.h; path = src/chaos/ChsModelLoader.h; sourceTree = "<group>"; };
 		747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelLoader.cpp; path = src/chaos/ChsModelLoader.cpp; sourceTree = "<group>"; };
 		747B9D0115244652007AF122 /* test.chsmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.chsmodel; sourceTree = "<group>"; };
+		747D5E4915636D30009D766E /* ChsTouchListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTouchListener.cpp; path = src/chaos/ChsTouchListener.cpp; sourceTree = "<group>"; };
 		7486D9A815203A8900099441 /* ChsModelManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelManager.h; path = src/chaos/ChsModelManager.h; sourceTree = "<group>"; };
 		7486D9A91520531400099441 /* ChsModelManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelManager.cpp; path = src/chaos/ChsModelManager.cpp; sourceTree = "<group>"; };
 		7486D9AB1520580800099441 /* ChsModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModel.cpp; path = src/chaos/ChsModel.cpp; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				749D79A814ECD5F50046F2D9 /* ChsVertexBuffer.cpp */,
 				749D79B214ECD5F50046F2D9 /* ChsVertexBuffer.h */,
 				74EC450915621A300099E122 /* ChsTouchListener.h */,
+				747D5E4915636D30009D766E /* ChsTouchListener.cpp */,
 				74EC450A156222950099E122 /* ChsTouchEmitter.h */,
 				74EC450B156223D10099E122 /* ChsTouchEmitter.cpp */,
 				741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */,
@@ -709,6 +712,7 @@
 				74EC45051561FD7F0099E122 /* main.m in Sources */,
 				74EC45081561FE530099E122 /* ChsFileSystemIOS.mm in Sources */,
 				74EC450C156223D10099E122 /* ChsTouchEmitter.cpp in Sources */,
+				747D5E4A15636D30009D766E /* ChsTouchListener.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

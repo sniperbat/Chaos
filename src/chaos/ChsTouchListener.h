@@ -7,28 +7,32 @@
 namespace Chaos {
   //------------------------------------------------------------------------------------------------
   class ChsTouchListener{
+   friend class ChsTouchEmitter;
   public:
-    ChsTouchListener( void ){ this->touchable = true; }
+    ChsTouchListener( void );
 
     //basic touch event
-    virtual void onTouchesBegan(){}
-    virtual void onTouchesMove(){}
-    virtual void onTouchesCancelled(){}
-    virtual void onTouchesEnded(){}
+    virtual void onTouchesBegan( const ChsTouch & touch ){}
+    virtual void onTouchesMove( const ChsTouch & touch ){}
+    virtual void onTouchesCancelled( const ChsTouch & touch ){}
+    virtual void onTouchesEnded( const ChsTouch & touch ){}
     
     //simple gesture
-    virtual void onTap( int numberOfTaps, int numberOfTouches, const ChsPoint & position ){}
-    virtual void onSwipe( int direction, int numberOfTouches, const ChsPoint & position ){}
-    virtual void onPinch( ChsGestureState state, float scale, float velocity ){}
-    virtual void onLongPress( int state, int numberOfTouches, const ChsPoint & position ){}
+    virtual void onTap( const ChsTapTouch & touch ){}
+    virtual void onSwipe( const ChsSwipeTouch & touch ){}
+    virtual void onPinch( const ChsPinchTouch & touch ){}
+    virtual void onLongPress( const ChsLongPressTouch & touch ){}
     
     inline bool isTouchable( void )const;
     inline void setTouchable( bool enable );
     
     virtual bool isAvaliable(void ){ return true; };
-    
+
   private:
     bool touchable;
+    typedef void (ChsTouchListener::*TouchHandleFunc) ( const ChsTouch & touch );
+    TouchHandleFunc handlers[CHS_TOUCH_TYPE_MAX];
+    void handleTouches( ChsTouchType type, const ChsTouch & touch );
   };
   
   //------------------------------------------------------------------------------------------------

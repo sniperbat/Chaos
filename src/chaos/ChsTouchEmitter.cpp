@@ -38,60 +38,23 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::onTouchesBegan(){
-    
-  }
-  
-  //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::onTouchesMove(){
-    
-  }
-  
-  //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::onTouchesCancelled(){
-    
-  }
-  
-  //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::onTouchesEnded(){
-    
-  }
-  
-  //------------------------------------------------------------------------------------------------
-  //simple gesture
-  void ChsTouchEmitter::onTap( int numberOfTaps, int numberOfTouches, const ChsPoint & position ){
-    printf( "tap at: %f, %f, %d taps with %d fingers\n", position.x, position.y, numberOfTaps,numberOfTouches );
+  void ChsTouchEmitter::handleTouches( ChsTouchType type, const ChsTouch & touch ){
+    const char * types[] = {
+      "CHS_TOUCH_TYPE_BEGAN",
+      "CHS_TOUCH_TYPE_CHANGED",
+      "CHS_TOUCH_TYPE_ENDED",
+      "CHS_TOUCH_TYPE_CANCELLED",
+      
+      "CHS_TOUCH_TYPE_TAP",
+      "CHS_TOUCH_TYPE_SWIPE",
+      "CHS_TOUCH_TYPE_PINCH",
+      "CHS_TOUCH_TYPE_LONGPRESS",
+    };
+
+    printf( "%s\n", types[type] );
     BOOST_FOREACH( ChsTouchListener * listener, listeners ){
-      if( listener->isTouchable() && listener->isAvaliable() )
-        listener->onTap( numberOfTaps, numberOfTouches, position );
+      listener->handleTouches( type, touch );
     }
   }
-  
   //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::onSwipe( int direction, int numberOfTouches, const ChsPoint & position ){
-    printf( "swipe from:%f,%f to direction:%d, with %d fingers\n",position.x, position.y, direction, numberOfTouches );
-    BOOST_FOREACH( ChsTouchListener * listener, listeners ){
-      if( listener->isTouchable() && listener->isAvaliable() )
-        listener->onSwipe( direction, numberOfTouches, position );
-    }
-  }
-  
-  //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::onPinch( int state, float scale ,float velocity ){
-    printf( "pinch state:%d with scale:%f and velocity:%f \n",state,scale,velocity );
-    BOOST_FOREACH( ChsTouchListener * listener, listeners ){
-      if( listener->isTouchable() && listener->isAvaliable() )
-        listener->onPinch( static_cast<ChsGestureState>( state ), scale, velocity );
-    }
-  }
-  
-  //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::onLongPress( int state, int numberOfTouches, const ChsPoint & position ){
-    printf( "longPress at %f,%f on state:%d with %d fingers\n", position.x, position.y, state, numberOfTouches );
-    BOOST_FOREACH( ChsTouchListener * listener, listeners ){
-      if( listener->isTouchable() && listener->isAvaliable() )
-        listener->onLongPress( state, numberOfTouches, position );
-    }
-  }
-  
 }
