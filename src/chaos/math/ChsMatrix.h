@@ -46,7 +46,7 @@ namespace Chaos {
 		ChsVector3 * transformCoord( ChsVector3 * destinaion, const ChsVector3 * origin );
 		void translation( float x, float y, float z );
 			
-			
+    void debugPrint( const char * name );
 
 		void rotateX( float theta );
 		void rotateY( float theta );
@@ -62,7 +62,7 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	ChsMatrix * multiply( ChsMatrix * out, const ChsMatrix & matrix1, const ChsMatrix & matrix2 );
 	ChsMatrix & operator *= ( ChsMatrix & a, ChsMatrix & b );
-
+  
 	//------------------------------------------------------------------------------------------------
 	inline float * ChsMatrix::getArrary( void ){
 		return this->m;

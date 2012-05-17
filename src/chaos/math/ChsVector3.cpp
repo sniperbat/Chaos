@@ -139,5 +139,8 @@ namespace Chaos {
 	const ChsVector3 ChsVector3::zeroVector( 0.0f, 0.0f, 0.0f );
 
   //------------------------------------------------------------------------------------------------
-
+  void ChsVector3::debugPrint( const char * name ){
+    printf( "%s:[%f,%f,%f]\n", name, this->x, this->y, this->z );
+  }
+  
 }//namespace

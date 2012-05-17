@@ -37,6 +37,8 @@ namespace Chaos {
 		static ChsQuaternion conjugate( const ChsQuaternion & quat );
 		//四元素幂
 		static ChsQuaternion pow( const ChsQuaternion & quat, float exponent );
+    
+    void debugPrint( const char * name );
 	};
 
 	//------------------------------------------------------------------------------------------------

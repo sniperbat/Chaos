@@ -59,6 +59,8 @@ namespace Chaos {
 		float lengthSq( void )const;
 		inline void zero( void );
 
+    void debugPrint( const char * name );
+    
 		//求模
 		static inline float mag( const ChsVector3 & vec );
 		//差乘

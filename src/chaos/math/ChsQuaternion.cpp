@@ -41,7 +41,11 @@ namespace Chaos {
 		qT.x = this->w * quat.x + this->x * quat.w + this->z * quat.y - this->y * quat.z;
 		qT.y = this->w * quat.y + this->y * quat.w + this->x * quat.z - this->z * quat.x;
 		qT.z = this->w * quat.z + this->z * quat.w + this->y * quat.x - this->x * quat.y;
-		return qT;
+    this->w = qT.w;
+		this->x = qT.x;
+		this->y = qT.y;
+		this->z = qT.z;
+		return *this;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -66,6 +70,11 @@ namespace Chaos {
 		this->x = this->y = this->z = 0.0f;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+  void ChsQuaternion::debugPrint( const char * name ){
+    printf( "%s:[%f,%f,%f,%f]\n", name, this->x, this->y, this->z, this->w );
+  }
+  
 	//------------------------------------------------------------------------------------------------
 	ChsQuaternion ChsQuaternion::rotationVector( const ChsVector3 & from, const ChsVector3 & to ){
 		ChsVector3 part = ChsVector3::cross( from, to );
