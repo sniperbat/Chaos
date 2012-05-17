@@ -7,7 +7,7 @@ namespace Chaos {
 	ChsCamera::ChsCamera( void ) : up( 0.0f, 1.0f, 0.0f ) {
 		this->mtxView.identity();
 		this->mtxProjection.identity();
-		this->isNeedUpdateViewMatrix = false;
+		this->isNeedUpdate = true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -16,11 +16,12 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsCamera::update( void ){
-		if( this->isNeedUpdateViewMatrix ){
-			this->isNeedUpdateViewMatrix = false;
+		if( this->isNeedUpdate ){
+			this->isNeedUpdate = false;
 			this->mtxView.lookAt( this->position , this->target , this->up );
 		}
 		this->mtxViewProj = this->mtxView * this->mtxProjection;
+    this->mtxWVP = this->mtxWorld * this->mtxViewProj;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -71,13 +72,13 @@ namespace Chaos {
 		this->position.x = x;
 		this->position.y = y;
 		this->position.z = z;
-		this->isNeedUpdateViewMatrix = true;
+		this->isNeedUpdate = true;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ChsCamera::moveTo( const ChsVector3 & position ){
 		this->position = position;
-		this->isNeedUpdateViewMatrix = true;
+		this->isNeedUpdate = true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -85,13 +86,13 @@ namespace Chaos {
 		this->target.x = x;
 		this->target.y = y;
 		this->target.z = z;
-		this->isNeedUpdateViewMatrix = true;
+		this->isNeedUpdate = true;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ChsCamera::targetTo( const ChsVector3 & target ){
 		this->target = target;
-		this->isNeedUpdateViewMatrix = true;
+		this->isNeedUpdate = true;
 	}
   
 }

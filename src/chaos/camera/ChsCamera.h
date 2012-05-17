@@ -29,15 +29,19 @@ namespace Chaos {
 		void targetTo( const ChsVector3 & target );
 
 		inline const ChsMatrix & getViewProjectionMatrix( void )const;
+    inline const ChsMatrix & getWorldMatrix( void )const;
 		inline const ChsMatrix & getViewMatrix( void )const;
 		inline const ChsMatrix & getProjectionMatrix( void )const;
+    inline const ChsMatrix & getMatrix( void )const;
     
 	protected:
-		bool isNeedUpdateViewMatrix;
+		bool isNeedUpdate;
 		
+    ChsMatrix mtxWorld;
 		ChsMatrix mtxView;
 		ChsMatrix mtxProjection;
 		ChsMatrix mtxViewProj;
+    ChsMatrix mtxWVP;
 		
 		ChsVector3 position;
 		ChsVector3 target;
@@ -63,6 +67,12 @@ namespace Chaos {
 	inline const ChsMatrix & ChsCamera::getProjectionMatrix( void )const{
 		return this->mtxProjection;
 	}
+  inline const ChsMatrix & ChsCamera::getWorldMatrix( void )const{
+    return this->mtxWorld;
+  }
+  inline const ChsMatrix & ChsCamera::getMatrix( void )const{
+    return this->mtxWVP;
+  }
 }
 
 #endif	//_CHS_CAMERA_H
