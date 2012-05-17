@@ -107,7 +107,7 @@ namespace Chaos {
   void ChsRenderSystem::updateCamera( void ){
     if( this->currentCamera ){
 			this->currentCamera->update();
-			wvp = mtxWorld * this->currentCamera->getViewProjectionMatrix();
+			wvp = mtxWorld * this->currentCamera->getMatrix();
 			wvit = mtxWorld * this->currentCamera->getViewMatrix();
 			wvit.inverse();
 			wvit.transpose();
