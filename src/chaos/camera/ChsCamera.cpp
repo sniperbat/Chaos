@@ -43,6 +43,7 @@ namespace Chaos {
 		this->prjNear = near;
 		this->prjFar = far;
 		this->mtxProjection.perspective( fovy, aspect, near, far );
+    this->isNeedUpdate = true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -54,6 +55,7 @@ namespace Chaos {
 		this->prjFar = zfar;
 		this->prjNear = znear;
 		this->mtxProjection.frustum( left, right, bottom, top, znear, zfar );
+    this->isNeedUpdate = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -65,6 +67,7 @@ namespace Chaos {
 		this->prjFar = far;
 		this->prjNear = near;
 		this->mtxProjection.ortho( left, right, bottom, top, near, far );
+    this->isNeedUpdate = true;
 	}
 
 	//------------------------------------------------------------------------------------------------

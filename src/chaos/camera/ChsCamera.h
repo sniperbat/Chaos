@@ -14,6 +14,7 @@ namespace Chaos {
 		ChsCamera( void );
 		virtual ~ChsCamera( void );
 
+    //call by renderSystem automatically
 		virtual	void update( void );
 		
 		void lookAt( const ChsVector3 & position , const ChsVector3 & target );

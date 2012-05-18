@@ -27,6 +27,7 @@ ChsPlane * planeMesh1;
 void GameDemo::onInit( void ) {
 	ChsRect viewport = this->getRender()->getViewPort();
 	camera->perspective( degree2Radian(39.6f), viewport.w/(float)viewport.h, 0.1f, 1000.0f  );
+  camera->setScreen( viewport.w, viewport.h );
   ChsTouchEmitter::sharedInstance()->addListener( camera.get() );
   
   this->getRender()->setCurrentCamera( camera.get() );

@@ -1,51 +1,52 @@
-﻿#ifndef		__CHAOSMODELVIEWCAMERA_HPP
-#define		__CHAOSMODELVIEWCAMERA_HPP
+﻿#ifndef		_CHS_MODELVIEWCAMERA_H
+#define		_CHS_MODELVIEWCAMERA_H
 #pragma once
-//----------------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+#include "math/ChsVector2.h"
+#include "math/ChsVector3.h"
+#include "math/ChsMatrix.h"
+#include "math/ChsQuaternion.h"
+#include "math/Chsmath.h"
 #include "ChsCamera.h"
-#include "ChsCameraArcBall.h"
 #include "ChsTouchListener.h"
-//----------------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
 namespace Chaos{
-//----------------------------------------------------------------------------------------------------------
-	enum MOUSE_BUTTON_MASK{
-		MOUSE_NO_BUTTON = 0x00,
-		MOUSE_LEFT_BUTTON = 0x01,
-		MOUSE_MIDDLE_BUTTON = 0x02,
-		MOUSE_RIGHT_BUTTON = 0x04,
-		MOUSE_WHEEL = 0x08,
-	};
-//----------------------------------------------------------------------------------------------------------
+
+  class ChsCameraArcBall;
+  //------------------------------------------------------------------------------------------------
 	class ChsModelViewCamera : public ChsCamera , public ChsTouchListener{
 	public:
-		ChsModelViewCamera();
-    void update();
-    
-    void onTouchesBegan( const ChsTouch & touch );
-    void onTouchesMove( const ChsTouch & touch );
-    void onTouchesCancelled( const ChsTouch & touch );
-    void onTouchesEnded( const ChsTouch & touch );
-    void onPinch( const ChsPinchTouch & touch );
-    void onLongPress( const ChsLongPressTouch & touch );
+		ChsModelViewCamera( void );
+
+    void update( void );
+    void setScreen( int width, int height, float radius = 1.0f );
 
 	private:
-		int mouseWheelDelta;
+		int zoomDelta;
 		ChsVector3 modelCenter;
-		ChsCameraArcBall worldArcBall;
-    
-		ChsVector2 downPt;			// starting point of rotation arc
-		ChsVector2 currentPt;		// current point of rotation arc
-
 		ChsMatrix mtxModelLastRotate;
-		ChsMatrix mxtModelRotate;	// Rotation matrix of model
-		ChsMatrix mtxTranslationDelta; // ChsMatrix for arc ball's position
+		ChsMatrix mxtModelRotate;
+		ChsMatrix mtxTranslationDelta;
 
 		bool isNeedUpdate;
     bool isRotating;
 		float radius;
 		float maxRadius;
 		float minRadius;
+
+    //ChsTouchListener
+    void onTouchesBegan( const ChsTouch & touch );
+    void onTouchesMove( const ChsTouch & touch );
+    void onTouchesCancelled( const ChsTouch & touch );
+    void onTouchesEnded( const ChsTouch & touch );
+    void onPinch( const ChsPinchTouch & touch );
+    void onLongPress( const ChsLongPressTouch & touch );
 	};
-//----------------------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------
+  
 }
-#endif		//__CHAOSMODELVIEWCAMERA_HPP
+
+#endif//_CHS_MODELVIEWCAMERA_H

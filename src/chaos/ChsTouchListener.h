@@ -11,6 +11,17 @@ namespace Chaos {
   public:
     ChsTouchListener( void );
 
+    inline bool isTouchable( void )const;
+    inline void setTouchable( bool enable );
+
+  private:
+    bool touchable;
+    typedef void (ChsTouchListener::*TouchHandleFunc) ( const ChsTouch & touch );
+    TouchHandleFunc handlers[CHS_TOUCH_TYPE_MAX];
+    void handleTouches( ChsTouchType type, const ChsTouch & touch );
+  
+  protected:
+    //touch event access by ChsTouchEmitter as friend class
     //basic touch event
     virtual void onTouchesBegan( const ChsTouch & touch ){}
     virtual void onTouchesMove( const ChsTouch & touch ){}
@@ -23,16 +34,8 @@ namespace Chaos {
     virtual void onPinch( const ChsPinchTouch & touch ){}
     virtual void onLongPress( const ChsLongPressTouch & touch ){}
     
-    inline bool isTouchable( void )const;
-    inline void setTouchable( bool enable );
-    
     virtual bool isAvaliable(void ){ return true; };
 
-  private:
-    bool touchable;
-    typedef void (ChsTouchListener::*TouchHandleFunc) ( const ChsTouch & touch );
-    TouchHandleFunc handlers[CHS_TOUCH_TYPE_MAX];
-    void handleTouches( ChsTouchType type, const ChsTouch & touch );
   };
   
   //------------------------------------------------------------------------------------------------

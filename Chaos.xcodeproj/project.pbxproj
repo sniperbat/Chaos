@@ -40,7 +40,6 @@
 		747B9D00152433B6007AF122 /* ChsModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */; };
 		747B9D0215244663007AF122 /* test.chsmodel in Resources */ = {isa = PBXBuildFile; fileRef = 747B9D0115244652007AF122 /* test.chsmodel */; };
 		747D5E4A15636D30009D766E /* ChsTouchListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D5E4915636D30009D766E /* ChsTouchListener.cpp */; };
-		747D5E501563A45A009D766E /* ChsCameraArcBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D5E4C1563A45A009D766E /* ChsCameraArcBall.cpp */; };
 		747D5E511563A45A009D766E /* ChsModelViewCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */; };
 		7486D9AA1520531500099441 /* ChsModelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9A91520531400099441 /* ChsModelManager.cpp */; };
 		7486D9AE1520618E00099441 /* ChsModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9AB1520580800099441 /* ChsModel.cpp */; };
@@ -147,9 +146,7 @@
 		747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelLoader.cpp; path = src/chaos/ChsModelLoader.cpp; sourceTree = "<group>"; };
 		747B9D0115244652007AF122 /* test.chsmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.chsmodel; sourceTree = "<group>"; };
 		747D5E4915636D30009D766E /* ChsTouchListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTouchListener.cpp; path = src/chaos/ChsTouchListener.cpp; sourceTree = "<group>"; };
-		747D5E4C1563A45A009D766E /* ChsCameraArcBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsCameraArcBall.cpp; sourceTree = "<group>"; };
 		747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsModelViewCamera.cpp; sourceTree = "<group>"; };
-		747D5E4E1563A45A009D766E /* ChsCameraArcBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsCameraArcBall.h; sourceTree = "<group>"; };
 		747D5E4F1563A45A009D766E /* ChsModelViewCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsModelViewCamera.h; sourceTree = "<group>"; };
 		7486D9A815203A8900099441 /* ChsModelManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelManager.h; path = src/chaos/ChsModelManager.h; sourceTree = "<group>"; };
 		7486D9A91520531400099441 /* ChsModelManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelManager.cpp; path = src/chaos/ChsModelManager.cpp; sourceTree = "<group>"; };
@@ -466,9 +463,7 @@
 		74C7BE061500720F00194E72 /* camera */ = {
 			isa = PBXGroup;
 			children = (
-				747D5E4C1563A45A009D766E /* ChsCameraArcBall.cpp */,
 				747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */,
-				747D5E4E1563A45A009D766E /* ChsCameraArcBall.h */,
 				747D5E4F1563A45A009D766E /* ChsModelViewCamera.h */,
 				74C7BE071500727600194E72 /* ChsCamera.cpp */,
 				74C7BE081500727600194E72 /* ChsCamera.h */,
@@ -723,7 +718,6 @@
 				74EC45081561FE530099E122 /* ChsFileSystemIOS.mm in Sources */,
 				74EC450C156223D10099E122 /* ChsTouchEmitter.cpp in Sources */,
 				747D5E4A15636D30009D766E /* ChsTouchListener.cpp in Sources */,
-				747D5E501563A45A009D766E /* ChsCameraArcBall.cpp in Sources */,
 				747D5E511563A45A009D766E /* ChsModelViewCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

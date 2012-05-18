@@ -1,28 +1,119 @@
-﻿
+﻿#include <math.h>
 #include "camera/ChsModelViewCamera.h"
-#include <float.h>
-#include <math.h>
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos{
   
+	class ChsCameraArcBall {
+	public:
+    //----------------------------------------------------------------------------------------------
+		ChsCameraArcBall( void ) : isDrag( false ), radius( 1.0f ){
+      this->mtxArcOrien.identity();
+      this->quatBeforeDrag.identity();
+      this->quatForCurrentDrag.identity();
+    }
+
+    //----------------------------------------------------------------------------------------------
+		void onRotateBegin( int x, int y ){
+      // Only enter the drag state if the click falls
+      // inside the click rectangle.
+      if( x >= 0 && x < this->screenWidth && y >= 0 && y < this->screenHeight ){
+        this->isDrag = true;
+        this->quatBeforeDrag = this->quatForCurrentDrag;
+        this->startPointOfRotate = this->screenToVector( x, y );
+      }
+    }
+    
+    //----------------------------------------------------------------------------------------------
+		void onRotating( int x, int y ){
+      if( this->isDrag ){ 
+        ChsQuaternion rotateQuat = ChsQuaternion::rotationVector( this->startPointOfRotate, this->screenToVector( x, y ) );
+        this->quatForCurrentDrag = this->quatBeforeDrag * rotateQuat;
+      }
+    }
+    
+    //----------------------------------------------------------------------------------------------
+		void onRotateEnd( void ){
+      this->isDrag = false;
+    }
+    
+		//----------------------------------------------------------------------------------------------
+    void setScreen( int width, int height, float radius = 0.9f ){
+      this->screenWidth = width;
+      this->screenHeight = height;
+      this->halfScreenWidth = width >> 1;
+      this->halfScreenHeight = height >> 1;
+      this->radius = radius;
+      this->centerOfArcBall.x = this->halfScreenWidth;
+      this->centerOfArcBall.y = this->halfScreenHeight;
+    }
+    
+    //----------------------------------------------------------------------------------------------
+		ChsVector3 screenToVector( int scrX, int scrY )const{
+      // Scale to screen
+      float x   = (scrX - this->halfScreenWidth )  / (this->radius * this->halfScreenWidth );
+      float y   = -(scrY -this->halfScreenHeight ) / (this->radius * this->halfScreenHeight );
+      float z   = 0.0f;
+      float mag = x * x + y * y;
+      
+      if( mag > 1.0f ) {
+        float scale = 1.0f/sqrtf(mag);
+        x *= scale;
+        y *= scale;
+      }
+      else{
+        z = sqrtf( 1.0f - mag );
+      }
+      // Return vector
+      return ChsVector3( x, y, z );
+    }
+    
+    //----------------------------------------------------------------------------------------------
+		ChsVector2 boundXY( int scrX, int scrY )const{
+      // Scale to screen
+      float x  = ( scrX - this->halfScreenWidth ) / ( this->radius * this->halfScreenWidth );
+      float y  = -( scrY - this->halfScreenHeight ) / ( this->radius * this->halfScreenHeight );
+      return ChsVector2( x, y );
+    }
+ 		
+    //----------------------------------------------------------------------------------------------
+    inline ChsMatrix& getRotationMatrix( void ){
+      return matrixRotationQuaternion( this->mtxArcOrien , this->quatForCurrentDrag );
+    }
+
+    //----------------------------------------------------------------------------------------------
+	protected:
+		ChsMatrix mtxArcOrien;
+		
+		float radius;
+		float radiusTranslation;
+		int screenWidth;
+		int screenHeight;
+		int halfScreenWidth;
+		int halfScreenHeight;
+    
+		bool isDrag;
+    
+		ChsVector2 centerOfArcBall;
+		ChsQuaternion quatBeforeDrag;
+		ChsQuaternion quatForCurrentDrag;
+		ChsVector3 startPointOfRotate;
+	};
+  
+  static ChsCameraArcBall worldArcBall;
+  
   //------------------------------------------------------------------------------------------------
-	ChsModelViewCamera::ChsModelViewCamera() :
-					maxRadius(5),
-					minRadius(0.01f),
-					radius(1.0f),
-          isRotating( false ),
-					mouseWheelDelta(0)
+	ChsModelViewCamera::ChsModelViewCamera() : maxRadius(5), minRadius(0.01f), radius(1.0f),
+                                             isRotating( false ), zoomDelta(0)
 	{
 		this->mxtModelRotate.identity();
 		this->mtxModelLastRotate.identity();
 		this->mtxTranslationDelta.identity();
-    this->worldArcBall.setWindow( 1024, 768 );
 	}
   
   //------------------------------------------------------------------------------------------------
   void ChsModelViewCamera::onTouchesBegan( const ChsTouch & touch ){
-    this->worldArcBall.onRotateBegin( touch.location.x, touch.location.y );
+    worldArcBall.onRotateBegin( touch.location.x, touch.location.y );
     this->isNeedUpdate = true;
     this->isRotating = true;
   }
@@ -30,76 +121,70 @@ namespace Chaos{
   //------------------------------------------------------------------------------------------------
   void ChsModelViewCamera::onTouchesMove( const ChsTouch & touch ){
     if( this->isRotating ){
-      float x = touch.location.x;
-      float y = touch.location.y;
-      this->worldArcBall.onRotate( x, y );
+      worldArcBall.onRotating( touch.location.x, touch.location.y );
       this->isNeedUpdate = true;
     }
   }
   
   //------------------------------------------------------------------------------------------------
   void ChsModelViewCamera::onTouchesCancelled( const ChsTouch & touch ){
-    this->worldArcBall.onRotateEnd();
+    worldArcBall.onRotateEnd();
     this->isNeedUpdate = true;
     this->isRotating = false;
   }
   
   //------------------------------------------------------------------------------------------------
   void ChsModelViewCamera::onTouchesEnded( const ChsTouch & touch ){
-    this->worldArcBall.onRotateEnd();
+    worldArcBall.onRotateEnd();
     this->isNeedUpdate = true;
     this->isRotating = false;
   }
   
+  static float oldScale;
   //------------------------------------------------------------------------------------------------
   void ChsModelViewCamera::onPinch( const ChsPinchTouch & touch ){
-    static float oldScale = touch.scale;
-    if( touch.state == CHS_TOUCH_STATE_CHANGED ){
-      int scale;
-      scale = 100*(touch.scale - oldScale);
-      this->mouseWheelDelta += scale;
-      this->isNeedUpdate = true;
-      this->isRotating = false;
+   if( touch.state == CHS_TOUCH_STATE_CHANGED ){
+      int scale = 500*(touch.scale - oldScale);
+      this->zoomDelta += scale;
     }
+    oldScale = touch.scale;
+    this->isNeedUpdate = true;
+    this->isRotating = false;
   }
   
+  static ChsVector2 startPointForTranslation;
   //------------------------------------------------------------------------------------------------
   void ChsModelViewCamera::onLongPress( const ChsLongPressTouch & touch ){
-    float x = touch.location.x;
-    float y = touch.location.y;
-    if( touch.state == CHS_TOUCH_STATE_BEGAN ){
-      this->downPt = this->worldArcBall.boundXY( x, y );      
-    }
-    else if( touch.state == CHS_TOUCH_STATE_CHANGED ){
-      this->currentPt = this->worldArcBall.boundXY( x, y );
-      ChsVector2 transDelta = ( this->currentPt - this->downPt ) * this->radius * 32;
+    ChsVector2 currentPointForTranslation = worldArcBall.boundXY( touch.location.x, touch.location.y );
+    if( touch.state == CHS_TOUCH_STATE_CHANGED ){
+      ChsVector2 transDelta = currentPointForTranslation - startPointForTranslation;
+      transDelta *= this->radius * 32;
       this->modelCenter.x += transDelta.x;
       this->modelCenter.y -= transDelta.y;
-      this->downPt = this->currentPt;
     }
+    startPointForTranslation = currentPointForTranslation;
     this->isRotating = false;
     this->isNeedUpdate = true;
   }
-//----------------------------------------------------------------------------------------------------------
+  
+  static ChsVector3 worldAhead( 0.0f, 0.0f, 150.0f );
+  static ChsVector3 worldUp( 0.0f, 1.0f, 0.0f );
+  //------------------------------------------------------------------------------------------------
 	void ChsModelViewCamera::update(){
-		//if no mouse event,then do not update
 		if( !this->isNeedUpdate )
 			return;
 		this->isNeedUpdate = false;
 
 		// Change the radius from the camera to the model based on wheel scrolling
-		if( this->mouseWheelDelta )
-			this->radius -= this->mouseWheelDelta * this->radius * 0.001f;
+		if( this->zoomDelta )
+			this->radius -= this->zoomDelta * this->radius * 0.001f;
 
 		this->radius = this->maxRadius < this->radius ? this->maxRadius : this->radius;
 		this->radius = this->minRadius > this->radius ? this->minRadius : this->radius;
-		this->mouseWheelDelta = 0;
+		this->zoomDelta = 0;
 
 		// Transform vectors based on camera's rotation matrix
-		ChsVector3 worldUp( 0.0f, 1.0f, 0.0f );
-		ChsVector3 worldAhead( 0.0f, 0.0f, 150.0f );
-
-		// Update the eye point based on a radius away from the lookAt position
+    // Update the eye point based on a radius away from the lookAt position
 		this->position = this->target - worldAhead * this->radius;
 		
 		// Update the view matrix
@@ -112,7 +197,7 @@ namespace Chaos{
 		ChsMatrix mModelLastRotInv = this->mtxModelLastRotate;
 		mModelLastRotInv.inverse();
 
-		ChsMatrix mModelRot = this->worldArcBall.getRotationMatrix();
+		ChsMatrix mModelRot = worldArcBall.getRotationMatrix();
 		ChsMatrix temp = this->mtxView * mModelLastRotInv * mModelRot * mInvView;
 		this->mxtModelRotate *= temp;
 
@@ -142,20 +227,22 @@ namespace Chaos{
 		this->mxtModelRotate._m33 = zBasis.z;
     
 		// Translate the rotation matrix to the same position as the lookAt position
-
     this->mxtModelRotate._m41 = this->target.x;
 		this->mxtModelRotate._m42 = this->target.y;
 		this->mxtModelRotate._m43 = this->target.z;
+
 		// Translate world matrix so its at the center of the model
-        
 		ChsMatrix mTrans;
-		mTrans.translation(-this->modelCenter.x, -this->modelCenter.y, -this->modelCenter.z);
+		mTrans.translation( -this->modelCenter.x, -this->modelCenter.y, -this->modelCenter.z );
 		this->mtxWorld = this->mxtModelRotate * mTrans;
-    
     this->mtxWVP = this->mtxWorld * this->mtxView * this->mtxProjection;
-    
 	}
   
   //------------------------------------------------------------------------------------------------
-  
+  //------------------------------------------------------------------------------------------------
+  void ChsModelViewCamera::setScreen( int width, int height, float radius ){
+    worldArcBall.setScreen( width, height, radius );
+    this->isNeedUpdate = true;
+  }
+
 }
