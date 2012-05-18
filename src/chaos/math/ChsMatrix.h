@@ -2,10 +2,9 @@
 #define	_CHS_MATRIX_H
 #pragma once
 
+#include "ChsVector3.h"
+
 namespace Chaos {
-	
-	//------------------------------------------------------------------------------------------------
-	class ChsVector3;
 
 	//------------------------------------------------------------------------------------------------
 	class ChsMatrix {
@@ -24,10 +23,6 @@ namespace Chaos {
 		ChsMatrix( void );
 		ChsMatrix( const float [16] );
 		ChsMatrix( const ChsMatrix & m );
-		ChsMatrix( float _11, float _12, float _13, float _14,
-					float _21, float _22, float _23, float _24,
-					float _31, float _32, float _33, float _34,
-					float _41, float _42, float _43, float _44 );
 
 		// binary operators
 		//ChsMatrix			operator * ( ChsMatrix & a,ChsMatrix &b);
@@ -44,8 +39,11 @@ namespace Chaos {
 		void inverse( void );
 		void transpose( void );
 		ChsVector3 * transformCoord( ChsVector3 * destinaion, const ChsVector3 * origin );
-		void translation( float x, float y, float z );
-			
+		void translateTo( float x, float y, float z );
+    void translation( float x, float y, float z );
+		inline void translateTo( const ChsVector3 & vec );
+    inline void translation( const ChsVector3 & vec );
+    
     void debugPrint( const char * name );
 
 		void rotateX( float theta );
@@ -67,6 +65,14 @@ namespace Chaos {
 	inline float * ChsMatrix::getArrary( void ){
 		return this->m;
 	};
+
+  inline void ChsMatrix::translateTo( const ChsVector3 & vec ){
+    this->translateTo( vec.x, vec.y, vec.z );
+  }
+  
+  inline void ChsMatrix::translation( const ChsVector3 & vec ){
+    this->translation( vec.x, vec.y, vec.z );
+  }
 
 	//------------------------------------------------------------------------------------------------
 

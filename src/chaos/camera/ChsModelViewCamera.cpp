@@ -233,7 +233,7 @@ namespace Chaos{
 
 		// Translate world matrix so its at the center of the model
 		ChsMatrix mTrans;
-		mTrans.translation( -this->modelCenter.x, -this->modelCenter.y, -this->modelCenter.z );
+    mTrans.translation( - this->modelCenter );
 		this->mtxWorld = this->mxtModelRotate * mTrans;
     this->mtxWVP = this->mtxWorld * this->mtxView * this->mtxProjection;
 	}

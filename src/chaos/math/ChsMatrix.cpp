@@ -21,17 +21,6 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	ChsMatrix::ChsMatrix(float _11, float _12, float _13, float _14,
-						float _21, float _22, float _23, float _24,
-						float _31, float _32, float _33, float _34,
-						float _41, float _42, float _43, float _44 ) :
-					_m11(_11),	_m12(_12), _m13(_13),	_m14(_14),
-					_m21(_21),	_m22(_22),	_m23(_23),	_m24(_24),
-					_m31(_31),	_m32(_32),	_m33(_33),	_m34(_34),
-					_m41(_41),	_m42(_42),	_m43(_43),	_m44(_44) {
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	ChsMatrix & ChsMatrix::operator = ( const ChsMatrix & matrix ){
 		memcpy( &(this->m), &(matrix.m), sizeof( float ) * 16 );
 		return *this;
@@ -60,7 +49,7 @@ namespace Chaos {
 		this->m4x4[2][0] = xaxis.z;	this->m4x4[2][1] = yaxis.z;	this->m4x4[2][2] = -zaxis.z;	this->m4x4[2][3] = 0.0f;
 		this->m4x4[3][0] = 0.0f;	this->m4x4[3][1] = 0.0f;	this->m4x4[3][2] = 0.0f;	this->m4x4[3][3] = 1.0f;
 		
-		this->translation( -eye.x, -eye.y, -eye.z );
+		this->translateTo( -eye.x, -eye.y, -eye.z );
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -231,14 +220,17 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void ChsMatrix::translation( float x, float y, float z ){
-		//this->identity();
-		//this->_m41 = x;		this->_m42 = y;		this->_m43 = z;
-		this->m[12]=this->m[0]*x+this->m[4]*y+this->m[8]*z+this->m[12];
-		this->m[13]=this->m[1]*x+this->m[5]*y+this->m[9]*z+this->m[13];
-		this->m[14]=this->m[2]*x+this->m[6]*y+this->m[10]*z+this->m[14];
-		this->m[15]=this->m[3]*x+this->m[7]*y+this->m[11]*z+this->m[15];
+	void ChsMatrix::translateTo( float x, float y, float z ){
+		this->_m41=this->m[0]*x+this->m[4]*y+this->m[8]*z+this->m[12];
+		this->_m42=this->m[1]*x+this->m[5]*y+this->m[9]*z+this->m[13];
+		this->_m43=this->m[2]*x+this->m[6]*y+this->m[10]*z+this->m[14];
+		this->_m44=this->m[3]*x+this->m[7]*y+this->m[11]*z+this->m[15];
+	}
 
+	//------------------------------------------------------------------------------------------------
+	void ChsMatrix::translation( float x, float y, float z ){
+    this->identity();
+		this->_m41=x;		this->_m42=y;		this->_m43=z;
 	}
 
 	//------------------------------------------------------------------------------------------------
