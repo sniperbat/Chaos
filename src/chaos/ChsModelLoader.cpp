@@ -76,10 +76,21 @@ namespace Chaos {
 			lexicalCastToArray( vertices, meshElement->FirstChildElement( "ChsVertexBuffer" )->GetText() );
 			mesh->getVertexBuffer()->setData( vertices );
 			vertices.clear();
-			std::vector<unsigned short> indeices;
-			lexicalCastToArray( indeices, meshElement->FirstChildElement( "ChsIndexBuffer" )->GetText() );
-			mesh->getIndexBuffer()->setData( indeices );
-			indeices.clear();
+      
+      tinyxml2::XMLElement * indexElement = meshElement->FirstChildElement( "ChsIndexBuffer" );
+      if( indexElement->BoolAttribute( "isShort" ) ){
+        std::vector<unsigned short> indeices;
+        lexicalCastToArray( indeices, indexElement->GetText() );
+        mesh->getIndexBuffer()->setData( indeices );
+        indeices.clear();
+      }      
+      else{
+        std::vector<unsigned int> indeices;
+        lexicalCastToArray( indeices, indexElement->GetText() );
+        mesh->getIndexBuffer()->setData( indeices );
+        indeices.clear();
+      }
+      
 			mesh->getIndexBuffer()->setMode( GL_TRIANGLES );
 			
 			tinyxml2::XMLElement * materialElement = meshElement->FirstChildElement( "ChsMaterial" );
