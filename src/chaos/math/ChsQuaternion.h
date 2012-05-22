@@ -28,7 +28,7 @@ namespace Chaos {
 		void identity( void );
 						
 		static const ChsQuaternion quaternionIndentity;
-		static ChsQuaternion rotationVector( const ChsVector3 & from, const ChsVector3 & to );
+		static ChsQuaternion createByRotationVectors( const ChsVector3 & from, const ChsVector3 & to );
 		//点乘
 		static float dot( const ChsQuaternion & quat1, const ChsQuaternion & quat2 );
 		//插值

@@ -16,8 +16,8 @@ namespace Chaos {
 	class ChsQuaternion;
 
 	//------------------------------------------------------------------------------------------------
-	ChsMatrix & matrixRotationQuaternion( ChsMatrix & matrix, const ChsQuaternion & quaternion  );
-	ChsQuaternion & quaternionRotationMatrix( ChsQuaternion & quaternion, const ChsMatrix & matrix );
+	ChsMatrix & changeQuaternionToMatrix( ChsMatrix & matrix, const ChsQuaternion & quaternion  );
+	ChsQuaternion & changeMatrixToQuaternion( ChsQuaternion & quaternion, const ChsMatrix & matrix );
 
 	//------------------------------------------------------------------------------------------------
   

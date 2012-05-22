@@ -76,7 +76,7 @@ namespace Chaos {
   }
   
 	//------------------------------------------------------------------------------------------------
-	ChsQuaternion ChsQuaternion::rotationVector( const ChsVector3 & from, const ChsVector3 & to ){
+	ChsQuaternion ChsQuaternion::createByRotationVectors( const ChsVector3 & from, const ChsVector3 & to ){
 		ChsVector3 part = ChsVector3::cross( from, to );
 		ChsQuaternion result;
 		result.w = from * to;

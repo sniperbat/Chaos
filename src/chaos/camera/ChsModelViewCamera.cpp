@@ -27,7 +27,7 @@ namespace Chaos{
     //----------------------------------------------------------------------------------------------
 		void onRotating( int x, int y ){
       if( this->isDrag ){ 
-        ChsQuaternion rotateQuat = ChsQuaternion::rotationVector( this->startPointOfRotate, this->screenToVector( x, y ) );
+        ChsQuaternion rotateQuat = ChsQuaternion::createByRotationVectors( this->startPointOfRotate, this->screenToVector( x, y ) );
         this->quatForCurrentDrag = this->quatBeforeDrag * rotateQuat;
       }
     }
@@ -78,7 +78,7 @@ namespace Chaos{
  		
     //----------------------------------------------------------------------------------------------
     inline ChsMatrix& getRotationMatrix( void ){
-      return matrixRotationQuaternion( this->mtxArcOrien , this->quatForCurrentDrag );
+      return changeQuaternionToMatrix( this->mtxArcOrien , this->quatForCurrentDrag );
     }
 
     //----------------------------------------------------------------------------------------------

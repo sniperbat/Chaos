@@ -6,7 +6,7 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsMatrix & matrixRotationQuaternion( ChsMatrix & matrix, const ChsQuaternion & quaternion ){
+	ChsMatrix & changeQuaternionToMatrix( ChsMatrix & matrix, const ChsQuaternion & quaternion ){
 		matrix._m11 = 1-2 * ( quaternion.y * quaternion.y + quaternion.z * quaternion.z );
 		matrix._m12 = 2 * ( quaternion.x * quaternion.y + quaternion.w * quaternion.z );
 		matrix._m13 = 2 * ( quaternion.x * quaternion.z - quaternion.w * quaternion.y );
@@ -31,7 +31,7 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	ChsQuaternion & quaternionRotationMatrix( ChsQuaternion & quaternion, const ChsMatrix & matrix ){
+	ChsQuaternion & changeMatrixToQuaternion( ChsQuaternion & quaternion, const ChsMatrix & matrix ){
 		float m11 = matrix._m11,	m12 = matrix._m12,	m13 = matrix._m13;
 		float m21 = matrix._m21,	m22 = matrix._m22,	m23 = matrix._m23;
 		float m31 = matrix._m31,	m32 = matrix._m32,	m33 = matrix._m33;
