@@ -15,7 +15,7 @@ namespace Chaos {
 		UIImage* imageClass = [[UIImage alloc] initWithContentsOfFile: fullPathName];
 		CGImageRef cgImage = imageClass.CGImage;
 		if( !cgImage )
-			return NULL;
+			return nullptr;
 		
 		unsigned int width = CGImageGetWidth(cgImage);
 		unsigned int height = CGImageGetHeight(cgImage);

@@ -7,7 +7,7 @@
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
-	ChsGameBase::ChsGameBase( void ) : renderer( NULL ){
+	ChsGameBase::ChsGameBase( void ) : renderer( nullptr ){
 		this->engine = ChsEngine::sharedInstance();
 		this->engine->setGame( this );
 	}

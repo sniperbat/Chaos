@@ -8,8 +8,8 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	class ChsModelLoader {
 	private:
-		ChsModel* loadAsXML( const char * filename );
-		ChsModel* loadAsBinary( const char * filename );
+		ChsModel* loadAsXML( const char * data );
+		ChsModel* loadAsBinary( char * data );
 	public:
 		ChsModel* load( const char * filename );
 	};

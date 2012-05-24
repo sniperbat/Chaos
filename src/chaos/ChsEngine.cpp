@@ -10,7 +10,7 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsEngine::ChsEngine( void ) : renderSystem( NULL ), game( NULL ){
+	ChsEngine::ChsEngine( void ) : renderSystem( nullptr ), game( nullptr ){
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsEngine::shutdown( void ){
 		this->getGame()->onShutdown();
-		this->setGame( NULL );
+		this->setGame( nullptr );
 		ChsRenderFactory::shutdown();
     ChsSceneManager::sharedInstance()->purge();
     ChsHUDManager::sharedInstance()->purge();

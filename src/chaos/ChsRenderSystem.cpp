@@ -47,8 +47,8 @@ namespace Chaos {
                         depthRenderbuffer( 0 ),
 												renderbufferWidth( 0 ),
 												renderbufferHeight( 0 ),
-												currentCamera( NULL ),
-                        renderStates( NULL )
+												currentCamera( nullptr ),
+                        renderStates( nullptr )
 	{
 	}
 
@@ -77,7 +77,7 @@ namespace Chaos {
 		this->setClearColor( 0.3f, 0.3f, 0.7f, 1.0f );
 		this->setViewPort( 0, 0, this->renderbufferWidth, this->renderbufferHeight );
 
-		glHint( GL_GENERATE_MIPMAP_HINT, GL_FASTEST );
+		glHint( GL_GENERATE_MIPMAP_HINT, GL_NICEST );
 
     this->renderStates = ChsRenderStates::sharedInstance();
     this->renderStates->queryCurrentStates();

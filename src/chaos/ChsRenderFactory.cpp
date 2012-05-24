@@ -12,7 +12,7 @@
 namespace Chaos{
 	
 	//------------------------------------------------------------------------------------------------
-	static ChsRenderSystem * currentRender = NULL;
+	static ChsRenderSystem * currentRender = nullptr;
 	
 	//------------------------------------------------------------------------------------------------
 	ChsRenderSystem * ChsRenderFactory::create( void ) {

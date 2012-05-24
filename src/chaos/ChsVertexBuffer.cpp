@@ -35,7 +35,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	ChsVertexBuffer::ChsVertexBuffer( void ) :	vboHandle( 0 ) ,
 												vaoHandle( 0 ),
-												vertices( NULL ),
+												vertices( nullptr ),
 												isNeedUpdate( false )
 	{
    	glGenBuffers( 1, &this->vboHandle );

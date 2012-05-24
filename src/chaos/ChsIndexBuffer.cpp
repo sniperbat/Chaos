@@ -5,7 +5,7 @@
 namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
-	ChsIndexBuffer::ChsIndexBuffer( void ) : handle( 0 ), triangles( NULL ){
+	ChsIndexBuffer::ChsIndexBuffer( void ) : handle( 0 ), triangles( nullptr ){
 		this->isNeedUpdate = false;
    	glGenBuffers( 1, &this->handle );
 	}

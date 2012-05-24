@@ -16,7 +16,7 @@ namespace Chaos {
 		~ChsShaderUniformSet( void );
 		void reset( void );
 		void apply( ChsShaderProgram * program );
-		void add( const std::string & name, ChsShaderUniformDataType type, unsigned int count, void * varAddr = NULL ); 
+		void add( const std::string & name, ChsShaderUniformDataType type, unsigned int count, void * varAddr = nullptr ); 
 		template<typename T> void set( const std::string & name, T values );
 		template<typename T> T get( const std::string & name )const;
 	private:

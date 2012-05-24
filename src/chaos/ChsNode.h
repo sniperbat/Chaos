@@ -24,7 +24,7 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	inline void ChsNode::add( ChsNode * node ){
-    if( node )
+    if( node != nullptr )
       this->add( node->getName(), node );
 	}
 

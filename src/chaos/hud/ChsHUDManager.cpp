@@ -90,7 +90,7 @@ namespace Chaos {
     sprite2D->moveTo( x, y );
     sprite2D->changeSizeTo( w, h );
     tinyxml2::XMLElement * texEntityElement = spriteElement->FirstChildElement( "ChsTextureEntity" );
-    while( texEntityElement != NULL ){
+    while( texEntityElement != nullptr ){
       int index = texEntityElement->IntAttribute( "index" );
       boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( textureList[index] ) );
       std::string sampleName = texEntityElement->Attribute( "sampleName" );
@@ -135,7 +135,7 @@ namespace Chaos {
     ChsHUD* hud = new ChsHUD( hudId );
     tinyxml2::XMLElement * nodeElement = hudElement->FirstChildElement();
     textureList.clear();
-    while( nodeElement != NULL ){
+    while( nodeElement != nullptr ){
       std::string nodeType = nodeElement->Name();
       if( !nodeType.compare( "ChsTexture2D" ) ){
         prepareTextureList( nodeElement );

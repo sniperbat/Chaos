@@ -20,12 +20,12 @@ namespace Chaos{
   //------------------------------------------------------------------------------------------------
 	void ChsShaderUniformSet::reset( void ){
 		this->uniforms.clear();
-		this->program = NULL;
+		this->program = nullptr;
 	}	
   
   //------------------------------------------------------------------------------------------------
 	void ChsShaderUniformSet::apply ( ChsShaderProgram * program ){
-		if( program == NULL )
+		if( program == nullptr )
 			return;
 		
 		bool needUpdateLocation = false;

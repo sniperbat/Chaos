@@ -18,7 +18,7 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsNode::add( const std::string & name, ChsNode * node ){
-    if( node ){
+    if( node != nullptr ){
       if( this->children.find( name ) == this->children.end() )
         insert( this->children )( name, node );
     }
@@ -27,7 +27,7 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	ChsNode * ChsNode::remove( const std::string & name ){
 		ChsNode * node = this->get( name );
-		if( node != NULL )
+		if( node != nullptr )
 			this->children.erase( name );
 		return node;
 	}
@@ -35,7 +35,7 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	ChsNode * ChsNode::get( const std::string & name ){
 		auto iter = this->children.find( name );
-		return  ( iter == this->children.end() ) ? NULL : iter->second;
+		return  ( iter == this->children.end() ) ? nullptr : iter->second;
 	}
 
 }

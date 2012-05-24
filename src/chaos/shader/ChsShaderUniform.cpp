@@ -6,7 +6,7 @@
 namespace Chaos {
   
 	//------------------------------------------------------------------------------------------------
-	ChsShaderUniform::ChsShaderUniform( void ) : fValuePtr( NULL ),linkedValuePtr( NULL ){
+	ChsShaderUniform::ChsShaderUniform( void ) : fValuePtr( nullptr ),linkedValuePtr( nullptr ){
 	}
   
 	//------------------------------------------------------------------------------------------------

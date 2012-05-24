@@ -13,6 +13,7 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	class ChsModel : public ChsRenderNode {
+    friend class ChsModelLoader;
 	public:
 		ChsModel( const std::string & name = "unnamed" );
 		virtual ~ChsModel( void );

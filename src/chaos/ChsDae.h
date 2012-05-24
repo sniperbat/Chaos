@@ -12,7 +12,7 @@ void prepareInput( std::vector<DaeInputType> & inputs, tinyxml2::XMLElement * in
 		input.setValue( inputElement );
 		inputs.push_back( input );
 		inputElement = inputElement->NextSiblingElement( "input" );
-	}while( inputElement != NULL );
+	}while( inputElement != nullptr );
 }
 
 //----------------------------------------------------------------------------------------------
@@ -150,7 +150,7 @@ struct DaeMesh{
 				this->triangles.setValue( element );
 			}
 			element = element->NextSiblingElement();
-		}while( element != NULL );
+		}while( element != nullptr );
 	}
 };
 

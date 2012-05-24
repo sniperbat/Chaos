@@ -119,9 +119,9 @@ namespace Chaos {
 	ChsModel * ChsDaeLoader::load( const char * filename ){
 		char * fileData;
 		ChsFileSystem::sharedInstance()->readFileAsUTF8( filename, &fileData );
-		if( fileData == NULL ){
+		if( fileData == nullptr ){
 			printf( "has no contents in xml file, or not found this file" );
-			return NULL;
+			return nullptr;
 		}
 		
 		boost::scoped_array<char> fileDataPtr( fileData );
@@ -131,7 +131,7 @@ namespace Chaos {
 			printf( "errorStr1:%s\n", doc.GetErrorStr1() );
 			printf( "errorStr2:%s\n", doc.GetErrorStr2() );
 			doc.PrintError();//get some error
-			return NULL;
+			return nullptr;
 		}
 		
 		ChsModel * model = new ChsModel( filename );
@@ -142,7 +142,7 @@ namespace Chaos {
 		std::vector<int> vertexIndexList;//store vertex index, include position normal and etc..
 		std::vector<float> vertexList;//store all vertex infomation, 
 		std::vector<unsigned short> triangleList;
-		while( geometryElement != NULL ){
+		while( geometryElement != nullptr ){
 			tinyxml2::XMLElement * meshElement = geometryElement->FirstChildElement( "mesh" );
 			std::string meshName = geometryElement->Attribute( "id" );
 			DaeMesh daeMesh;

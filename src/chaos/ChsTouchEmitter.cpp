@@ -39,6 +39,7 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   void ChsTouchEmitter::handleTouches( ChsTouchType type, const ChsTouch & touch ){
+    /*
     const char * types[] = {
       "CHS_TOUCH_TYPE_BEGAN",
       "CHS_TOUCH_TYPE_CHANGED",
@@ -50,8 +51,8 @@ namespace Chaos {
       "CHS_TOUCH_TYPE_PINCH",
       "CHS_TOUCH_TYPE_LONGPRESS",
     };
-
-    //printf( "%s\n", types[type] );
+    printf( "%s\n", types[type] );
+    */
     BOOST_FOREACH( ChsTouchListener * listener, listeners ){
       listener->handleTouches( type, touch );
     }

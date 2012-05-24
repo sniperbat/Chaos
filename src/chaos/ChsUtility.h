@@ -21,7 +21,7 @@ namespace Chaos {
 	template< typename Type > void safeRelease( Type **pptr ) {
 		if ( * pptr ) {
 			( * pptr )->Release();
-			* pptr = NULL;
+			* pptr = nullptr;
 		}
 	}
 
@@ -29,7 +29,7 @@ namespace Chaos {
 	template< typename Type > void safeRelease( Type **pptr, std::string msg ) {
 		if ( * pptr ) {
 			( * pptr )->Release();
-			* pptr = NULL;
+			* pptr = nullptr;
 			//if(!msg.empty())
 			//LOGMSG(msg.c_str());
 		}
@@ -39,7 +39,7 @@ namespace Chaos {
 	template< typename Type > void safeDelete( Type ** pptr ) {
 		if( * pptr ) {
 			boost::checked_delete( * pptr );
-			* pptr = NULL;
+			* pptr = nullptr;
 		}
 	}
 
@@ -48,7 +48,7 @@ namespace Chaos {
 		if( * pptr ) {
 			//LOGMSG(msg.c_str());
 			boost::checked_delete( * pptr );
-			*pptr = NULL;
+			*pptr = nullptr;
 		}
 	}
 	
@@ -56,7 +56,7 @@ namespace Chaos {
 	template< typename Type > void safeDeleteArray( Type ** pArrayPtr ) {
 		if( * pArrayPtr ) {
 			boost::checked_array_delete( * pArrayPtr );
-			*pArrayPtr = NULL;
+			*pArrayPtr = nullptr;
 		}
 	}
 
@@ -65,7 +65,7 @@ namespace Chaos {
 		if( * pArrayPtr ) {
 			//LOGMSG(msg.c_str());
 			boost::checked_array_delete( * pArrayPtr );
-			*pArrayPtr = NULL;
+			*pArrayPtr = nullptr;
 		}
 	}
 
