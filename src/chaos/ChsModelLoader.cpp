@@ -32,26 +32,23 @@ namespace Chaos {
 		skipData( data, strCount );
 		return str;
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	ChsModel * ChsModelLoader::loadAsXML( const char *filename ){
-		char * data;
-		ChsFileSystem::sharedInstance()->readFileAsRaw( filename, &data );
-		boost::scoped_ptr<char> modelData( data );
+
+  //------------------------------------------------------------------------------------------------
+	ChsModel * ChsModelLoader::loadAsXML( const char * data ){
 		tinyxml2::XMLDocument doc;
 		int ret = doc.Parse( data );
 		if( tinyxml2::XML_NO_ERROR != ret ){
 			printf( "errorStr1:%s\n", doc.GetErrorStr1() );
 			printf( "errorStr2:%s\n", doc.GetErrorStr2() );
 			doc.PrintError();//get some error
-			return NULL;
+			return nullptr;
 		}
 		
-		ChsModel * model = NULL;
+		ChsModel * model = nullptr;
 		tinyxml2::XMLElement * modelElement = doc.FirstChildElement( "ChsModel" );
 		if( !modelElement ){
 			printf( "there no model elements\n" );
-			return NULL;
+			return nullptr;
 		}
 		
 		std::string modelName = modelElement->Attribute( "id" );
@@ -72,25 +69,31 @@ namespace Chaos {
 				attrElement = attrElement->NextSiblingElement( "ChsAttribute" );
 			}
 			
-			std::vector<float> vertices;
-			lexicalCastToArray( vertices, meshElement->FirstChildElement( "ChsVertexBuffer" )->GetText() );
-			mesh->getVertexBuffer()->setData( vertices );
-			vertices.clear();
-      
-      tinyxml2::XMLElement * indexElement = meshElement->FirstChildElement( "ChsIndexBuffer" );
-      if( indexElement->BoolAttribute( "isShort" ) ){
-        std::vector<unsigned short> indeices;
-        lexicalCastToArray( indeices, indexElement->GetText() );
-        mesh->getIndexBuffer()->setData( indeices );
-        indeices.clear();
-      }      
-      else{
-        std::vector<unsigned int> indeices;
-        lexicalCastToArray( indeices, indexElement->GetText() );
-        mesh->getIndexBuffer()->setData( indeices );
-        indeices.clear();
+      tinyxml2::XMLElement * vertexElement = meshElement->FirstChildElement( "ChsVertexBuffer" );
+      const char * vertexArrayText = vertexElement->GetText();
+      if( vertexArrayText != nullptr ){
+        std::vector<float> vertices;
+        lexicalCastToArray( vertices, vertexArrayText );
+        mesh->getVertexBuffer()->setData( vertices );
+        vertices.clear();
       }
-      
+
+      tinyxml2::XMLElement * indexElement = meshElement->FirstChildElement( "ChsIndexBuffer" );
+      const char * indexArrayText = indexElement->GetText();
+      if( indexArrayText != nullptr ){
+        if( indexElement->BoolAttribute( "isShort" ) ){
+          std::vector<unsigned short> indeices;
+          lexicalCastToArray( indeices, indexArrayText );
+          mesh->getIndexBuffer()->setData( indeices );
+          indeices.clear();
+        }
+        else{
+          std::vector<unsigned int> indeices;
+          lexicalCastToArray( indeices, indexArrayText );
+          mesh->getIndexBuffer()->setData( indeices );
+          indeices.clear();
+        }
+      }      
 			mesh->getIndexBuffer()->setMode( GL_TRIANGLES );
 			
 			tinyxml2::XMLElement * materialElement = meshElement->FirstChildElement( "ChsMaterial" );
@@ -148,52 +151,64 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	ChsModel * ChsModelLoader::loadAsBinary( const char *filename ){
-		char * data;
-		ChsFileSystem::sharedInstance()->readFileAsRaw( filename, &data );
-		boost::scoped_ptr<char> modelData( data );
-		if( data[0] != 'c' || data[1] != 'h'||data[2] != 'm' || data[3] != 'o' ){
-			printf( "this is not chsmodel file" );
-			return NULL;
-		}
+	ChsModel * ChsModelLoader::loadAsBinary( char *data ){
+    if( data[0] != 'c' || data[1] != 'h'||data[2] != 'm' || data[3] != 'o' ){
+      printf( "this is not chsmodel file" );
+      return nullptr;
+    }
 		readData<int>( &data );//skip magic number
-		std::string modelName = readString( &data );
-		ChsModel * model = new ChsModel( modelName );
-		int meshCount = readData<int>( &data );
-		for( int meshIdx = 0; meshIdx < meshCount; meshIdx++ ){
-			std::string meshName = readString( &data );
-			boost::shared_ptr<ChsMesh> mesh( new ChsMesh( meshName ) );
-			int attriCount = readData<int>( &data );
-			for( int attrIdx = 0; attrIdx < attriCount; attrIdx++ ){
-				std::string attrName = readString( &data );
-				int stride = readData<int>( &data );
-				bool isNormalized = false;
-				if( !attrName.compare( "normal" ) )
-					isNormalized = true;
-				mesh->getVertexBuffer()->addAttrib( stride, GL_FLOAT, isNormalized, attrName );
-			}
-			int count = readData<int>( &data );
-			mesh->getVertexBuffer()->setData( data, count*sizeof(float) );
-			skipData( &data, count*sizeof(float) );
-			count = readData<int>( &data );
-			mesh->getIndexBuffer()->setData( data, count );	
-			skipData( &data, count*sizeof(unsigned short) );
-			mesh->getIndexBuffer()->setMode( GL_TRIANGLES );
-			ChsMaterial * material = new ChsMaterial();
-			material->setShader( "Shader.vsh", "Shader.fsh" );
-			mesh->setMaterial( material );
-			model->addMesh( mesh );
-		}
-		return model;
+    int xmlSize = readData<int>( &data );
+    ChsModel * model = this->loadAsXML( data );
+    skipData( &data, xmlSize );
+    
+    int meshCount = model->meshs.size();
+    for( int i = 0; i < meshCount; i++ ){
+      ChsMesh * mesh = model->meshs[i].get();
+      int vertexArraySize = readData<int>( &data );
+      float * vertexArrayAddr = ( float* )data;
+      mesh->getVertexBuffer()->setData( vertexArrayAddr, vertexArraySize );
+      skipData( &data, vertexArraySize );
+      int indexArraySize = readData<int>( &data );
+      char * indexArrayAddr = ( char* )data;
+      mesh->getIndexBuffer()->setData( indexArrayAddr, indexArraySize );
+      skipData( &data, indexArraySize );
+    }
+    
+    return model;
 	}
 	
+	//------------------------------------------------------------------------------------------------  
+  enum{
+    UNKNOWN_FORMAT,
+    XML_FORMAT,
+    BINARY_FORMAT,
+  };
+	//------------------------------------------------------------------------------------------------
+  int checkFileTypeByName( const std::string & fileName );
+  int checkFileTypeByName( const std::string & fileName ){
+    if( fileName.find( ".chsmodelx" ) != std::string::npos )
+      return XML_FORMAT;
+    else if( fileName.find( ".chsmodel" ) != std::string::npos )
+      return BINARY_FORMAT;
+    else
+      return UNKNOWN_FORMAT;
+  }
+  
 	//------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::load( const char *filename ){
 		std::string fileName = filename;
-		if( fileName.find( ".chsmodelx" ) != std::string::npos )
-			return this->loadAsXML( filename );
-		else 
-			return this->loadAsBinary( filename );
+    int fileType = checkFileTypeByName( fileName );
+    if( UNKNOWN_FORMAT == fileType )
+        return nullptr;
+    char * data = nullptr;
+    ChsFileSystem::sharedInstance()->readFileAsRaw( filename, &data );
+    if( data == nullptr )
+      return nullptr;
+    boost::scoped_ptr<char> modelData( data );
+    if( XML_FORMAT == fileType )
+      return this->loadAsXML( modelData.get() );
+    else
+      return this->loadAsBinary( modelData.get() );
 	}
   
   //------------------------------------------------------------------------------------------------
