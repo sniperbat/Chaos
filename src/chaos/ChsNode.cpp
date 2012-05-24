@@ -18,8 +18,10 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsNode::add( const std::string & name, ChsNode * node ){
-		if( this->children.find( name ) == this->children.end() )
-			insert( this->children )( name, node );
+    if( node ){
+      if( this->children.find( name ) == this->children.end() )
+        insert( this->children )( name, node );
+    }
 	}
 	
 	//------------------------------------------------------------------------------------------------
