@@ -33,23 +33,15 @@ namespace Chaos {
 	};
   
   //------------------------------------------------------------------------------------------------
-	ChsVertexBuffer::ChsVertexBuffer( void ) :	vboHandle( 0 ) ,
-												vaoHandle( 0 ),
-												vertices( nullptr ),
-												isNeedUpdate( false )
-	{
-   	glGenBuffers( 1, &this->vboHandle );
+	ChsVertexBuffer::ChsVertexBuffer( void ) :	vaoHandle( 0 ){
     glGenVertexArrays( 1, &this->vaoHandle);
 	}
 
   //------------------------------------------------------------------------------------------------
 	ChsVertexBuffer::~ChsVertexBuffer( void ){
-  	if( this->vboHandle )
-     	glDeleteBuffers( 1, &this->vboHandle );
     if( this->vaoHandle )
  	    glDeleteVertexArrays( 1, &this->vaoHandle);
 		attribs.clear();
-		safeDeleteArray( &this->vertices );
 	}
 
   //------------------------------------------------------------------------------------------------
@@ -57,15 +49,6 @@ namespace Chaos {
 		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
 			glBindAttribLocation( program->getHandle(), attrib->index, attrib->name.c_str() );
     }
-	}
-
-  //------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::setData( const void * vertices, int size ) {
-   	this->size = size;
-		safeDeleteArray( &this->vertices );
-		this->vertices = new char[size];
-		memcpy( this->vertices, vertices, size );
-		this->isNeedUpdate = true;
 	}
 
   //------------------------------------------------------------------------------------------------
@@ -110,7 +93,7 @@ namespace Chaos {
     if( this->isNeedUpdate ){
       this->bindAttribArrays();
       glBindBuffer( GL_ARRAY_BUFFER, this->vboHandle );
-      glBufferData( GL_ARRAY_BUFFER, this->size, this->vertices,  GL_STATIC_DRAW );
+      glBufferData( GL_ARRAY_BUFFER, this->size, this->buffer,  GL_STATIC_DRAW );
       this->isNeedUpdate = false;
     }
 	}

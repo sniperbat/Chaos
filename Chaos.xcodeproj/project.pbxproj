@@ -68,6 +68,7 @@
 		74C7BE02150062E500194E72 /* ChsShaderUniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */; };
 		74C7BE091500727600194E72 /* ChsCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE071500727600194E72 /* ChsCamera.cpp */; };
 		74C7BE0C1500AF9200194E72 /* ChsNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE0B1500AF9100194E72 /* ChsNode.cpp */; };
+		74CD8F12156F55CC00C4398C /* ChsArrayBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74CD8F11156F55CC00C4398C /* ChsArrayBuffer.cpp */; };
 		74DAC52D150F24640078B24F /* Wireframe.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 74DAC528150F21960078B24F /* Wireframe.vsh */; };
 		74DAC52E150F24640078B24F /* Wireframe.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 74DAC52B150F21A80078B24F /* Wireframe.fsh */; };
 		74E047C614ECC88B0024586A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E047C514ECC88B0024586A /* UIKit.framework */; };
@@ -202,6 +203,8 @@
 		74C7BE081500727600194E72 /* ChsCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsCamera.h; sourceTree = "<group>"; };
 		74C7BE0A1500AD1200194E72 /* ChsNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsNode.h; path = src/chaos/ChsNode.h; sourceTree = "<group>"; };
 		74C7BE0B1500AF9100194E72 /* ChsNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsNode.cpp; path = src/chaos/ChsNode.cpp; sourceTree = "<group>"; };
+		74CD8F0F156F54D000C4398C /* ChsArrayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsArrayBuffer.h; path = src/chaos/ChsArrayBuffer.h; sourceTree = "<group>"; };
+		74CD8F11156F55CC00C4398C /* ChsArrayBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsArrayBuffer.cpp; path = src/chaos/ChsArrayBuffer.cpp; sourceTree = "<group>"; };
 		74DAC528150F21960078B24F /* Wireframe.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Wireframe.vsh; path = shaders/Wireframe.vsh; sourceTree = "<group>"; };
 		74DAC52B150F21A80078B24F /* Wireframe.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Wireframe.fsh; path = shaders/Wireframe.fsh; sourceTree = "<group>"; };
 		74E047C114ECC88B0024586A /* Chaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +334,8 @@
 				749D79AA14ECD5F50046F2D9 /* ChsIndexBuffer.h */,
 				749D79A814ECD5F50046F2D9 /* ChsVertexBuffer.cpp */,
 				749D79B214ECD5F50046F2D9 /* ChsVertexBuffer.h */,
+				74CD8F0F156F54D000C4398C /* ChsArrayBuffer.h */,
+				74CD8F11156F55CC00C4398C /* ChsArrayBuffer.cpp */,
 				74EC450915621A300099E122 /* ChsTouchListener.h */,
 				747D5E4915636D30009D766E /* ChsTouchListener.cpp */,
 				74EC450A156222950099E122 /* ChsTouchEmitter.h */,
@@ -719,6 +724,7 @@
 				74EC450C156223D10099E122 /* ChsTouchEmitter.cpp in Sources */,
 				747D5E4A15636D30009D766E /* ChsTouchListener.cpp in Sources */,
 				747D5E511563A45A009D766E /* ChsModelViewCamera.cpp in Sources */,
+				74CD8F12156F55CC00C4398C /* ChsArrayBuffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,7 +25,7 @@ namespace Chaos {
 		this->vertexBuffer->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
     this->vertexBuffer->addAttrib( 2, GL_FLOAT, true, "texcoord0" );
     const GLubyte index[]={0,1,2,3};
-    this->indexBuffer->setData( index, 4, GL_UNSIGNED_BYTE );
+    this->indexBuffer->setDataWithArray( index, 4, GL_UNSIGNED_BYTE );
 		this->indexBuffer->setMode( GL_TRIANGLE_STRIP );
 
     ChsMaterial * material = new ChsMaterial();
@@ -87,7 +87,7 @@ namespace Chaos {
         1.0f, 1.0f, 1.0f, 1.0f,
         this->imageBound.w, this->imageBound.y,
       };
-   		this->vertexBuffer->setData( vertices, sizeof( vertices ) );
+   		this->vertexBuffer->setDataWithArray( vertices, sizeof( vertices ) );
       this->needUpdate = false;
     }
     ChsRenderUnit unit = {

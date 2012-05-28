@@ -31,9 +31,9 @@ namespace Chaos {
 		
 		this->vertexBuffer->addAttrib( 3, GL_FLOAT, false, "position" );
 		this->vertexBuffer->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
-		this->vertexBuffer->setData( vertices, sizeof( vertices ) );
+		this->vertexBuffer->setDataWithArray( vertices, sizeof( vertices ) );
     const GLubyte index[]={0,1,2,3};
-		this->indexBuffer->setData( index, 4, GL_UNSIGNED_BYTE );
+		this->indexBuffer->setDataWithArray( index, 4, GL_UNSIGNED_BYTE );
 		this->indexBuffer->setMode( GL_TRIANGLE_STRIP );
   }
 }

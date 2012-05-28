@@ -161,10 +161,10 @@ namespace Chaos {
 				mesh->getVertexBuffer()->addAttrib( attribute.stride, GL_FLOAT, isNormalized, attribute.name );
 			}
 			
-			mesh->getVertexBuffer()->setData( vertexList );
+			mesh->getVertexBuffer()->setDataWithVector( vertexList );
 			vertexList.clear();
 			
-			mesh->getIndexBuffer()->setData( triangleList );
+			mesh->getIndexBuffer()->setDataWithVector( triangleList );
 			triangleList.clear();
 			mesh->getIndexBuffer()->setMode( GL_TRIANGLES );
 

@@ -3,44 +3,56 @@
 #pragma once
 
 #include <vector>
-#include "platform/ChsOpenGL.h"
+#include "ChsArrayBuffer.h"
 //--------------------------------------------------------------------------------------------------
 
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
-	class ChsIndexBuffer {
+	class ChsIndexBuffer : public ChsArrayBuffer {
 	public:
 		ChsIndexBuffer( void );
 		~ChsIndexBuffer( void );
-		void setData( const void * triangles, int count, int type = GL_UNSIGNED_SHORT );
-		inline void setData( std::vector<unsigned short> & triangles );
-    inline void setData( std::vector<unsigned int> & triangles );
+    
+    void init( int count, int type );
+    
+		void setDataWithArray( const void * triangles, int count, int type );
+		
+    inline void setDataWithVector( std::vector<unsigned short> & triangles );
+    inline void setDataWithVector( std::vector<unsigned int> & triangles );
+    
 		void draw( void );
     inline void setMode( int mode );
+    inline int getType( void )const;
+    inline int getCount( void )const;
 	private:
-		unsigned int handle;
 		int count;
 		int type;
-		int size;
-		char * triangles;
-		bool isNeedUpdate;
 		int mode;
 	};
-
+  
+  //------------------------------------------------------------------------------------------------
+  inline int ChsIndexBuffer::getType( void )const{
+    return this->type;
+  }
+  
   //------------------------------------------------------------------------------------------------
 	inline void ChsIndexBuffer::setMode( int mode ){
     this->mode = mode;
   }
-	
+  
+	//------------------------------------------------------------------------------------------------
+  inline int ChsIndexBuffer::getCount( void )const{
+    return this->count;
+  }
   //------------------------------------------------------------------------------------------------
-	inline void ChsIndexBuffer::setData( std::vector<unsigned short> & triangles ){
-		this->setData( triangles.data(), triangles.size() );
+	inline void ChsIndexBuffer::setDataWithVector( std::vector<unsigned short> & triangles ){
+		this->setDataWithArray( triangles.data(), triangles.size(), GL_UNSIGNED_SHORT );
 	}
   
 	//------------------------------------------------------------------------------------------------
-	inline void ChsIndexBuffer::setData( std::vector<unsigned int> & triangles ){
-		this->setData( triangles.data(), triangles.size(), GL_UNSIGNED_INT );
+	inline void ChsIndexBuffer::setDataWithVector( std::vector<unsigned int> & triangles ){
+		this->setDataWithArray( triangles.data(), triangles.size(), GL_UNSIGNED_INT );
 	}
   //------------------------------------------------------------------------------------------------
   
