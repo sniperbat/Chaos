@@ -64,7 +64,6 @@
 		749D79E714ECD7B80046F2D9 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 749D799D14ECD5D90046F2D9 /* Shader.vsh */; };
 		749D79F014ECE5690046F2D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79EF14ECE5690046F2D9 /* QuartzCore.framework */; };
 		74BC079C151034FB003C4429 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74BC079A151034FB003C4429 /* tinyxml2.cpp */; };
-		74BC079F15103ADC003C4429 /* ChsDaeLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74BC079E15103ADC003C4429 /* ChsDaeLoader.cpp */; };
 		74C7BE02150062E500194E72 /* ChsShaderUniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */; };
 		74C7BE091500727600194E72 /* ChsCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE071500727600194E72 /* ChsCamera.cpp */; };
 		74C7BE0C1500AF9200194E72 /* ChsNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE0B1500AF9100194E72 /* ChsNode.cpp */; };
@@ -142,7 +141,6 @@
 		746458511558F14900C3C762 /* ChsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsSceneManager.cpp; path = src/chaos/ChsSceneManager.cpp; sourceTree = "<group>"; };
 		74645853155900B700C3C762 /* ChsRenderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsRenderable.cpp; path = src/chaos/ChsRenderable.cpp; sourceTree = "<group>"; };
 		746A2F9B15244E8900D928B8 /* test.chsmodelx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.chsmodelx; sourceTree = "<group>"; };
-		747B9CFC152432B6007AF122 /* ChsDae.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsDae.h; path = src/chaos/ChsDae.h; sourceTree = "<group>"; };
 		747B9CFE15243350007AF122 /* ChsModelLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelLoader.h; path = src/chaos/ChsModelLoader.h; sourceTree = "<group>"; };
 		747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelLoader.cpp; path = src/chaos/ChsModelLoader.cpp; sourceTree = "<group>"; };
 		747B9D0115244652007AF122 /* test.chsmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.chsmodel; sourceTree = "<group>"; };
@@ -195,8 +193,6 @@
 		749D79EF14ECE5690046F2D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		74BC079A151034FB003C4429 /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
 		74BC079B151034FB003C4429 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
-		74BC079D15103A43003C4429 /* ChsDaeLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsDaeLoader.h; path = src/chaos/ChsDaeLoader.h; sourceTree = "<group>"; };
-		74BC079E15103ADC003C4429 /* ChsDaeLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsDaeLoader.cpp; path = src/chaos/ChsDaeLoader.cpp; sourceTree = "<group>"; };
 		74C7BE00150061D800194E72 /* ChsShaderUniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsShaderUniform.h; sourceTree = "<group>"; };
 		74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsShaderUniform.cpp; sourceTree = "<group>"; };
 		74C7BE071500727600194E72 /* ChsCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsCamera.cpp; sourceTree = "<group>"; };
@@ -373,9 +369,6 @@
 				742F869314F609DB00693E51 /* ChsEntity.h */,
 				747B9CFE15243350007AF122 /* ChsModelLoader.h */,
 				747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */,
-				74BC079D15103A43003C4429 /* ChsDaeLoader.h */,
-				74BC079E15103ADC003C4429 /* ChsDaeLoader.cpp */,
-				747B9CFC152432B6007AF122 /* ChsDae.h */,
 				74EE55E1155A552000FE9325 /* ChsTextureEntity.h */,
 				74EE55E3155A56AB00FE9325 /* ChsTextureEntity.cpp */,
 				745C30F01516FD290061F510 /* ChsTexture2D.h */,
@@ -701,7 +694,6 @@
 				74C7BE0C1500AF9200194E72 /* ChsNode.cpp in Sources */,
 				740C3A5C150EDFE40093E952 /* ChsCoordinatePlane.cpp in Sources */,
 				74BC079C151034FB003C4429 /* tinyxml2.cpp in Sources */,
-				74BC079F15103ADC003C4429 /* ChsDaeLoader.cpp in Sources */,
 				745C30F31516FD8F0061F510 /* ChsTexture2D.cpp in Sources */,
 				74EE3A6B15171D7F00FC9420 /* ChsTextureFactoryIOS.mm in Sources */,
 				74EE3A6E1517229400FC9420 /* ChsTextureManager.cpp in Sources */,
