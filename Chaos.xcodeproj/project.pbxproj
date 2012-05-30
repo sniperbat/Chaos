@@ -36,6 +36,7 @@
 		745C30F31516FD8F0061F510 /* ChsTexture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745C30F21516FD8E0061F510 /* ChsTexture2D.cpp */; };
 		746458521558F14A00C3C762 /* ChsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 746458511558F14900C3C762 /* ChsSceneManager.cpp */; };
 		74645854155900B800C3C762 /* ChsRenderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74645853155900B700C3C762 /* ChsRenderable.cpp */; };
+		7469E9961573793800370997 /* xml_compact.chsmodelx in Resources */ = {isa = PBXBuildFile; fileRef = 7469E9951573793800370997 /* xml_compact.chsmodelx */; };
 		746A2F9C15244E8900D928B8 /* test.chsmodelx in Resources */ = {isa = PBXBuildFile; fileRef = 746A2F9B15244E8900D928B8 /* test.chsmodelx */; };
 		747B9D00152433B6007AF122 /* ChsModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */; };
 		747B9D0215244663007AF122 /* test.chsmodel in Resources */ = {isa = PBXBuildFile; fileRef = 747B9D0115244652007AF122 /* test.chsmodel */; };
@@ -140,6 +141,7 @@
 		7464584E1558E52100C3C762 /* ChsSceneManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsSceneManager.h; path = src/chaos/ChsSceneManager.h; sourceTree = "<group>"; };
 		746458511558F14900C3C762 /* ChsSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsSceneManager.cpp; path = src/chaos/ChsSceneManager.cpp; sourceTree = "<group>"; };
 		74645853155900B700C3C762 /* ChsRenderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsRenderable.cpp; path = src/chaos/ChsRenderable.cpp; sourceTree = "<group>"; };
+		7469E9951573793800370997 /* xml_compact.chsmodelx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xml_compact.chsmodelx; sourceTree = "<group>"; };
 		746A2F9B15244E8900D928B8 /* test.chsmodelx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.chsmodelx; sourceTree = "<group>"; };
 		747B9CFE15243350007AF122 /* ChsModelLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelLoader.h; path = src/chaos/ChsModelLoader.h; sourceTree = "<group>"; };
 		747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelLoader.cpp; path = src/chaos/ChsModelLoader.cpp; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				7454575B1560F21E00EC8991 /* sofaLeather8.png */,
 				749364AD1526CB39007608F4 /* Makefile */,
 				7414CFE515579454006597C2 /* demo.chshud */,
+				7469E9951573793800370997 /* xml_compact.chsmodelx */,
 				749364B31526CE7A007608F4 /* sofa.chsmodelx */,
 				747B9D0115244652007AF122 /* test.chsmodel */,
 				746A2F9B15244E8900D928B8 /* test.chsmodelx */,
@@ -633,6 +636,7 @@
 				749364B41526CE7A007608F4 /* sofa.chsmodelx in Resources */,
 				7414CFE615579454006597C2 /* demo.chshud in Resources */,
 				7454575C1560F21E00EC8991 /* sofaLeather8.png in Resources */,
+				7469E9961573793800370997 /* xml_compact.chsmodelx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

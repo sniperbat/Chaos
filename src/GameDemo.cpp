@@ -33,7 +33,7 @@ void GameDemo::onInit( void ) {
   this->getRender()->setCurrentCamera( camera.get() );
 	this->getRender()->showDebugCoordinate( true );
 	
-	ChsModel * model = ChsResourceManager::sharedInstance()->getModel( "test.chsmodel" ).get();
+	ChsModel * model = ChsResourceManager::sharedInstance()->getModel( "xml_compact.chsmodelx" ).get();
 	ChsSceneManager::sharedInstance()->getRoot()->add( model );
   
   ChsHUDManager::sharedInstance()->loadHUD( "demo.chshud" );
