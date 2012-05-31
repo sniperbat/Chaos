@@ -1,10 +1,7 @@
 #ifndef _CHS_MANAGERWITHCACHE_H
 #define _CHS_MANAGERWITHCACHE_H
 
-#include <string>
-#include <map>
 #include "ChsUtility.h"
-#include <boost/shared_ptr.hpp>
 //--------------------------------------------------------------------------------------------------
 
 namespace Chaos {

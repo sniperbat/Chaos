@@ -2,13 +2,10 @@
 #define _CHS_UTILITY_H
 #pragma once
 
-#include <string>
-#include <vector>
 #include <boost/checked_delete.hpp>
 #define BOOST_NO_CHAR16_T
 #define BOOST_NO_CHAR32_T
 #include <boost/lexical_cast.hpp>
-#include <boost/foreach.hpp>
 #include <boost/algorithm/string.hpp>
 #include "ChsDefine.h"
 //--------------------------------------------------------------------------------------------------

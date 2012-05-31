@@ -4,7 +4,6 @@
 #include "ChsResourceManager.h"
 #include "ChsIndexBuffer.h"
 #include "ChsVertexBuffer.h"
-#include "ChsRenderSystem.h"
 #include "ChsRenderStates.h"
 
 namespace Chaos {

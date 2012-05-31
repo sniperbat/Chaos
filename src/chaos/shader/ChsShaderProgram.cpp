@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <boost/scoped_ptr.hpp>
-
 #include "ChsShaderProgram.h"
 //--------------------------------------------------------------------------------------------------
 

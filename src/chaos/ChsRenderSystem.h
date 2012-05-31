@@ -2,7 +2,6 @@
 #define _CHS_RENDERSYSTEM_H
 #pragma once
 
-#include <vector>
 #include "ChsDefine.h"
 #include "platform/ChsOpenGL.h"
 

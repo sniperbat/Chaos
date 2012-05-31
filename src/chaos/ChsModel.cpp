@@ -1,10 +1,5 @@
-#include <boost/foreach.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
-
 #include "ChsModel.h"
 #include "ChsMesh.h"
-#include "ChsRenderSystem.h"
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
   

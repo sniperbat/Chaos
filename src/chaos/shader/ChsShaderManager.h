@@ -3,7 +3,6 @@
 #pragma once
 
 //--------------------------------------------------------------------------------------------------
-#include <boost/shared_ptr.hpp>
 #include "ChsManagerWithCache.h"
 
 namespace Chaos {

@@ -2,7 +2,6 @@
 #define _CHS_INDEXBUFFER_H
 #pragma once
 
-#include <vector>
 #include "ChsArrayBuffer.h"
 //--------------------------------------------------------------------------------------------------
 

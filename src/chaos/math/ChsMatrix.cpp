@@ -1,8 +1,6 @@
 #include "ChsMatrix.h"
 #include "ChsVector3.h"
 
-#include <string.h>
-
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------

@@ -1,6 +1,4 @@
 #include "ChsNode.h"
-#include <boost/assign.hpp>
-using namespace boost::assign;
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

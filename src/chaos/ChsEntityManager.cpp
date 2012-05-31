@@ -1,6 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
-
 #include "ChsEntityManager.h"
 #include "ChsEntity.h"
 

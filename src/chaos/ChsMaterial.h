@@ -2,7 +2,6 @@
 #define _CHSMATERIAL_H
 #pragma once
 
-#include <boost/weak_ptr.hpp>
 #include "shader/ChsShaderUniformSet.h"
 #include "ChsTextureEntity.h"
 

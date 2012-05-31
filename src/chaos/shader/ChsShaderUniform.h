@@ -1,9 +1,6 @@
 #ifndef _CHS_SHADERUNIFORM_H
 #define _CHS_SHADERUNIFORM_H
 
-#include <string>
-#include <vector>
-
 #include "ChsDefine.h"
 //--------------------------------------------------------------------------------------------------
 

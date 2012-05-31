@@ -4,7 +4,6 @@
 
 //--------------------------------------------------------------------------------------------------
 #include "ChsShader.h"
-#include <boost/shared_ptr.hpp>
 
 namespace Chaos {
 

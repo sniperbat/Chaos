@@ -8,7 +8,6 @@
 #include "camera/ChsModelViewCamera.h"
 #include "math/ChsMath.h"
 #include "ChsDaeLoader.h"
-#include <boost/shared_ptr.hpp>
 #include "ChsTexture2D.h"
 #include "ChsModel.h"
 #include "ChsHUDManager.h"
