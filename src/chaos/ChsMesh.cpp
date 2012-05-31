@@ -3,7 +3,6 @@
 #include "ChsMaterial.h"
 #include "ChsVertexBuffer.h"
 #include "ChsIndexBuffer.h"
-#include "ChsRenderSystem.h"
 
 //--------------------------------------------------------------------------------------------------
 

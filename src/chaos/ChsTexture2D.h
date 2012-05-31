@@ -1,7 +1,6 @@
 #ifndef _CHS_TEXTURE2D_H
 #define _CHS_TEXTURE2D_H
 
-#include <string>
 #include "platform/ChsOpenGL.h"
 #include "ChsDefine.h"
 
@@ -20,7 +19,6 @@ namespace Chaos {
 		void build( GLuint width, GLuint height, GLenum format, GLubyte * data );
 		void bindToUnit( GLint unit );
   
-    inline const std::string & getName( void )const;
     inline GLuint getHandle( void )const;
     inline boolean hasAlphaChannel( void )const;
     inline unsigned int getWidth( void )const;
@@ -35,7 +33,6 @@ namespace Chaos {
     GLuint height;
 		GLenum format;
 		GLenum type;
-		std::string name;
 		boolean hasAlpha;
     
     ChsTexWrap wraps[CHS_TEXTURE_WRAP_MAX];
@@ -56,11 +53,6 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	inline GLuint ChsTexture2D::getHandle( void )const{
     return this->textureHandle;
-  }
-  
-  //------------------------------------------------------------------------------------------------
-	inline const std::string & ChsTexture2D::getName( void )const{
-    return this->name;
   }
   
   //------------------------------------------------------------------------------------------------

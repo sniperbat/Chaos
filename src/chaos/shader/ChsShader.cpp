@@ -1,5 +1,3 @@
-#include <boost/scoped_ptr.hpp>
-
 #include "ChsShader.h"
 
 namespace Chaos {

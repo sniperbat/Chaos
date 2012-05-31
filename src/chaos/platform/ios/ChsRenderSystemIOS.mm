@@ -1,4 +1,5 @@
 #import <QuartzCore/QuartzCore.h>
+#include <vector>//use for ChsRenderSystem.h
 #include "ChsRenderSystemIOS.h"
 
 //--------------------------------------------------------------------------------------------------

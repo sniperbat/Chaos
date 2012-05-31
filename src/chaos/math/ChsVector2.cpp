@@ -1,5 +1,4 @@
 #include "ChsVector2.h"
-#include <assert.h>
 
 namespace Chaos {
 	

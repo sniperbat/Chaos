@@ -1,5 +1,3 @@
-#include <boost/scoped_array.hpp>
-
 #include "ChsTexture2D.h"
 #include "io/ChsFileSystem.h"
 #include "ChsUtility.h"

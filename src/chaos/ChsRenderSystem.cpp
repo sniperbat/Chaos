@@ -1,7 +1,3 @@
-#include <map>
-#include <vector>
-#include <boost/foreach.hpp>
-
 #include "ChsRenderSystem.h"
 #include "ChsRenderStates.h"
 #include "ChsRenderNode.h"

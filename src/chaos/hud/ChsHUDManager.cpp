@@ -1,6 +1,3 @@
-#include <boost/foreach.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include <tinyxml2/tinyxml2.h>
 #include "ChsHUDManager.h"
 #include "camera/ChsCamera.h"

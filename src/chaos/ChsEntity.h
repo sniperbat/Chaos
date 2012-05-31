@@ -1,7 +1,6 @@
 #ifndef _CHS_ENTITY_H
 #define _CHS_ENTITY_H
 
-#include <boost/weak_ptr.hpp>
 #include "ChsRenderNode.h"
 
 //--------------------------------------------------------------------------------------------------

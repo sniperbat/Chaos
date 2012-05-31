@@ -1,7 +1,6 @@
 #ifndef _CHS_SCENEMANAGER_H
 #define _CHS_SCENEMANAGER_H
 
-#include <boost/scoped_ptr.hpp>
 #include "ChsSingleton.h"
 
 namespace Chaos {

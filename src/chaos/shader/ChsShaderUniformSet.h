@@ -1,9 +1,6 @@
 #ifndef _CHS_SHADERUNIFORMSET_H
 #define _CHS_SHADERUNIFORMSET_H
 
-#include <map>
-#include <boost/shared_ptr.hpp>
-
 #include "ChsShaderUniform.h"
 //------------------------------------------------------------------------------------------------
 

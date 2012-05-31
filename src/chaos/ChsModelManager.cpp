@@ -1,6 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
-
 #include "ChsModelManager.h"
 #include "ChsModelLoader.h"
 #include "ChsModel.h"

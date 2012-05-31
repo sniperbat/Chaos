@@ -1,9 +1,6 @@
-﻿#ifndef _CHS_SPRITE2D_H
+#ifndef _CHS_SPRITE2D_H
 #define _CHS_SPRITE2D_H
 
-#include <string>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include "ChsDefine.h"
 #include "ChsMesh.h"
 

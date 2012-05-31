@@ -1,9 +1,6 @@
 #include "ChsVertexBuffer.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsUtility.h"
-#include <boost/foreach.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 

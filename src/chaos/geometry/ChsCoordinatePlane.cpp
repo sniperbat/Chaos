@@ -1,5 +1,3 @@
-#include <boost/scoped_array.hpp>
-
 #include "ChsCoordinatePlane.h"
 #include "platform/ChsOpenGL.h"
 #include "ChsVertexBuffer.h"

@@ -1,7 +1,3 @@
-#include <boost/foreach.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
-
 #include "ChsMaterial.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsResourceManager.h"
