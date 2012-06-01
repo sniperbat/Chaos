@@ -79,12 +79,21 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	template<typename T>
-	void skipData( T **data, int count ){
-		(*data) += count;
+	void skipData( T * & data, int count ){
+		data += count;
 	}
   
   //------------------------------------------------------------------------------------------------
-	
+	template<typename T>
+	T readData( char * & data ){
+		T value = *( reinterpret_cast<T*>( data ) );
+		skipData( data, sizeof( T ) );
+		return value;
+	}
+  
+  //------------------------------------------------------------------------------------------------
+	std::string readString( char * & data );
+
 }//namespace
 
 #endif //_CHS_UTILITY_H

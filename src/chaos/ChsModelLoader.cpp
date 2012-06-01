@@ -12,71 +12,51 @@
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
-
-  //------------------------------------------------------------------------------------------------
-	template<typename T>
-	T readData( char ** data ){
-		T value = *(reinterpret_cast<T*>(*data));
-		skipData( data, sizeof(T) );
-		return value;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	std::string readString( char ** data );
-	std::string readString( char ** data ){
-		int strCount = readData<int>( data );
-		boost::scoped_ptr<char> p( new char[strCount+1] );
-		memset( p.get(), 0, strCount+1 );
-		memcpy( p.get(), *data, strCount );
-		std::string str = p.get();
-		skipData( data, strCount );
-		return str;
-	}
   
   //------------------------------------------------------------------------------------------------
   void setVertexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );
   void setVertexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
     tinyxml2::XMLElement * vertexElement = meshElement->FirstChildElement( "ChsVertexBuffer" );
     const char * vertexArrayText = vertexElement->GetText();
-    if( vertexArrayText != nullptr ){
+    if( vertexArrayText == nullptr ){
+      //no vertex data in xml segment,just init vertex buffer
+      int size = vertexElement->IntAttribute( "count" ) * sizeof( float );
+      mesh->getVertexBuffer()->init( size );
+    }
+    else{
+      //have vertex data in xml segment, init and set data
       std::vector<float> vertices;
       lexicalCastToArray( vertices, vertexArrayText );
       mesh->getVertexBuffer()->setDataWithVector( vertices );
       vertices.clear();
     }
-    else{
-      int size = vertexElement->IntAttribute( "count" ) * sizeof( float );
-      mesh->getVertexBuffer()->init( size );
-    }
   }
   
+  //------------------------------------------------------------------------------------------------
+  template <typename T> void setIndexData( ChsIndexBuffer * indexBuffer, const char * indexArrayText ){
+    std::vector<T> indeices;
+    lexicalCastToArray( indeices, indexArrayText );
+    indexBuffer->setDataWithVector( indeices );
+  }
   //------------------------------------------------------------------------------------------------
   void setIndexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );  
   void setIndexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
     tinyxml2::XMLElement * indexElement = meshElement->FirstChildElement( "ChsIndexBuffer" );
     ChsIndexBuffer * indexBuffer = mesh->getIndexBuffer();
-    const char * indexArrayText = indexElement->GetText();
+    //unsigned short or unsigned int
     const bool isShort = indexElement->BoolAttribute( "isShort" );
-    if( indexArrayText != nullptr ){
-      if( isShort ){
-        std::vector<unsigned short> indeices;
-        lexicalCastToArray( indeices, indexArrayText );
-        indexBuffer->setDataWithVector( indeices );
-        indeices.clear();
-      }
-      else{
-        std::vector<unsigned int> indeices;
-        lexicalCastToArray( indeices, indexArrayText );
-        indexBuffer->setDataWithVector( indeices );
-        indeices.clear();
-      }
+    const char * indexArrayText = indexElement->GetText();
+    if( indexArrayText == nullptr ){
+      //no index data in xml segment, just init the index buffer
+      int count = indexElement->IntAttribute( "count" );
+      indexBuffer->init( count, isShort ? GL_UNSIGNED_SHORT : GL_UNSIGNED_INT );
     }
     else{
-      int count = indexElement->IntAttribute( "count" );
+      //have data in xml segment, set data to index buffer
       if( isShort )
-        indexBuffer->init( count, GL_UNSIGNED_SHORT );
+        setIndexData<unsigned short>( indexBuffer, indexArrayText );
       else
-        indexBuffer->init( count, GL_UNSIGNED_INT );
+        setIndexData<unsigned int>( indexBuffer, indexArrayText );
     }
     indexBuffer->setMode( GL_TRIANGLES );
   }
@@ -97,52 +77,73 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
+  void setPropertys( tinyxml2::XMLElement * materialElement, ChsMaterial * material );
+  void setPropertys( tinyxml2::XMLElement * materialElement, ChsMaterial * material ){
+    tinyxml2::XMLElement * propertyElement = materialElement->FirstChildElement( "ChsProperty" );
+    while( propertyElement ){
+      std::string propertyName = propertyElement->Attribute( "name" );
+      ChsShaderUniformDataType type = static_cast<ChsShaderUniformDataType>( propertyElement->UnsignedAttribute( "type" ) );
+      unsigned int count = propertyElement->UnsignedAttribute( "count" );
+      material->addProperty( propertyName, type, count );
+      switch ( type ) {
+        case CHS_SHADER_UNIFORM_1_FLOAT:
+          material->setProperty( propertyName, propertyElement->FloatAttribute( "value" ) );
+          break;
+        case CHS_SHADER_UNIFORM_1_INT:
+          material->setProperty( propertyName, propertyElement->IntAttribute( "value" ) );
+          break;
+        default:
+          break;
+      }
+      propertyElement = propertyElement->NextSiblingElement( "ChsProperty");
+    }
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  void setTextures( tinyxml2::XMLElement * materialElement, ChsMaterial * material );
+  void setTextures( tinyxml2::XMLElement * materialElement, ChsMaterial * material ){
+    tinyxml2::XMLElement * textureElement = materialElement->FirstChildElement( "ChsTexture2D" );
+    ChsResourceManager * resMgr = ChsResourceManager::sharedInstance();
+    while( textureElement ){
+      std::string textureFileName = textureElement->Attribute( "src" );
+      boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( resMgr->getTexture2D( textureFileName ) ) );
+      texture->setSampleName( textureElement->Attribute( "sampleName" ) );
+      texture->setActiveUnit( textureElement->IntAttribute( "activeUnit" ) );
+      material->addTexture( texture );
+      textureElement = textureElement->NextSiblingElement( "ChsTexture2D");
+    }
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  void setRenderStates( tinyxml2::XMLElement * materialElement, ChsMaterial * material );
+  void setRenderStates( tinyxml2::XMLElement * materialElement, ChsMaterial * material ){
+    tinyxml2::XMLElement * renderStateElement = materialElement->FirstChildElement( "ChsRenderState" );
+    while( renderStateElement ){
+      int index = renderStateElement->IntAttribute( "index" );
+      int value = renderStateElement->IntAttribute( "value" );
+      material->setRenderState( static_cast<ChsRenderState>( index ), value );
+      renderStateElement = renderStateElement->NextSiblingElement( "ChsRenderState");
+    }
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  void setShaders( tinyxml2::XMLElement * materialElement, ChsMaterial * material );
+  void setShaders( tinyxml2::XMLElement * materialElement, ChsMaterial * material ){
+    std::string vsName = materialElement->FirstChildElement( "ChsVertexShader" )->Attribute( "src" );
+    std::string fsName = materialElement->FirstChildElement( "ChsFragmentShader" )->Attribute( "src" );
+    material->setShader( vsName, fsName );
+  }
+  
+  //------------------------------------------------------------------------------------------------
   void setMaterial( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );
   void setMaterial( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
     tinyxml2::XMLElement * materialElement = meshElement->FirstChildElement( "ChsMaterial" );
     if( materialElement ){
       ChsMaterial * material = new ChsMaterial();
-      
-      const char * src = materialElement->Attribute( "src" );
-      if( src ){
-        //1: from external material file, reference from src	
-      }
-      else{
-        //2: embed material
-        
-        std::string vsName = materialElement->FirstChildElement( "ChsVertexShader" )->Attribute( "src" );
-        std::string fsName = materialElement->FirstChildElement( "ChsFragmentShader" )->Attribute( "src" );
-        material->setShader( vsName, fsName );
-        tinyxml2::XMLElement * textureElement = materialElement->FirstChildElement( "ChsTexture2D" );
-        while( textureElement ){
-          std::string textureFileName = textureElement->Attribute( "src" );
-          boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( ChsResourceManager::sharedInstance()->getTexture2D( textureFileName ) ) );
-          texture->setSampleName( textureElement->Attribute( "sampleName" ) );
-          texture->setActiveUnit( textureElement->IntAttribute( "activeUnit" ) );
-          material->addTexture( texture );
-          textureElement = textureElement->NextSiblingElement( "ChsTexture2D");
-        }
-        
-        tinyxml2::XMLElement * propertyElement = materialElement->FirstChildElement( "ChsProperty" );
-        while( propertyElement ){
-          std::string propertyName = propertyElement->Attribute( "name" );
-          std::string type = propertyElement->Attribute( "type" );
-          if( !type.compare( "bool" )){
-            material->addProperty( propertyName, CHS_SHADER_UNIFORM_1_INT, 1 );
-            bool value = propertyElement->BoolAttribute( "value" );
-            material->setProperty( propertyName, value );
-          }
-          propertyElement = propertyElement->NextSiblingElement( "ChsProperty");
-        }
-        
-        tinyxml2::XMLElement * renderStateElement = materialElement->FirstChildElement( "ChsRenderState" );
-        while( renderStateElement ){
-          int index = renderStateElement->IntAttribute( "index" );
-          int value = renderStateElement->IntAttribute( "value" );
-          material->setRenderState( static_cast<ChsRenderState>( index ), value );
-          renderStateElement = renderStateElement->NextSiblingElement( "ChsRenderState");
-        }
-      }
+      setShaders( materialElement, material );
+      setTextures( materialElement, material );
+      setPropertys( materialElement, material );
+      setRenderStates( materialElement, material );
       mesh->setMaterial( material );
     }
   }
@@ -178,7 +179,6 @@ namespace Chaos {
 			model->addMesh( mesh );
 			meshElement = meshElement->NextSiblingElement( "ChsMesh" );
 		}
-		
 		return model;
 	}
 	
@@ -188,25 +188,24 @@ namespace Chaos {
       printf( "this is not chsmodel file" );
       return nullptr;
     }
-		readData<int>( &data );//skip magic number
-    int xmlSize = readData<int>( &data );
+		readData<int>( data );//skip magic number
+    //load xml segment
+    int xmlSize = readData<int>( data );
     ChsModel * model = this->loadAsXML( data );
-    skipData( &data, xmlSize );
-    
+    skipData( data, xmlSize );
+    //load binary segment
     int meshCount = model->meshs.size();
     for( int i = 0; i < meshCount; i++ ){
       ChsMesh * mesh = model->meshs[i].get();
-      int vertexArraySize = readData<int>( &data );
+      int vertexArraySize = readData<int>( data );
       mesh->getVertexBuffer()->setDataWithArray( data, vertexArraySize );
-      skipData( &data, vertexArraySize );
-      
-      int indexArraySize = readData<int>( &data );
+      skipData( data, vertexArraySize );
+      int indexArraySize = readData<int>( data );
       int count = mesh->getIndexBuffer()->getCount();
       int type = mesh->getIndexBuffer()->getType();
       mesh->getIndexBuffer()->setDataWithArray( data, count, type );
-      skipData( &data, indexArraySize );
+      skipData( data, indexArraySize );
     }
-    
     return model;
 	}
 	

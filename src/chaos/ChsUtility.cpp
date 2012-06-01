@@ -32,6 +32,16 @@ namespace Chaos {
       return GL_MIRRORED_REPEAT;
     return -1;
   }
-
+  
+  //------------------------------------------------------------------------------------------------
+  std::string readString( char * & data ){
+		int strCount = readData<int>( data );
+		boost::scoped_ptr<char> p( new char[strCount+1] );
+		memset( p.get(), 0, strCount+1 );
+		memcpy( p.get(), data, strCount );
+		std::string str = p.get();
+		skipData( data, strCount );
+		return str;
+	}
   
 }//namespace
