@@ -116,7 +116,8 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   void ChsHUDManager::loadHUD( const std::string & hudName ){
     char * data;
-		ChsFileSystem::sharedInstance()->readFileAsUTF8( hudName.c_str(), &data );
+    std::string fullpath = "assets/" + hudName;
+		ChsFileSystem::sharedInstance()->readFileAsUTF8( fullpath.c_str(), &data );
 		boost::scoped_ptr<char> modelData( data );
 		tinyxml2::XMLDocument doc;
 		int ret = doc.Parse( data );

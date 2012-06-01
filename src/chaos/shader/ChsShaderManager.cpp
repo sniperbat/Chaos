@@ -14,12 +14,13 @@ namespace Chaos{
 		if( !shader ){
 			//not in cache, so load source from file
 			char * source = nullptr ;
-			ChsFileSystem::sharedInstance()->readFileAsUTF8( name.c_str(), &source );
+      std::string fullpath = "shaders/" + name;
+			ChsFileSystem::sharedInstance()->readFileAsUTF8( fullpath.c_str(), &source );
 			if( source ){
 				boost::scoped_array<char> sourcePtr( source );
         ShaderType * shaderInstance = new ShaderType();
 				if( shaderInstance->load( source ) ){
-					printf( "生成Shader:%s\n", name.c_str() );
+					printf( "生成Shader:%s\n", fullpath.c_str() );
           shader = boost::shared_ptr<ShaderType>( shaderInstance );
 					insert( this->cache )( name, shader );
 				}

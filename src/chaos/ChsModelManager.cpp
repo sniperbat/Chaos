@@ -11,9 +11,12 @@ namespace Chaos {
 		if( !model ){
 			//load from file
 			ChsModelLoader loader;
-			model.reset( loader.load( name.c_str() ) );
-			if( model )
+      std::string fullpath = "assets/" + name;
+			model.reset( loader.load( fullpath.c_str() ) );
+			if( model ){
+        printf( "载入模型:%s\n", fullpath.c_str() );
 				insert( this->cache )( name, model );
+      }
 		}
 		return model;
 	}

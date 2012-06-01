@@ -11,8 +11,11 @@ namespace Chaos {
 	NSString * ChsFileSystemIOS::getFullPath( const char * path ){
 		NSString * fileName = [NSString stringWithUTF8String:path ];
     NSString * type = [ fileName pathExtension];
+    NSString * bundlePath = [ fileName stringByDeletingLastPathComponent ];
     fileName = [ [ fileName lastPathComponent ] stringByDeletingPathExtension ];
-    NSString * fullPathName = [[NSBundle mainBundle] pathForResource:fileName ofType:type];
+    NSString * fullPathName = [[NSBundle mainBundle] pathForResource:fileName
+                                                              ofType:type
+                                                         inDirectory:bundlePath ];
 		return fullPathName;
 	}
 	
