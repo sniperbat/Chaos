@@ -1,7 +1,5 @@
 #ifndef _CHS_RENDERSYSTEMIOS_H
 #define _CHS_RENDERSYSTEMIOS_H
-#pragma once
-
 //--------------------------------------------------------------------------------------------------
 #include "chaos/ChsRenderSystem.h"
 
@@ -24,4 +22,5 @@ namespace Chaos {
 	
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif//_CHSRENDERSYSTEMIOS_H

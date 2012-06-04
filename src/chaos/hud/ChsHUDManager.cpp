@@ -8,6 +8,7 @@
 #include "ChsTextureEntity.h"
 #include "ChsResourceManager.h"
 #include "ChsUtility.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
@@ -48,25 +49,25 @@ namespace Chaos {
     iter = this->hudList.find( hudName );
     if( iter == this->hudList.end() )
       return;//this hud does not exsit
-    insert( this->hudRenderList )( hudName, iter->second );
+    this->hudRenderList.insert( std::make_pair( hudName, iter->second ) );
   }
   
   //------------------------------------------------------------------------------------------------
   void ChsHUDManager::hideHUD( const std::string & hudName ){
     auto iter = this->hudRenderList.find( hudName );
-    if( iter != this->hudRenderList.end() ){
+    if( iter != this->hudRenderList.end() )
       this->hudRenderList.erase( hudName );
-    }
   }
   
   //------------------------------------------------------------------------------------------------
   static std::vector< boost::shared_ptr<ChsTexture2D> > textureList;
+  
   //------------------------------------------------------------------------------------------------
   void prepareTextureList( const tinyxml2::XMLElement * textureElement );
   void prepareTextureList( const tinyxml2::XMLElement * textureElement ){
     std::string textureFileName = textureElement->Attribute( "src" );
     boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
-    textureList += texture;
+    textureList.push_back( texture );
   }
   
   //------------------------------------------------------------------------------------------------
@@ -143,6 +144,11 @@ namespace Chaos {
       }
       nodeElement = nodeElement->NextSiblingElement();
     }
-    insert( this->hudList )( hudName, hud );
+    this->hudList.insert( std::make_pair( hudName, hud ) );
   }
+  
+  //--------------------------------------------------------------------------------------------------
+  
 }
+
+//--------------------------------------------------------------------------------------------------

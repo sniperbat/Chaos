@@ -1,7 +1,5 @@
 #ifndef _CHS_FILESYSTEM_H
 #define _CHS_FILESYSTEM_H
-#pragma once
-
 //--------------------------------------------------------------------------------------------------
 #include "ChsSingleton.h"
 
@@ -20,4 +18,5 @@ namespace Chaos {
 
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif //_CHS_FILESYSTEM_H

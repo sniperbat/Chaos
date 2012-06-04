@@ -1,5 +1,6 @@
 #include "ChsOpenGL.h"
 
+//--------------------------------------------------------------------------------------------------
 //ogl extension
 
 #if defined(CHS_PLATFORM_ANDROID)
@@ -9,3 +10,5 @@ PFNGLBINDVERTEXARRAYOESPROC  glBindVertexArray;
 PFNGLDELETEVERTEXARRAYSOESPROC  glDeleteVertexArrays;
 
 #endif
+
+//--------------------------------------------------------------------------------------------------

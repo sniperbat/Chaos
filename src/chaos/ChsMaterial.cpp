@@ -30,7 +30,7 @@ namespace Chaos {
 			return;
 		this->addProperty( texture->getSampleName(), CHS_SHADER_UNIFORM_1_INT, 1);
 		this->setProperty( texture->getSampleName(), texture->getActiveUnit() );
-		this->textures += texture;
+		this->textures.push_back( texture );
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -69,23 +69,21 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::linkShader( void )const{
-		if( !this->shaderProgram.expired() ){
-			boost::shared_ptr<ChsShaderProgram> shaderProgram = this->shaderProgram.lock();
-			shaderProgram->link();
-		}
+		if( !this->shaderProgram.expired() )
+			this->shaderProgram.lock()->link();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::setRenderState( ChsRenderState state, unsigned int value ){
 		auto iter = this->renderStates.find( state );
-		if( iter != this->renderStates.end() ){
+		if( iter != this->renderStates.end() )
 			this->renderStates[state] = value;
-		}
-		else{
-			insert( this->renderStates )( state, value );
-		}
+		else
+      this->renderStates.insert( std::make_pair( state, value ) );
 	}
   
   //------------------------------------------------------------------------------------------------
   
 }//namespace
+
+//--------------------------------------------------------------------------------------------------

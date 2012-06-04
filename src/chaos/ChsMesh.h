@@ -1,8 +1,8 @@
 #ifndef _CHSMESH_H
 #define _CHSMESH_H
-#pragma once
-
 //--------------------------------------------------------------------------------------------------
+#include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 #include "ChsRenderNode.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -29,12 +29,14 @@ namespace Chaos {
     boost::scoped_ptr<ChsIndexBuffer> indexBuffer;
 	};
 
+  //------------------------------------------------------------------------------------------------
   inline ChsVertexBuffer* ChsMesh::getVertexBuffer( void )const{
     return this->vertexBuffer.get();
   }
   
+  //------------------------------------------------------------------------------------------------
   inline ChsIndexBuffer* ChsMesh::getIndexBuffer( void )const{
-    return this->indexBuffer.get();    
+    return this->indexBuffer.get();
   }
   
 	//------------------------------------------------------------------------------------------------
@@ -46,4 +48,5 @@ namespace Chaos {
   
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif //_CHSMESH_H

@@ -1,10 +1,12 @@
 #include "ChsArrayBuffer.h"
 #include "ChsUtility.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
-  ChsArrayBuffer::ChsArrayBuffer( void ) : vboHandle( 0 ), buffer( nullptr ), size( 0 ), capacity( 0 ), isNeedUpdate( false ){
+  ChsArrayBuffer::ChsArrayBuffer( void ) : vboHandle( 0 ), buffer( nullptr ), size( 0 ), 
+                                           capacity( 0 ), isNeedUpdate( false ){
    	glGenBuffers( 1, &this->vboHandle );
   }
   
@@ -35,3 +37,5 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   
 }
+
+//--------------------------------------------------------------------------------------------------

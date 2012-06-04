@@ -1,7 +1,6 @@
 #ifndef _CHS_RENDERNODE_H
 #define _CHS_RENDERNODE_H
-#pragma once
-
+//--------------------------------------------------------------------------------------------------
 #include "ChsNode.h"
 #include "ChsRenderable.h"
 
@@ -24,4 +23,5 @@ namespace Chaos{
   
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif //_CHS_RENDERNODE_H

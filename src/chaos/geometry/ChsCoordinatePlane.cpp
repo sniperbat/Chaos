@@ -1,3 +1,4 @@
+#include <boost/scoped_array.hpp>
 #include "ChsCoordinatePlane.h"
 #include "platform/ChsOpenGL.h"
 #include "ChsVertexBuffer.h"
@@ -7,6 +8,7 @@
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
+  
 	//------------------------------------------------------------------------------------------------
 	ChsCoordinatePlane::ChsCoordinatePlane( float size, int divide ) : ChsModel( "Coordinate Plane" ){
 		struct Vertex{
@@ -121,5 +123,9 @@ namespace Chaos {
 //		material->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
 		this->addMesh(mesh);
 	}
+  
 	//------------------------------------------------------------------------------------------------
+  
 }
+
+//--------------------------------------------------------------------------------------------------

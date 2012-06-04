@@ -30,7 +30,6 @@
 		746458521558F14A00C3C762 /* ChsSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 746458511558F14900C3C762 /* ChsSceneManager.cpp */; };
 		74645854155900B800C3C762 /* ChsRenderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74645853155900B700C3C762 /* ChsRenderable.cpp */; };
 		747B9D00152433B6007AF122 /* ChsModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */; };
-		747D5E4A15636D30009D766E /* ChsTouchListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D5E4915636D30009D766E /* ChsTouchListener.cpp */; };
 		747D5E511563A45A009D766E /* ChsModelViewCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */; };
 		7486D9AA1520531500099441 /* ChsModelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9A91520531400099441 /* ChsModelManager.cpp */; };
 		7486D9AE1520618E00099441 /* ChsModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9AB1520580800099441 /* ChsModel.cpp */; };
@@ -51,6 +50,8 @@
 		749D79E114ECD6080046F2D9 /* ChsVector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749D79DA14ECD6080046F2D9 /* ChsVector4.cpp */; };
 		749D79E314ECD77A0046F2D9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79E214ECD77A0046F2D9 /* OpenGLES.framework */; };
 		749D79F014ECE5690046F2D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79EF14ECE5690046F2D9 /* QuartzCore.framework */; };
+		74A693CD157C58BB00CD3845 /* ChsTouchEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74A693C9157C56DD00CD3845 /* ChsTouchEmitter.cpp */; };
+		74A693CE157C58BE00CD3845 /* ChsTouchListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74A693CA157C56DD00CD3845 /* ChsTouchListener.cpp */; };
 		74BC079C151034FB003C4429 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74BC079A151034FB003C4429 /* tinyxml2.cpp */; };
 		74C7BE02150062E500194E72 /* ChsShaderUniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */; };
 		74C7BE091500727600194E72 /* ChsCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE071500727600194E72 /* ChsCamera.cpp */; };
@@ -68,7 +69,6 @@
 		74EC45041561FD7F0099E122 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EC44FC1561FD7F0099E122 /* AppDelegate.m */; };
 		74EC45051561FD7F0099E122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EC44FD1561FD7F0099E122 /* main.m */; };
 		74EC45081561FE530099E122 /* ChsFileSystemIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 74EC45061561FE530099E122 /* ChsFileSystemIOS.mm */; };
-		74EC450C156223D10099E122 /* ChsTouchEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74EC450B156223D10099E122 /* ChsTouchEmitter.cpp */; };
 		74EE3A651517147600FC9420 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EE3A641517147600FC9420 /* CoreGraphics.framework */; };
 		74EE3A6B15171D7F00FC9420 /* ChsTextureFactoryIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 74EE3A6A15171D7F00FC9420 /* ChsTextureFactoryIOS.mm */; };
 		74EE3A6E1517229400FC9420 /* ChsTextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74EE3A6D1517229300FC9420 /* ChsTextureManager.cpp */; };
@@ -123,7 +123,6 @@
 		74645853155900B700C3C762 /* ChsRenderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsRenderable.cpp; path = src/chaos/ChsRenderable.cpp; sourceTree = "<group>"; };
 		747B9CFE15243350007AF122 /* ChsModelLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelLoader.h; path = src/chaos/ChsModelLoader.h; sourceTree = "<group>"; };
 		747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelLoader.cpp; path = src/chaos/ChsModelLoader.cpp; sourceTree = "<group>"; };
-		747D5E4915636D30009D766E /* ChsTouchListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTouchListener.cpp; path = src/chaos/ChsTouchListener.cpp; sourceTree = "<group>"; };
 		747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsModelViewCamera.cpp; sourceTree = "<group>"; };
 		747D5E4F1563A45A009D766E /* ChsModelViewCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsModelViewCamera.h; sourceTree = "<group>"; };
 		7486D9A815203A8900099441 /* ChsModelManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelManager.h; path = src/chaos/ChsModelManager.h; sourceTree = "<group>"; };
@@ -166,6 +165,10 @@
 		749D79DB14ECD6080046F2D9 /* ChsVector4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsVector4.h; sourceTree = "<group>"; };
 		749D79E214ECD77A0046F2D9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		749D79EF14ECE5690046F2D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		74A693C9157C56DD00CD3845 /* ChsTouchEmitter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChsTouchEmitter.cpp; sourceTree = "<group>"; };
+		74A693CA157C56DD00CD3845 /* ChsTouchListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChsTouchListener.cpp; sourceTree = "<group>"; };
+		74A693CB157C56DD00CD3845 /* ChsTouchEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChsTouchEmitter.h; sourceTree = "<group>"; };
+		74A693CC157C56DD00CD3845 /* ChsTouchListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChsTouchListener.h; sourceTree = "<group>"; };
 		74BC079A151034FB003C4429 /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
 		74BC079B151034FB003C4429 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
 		74C7BE00150061D800194E72 /* ChsShaderUniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsShaderUniform.h; sourceTree = "<group>"; };
@@ -195,10 +198,6 @@
 		74EC45011561FD7F0099E122 /* GLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLViewController.h; path = src/entrance/ios/GLViewController.h; sourceTree = "<group>"; };
 		74EC45061561FE530099E122 /* ChsFileSystemIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ChsFileSystemIOS.mm; path = src/chaos/platform/ios/ChsFileSystemIOS.mm; sourceTree = "<group>"; };
 		74EC45071561FE530099E122 /* ChsFileSystemIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsFileSystemIOS.h; path = src/chaos/platform/ios/ChsFileSystemIOS.h; sourceTree = "<group>"; };
-		74EC450915621A300099E122 /* ChsTouchListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsTouchListener.h; path = src/chaos/ChsTouchListener.h; sourceTree = "<group>"; };
-		74EC450A156222950099E122 /* ChsTouchEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsTouchEmitter.h; path = src/chaos/ChsTouchEmitter.h; sourceTree = "<group>"; };
-		74EC450B156223D10099E122 /* ChsTouchEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsTouchEmitter.cpp; path = src/chaos/ChsTouchEmitter.cpp; sourceTree = "<group>"; };
-		74ED5C271577377500DA3185 /* Chaos.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chaos.pch; path = src/chaos/Chaos.pch; sourceTree = "<group>"; };
 		74EE3A641517147600FC9420 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		74EE3A6815171BF300FC9420 /* ChsTextureFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsTextureFactory.h; path = src/chaos/ChsTextureFactory.h; sourceTree = "<group>"; };
 		74EE3A6915171CCA00FC9420 /* ChsTextureFactoryIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsTextureFactoryIOS.h; path = src/chaos/platform/ios/ChsTextureFactoryIOS.h; sourceTree = "<group>"; };
@@ -295,10 +294,6 @@
 				749D79B214ECD5F50046F2D9 /* ChsVertexBuffer.h */,
 				74CD8F0F156F54D000C4398C /* ChsArrayBuffer.h */,
 				74CD8F11156F55CC00C4398C /* ChsArrayBuffer.cpp */,
-				74EC450915621A300099E122 /* ChsTouchListener.h */,
-				747D5E4915636D30009D766E /* ChsTouchListener.cpp */,
-				74EC450A156222950099E122 /* ChsTouchEmitter.h */,
-				74EC450B156223D10099E122 /* ChsTouchEmitter.cpp */,
 				741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */,
 				741ABD4E14EE46F300995232 /* ChsRenderFactory.h */,
 				749D79AE14ECD5F50046F2D9 /* ChsRenderSystem.h */,
@@ -369,6 +364,10 @@
 		749D79CD14ECD6080046F2D9 /* io */ = {
 			isa = PBXGroup;
 			children = (
+				74A693C9157C56DD00CD3845 /* ChsTouchEmitter.cpp */,
+				74A693CA157C56DD00CD3845 /* ChsTouchListener.cpp */,
+				74A693CB157C56DD00CD3845 /* ChsTouchEmitter.h */,
+				74A693CC157C56DD00CD3845 /* ChsTouchListener.h */,
 				749D79CE14ECD6080046F2D9 /* ChsFileSystem.h */,
 			);
 			name = io;
@@ -468,7 +467,6 @@
 				749D79A014ECD5DF0046F2D9 /* chaos */,
 				742F868A14F5E6AC00693E51 /* GameDemo.h */,
 				742F868B14F5ECAB00693E51 /* GameDemo.cpp */,
-				74ED5C271577377500DA3185 /* Chaos.pch */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -631,10 +629,10 @@
 				74EC45041561FD7F0099E122 /* AppDelegate.m in Sources */,
 				74EC45051561FD7F0099E122 /* main.m in Sources */,
 				74EC45081561FE530099E122 /* ChsFileSystemIOS.mm in Sources */,
-				74EC450C156223D10099E122 /* ChsTouchEmitter.cpp in Sources */,
-				747D5E4A15636D30009D766E /* ChsTouchListener.cpp in Sources */,
 				747D5E511563A45A009D766E /* ChsModelViewCamera.cpp in Sources */,
 				74CD8F12156F55CC00C4398C /* ChsArrayBuffer.cpp in Sources */,
+				74A693CD157C58BB00CD3845 /* ChsTouchEmitter.cpp in Sources */,
+				74A693CE157C58BE00CD3845 /* ChsTouchListener.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

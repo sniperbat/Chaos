@@ -1,10 +1,9 @@
 #ifndef _CHS_VECTOR4_H
 #define _CHS_VECTOR4_H
-#pragma once
-
 //--------------------------------------------------------------------------------------------------
 #include <boost/operators.hpp>
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
@@ -14,18 +13,8 @@ namespace Chaos {
 	public:
 		union{
 			float value[4];
-			struct{
-				float x;
-				float y;
-				float z;
-				float w;
-			};
-			struct{
-				float r;
-				float g;
-				float b;
-				float a;
-			};
+			struct{ float x;  float y;  float z;  float w;  };
+			struct{ float r;  float g;  float b;  float a;  };
 		};
 
 		ChsVector4( void );
@@ -66,4 +55,6 @@ namespace Chaos {
 	typedef ChsVector4 ChsColor4;
 
 }//namespace
+
+//--------------------------------------------------------------------------------------------------
 #endif		//_CHS_VECTOR4_H

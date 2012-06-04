@@ -1,9 +1,9 @@
 #include "ChsEngine.h"
 #include "ChsResourceManager.h"
 #include "ChsRenderStates.h"
-#include "ChsHUDManager.h"
+#include "hud/ChsHUDManager.h"
 #include "ChsSceneManager.h"
-#include "ChsTouchEmitter.h"
+#include "io/ChsTouchEmitter.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -14,4 +14,5 @@ namespace Chaos {
   static ChsSceneManager gSceneManager;
   static ChsTouchEmitter gTouchEmitter;
 }
+
 //------------------------------------------------------------------------------------------------

@@ -3,16 +3,20 @@
 #include "ChsVertexBuffer.h"
 #include "ChsIndexBuffer.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
+  //------------------------------------------------------------------------------------------------
 	ChsPlane::ChsPlane( std::string name, float w, float h ) : ChsMesh( name ) {
 		this->init( w, h );
 	}
 	
+  //------------------------------------------------------------------------------------------------
 	ChsPlane::ChsPlane( float w, float h ) : ChsMesh( "unnamed" ) {
     this->init( w, h );
 	}
 
+  //------------------------------------------------------------------------------------------------
   void ChsPlane::init( float w, float h ){
     const GLfloat vertices[] = {
 			-w/2, -h/2, 0.0f,
@@ -36,4 +40,9 @@ namespace Chaos {
 		this->indexBuffer->setDataWithArray( index, 4, GL_UNSIGNED_BYTE );
 		this->indexBuffer->setMode( GL_TRIANGLE_STRIP );
   }
+  
+  //------------------------------------------------------------------------------------------------
+  
 }
+
+//--------------------------------------------------------------------------------------------------

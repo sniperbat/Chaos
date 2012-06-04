@@ -10,12 +10,13 @@
 #include "camera/ChsCamera.h"
 #include "math/ChsMath.h"
 #include "geometry/ChsCoordinatePlane.h"
-#include "ChsHUDManager.h"
+#include "hud/ChsHUDManager.h"
 #include "ChsSceneManager.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
+  //------------------------------------------------------------------------------------------------
   ChsRenderChain renderChains[CHS_RENDER_TAG_MAX];
   
 	static ChsShaderUniformSet globalUniformSet;
@@ -240,3 +241,5 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   
 }//namespace
+
+//--------------------------------------------------------------------------------------------------

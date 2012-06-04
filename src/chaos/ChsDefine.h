@@ -1,25 +1,29 @@
 #ifndef _CHSDEFINE_H
 #define _CHSDEFINE_H
-#pragma once
-
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
-#if defined(__APPLE__)
+#if defined( __APPLE__ )
 	#include <TargetConditionals.h>
-	#if defined (TARGET_OS_IPHONE)
+	#if defined ( TARGET_OS_IPHONE )
 		#define CHS_PLATFORM_IOS
 	#endif
 #endif
 
 	//------------------------------------------------------------------------------------------------
-#if defined(ANDROID)
+#if defined( ANDROID )
 	#define CHS_PLATFORM_ANDROID
+#endif
+
+  //------------------------------------------------------------------------------------------------
+#if defined( _WINDOWS )
+#define CHS_PLATFORM_WINDOWS
 #endif
 
 	//------------------------------------------------------------------------------------------------
 	
-#if defined(boolean)
+#if defined( boolean )
 #undef boolean
 #endif
 #define boolean unsigned int
@@ -28,7 +32,7 @@ namespace Chaos {
 	enum ChsRenderType{
 		CHS_RENDER_IOS,
 		CHS_RENDER_ANDROID,
-		//		CHS_RENDER_D3D
+		CHS_RENDER_WINDOWS,
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -140,6 +144,7 @@ namespace Chaos {
     ChsPoint location;
     ChsPoint previousLocation;
   };
+  
   //------------------------------------------------------------------------------------------------
   struct ChsTapTouch : ChsTouch{
     int numberOfTaps;
@@ -162,4 +167,5 @@ namespace Chaos {
   
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif//_CHSDEFINE_H

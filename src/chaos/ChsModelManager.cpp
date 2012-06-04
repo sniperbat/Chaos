@@ -15,7 +15,7 @@ namespace Chaos {
 			model.reset( loader.load( fullpath.c_str() ) );
 			if( model ){
         printf( "载入模型:%s\n", fullpath.c_str() );
-				insert( this->cache )( name, model );
+				this->cache.insert( std::make_pair( name, model ) );
       }
 		}
 		return model;
@@ -24,3 +24,5 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   
 }
+
+//--------------------------------------------------------------------------------------------------

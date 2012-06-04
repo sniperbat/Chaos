@@ -1,12 +1,12 @@
 #ifndef _CHS_CHAOS_H
 #define _CHS_CHAOS_H
-#pragma once
-
-#include "ChsEngine.h"
-#include "ChsTouchEmitter.h"
 //--------------------------------------------------------------------------------------------------
+#include "ChsEngine.h"
+#include "io/ChsTouchEmitter.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
+
   //------------------------------------------------------------------------------------------------	
 #ifdef __OBJC__
 	//set layer before engine start
@@ -17,4 +17,5 @@ namespace Chaos {
   
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif//_CHS_CHAOS_H

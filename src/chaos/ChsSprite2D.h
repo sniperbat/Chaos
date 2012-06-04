@@ -1,6 +1,6 @@
 #ifndef _CHS_SPRITE2D_H
 #define _CHS_SPRITE2D_H
-
+//--------------------------------------------------------------------------------------------------
 #include "ChsDefine.h"
 #include "ChsMesh.h"
 
@@ -11,6 +11,7 @@ namespace Chaos {
   class ChsMaterial;
   class ChsTextureEntity;
   class ChsRenderSystem;
+  
  	//------------------------------------------------------------------------------------------------
   class ChsSprite2D : public ChsMesh {
   private:
@@ -103,5 +104,5 @@ namespace Chaos {
   
 }
 
-
+//--------------------------------------------------------------------------------------------------
 #endif//_CHS_SPRITE2D_H

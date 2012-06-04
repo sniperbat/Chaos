@@ -1,9 +1,11 @@
 #include "ChsVertexBuffer.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsUtility.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
+  //------------------------------------------------------------------------------------------------
   struct ChsAttribUnit{
 		int size;
 		int count;
@@ -13,6 +15,7 @@ namespace Chaos {
 		int stride;
 		int offset;
 		std::string  name;
+    
 		ChsAttribUnit( int count, int type, bool isNormalized, const std::string & name ){
 			this->count = count;
 			this->type = type;
@@ -62,7 +65,7 @@ namespace Chaos {
    	else{
       attrib->offset = 0;
    	}
-    this->attribs += attrib;
+    this->attribs.push_back( attrib );
    	stride += attrib->size;
 		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
 			attrib->stride = stride;
@@ -103,3 +106,5 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   
 }//namespace
+
+//--------------------------------------------------------------------------------------------------

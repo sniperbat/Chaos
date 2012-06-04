@@ -1,7 +1,8 @@
 #ifndef _CHSMATERIAL_H
 #define _CHSMATERIAL_H
-#pragma once
-
+//--------------------------------------------------------------------------------------------------
+#include <boost/weak_ptr.hpp>
+#include <vector>
 #include "shader/ChsShaderUniformSet.h"
 #include "ChsTextureEntity.h"
 
@@ -57,4 +58,5 @@ namespace Chaos {
   
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif //_CHSMATERIAL_H
