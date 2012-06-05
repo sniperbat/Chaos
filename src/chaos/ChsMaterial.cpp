@@ -28,8 +28,10 @@ namespace Chaos {
 	void ChsMaterial::addTexture( const boost::shared_ptr<ChsTextureEntity> & texture ){
 		if( !texture )
 			return;
-		this->addProperty( texture->getSampleName(), CHS_SHADER_UNIFORM_1_INT, 1);
-		this->setProperty( texture->getSampleName(), texture->getActiveUnit() );
+    ChsTextureEntity * texturePtr = texture.get();
+    const std::string & sampleName = texturePtr->getSampleName();
+		this->addProperty( sampleName, CHS_SHADER_UNIFORM_1_INT, 1);
+		this->setProperty( sampleName, texturePtr->getActiveUnit() );
 		this->textures.push_back( texture );
 	}
 	

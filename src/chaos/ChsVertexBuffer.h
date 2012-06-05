@@ -18,7 +18,7 @@ namespace Chaos {
 	public:
 		ChsVertexBuffer( void );
 		~ChsVertexBuffer( void );
-		void addAttrib( int count, int type, bool isNormalized, const std::string & name );
+		void addAttrib( int index, int count, int type, bool isNormalized, const std::string & name );
 		void bindAttribLocations( const ChsShaderProgram * program );
 
 		void bind( void );

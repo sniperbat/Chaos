@@ -23,7 +23,6 @@ namespace Chaos {
 		
     void addProperty( const std::string & name, ChsShaderUniformDataType type, int count );
 		template<typename T> void setProperty( const std::string & name, T value );
-		template<typename T> T getProperty( const std::string & name )const;
 	  
     void setShader( const std::string & vshName, const std::string & fshName );
 		void setRenderState( ChsRenderState state, unsigned int value );
@@ -49,11 +48,6 @@ namespace Chaos {
 		this->shaderUniformSet.set( name, value );
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	template<typename T> T ChsMaterial::getProperty( const std::string & name )const{
-		return this->shaderUniformSet.get<T>( name );
-	}
-  
   //------------------------------------------------------------------------------------------------
   
 }//namespace
