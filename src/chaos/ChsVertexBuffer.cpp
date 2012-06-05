@@ -2,9 +2,11 @@
 #include "ChsVertexBuffer.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsUtility.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
+  //------------------------------------------------------------------------------------------------
   struct ChsAttribUnit{
 		int size;
 		int count;
@@ -14,6 +16,7 @@ namespace Chaos {
 		int stride;
 		int offset;
 		std::string  name;
+    
 		ChsAttribUnit( int count, int type, bool isNormalized, const std::string & name ){
 			this->count = count;
 			this->type = type;
@@ -45,15 +48,16 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::bindAttribLocations( const ChsShaderProgram * program ) {
 		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
+      printf( "bind:%s\n",attrib->name.c_str() );
 			glBindAttribLocation( program->getHandle(), attrib->index, attrib->name.c_str() );
     }
 	}
 
   //------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::addAttrib( int count, int type, bool isNormalized, const std::string & name ) {
+	void ChsVertexBuffer::addAttrib( int index, int count, int type, bool isNormalized, const std::string & name ) {
 		boost::shared_ptr<ChsAttribUnit> attrib( new ChsAttribUnit( count, type, isNormalized, name ) );
    	int lastOne = this->attribs.size();
-    attrib->index = lastOne;
+    attrib->index = index;
     int stride = 0;
    	if( lastOne ) {
      	const boost::shared_ptr<ChsAttribUnit> & lastAttrib = this->attribs[lastOne-1];
@@ -63,7 +67,7 @@ namespace Chaos {
    	else{
       attrib->offset = 0;
    	}
-    this->attribs += attrib;
+    this->attribs.push_back( attrib );
    	stride += attrib->size;
 		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
 			attrib->stride = stride;
@@ -104,3 +108,5 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   
 }//namespace
+
+//--------------------------------------------------------------------------------------------------

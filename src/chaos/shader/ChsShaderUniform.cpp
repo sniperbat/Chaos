@@ -1,17 +1,17 @@
 #include "ChsShaderUniform.h"
 #include "ChsShaderProgram.h"
 #include "ChsUtility.h"
-//--------------------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
   
 	//------------------------------------------------------------------------------------------------
-	ChsShaderUniform::ChsShaderUniform( void ) : fValuePtr( nullptr ),linkedValuePtr( nullptr ){
+	ChsShaderUniform::ChsShaderUniform( void ) : valuePtr( nullptr ),linkedValuePtr( nullptr ){
 	}
   
 	//------------------------------------------------------------------------------------------------
 	ChsShaderUniform::~ChsShaderUniform( void ){
-		safeDeleteArray( &this->fValuePtr );
+		safeDeleteArray( &this->valuePtr );
 	}
   
 	//------------------------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ namespace Chaos {
 
 		void * ptr = this->linkedValuePtr;
 		if( !ptr )
-			ptr = this->fValuePtr;
+			ptr = this->valuePtr;
 		switch ( this->type ){
 			case CHS_SHADER_UNIFORM_MAT2:
 				glUniformMatrix2fv( this->location, this->count, false, (const GLfloat*)ptr );
@@ -37,13 +37,31 @@ namespace Chaos {
 			case CHS_SHADER_UNIFORM_MAT4:
 				glUniformMatrix4fv( this->location, this->count, false, (const GLfloat*)ptr );
 				break;
+      case CHS_SHADER_UNIFORM_VEC4_FLOAT:
+        glUniform4fv( this->location, this->count, (const GLfloat*)ptr );
+        break;
+      case CHS_SHADER_UNIFORM_VEC3_FLOAT:
+        glUniform3fv( this->location, this->count, (const GLfloat*)ptr );
+        break;
+      case CHS_SHADER_UNIFORM_VEC2_FLOAT:
+        glUniform2fv( this->location, this->count, (const GLfloat*)ptr );
+        break;
+      case CHS_SHADER_UNIFORM_1_FLOAT:
+        glUniform1fv( this->location, this->count, (const GLfloat*)ptr );
+        break;
+      case CHS_SHADER_UNIFORM_VEC4_INT:
+        glUniform4iv( this->location, this->count, (const GLint*)ptr );
+        break;
+      case CHS_SHADER_UNIFORM_VEC3_INT:
+        glUniform3iv( this->location, this->count, (const GLint*)ptr );
+        break;
+      case CHS_SHADER_UNIFORM_VEC2_INT:
+        glUniform2iv( this->location, this->count, (const GLint*)ptr );
+        break;
+      case CHS_SHADER_UNIFORM_1_INT:
+        glUniform1iv( this->location, this->count, (const GLint*)ptr );
+        break;
 			default:
-				//vec2 equ float * 2, vec4 equ float * 4, int3 equ int * 3 ....etc..
-				GLsizei count = this->count * ( this->type / 2 + 1 );
-				if( this->type % 2 )
-					glUniform1iv( this->location, count, (const GLint*)ptr );
-				else
-					glUniform1fv( this->location, count, (const GLfloat*)ptr );
 				break;
 		}
 	}
@@ -60,20 +78,17 @@ namespace Chaos {
 		else{
 			switch ( this->type ){
 				case CHS_SHADER_UNIFORM_MAT2:
-					this->fValuePtr = new float[ this->count * 4 ];
+					this->valuePtr = new char[ this->count * 4 * sizeof(float) ];
 					break;
 				case CHS_SHADER_UNIFORM_MAT3:
-					this->fValuePtr = new float[ this->count * 9 ];
+					this->valuePtr = new char[ this->count * 9 * sizeof(float) ];
 					break;
 				case CHS_SHADER_UNIFORM_MAT4:
-					this->fValuePtr = new float[ this->count * 16 ];
+					this->valuePtr = new char[ this->count * 16 * sizeof(float) ];
 					break;
 				default:
 					GLsizei size = this->count * ( this->type / 2 + 1 );
-					if( this->type % 2 )
-						this->iValuePtr = new int[size];
-					else
-						this->fValuePtr = new float[size];
+          this->valuePtr = new char[ size * sizeof(int) ];
 					break;
 			}
 		}
@@ -82,3 +97,5 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 
 }
+
+//--------------------------------------------------------------------------------------------------

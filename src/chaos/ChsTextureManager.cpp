@@ -15,7 +15,7 @@ namespace Chaos {
 			texture.reset( ChsTextureFactory::sharedInstance()->createTexture2D( fullpath.c_str() ) );
 			if( texture ){
 				printf( "生成texture:%s\n", fullpath.c_str() );
-				insert( this->cache )( name, texture );
+        this->cache.insert( std::make_pair( name, texture ) );
 			}
 		}
 	  return texture;
@@ -24,3 +24,5 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	
 }
+
+//--------------------------------------------------------------------------------------------------

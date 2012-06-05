@@ -1,6 +1,6 @@
 ﻿#ifndef _CHS_CAMERAE_H
 #define _CHS_CAMERAE_H
-
+//--------------------------------------------------------------------------------------------------
 #include "math/ChsVector3.h"
 #include "math/ChsMatrix.h"
 
@@ -61,18 +61,30 @@ namespace Chaos {
 	inline const ChsMatrix & ChsCamera::getViewProjectionMatrix( void )const{
 		return this->mtxViewProj;
 	}
+  
+  //--------------------------------------------------------------------------------------------------
 	inline const ChsMatrix & ChsCamera::getViewMatrix( void )const{
 		return this->mtxView;
 	}
+  
+  //--------------------------------------------------------------------------------------------------
 	inline const ChsMatrix & ChsCamera::getProjectionMatrix( void )const{
 		return this->mtxProjection;
 	}
+  
+  //--------------------------------------------------------------------------------------------------
   inline const ChsMatrix & ChsCamera::getWorldMatrix( void )const{
     return this->mtxWorld;
   }
+  
+  //--------------------------------------------------------------------------------------------------
   inline const ChsMatrix & ChsCamera::getMatrix( void )const{
     return this->mtxWVP;
   }
+  
+  //--------------------------------------------------------------------------------------------------
+  
 }
 
+//--------------------------------------------------------------------------------------------------
 #endif	//_CHS_CAMERA_H

@@ -6,6 +6,7 @@ attribute lowp vec4 vertexColor;
 //material
 uniform bool hasVertexColor;
 uniform bool hasTexture;
+uniform mediump vec4 diffuseColor;
 
 //transform
 uniform highp mat4 wvp;
@@ -16,13 +17,18 @@ varying mediump vec2 texCoordVarying;
 varying mediump float varDot;
 
 void main(){
-    gl_Position = wvp * position;
-	vec4 _normal = vec4( normal, 0.0);
-	_normal = wvit * _normal;
-	vec3 lightDir = normalize( vec3( -3.0,1.0,1.0) - position.xyz );
-	_normal.xyz = normalize(_normal.xyz);
-	varDot = max(dot( _normal.xyz, lightDir ), 0.0);
-	if( hasVertexColor )
-		colorVarying = vertexColor;
-	texCoordVarying = texcoord0;
+  gl_Position = wvp * position;
+  vec4 _normal = vec4( normal, 0.0);
+  _normal = wvit * _normal;
+  vec3 lightDir = normalize( vec3( -3.0,1.0,1.0) - position.xyz );
+  _normal.xyz = normalize(_normal.xyz);
+  varDot = max(dot( _normal.xyz, lightDir ), 0.0);
+  vec4 baseColor = vec4(1.0,1.0,1.0,1.0);
+  if( hasVertexColor )
+    baseColor *= vertexColor;
+  if( hasTexture )
+    texCoordVarying = texcoord0;
+  else
+    baseColor.rgb *= diffuseColor.rgb;
+  colorVarying = baseColor;
 }

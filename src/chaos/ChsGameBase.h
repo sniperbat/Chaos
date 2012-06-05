@@ -1,6 +1,6 @@
 #ifndef _CHS_GAMEBASE_H
 #define _CHS_GAMEBASE_H
-
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
   class ChsRenderSystem;
@@ -21,5 +21,4 @@ namespace Chaos {
 }//namespace
 
 //--------------------------------------------------------------------------------------------------
-
 #endif//_CHS_GAMEBASE_H

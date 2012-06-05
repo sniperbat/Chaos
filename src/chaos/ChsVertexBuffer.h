@@ -1,14 +1,18 @@
 #ifndef _CHS_VERTEXBUFFER_H
 #define _CHS_VERTEXBUFFER_H
-
 #include <string>
 #include <vector>
 #include <boost/shared_ptr.hpp>
 #include <boost/assign.hpp>
 using namespace boost::assign;
+#include <vector>
+#include <string>
+#include <boost/shared_ptr.hpp>
 #include "ChsArrayBuffer.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
+
 	//------------------------------------------------------------------------------------------------
 	class ChsShaderProgram;
 	struct ChsAttribUnit;
@@ -18,7 +22,7 @@ namespace Chaos {
 	public:
 		ChsVertexBuffer( void );
 		~ChsVertexBuffer( void );
-		void addAttrib( int count, int type, bool isNormalized, const std::string & name );
+		void addAttrib( int index, int count, int type, bool isNormalized, const std::string & name );
 		void bindAttribLocations( const ChsShaderProgram * program );
 
 		void bind( void );
@@ -43,4 +47,5 @@ namespace Chaos {
   
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif //_CHS_VERTEXBUFFER_H

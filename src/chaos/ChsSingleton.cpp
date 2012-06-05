@@ -14,4 +14,5 @@ namespace Chaos {
   static ChsSceneManager gSceneManager;
   static ChsTouchEmitter gTouchEmitter;
 }
+
 //------------------------------------------------------------------------------------------------

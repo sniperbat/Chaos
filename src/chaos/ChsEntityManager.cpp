@@ -12,7 +12,7 @@ namespace Chaos {
 		if( !entityPtr ){
 			entityPtr = boost::shared_ptr<ChsEntity>( new ChsEntity( entityName ) );
 			printf( "生成Entity:%s\n", entityName.c_str() );
-			insert( this->cache )( entityName, entityPtr );
+			this->cache.insert( std::make_pair( entityName, entityPtr ) );
 		}
 		return entityPtr;
 	}
@@ -20,7 +20,7 @@ namespace Chaos {
 #if 0
   //------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModel( const std::string & entityName,
-													 std::string modelName ){
+                                                                     const std::string &  modelName ){
 		if( entityName.empty() )
 			return nullptr;
 		ChsEntity * entity = this->getEntity( entityName );
@@ -31,8 +31,8 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModelAndAnimation( const std::string & entityName,
-																 std::string modelName,
-																 std::string animationName ){
+                                                                                 const std::string &  modelName,
+                                                                                 const std::string &  animationName ){
 		if( entityName.empty() )
 			return nullptr;
 		ChsEntity * entity = this->getEntityWithModel( entityName, modelName );
@@ -44,3 +44,5 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	
 }//namespace
+
+//--------------------------------------------------------------------------------------------------

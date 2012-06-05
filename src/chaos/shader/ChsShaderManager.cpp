@@ -1,13 +1,11 @@
 #include <boost/scoped_array.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsShaderManager.h"
 #include "ChsShader.h"
 #include "ChsShaderProgram.h"
 #include "io/ChsFileSystem.h"
 #include "ChsUtility.h"
-//--------------------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos{
 
 	//------------------------------------------------------------------------------------------------
@@ -25,7 +23,7 @@ namespace Chaos{
 				if( shaderInstance->load( source ) ){
 					printf( "生成Shader:%s\n", fullpath.c_str() );
           shader = boost::shared_ptr<ShaderType>( shaderInstance );
-					insert( this->cache )( name, shader );
+					this->cache.insert( std::make_pair( name, shader ) );
 				}
 				else{
 					safeDelete( &shaderInstance );
@@ -58,7 +56,7 @@ namespace Chaos{
 			program->attachShader( vs );
 			program->attachShader( fs );
 			printf( "生成ShaderProgram:%s\n", name.c_str() );
-			insert( this->cache )( name, program );
+			this->cache.insert( std::make_pair( name, program ) );
 		}
 		return program;
 	}
@@ -66,3 +64,5 @@ namespace Chaos{
   //------------------------------------------------------------------------------------------------
 
 }//namespace
+
+//--------------------------------------------------------------------------------------------------

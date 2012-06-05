@@ -1,8 +1,7 @@
 #include <boost/foreach.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsModel.h"
 #include "ChsMesh.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
   
@@ -25,9 +24,11 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsModel::addMesh( const boost::shared_ptr<ChsMesh> & mesh ){
 		if( mesh )
-			this->meshs += mesh;
+			this->meshs.push_back( mesh );
 	}
 	
   //------------------------------------------------------------------------------------------------
   
 }//namespace
+
+//--------------------------------------------------------------------------------------------------

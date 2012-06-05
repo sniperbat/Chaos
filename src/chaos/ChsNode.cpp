@@ -18,10 +18,8 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsNode::add( const std::string & name, ChsNode * node ){
-    if( node != nullptr ){
-      if( this->children.find( name ) == this->children.end() )
-        insert( this->children )( name, node );
-    }
+    if( node != nullptr && this->children.find( name ) == this->children.end() )
+      this->children.insert( std::make_pair( name, node ) );
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -38,4 +36,8 @@ namespace Chaos {
 		return  ( iter == this->children.end() ) ? nullptr : iter->second;
 	}
 
+  //------------------------------------------------------------------------------------------------
+  
 }
+
+//--------------------------------------------------------------------------------------------------

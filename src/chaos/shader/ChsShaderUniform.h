@@ -1,10 +1,10 @@
 #ifndef _CHS_SHADERUNIFORM_H
 #define _CHS_SHADERUNIFORM_H
-
+//--------------------------------------------------------------------------------------------------
 #include <string>
 #include "ChsDefine.h"
-//--------------------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
@@ -19,43 +19,35 @@ namespace Chaos {
 		void init( const std::string & name, ChsShaderUniformDataType type, int count, void * varAddr = nullptr );
 		void apply( ChsShaderProgram * program, bool needUpdateLocation );
 		template<typename T> void set( T value );
-		template<typename T> T get( void )const;
+ 		template<typename T> void set( T* value );
 	private:
 		std::string name;
 		int type;
 		unsigned int count;
 		int location;
 		void * linkedValuePtr;
-		union{
-			float * fValuePtr;
-			int * iValuePtr;
-		};
+    char * valuePtr;
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	template<typename T>
-	void ChsShaderUniform::set( T value ){
-		if( this->fValuePtr ){
-			if( this->type == CHS_SHADER_UNIFORM_1_INT )
-				*( this->iValuePtr ) = value;
-			else if( this->type == CHS_SHADER_UNIFORM_1_FLOAT )
-				*( this->fValuePtr ) = value;
-		}
+	template<typename T> void ChsShaderUniform::set( T value ){
+		if( this->valuePtr ){
+      T * ptr = reinterpret_cast<T*>(this->valuePtr);
+      *ptr = value;
+    }
 	}
   
 	//------------------------------------------------------------------------------------------------
-	template<typename T>
-	T ChsShaderUniform::get( void )const{
-		if( this->type == CHS_SHADER_UNIFORM_1_INT )
-			return *( this->iValuePtr );
-		else if( this->type == CHS_SHADER_UNIFORM_1_FLOAT )
-			return *( this->fValuePtr );
-		else
-			return 0;
+	template<typename T> void ChsShaderUniform::set( T* value ){
+    if( this->valuePtr ){
+      int size = this->count * ( this->type / 2 + 1 );
+      memcpy( this->valuePtr, (void *)value, sizeof(char) * 4 * size );
+    }
 	}
-
+  
+  //------------------------------------------------------------------------------------------------
+  
 }
 
-//------------------------------------------------------------------------------------------------
-
+//--------------------------------------------------------------------------------------------------
 #endif//_CHS_SHADERUNIFORM_H

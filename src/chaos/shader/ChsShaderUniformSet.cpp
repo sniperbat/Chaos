@@ -1,9 +1,7 @@
 #include <boost/foreach.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsShaderUniformSet.h"
-//------------------------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------------------------
 namespace Chaos{
   
   //------------------------------------------------------------------------------------------------
@@ -44,9 +42,11 @@ namespace Chaos{
 			return;
 		boost::shared_ptr<ChsShaderUniform> uniform( new ChsShaderUniform() );
 		uniform->init( name, type, count, varAddr );
-		insert( this->uniforms )( name, uniform );
+    this->uniforms.insert( std::make_pair( name, uniform ) );
 	}
   
   //------------------------------------------------------------------------------------------------
   
 }
+
+//--------------------------------------------------------------------------------------------------

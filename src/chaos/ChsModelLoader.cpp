@@ -38,6 +38,7 @@ namespace Chaos {
     lexicalCastToArray( indeices, indexArrayText );
     indexBuffer->setDataWithVector( indeices );
   }
+  
   //------------------------------------------------------------------------------------------------
   void setIndexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );  
   void setIndexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
@@ -71,7 +72,8 @@ namespace Chaos {
       bool isNormalized = false;
       if( !attrName.compare( "normal" ) )
         isNormalized = true;
-      mesh->getVertexBuffer()->addAttrib( stride, GL_FLOAT, isNormalized, attrName );
+      int index = attrElement->IntAttribute( "index" );
+      mesh->getVertexBuffer()->addAttrib( index, stride, GL_FLOAT, isNormalized, attrName );
       attrElement = attrElement->NextSiblingElement( "ChsAttribute" );
     }
   }
@@ -92,6 +94,18 @@ namespace Chaos {
         case CHS_SHADER_UNIFORM_1_INT:
           material->setProperty( propertyName, propertyElement->IntAttribute( "value" ) );
           break;
+        case CHS_SHADER_UNIFORM_VEC2_INT:
+        case CHS_SHADER_UNIFORM_VEC3_INT:
+        case CHS_SHADER_UNIFORM_VEC4_INT:
+        case CHS_SHADER_UNIFORM_VEC2_FLOAT:
+        case CHS_SHADER_UNIFORM_VEC3_FLOAT:
+        case CHS_SHADER_UNIFORM_VEC4_FLOAT:{
+          std::string valueStr = propertyElement->Attribute( "value" );
+          std::vector<float> value;
+          lexicalCastToArray( value, valueStr );
+          material->setProperty( propertyName, value.data() );
+          break;
+        }
         default:
           break;
       }
@@ -215,6 +229,7 @@ namespace Chaos {
     XML_FORMAT,
     BINARY_FORMAT,
   };
+  
 	//------------------------------------------------------------------------------------------------
   int checkFileTypeByName( const std::string & fileName );
   int checkFileTypeByName( const std::string & fileName ){
@@ -246,3 +261,5 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   
 }
+
+//--------------------------------------------------------------------------------------------------

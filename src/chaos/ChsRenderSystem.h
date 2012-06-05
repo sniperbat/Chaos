@@ -1,19 +1,21 @@
 #ifndef _CHS_RENDERSYSTEM_H
 #define _CHS_RENDERSYSTEM_H
-
+//--------------------------------------------------------------------------------------------------
+#include <vector>
 #include <vector>
 #include "ChsDefine.h"
 #include "platform/ChsOpenGL.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
+  
+  //------------------------------------------------------------------------------------------------
 	class ChsRenderNode;
 	class ChsMaterial;
 	class ChsIndexBuffer;
 	class ChsVertexBuffer;
 	class ChsCamera;
   class ChsRenderStates;
-//  class ChsHUDManager;
 
   //------------------------------------------------------------------------------------------------
   struct ChsRenderUnit{
@@ -110,4 +112,5 @@ namespace Chaos {
   
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif //_CHS_RENDERSYSTEM_H

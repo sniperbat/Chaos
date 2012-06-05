@@ -1,5 +1,4 @@
 #include <boost/scoped_array.hpp>
-#include <boost/shared_array.hpp>
 #include "ChsCoordinatePlane.h"
 #include "platform/ChsOpenGL.h"
 #include "ChsVertexBuffer.h"
@@ -9,6 +8,7 @@
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
+  
 	//------------------------------------------------------------------------------------------------
 	ChsCoordinatePlane::ChsCoordinatePlane( float size, int divide ) : ChsModel( "Coordinate Plane" ){
 		struct Vertex{
@@ -88,8 +88,8 @@ namespace Chaos {
 		
 		boost::shared_ptr<ChsMesh> mesh( new ChsMesh() );
 		
-		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
-		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
+		mesh->getVertexBuffer()->addAttrib( 0, 3, GL_FLOAT, false, "position" );
+		mesh->getVertexBuffer()->addAttrib( 1, 4, GL_FLOAT, true, "vertexColor" );
 		mesh->getVertexBuffer()->setDataWithArray( vertices.get(), sizeof( Vertex ) * (vertexCount-6) );
 		
 		int indexCount = vertexCount-6;
@@ -103,13 +103,13 @@ namespace Chaos {
 		ChsMaterial * material = new ChsMaterial();
 		material->setShader( "Wireframe.vsh", "Wireframe.fsh" );
 		material->addProperty( "hasVertexColor", CHS_SHADER_UNIFORM_1_INT, 1 );
-		material->setProperty( "hasVertexColor", true );
+		material->setProperty( "hasVertexColor", 1 );
 		mesh->setMaterial( material );
 		this->addMesh(mesh);
 		
 		mesh.reset( new ChsMesh() );
-		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
-		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
+		mesh->getVertexBuffer()->addAttrib( 0, 3, GL_FLOAT, false, "position" );
+		mesh->getVertexBuffer()->addAttrib( 1, 4, GL_FLOAT, true, "vertexColor" );
 		mesh->getVertexBuffer()->setDataWithArray( vertices.get()+(vertexCount-6), sizeof( Vertex ) * 6 );
 		for( int i = 0; i < 6; i++ )
 			indices[i] = ( GLushort )i;
@@ -118,10 +118,14 @@ namespace Chaos {
 		material = new ChsMaterial();
 		material->setShader( "Wireframe.vsh", "Wireframe.fsh" );
 		material->addProperty( "hasVertexColor", CHS_SHADER_UNIFORM_1_INT, 1 );
-		material->setProperty( "hasVertexColor", true );
+		material->setProperty( "hasVertexColor", 1 );
 		mesh->setMaterial( material );
 //		material->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
 		this->addMesh(mesh);
 	}
+  
 	//------------------------------------------------------------------------------------------------
+  
 }
+
+//--------------------------------------------------------------------------------------------------

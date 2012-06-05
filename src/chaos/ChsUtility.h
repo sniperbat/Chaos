@@ -1,6 +1,6 @@
 #ifndef _CHS_UTILITY_H
 #define _CHS_UTILITY_H
-
+//--------------------------------------------------------------------------------------------------
 #include <vector>
 #include <boost/foreach.hpp>
 #include <boost/checked_delete.hpp>
@@ -8,13 +8,18 @@
 #define BOOST_NO_CHAR32_T
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/foreach.hpp>
+#include <string>
+#include <vector>
 #include "ChsDefine.h"
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	size_t getGLDataTypeSize( int type );
   int getTexWrapValue( const std::string & valueName );
+
 	//------------------------------------------------------------------------------------------------
 	template< typename Type > void safeRelease( Type **pptr ) {
 		if ( * pptr ) {
@@ -97,4 +102,5 @@ namespace Chaos {
 
 }//namespace
 
+//--------------------------------------------------------------------------------------------------
 #endif //_CHS_UTILITY_H

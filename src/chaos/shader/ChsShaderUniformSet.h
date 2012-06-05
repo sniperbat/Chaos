@@ -1,11 +1,14 @@
 #ifndef _CHS_SHADERUNIFORMSET_H
 #define _CHS_SHADERUNIFORMSET_H
-
+//--------------------------------------------------------------------------------------------------
+#include <string>
+#include <map>
+#include <boost/shared_ptr.hpp>
 #include <map>
 #include <boost\shared_ptr.hpp>
 #include "ChsShaderUniform.h"
-//------------------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
@@ -17,7 +20,6 @@ namespace Chaos {
 		void apply( ChsShaderProgram * program );
 		void add( const std::string & name, ChsShaderUniformDataType type, unsigned int count, void * varAddr = nullptr ); 
 		template<typename T> void set( const std::string & name, T values );
-		template<typename T> T get( const std::string & name )const;
 	private:
 		inline bool isExist( const std::string & name )const;
 		ChsShaderProgram * program;
@@ -39,14 +41,8 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
-	template<typename T> T ChsShaderUniformSet::get( const std::string & name )const{
-		auto iter = this->uniforms.find( name );
-		if( iter == this->uniforms.end() )
-			return 0;
-		return iter->second->get<T>();
-	}
   
-  //------------------------------------------------------------------------------------------------
 }
 
+//--------------------------------------------------------------------------------------------------
 #endif//_CHS_SHADERUNIFORMSET_H

@@ -1,9 +1,12 @@
 #ifndef _CHS_ENTITYMANAGER_H
 #define _CHS_ENTITYMANAGER_H
-
+//--------------------------------------------------------------------------------------------------
 #include "ChsManagerWithCache.h"
 
+//--------------------------------------------------------------------------------------------------
 namespace Chaos {
+  
+  //------------------------------------------------------------------------------------------------
 	class ChsEntity;
 
   //------------------------------------------------------------------------------------------------
@@ -12,15 +15,16 @@ namespace Chaos {
 		boost::shared_ptr<ChsEntity> getEntity( const std::string & entityName );
 		
 		boost::shared_ptr<ChsEntity> getEntityWithModel( const std::string & entityName,
-										std::string modelName );
+                                                     const std::string & modelName );
 		
 		boost::shared_ptr<ChsEntity> getEntityWithModelAndAnimation( const std::string & entityName, 
-												    std::string modelName,
-													std::string animationName );
+                                                                 const std::string & modelName,
+                                                                 const std::string & animationName );
 	};
 	
   //------------------------------------------------------------------------------------------------
 	
 }
 
+//--------------------------------------------------------------------------------------------------
 #endif//_CHS_ENTITYMANAGER_H

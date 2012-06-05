@@ -1,3 +1,4 @@
+#include <math.h>
 #include "GameDemo.h"
 #include "ChsEntity.h"
 #include "ChsResourceManager.h"
@@ -13,15 +14,15 @@
 #include "hud/ChsHUDManager.h"
 #include "ChsSceneManager.h"
 #include "io/ChsTouchEmitter.h"
+
 //--------------------------------------------------------------------------------------------------
 using namespace Chaos;
-#include <math.h>
-
 GameDemo game;
 boost::scoped_ptr<ChsModelViewCamera> camera( new ChsModelViewCamera() );
 static float transY = 0.0f;
 ChsMaterial * material;
 ChsPlane * planeMesh1;
+
 //--------------------------------------------------------------------------------------------------
 void GameDemo::onInit( void ) {
 	ChsRect viewport = this->getRender()->getViewPort();
@@ -53,3 +54,5 @@ void GameDemo::onUpdate( void ) {
 //--------------------------------------------------------------------------------------------------
 void GameDemo::onShutdown( void ) {
 }
+
+//--------------------------------------------------------------------------------------------------

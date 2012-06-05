@@ -1,6 +1,9 @@
 #ifndef _CHS_HUDMANAGER_H
 #define _CHS_HUDMANAGER_H
-
+//--------------------------------------------------------------------------------------------------
+#include <boost/scoped_ptr.hpp>
+#include <map>
+#include <string>
 #include <map>
 #include <boost/scoped_ptr.hpp>
 #include "ChsDefine.h"
@@ -41,8 +44,10 @@ namespace Chaos {
     return this->camera.get();
   }
   
+  //------------------------------------------------------------------------------------------------
+  
 }
 
-
+//--------------------------------------------------------------------------------------------------
 #endif//_CHS_HUDMANAGER_H
 
