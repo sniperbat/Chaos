@@ -14,7 +14,7 @@ namespace Chaos{
     }
 
     //----------------------------------------------------------------------------------------------
-		void onRotateBegin( int x, int y ){
+		void onRotateBegin( float x, float y ){
       // Only enter the drag state if the click falls
       // inside the click rectangle.
       if( x >= 0 && x < this->screenWidth && y >= 0 && y < this->screenHeight ){
@@ -25,7 +25,7 @@ namespace Chaos{
     }
     
     //----------------------------------------------------------------------------------------------
-		void onRotating( int x, int y ){
+		void onRotating( float x, float y ){
       if( this->isDrag ){ 
         ChsQuaternion rotateQuat = ChsQuaternion::createByRotationVectors( this->startPointOfRotate, this->screenToVector( x, y ) );
         this->quatForCurrentDrag = this->quatBeforeDrag * rotateQuat;
@@ -38,18 +38,18 @@ namespace Chaos{
     }
     
 		//----------------------------------------------------------------------------------------------
-    void setScreen( int width, int height, float radius = 0.9f ){
+    void setScreen( float width, float height, float radius = 0.9f ){
       this->screenWidth = width;
       this->screenHeight = height;
-      this->halfScreenWidth = width >> 1;
-      this->halfScreenHeight = height >> 1;
+      this->halfScreenWidth = width / 2;
+      this->halfScreenHeight = height / 2;
       this->radius = radius;
       this->centerOfArcBall.x = this->halfScreenWidth;
       this->centerOfArcBall.y = this->halfScreenHeight;
     }
     
     //----------------------------------------------------------------------------------------------
-		ChsVector3 screenToVector( int scrX, int scrY )const{
+		ChsVector3 screenToVector( float scrX, float scrY )const{
       // Scale to screen
       float x   = (scrX - this->halfScreenWidth )  / (this->radius * this->halfScreenWidth );
       float y   = -(scrY -this->halfScreenHeight ) / (this->radius * this->halfScreenHeight );
@@ -69,7 +69,7 @@ namespace Chaos{
     }
     
     //----------------------------------------------------------------------------------------------
-		ChsVector2 boundXY( int scrX, int scrY )const{
+		ChsVector2 boundXY( float scrX, float scrY )const{
       // Scale to screen
       float x  = ( scrX - this->halfScreenWidth ) / ( this->radius * this->halfScreenWidth );
       float y  = -( scrY - this->halfScreenHeight ) / ( this->radius * this->halfScreenHeight );
@@ -87,10 +87,10 @@ namespace Chaos{
 		
 		float radius;
 		float radiusTranslation;
-		int screenWidth;
-		int screenHeight;
-		int halfScreenWidth;
-		int halfScreenHeight;
+		float screenWidth;
+		float screenHeight;
+		float halfScreenWidth;
+		float halfScreenHeight;
     
 		bool isDrag;
     
@@ -144,7 +144,7 @@ namespace Chaos{
   //------------------------------------------------------------------------------------------------
   void ChsModelViewCamera::onPinch( const ChsPinchTouch & touch ){
    if( touch.state == CHS_TOUCH_STATE_CHANGED ){
-      int scale = 500*(touch.scale - oldScale);
+      int scale = static_cast<int>( 500*(touch.scale - oldScale) );
       this->zoomDelta += scale;
     }
     oldScale = touch.scale;
@@ -240,7 +240,7 @@ namespace Chaos{
   
   //------------------------------------------------------------------------------------------------
   //------------------------------------------------------------------------------------------------
-  void ChsModelViewCamera::setScreen( int width, int height, float radius ){
+  void ChsModelViewCamera::setScreen( float width, float height, float radius ){
     worldArcBall.setScreen( width, height, radius );
     this->isNeedUpdate = true;
   }

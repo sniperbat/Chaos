@@ -1,6 +1,5 @@
 #ifndef _CHSDEFINE_H
 #define _CHSDEFINE_H
-#pragma once
 
 namespace Chaos {
 
@@ -17,6 +16,11 @@ namespace Chaos {
 	#define CHS_PLATFORM_ANDROID
 #endif
 
+  //------------------------------------------------------------------------------------------------
+#if defined(__WINDOWS__)
+  #define CHS_PLATFORM_WINDOWS
+#endif
+
 	//------------------------------------------------------------------------------------------------
 	
 #if defined(boolean)
@@ -28,7 +32,7 @@ namespace Chaos {
 	enum ChsRenderType{
 		CHS_RENDER_IOS,
 		CHS_RENDER_ANDROID,
-		//		CHS_RENDER_D3D
+		CHS_RENDER_WINDOWS,
 	};
 	
 	//------------------------------------------------------------------------------------------------

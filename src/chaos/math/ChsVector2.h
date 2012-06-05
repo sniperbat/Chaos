@@ -1,6 +1,5 @@
 #ifndef _CHS_VECTOR2_H
 #define _CHS_VECTOR2_H
-#pragma once
 
 namespace Chaos {
 	

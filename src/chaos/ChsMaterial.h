@@ -1,7 +1,7 @@
 #ifndef _CHSMATERIAL_H
 #define _CHSMATERIAL_H
-#pragma once
 
+#include <vector>
 #include "shader/ChsShaderUniformSet.h"
 #include "ChsTextureEntity.h"
 

@@ -6,6 +6,8 @@
 	#include "ChsRenderSystemIOS.h"
 #elif defined(CHS_PLATFORM_ANDROID)
 	#include "platform/android/ChsRenderSystemAndroid.h"
+#elif defined(CHS_PLATFORM_WINDOWS)
+#include "platform/windows/ChsRenderSystemWindows.h"
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -22,6 +24,8 @@ namespace Chaos{
 				new ChsRenderSystemIOS();
 #elif defined(CHS_PLATFORM_ANDROID)
 				new ChsRenderSystemAndroid();
+#elif defined(CHS_PLATFORM_WINDOWS)
+        new ChsRenderSystemWindows();
 #endif
 		if( render ){
 			render->init();

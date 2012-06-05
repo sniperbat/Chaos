@@ -3,7 +3,7 @@
 #include "ChsRenderSystem.h"
 #include "ChsGameBase.h"
 #include "ChsResourceManager.h"
-#include "ChsHUDManager.h"
+#include "hud/ChsHUDManager.h"
 #include "ChsSceneManager.h"
 
 //--------------------------------------------------------------------------------------------------

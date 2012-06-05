@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include "ChsRenderNode.h"
 #include "ChsUtility.h"
 #include "math/ChsMatrix.h"

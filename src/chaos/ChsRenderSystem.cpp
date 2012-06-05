@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include "ChsRenderSystem.h"
 #include "ChsRenderStates.h"
 #include "ChsRenderNode.h"
@@ -10,7 +11,7 @@
 #include "camera/ChsCamera.h"
 #include "math/ChsMath.h"
 #include "geometry/ChsCoordinatePlane.h"
-#include "ChsHUDManager.h"
+#include "hud/ChsHUDManager.h"
 #include "ChsSceneManager.h"
 
 //--------------------------------------------------------------------------------------------------

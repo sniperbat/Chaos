@@ -1,3 +1,9 @@
+#ifndef GLES2
+#define lowp
+#define highp
+#define mediump
+#endif
+
 //material
 uniform bool hasVertexColor;
 

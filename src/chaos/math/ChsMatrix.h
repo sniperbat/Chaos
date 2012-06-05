@@ -1,6 +1,5 @@
 #ifndef	_CHS_MATRIX_H
 #define	_CHS_MATRIX_H
-#pragma once
 
 #include "ChsVector3.h"
 

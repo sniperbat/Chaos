@@ -23,7 +23,11 @@
 	extern PFNGLDELETEVERTEXARRAYSOESPROC	glDeleteVertexArrays;
 	extern PFNGLGENVERTEXARRAYSOESPROC		glGenVertexArrays;
 
-#endif
+#elif defined(CHS_PLATFORM_WINDOWS)
 
+  #include <GL/glew.h>
+  #include <GL/wglew.h>
+
+#endif
 
 #endif//_CHS_OPENGL_H

@@ -1,6 +1,5 @@
 #ifndef _CHS_VECTOR4_H
 #define _CHS_VECTOR4_H
-#pragma once
 
 //--------------------------------------------------------------------------------------------------
 #include <boost/operators.hpp>
@@ -29,14 +28,14 @@ namespace Chaos {
 		};
 
 		ChsVector4( void );
-		//这个构造函数是不安全的，不检查数组长度，尽量不要使用
+		//do not check the length of vec,not safe,be attention to use it.
 		ChsVector4( const float vec[4] );
 		ChsVector4( const ChsVector4& vec );
 		ChsVector4( float x, float y, float z, float w );
 
-		//由boost::equality_comparable实现【!=】操作
+		//!= be implemented by boost::equality_comparable
 		bool operator == ( const ChsVector4 & vec )const;
-		//由boost::additive实现【+，-】操作
+		//+,- be implemented by boost::additive
 		ChsVector4 & operator += ( const ChsVector4& vec );
 		ChsVector4 & operator -= ( const ChsVector4& vec );
 

@@ -18,17 +18,17 @@ namespace Chaos {
     bool needUpdate;
     boost::shared_ptr<ChsTextureEntity> texture;
   protected:
-    //锚点，Sprite的中心点。默认左上角(0, 0)
+    //anchor default at left top (0,0)
     ChsPoint anchor;
-    //Sprite中心点在父节点空间中的位置,默认(0, 0)
+    //the anchor point position at parent space,default at (0, 0)
     ChsPoint position;
-    //Sprite的大小。
+    //size of sprite
     ChsSize size;
-    //缩放比率，
+    //zoom rate
     ChsSize zoom;
-    //在Image内的位置，用于计算UV
+    //for UV calculate, position and size in the image
     ChsRect imageBound;
-    //图像的大小，
+    //size of image
     ChsSize imageSize;
     ChsRect bound;
     float depth;
@@ -45,9 +45,9 @@ namespace Chaos {
 
     void moveTo( float x, float y );
     void anchorAt( float x, float y );
-    //改变Sprite缩放比率的时候，子节点跟随做相应的缩放
+    //change size of sprite,and children node
     void zoomAs( float w, float h );
-    //改变Sprite的大小的时候，子节点Sprite保持不变
+    //just change size of sprite, children node do not change size
     void changeSizeTo( float w, float h );
     
     inline ChsPoint getAnchor( void )const;
@@ -58,9 +58,9 @@ namespace Chaos {
     inline float getDepth( void )const;
     inline void setDepth( float depth );
     
-    //图像的大小，不能修改。只读
+    //get size of image, read only
     inline ChsSize getImageSize( void )const;
-    //这个Sprite2D的Bound范围，没有Setter，由内部计算获得，
+    //get bound of sprite,has no setter
     ChsRect getBound( void )const;
   };
   
@@ -100,8 +100,7 @@ namespace Chaos {
   }
   
 	//------------------------------------------------------------------------------------------------
-  
+ 
 }
-
 
 #endif//_CHS_SPRITE2D_H

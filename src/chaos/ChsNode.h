@@ -1,8 +1,10 @@
 #ifndef _CHS_NODE_H
 #define _CHS_NODE_H
 
+#include <string>
+#include <map>
 namespace Chaos {
-	
+
 	//------------------------------------------------------------------------------------------------
 	class ChsNode {
 	public:

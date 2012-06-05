@@ -1,6 +1,8 @@
 #ifndef _CHS_HUDMANAGER_H
 #define _CHS_HUDMANAGER_H
 
+#include <map>
+#include <boost/scoped_ptr.hpp>
 #include "ChsDefine.h"
 #include "ChsSingleton.h"
 

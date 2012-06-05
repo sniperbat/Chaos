@@ -1,3 +1,9 @@
+#ifndef GLES2
+#define lowp
+#define highp
+#define mediump
+#endif
+
 attribute highp vec4 position;
 attribute lowp vec4 vertexColor;
 

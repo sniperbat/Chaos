@@ -1,6 +1,5 @@
 ﻿#ifndef _CHS_QUATERNION_H
 #define _CHS_QUATERNION_H
-#pragma once
 
 #include <boost/operators.hpp>
 

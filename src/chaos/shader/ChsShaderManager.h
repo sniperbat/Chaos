@@ -1,6 +1,5 @@
 #ifndef _CHS_SHADERMANAGER_H
 #define _CHS_SHADERMANAGER_H
-#pragma once
 
 //--------------------------------------------------------------------------------------------------
 #include "ChsManagerWithCache.h"

@@ -1,7 +1,8 @@
 #ifndef _CHS_UTILITY_H
 #define _CHS_UTILITY_H
-#pragma once
 
+#include <vector>
+#include <boost/foreach.hpp>
 #include <boost/checked_delete.hpp>
 #define BOOST_NO_CHAR16_T
 #define BOOST_NO_CHAR32_T

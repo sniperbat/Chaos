@@ -1,3 +1,5 @@
+#include <boost/assign.hpp>
+using namespace boost::assign;
 #include "ChsTextureManager.h"
 #include "ChsTextureFactory.h"
 #include "ChsTexture2D.h"

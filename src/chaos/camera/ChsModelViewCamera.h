@@ -9,7 +9,7 @@
 #include "math/ChsQuaternion.h"
 #include "math/Chsmath.h"
 #include "ChsCamera.h"
-#include "ChsTouchListener.h"
+#include "io/ChsTouchListener.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos{
@@ -21,7 +21,7 @@ namespace Chaos{
 		ChsModelViewCamera( void );
 
     void update( void );
-    void setScreen( int width, int height, float radius = 1.0f );
+    void setScreen( float width, float height, float radius = 1.0f );
 
 	private:
 		int zoomDelta;

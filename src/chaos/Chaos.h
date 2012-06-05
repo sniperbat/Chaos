@@ -1,9 +1,8 @@
 #ifndef _CHS_CHAOS_H
 #define _CHS_CHAOS_H
-#pragma once
 
 #include "ChsEngine.h"
-#include "ChsTouchEmitter.h"
+#include "io/ChsTouchEmitter.h"
 //--------------------------------------------------------------------------------------------------
 
 namespace Chaos {
@@ -11,6 +10,8 @@ namespace Chaos {
 #ifdef __OBJC__
 	//set layer before engine start
 	void ChsRenderSystemIOSSetTargetGLLayer( CAEAGLLayer * layer );
+#elif defined( CHS_PLATFORM_WINDOWS )
+  void ChsRenderSystemWindowsSetHandle( HWND hwnd );
 #endif
 	
   //------------------------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 #ifndef _CHS_TEXTUREENTITY_H
 #define _CHS_TEXTUREENTITY_H
 
+#include <boost/weak_ptr.hpp>
 #include "ChsDefine.h"
 
 namespace Chaos {

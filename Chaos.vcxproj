@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{77DCB574-54F5-48A1-85F6-C3E128F61E78}</ProjectGuid>
+    <RootNamespace>Chaos</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\sdk\glew-1.7.0\include;C:\sdk\boost_1_49_0;$(SolutionDir)src;$(SolutionDir)src\chaos;$(SolutionDir)src\entrance\windows;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\sdk\glew-1.7.0\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>__WINDOWS__;WIN32;GLEW_STATIC;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glew32sd.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\Files\Chaos\src\chaos\platform\windows\glew\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glew32sd.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\chaos\camera\ChsCamera.cpp" />
+    <ClCompile Include="src\chaos\camera\ChsModelViewCamera.cpp" />
+    <ClCompile Include="src\chaos\ChsArrayBuffer.cpp" />
+    <ClCompile Include="src\chaos\ChsEngine.cpp" />
+    <ClCompile Include="src\chaos\ChsEntity.cpp" />
+    <ClCompile Include="src\chaos\ChsEntityManager.cpp" />
+    <ClCompile Include="src\chaos\ChsGameBase.cpp" />
+    <ClCompile Include="src\chaos\ChsIndexBuffer.cpp" />
+    <ClCompile Include="src\chaos\ChsMaterial.cpp" />
+    <ClCompile Include="src\chaos\ChsMesh.cpp" />
+    <ClCompile Include="src\chaos\ChsModel.cpp" />
+    <ClCompile Include="src\chaos\ChsModelLoader.cpp" />
+    <ClCompile Include="src\chaos\ChsModelManager.cpp" />
+    <ClCompile Include="src\chaos\ChsNode.cpp" />
+    <ClCompile Include="src\chaos\ChsRenderable.cpp" />
+    <ClCompile Include="src\chaos\ChsRenderFactory.cpp" />
+    <ClCompile Include="src\chaos\ChsRenderNode.cpp" />
+    <ClCompile Include="src\chaos\ChsRenderStates.cpp" />
+    <ClCompile Include="src\chaos\ChsRenderSystem.cpp" />
+    <ClCompile Include="src\chaos\ChsResourceManager.cpp" />
+    <ClCompile Include="src\chaos\ChsSceneManager.cpp" />
+    <ClCompile Include="src\chaos\ChsSingleton.cpp" />
+    <ClCompile Include="src\chaos\ChsSprite2D.cpp" />
+    <ClCompile Include="src\chaos\ChsTexture2D.cpp" />
+    <ClCompile Include="src\chaos\ChsTextureEntity.cpp" />
+    <ClCompile Include="src\chaos\ChsTextureFactory.cpp" />
+    <ClCompile Include="src\chaos\ChsTextureManager.cpp" />
+    <ClCompile Include="src\chaos\ChsUtility.cpp" />
+    <ClCompile Include="src\chaos\ChsVertexBuffer.cpp" />
+    <ClCompile Include="src\chaos\geometry\ChsCoordinatePlane.cpp" />
+    <ClCompile Include="src\chaos\geometry\ChsCube.cpp" />
+    <ClCompile Include="src\chaos\geometry\ChsPlane.cpp" />
+    <ClCompile Include="src\chaos\hud\ChsHUD.cpp" />
+    <ClCompile Include="src\chaos\hud\ChsHUDManager.cpp" />
+    <ClCompile Include="src\chaos\io\ChsTouchEmitter.cpp" />
+    <ClCompile Include="src\chaos\io\ChsTouchListener.cpp" />
+    <ClCompile Include="src\chaos\math\ChsMath.cpp" />
+    <ClCompile Include="src\chaos\math\ChsMatrix.cpp" />
+    <ClCompile Include="src\chaos\math\ChsQuaternion.cpp" />
+    <ClCompile Include="src\chaos\math\ChsVector2.cpp" />
+    <ClCompile Include="src\chaos\math\ChsVector3.cpp" />
+    <ClCompile Include="src\chaos\math\ChsVector4.cpp" />
+    <ClCompile Include="src\chaos\platform\ChsOpenGL.cpp" />
+    <ClCompile Include="src\chaos\platform\windows\ChsFileSystemWindows.cpp" />
+    <ClCompile Include="src\chaos\platform\windows\ChsRenderSystemWindows.cpp" />
+    <ClCompile Include="src\chaos\platform\windows\ChsTextureFactoryWindows.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\chaos\shader\ChsShader.cpp" />
+    <ClCompile Include="src\chaos\shader\ChsShaderManager.cpp" />
+    <ClCompile Include="src\chaos\shader\ChsShaderProgram.cpp" />
+    <ClCompile Include="src\chaos\shader\ChsShaderUniform.cpp" />
+    <ClCompile Include="src\chaos\shader\ChsShaderUniformSet.cpp" />
+    <ClCompile Include="src\entrance\windows\main.cpp" />
+    <ClCompile Include="src\GameDemo.cpp" />
+    <ClCompile Include="src\tinyxml2\tinyxml2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\chaos\camera\ChsCamera.h" />
+    <ClInclude Include="src\chaos\camera\ChsModelViewCamera.h" />
+    <ClInclude Include="src\chaos\Chaos.h" />
+    <ClInclude Include="src\chaos\ChsArrayBuffer.h" />
+    <ClInclude Include="src\chaos\ChsDefine.h" />
+    <ClInclude Include="src\chaos\ChsEngine.h" />
+    <ClInclude Include="src\chaos\ChsEntity.h" />
+    <ClInclude Include="src\chaos\ChsEntityManager.h" />
+    <ClInclude Include="src\chaos\ChsGameBase.h" />
+    <ClInclude Include="src\chaos\ChsIndexBuffer.h" />
+    <ClInclude Include="src\chaos\ChsManagerWithCache.h" />
+    <ClInclude Include="src\chaos\ChsMaterial.h" />
+    <ClInclude Include="src\chaos\ChsMesh.h" />
+    <ClInclude Include="src\chaos\ChsModel.h" />
+    <ClInclude Include="src\chaos\ChsModelLoader.h" />
+    <ClInclude Include="src\chaos\ChsModelManager.h" />
+    <ClInclude Include="src\chaos\ChsNode.h" />
+    <ClInclude Include="src\chaos\ChsRenderable.h" />
+    <ClInclude Include="src\chaos\ChsRenderFactory.h" />
+    <ClInclude Include="src\chaos\ChsRenderNode.h" />
+    <ClInclude Include="src\chaos\ChsRenderStates.h" />
+    <ClInclude Include="src\chaos\ChsRenderSystem.h" />
+    <ClInclude Include="src\chaos\ChsResourceManager.h" />
+    <ClInclude Include="src\chaos\ChsSceneManager.h" />
+    <ClInclude Include="src\chaos\ChsSingleton.h" />
+    <ClInclude Include="src\chaos\ChsSprite2D.h" />
+    <ClInclude Include="src\chaos\ChsTexture2D.h" />
+    <ClInclude Include="src\chaos\ChsTextureEntity.h" />
+    <ClInclude Include="src\chaos\ChsTextureFactory.h" />
+    <ClInclude Include="src\chaos\ChsTextureManager.h" />
+    <ClInclude Include="src\chaos\ChsUtility.h" />
+    <ClInclude Include="src\chaos\ChsVertexBuffer.h" />
+    <ClInclude Include="src\chaos\geometry\ChsCoordinatePlane.h" />
+    <ClInclude Include="src\chaos\geometry\ChsCube.h" />
+    <ClInclude Include="src\chaos\geometry\ChsPlane.h" />
+    <ClInclude Include="src\chaos\hud\ChsHUD.h" />
+    <ClInclude Include="src\chaos\hud\ChsHUDManager.h" />
+    <ClInclude Include="src\chaos\io\ChsFileSystem.h" />
+    <ClInclude Include="src\chaos\io\ChsTouchEmitter.h" />
+    <ClInclude Include="src\chaos\io\ChsTouchListener.h" />
+    <ClInclude Include="src\chaos\math\ChsMath.h" />
+    <ClInclude Include="src\chaos\math\ChsMatrix.h" />
+    <ClInclude Include="src\chaos\math\ChsQuaternion.h" />
+    <ClInclude Include="src\chaos\math\ChsVector2.h" />
+    <ClInclude Include="src\chaos\math\ChsVector3.h" />
+    <ClInclude Include="src\chaos\math\ChsVector4.h" />
+    <ClInclude Include="src\chaos\platform\ChsOpenGL.h" />
+    <ClInclude Include="src\chaos\platform\windows\ChsFileSystemWindows.h" />
+    <ClInclude Include="src\chaos\platform\windows\ChsRenderSystemWindows.h" />
+    <ClInclude Include="src\chaos\platform\windows\ChsTextureFactoryWindows.h" />
+    <ClInclude Include="src\chaos\shader\ChsShader.h" />
+    <ClInclude Include="src\chaos\shader\ChsShaderManager.h" />
+    <ClInclude Include="src\chaos\shader\ChsShaderProgram.h" />
+    <ClInclude Include="src\chaos\shader\ChsShaderUniform.h" />
+    <ClInclude Include="src\chaos\shader\ChsShaderUniformSet.h" />
+    <ClInclude Include="src\GameDemo.h" />
+    <ClInclude Include="src\tinyxml2\tinyxml2.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

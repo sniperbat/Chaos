@@ -1,3 +1,4 @@
+#include <boost\foreach.hpp>
 #include "ChsVertexBuffer.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsUtility.h"

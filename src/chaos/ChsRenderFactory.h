@@ -1,6 +1,6 @@
 #ifndef _CHSRENDERFACTORY_H
 #define _CHSRENDERFACTORY_H
-#pragma once
+
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 	

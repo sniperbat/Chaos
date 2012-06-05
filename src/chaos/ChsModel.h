@@ -1,7 +1,7 @@
 #ifndef _CHSMODEL_H
 #define _CHSMODEL_H
-#pragma once
 
+#include <boost/shared_ptr.hpp>
 #include "ChsRenderNode.h"
 
 //--------------------------------------------------------------------------------------------------

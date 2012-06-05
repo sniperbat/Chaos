@@ -1,3 +1,4 @@
+#include <boost/scoped_ptr.hpp>
 #include "ChsUtility.h"
 #include "platform/ChsOpenGL.h"
 //--------------------------------------------------------------------------------------------------

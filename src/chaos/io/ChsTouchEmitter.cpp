@@ -1,3 +1,6 @@
+#include <vector>
+#include <algorithm>
+#include <boost/foreach.hpp>
 #include "ChsTouchEmitter.h"
 #include "ChsTouchListener.h"
 
@@ -8,7 +11,6 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   ChsTouchEmitter::ChsTouchEmitter( void ){
-    this->purge();
   }
   
   //------------------------------------------------------------------------------------------------
@@ -18,7 +20,8 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   void ChsTouchEmitter::purge( void ){
-    listeners.clear();
+    if( !listeners.empty()) 
+      listeners.clear();
   }
   
   //------------------------------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 #ifndef _CHS_SHADERPROGRAM_H
 #define _CHS_SHADERPROGRAM_H
-#pragma once
 
 //--------------------------------------------------------------------------------------------------
+#include <boost/shared_ptr.hpp>
 #include "ChsShader.h"
 
 namespace Chaos {

@@ -1,6 +1,8 @@
 #ifndef _CHS_MANAGERWITHCACHE_H
 #define _CHS_MANAGERWITHCACHE_H
 
+#include <map>
+#include <boost/shared_ptr.hpp>
 #include "ChsUtility.h"
 //--------------------------------------------------------------------------------------------------
 

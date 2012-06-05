@@ -1,3 +1,6 @@
+#include <boost/scoped_array.hpp>
+#include <boost/assign.hpp>
+using namespace boost::assign;
 #include "ChsShaderManager.h"
 #include "ChsShader.h"
 #include "ChsShaderProgram.h"

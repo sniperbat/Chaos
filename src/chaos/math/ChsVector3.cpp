@@ -1,4 +1,5 @@
-﻿#include "ChsVector3.h"
+﻿#include <assert.h>
+#include "ChsVector3.h"
 
 namespace Chaos {
 	

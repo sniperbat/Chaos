@@ -91,13 +91,12 @@ namespace Chaos {
 		float swapTemp;
 		int f = 1;
 		for( int k=0; k<4; ++k ){
-			//第一步，全选主元
+			//step 1
 			float fMax = 0.0f;
 			for( int i = k; i < 4; ++i ){
 				for( int j = k; j < 4; ++j ){
 					const float f = fabs( this->m4x4[i][j] );
 					if( f > fMax ){
-						//找到绝对值最大的那个行列
 						fMax = f;
 						is[k] = i;
 						js[k] = j;
@@ -145,17 +144,17 @@ namespace Chaos {
 				this->m4x4[3][k] = this->m4x4[3][js[k]];
 				this->m4x4[3][js[k]] = swapTemp;
 			}
-			// 计算行列值
+			// calculate determinant
 			fDet *= this->m4x4[k][k];
-			// 计算逆矩阵
-			// 第二步
+			// calculate Inverse matrix
+			// step 2
 			this->m4x4[k][k] = 1.0f / this->m4x4[k][k];
-			// 第三步
+			// step 3
 			for( int j = 0; j < 4; ++j ){
 				if( j != k )
 					this->m4x4[k][j] *= this->m4x4[k][k];
 			}
-			// 第四步
+			// step 4
 			for( int i = 0; i < 4; ++i ){
 				if( i != k ){
 					for( int j = 0; j < 4; ++j ){
@@ -164,7 +163,7 @@ namespace Chaos {
 					}
 				}
 			}
-			// 第五步
+			// step 5
 			for( int i = 0; i < 4; ++i ){
 				if( i != k )
 					this->m4x4[i][k] *= -this->m4x4[k][k];

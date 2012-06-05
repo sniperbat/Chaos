@@ -1,8 +1,11 @@
 #ifndef _CHS_VERTEXBUFFER_H
 #define _CHS_VERTEXBUFFER_H
-#pragma once
 
-//--------------------------------------------------------------------------------------------------
+#include <string>
+#include <vector>
+#include <boost/shared_ptr.hpp>
+#include <boost/assign.hpp>
+using namespace boost::assign;
 #include "ChsArrayBuffer.h"
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

@@ -1,6 +1,5 @@
 ﻿#ifndef _CHS_CAMERAE_H
 #define _CHS_CAMERAE_H
-#pragma once
 
 #include "math/ChsVector3.h"
 #include "math/ChsMatrix.h"

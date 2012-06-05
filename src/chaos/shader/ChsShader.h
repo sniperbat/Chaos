@@ -1,6 +1,5 @@
 #ifndef _CHS_SHADER_H
 #define _CHS_SHADER_H
-#pragma once
 
 #include "platform/ChsOpenGL.h"
 //------------------------------------------------------------------------------------------------
