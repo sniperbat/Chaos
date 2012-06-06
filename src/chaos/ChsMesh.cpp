@@ -30,13 +30,6 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsMesh::setMaterial( ChsMaterial * material ) {
 		this->material.reset( material );
-		if( this->material ){
-			// Bind attribute locations.
-			// This needs to be done prior to linking.
-      assert( !this->material->getShaderProgram().expired() );
-			this->vertexBuffer->bindAttribLocations( this->material->getShaderProgram().lock().get() );
-			this->material->linkShader();
-		}
 	}
 
   //------------------------------------------------------------------------------------------------

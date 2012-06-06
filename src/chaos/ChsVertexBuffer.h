@@ -22,10 +22,9 @@ namespace Chaos {
 	public:
 		ChsVertexBuffer( void );
 		~ChsVertexBuffer( void );
-		void addAttrib( int index, int count, int type, bool isNormalized, const std::string & name );
-		void bindAttribLocations( const ChsShaderProgram * program );
-
-		void bind( void );
+		void addAttrib( int count, int type, bool isNormalized, const std::string & name );
+    
+		void bindToShader( unsigned int programHandle );
 		void unbind( void );
 
 		inline void setDataWithVector( const std::vector<float> & vertices );
@@ -33,6 +32,7 @@ namespace Chaos {
 	private:
 		void bindAttribArrays( void );
 		void unbindAttribArrays( void );
+		void attachAttributesToShader( unsigned int programHandle );
     
 		std::vector< boost::shared_ptr<ChsAttribUnit> > attribs;
 		unsigned int vaoHandle;

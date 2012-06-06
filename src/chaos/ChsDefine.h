@@ -28,6 +28,17 @@ namespace Chaos {
 #endif
 #define boolean unsigned int
 
+  //------------------------------------------------------------------------------------------------
+  enum ChsShaderType{
+    CHS_SHADER_UNKNOWN,
+    CHS_SHADER_PROGRAM,
+    CHS_SHADER_VERTEX,
+    CHS_SHADER_FRAGMENT,
+  };
+  
+  #define CHS_INVALID_SHADER_HANDLE 0
+  #define CHS_SHADER_UNIFORM_UNLOCATED -1
+  #define CHS_SHADER_ATTRIBUTE_UNLOCATED -1
 	//------------------------------------------------------------------------------------------------
 	enum ChsRenderType{
 		CHS_RENDER_IOS,

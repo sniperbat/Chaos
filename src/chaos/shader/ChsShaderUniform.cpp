@@ -1,3 +1,4 @@
+#include "platform/ChsOpenGL.h"
 #include "ChsShaderUniform.h"
 #include "ChsShaderProgram.h"
 #include "ChsUtility.h"
@@ -15,8 +16,8 @@ namespace Chaos {
 	}
   
 	//------------------------------------------------------------------------------------------------
-	void ChsShaderUniform::apply( ChsShaderProgram * program, bool needUpdateLocation ){
-		if( this->location == UNLOCATED || needUpdateLocation ) {
+	void ChsShaderUniform::bindToShader( ChsShaderProgram * program, bool needUpdateLocation ){
+		if( this->location == CHS_SHADER_UNIFORM_UNLOCATED || needUpdateLocation ) {
 			//looking for uniform in program
 			GLint location = program->getUniformLocation( this->name.c_str() );
 			if( location < 0 )
@@ -68,7 +69,7 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsShaderUniform::init( const std::string & name, ChsShaderUniformDataType type, int count, void * varAddr ){
-		this->location = UNLOCATED;
+		this->location = CHS_SHADER_UNIFORM_UNLOCATED;
 		this->name = name;
 		this->type = type;
 		this->count = count;

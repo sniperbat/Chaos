@@ -1,7 +1,7 @@
 #ifndef _CHS_SHADER_H
 #define _CHS_SHADER_H
 //--------------------------------------------------------------------------------------------------
-#include "platform/ChsOpenGL.h"
+#include "ChsDefine.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -9,14 +9,14 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	class ChsShader{
 	public :
-		ChsShader( int type );
+		ChsShader( void );
 		virtual ~ChsShader( void );
 		bool load( const char * source )const;
     inline unsigned int getHandle( void )const;
 
 	protected:
-		int type;
-    unsigned int shaderHandle;	
+		ChsShaderType type;
+    unsigned int shaderHandle;
   private:
 		bool compile( void )const;
 		int getStatus( void )const;
@@ -27,17 +27,17 @@ namespace Chaos {
 	inline unsigned int ChsShader::getHandle( void )const{
     return this->shaderHandle;
   }
-	
-  //------------------------------------------------------------------------------------------------
-	class ChsFragmentShader : public ChsShader{
-	public:
-		ChsFragmentShader( void ) : ChsShader( GL_FRAGMENT_SHADER ){}
-	};
 
 	//------------------------------------------------------------------------------------------------
 	class ChsVertexShader : public ChsShader{
 	public:
-		ChsVertexShader( void ) : ChsShader( GL_VERTEX_SHADER ){}
+		ChsVertexShader( void );
+	};
+	
+  //------------------------------------------------------------------------------------------------
+	class ChsFragmentShader : public ChsShader{
+	public:
+		ChsFragmentShader( void );
 	};
 
   //------------------------------------------------------------------------------------------------

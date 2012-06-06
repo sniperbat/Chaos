@@ -72,8 +72,7 @@ namespace Chaos {
       bool isNormalized = false;
       if( !attrName.compare( "normal" ) )
         isNormalized = true;
-      int index = attrElement->IntAttribute( "index" );
-      mesh->getVertexBuffer()->addAttrib( index, stride, GL_FLOAT, isNormalized, attrName );
+      mesh->getVertexBuffer()->addAttrib( stride, GL_FLOAT, isNormalized, attrName );
       attrElement = attrElement->NextSiblingElement( "ChsAttribute" );
     }
   }

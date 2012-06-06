@@ -1,18 +1,22 @@
 #include <boost/scoped_ptr.hpp>
+#include "platform/ChsOpenGL.h"
 #include "ChsShaderProgram.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsShaderProgram:: ChsShaderProgram( void ) : ChsShader( 0 ) {
+	ChsShaderProgram:: ChsShaderProgram( void ){
     this->shaderHandle = glCreateProgram();
+    this->type = CHS_SHADER_PROGRAM;
 	}
 
   //------------------------------------------------------------------------------------------------
 	ChsShaderProgram:: ~ChsShaderProgram( void ){
-	  glDeleteProgram( this->shaderHandle );
-    this->shaderHandle = 0;
+    if( this->shaderHandle ){
+      glDeleteProgram( this->shaderHandle );
+      this->shaderHandle = CHS_INVALID_SHADER_HANDLE;
+    }
 	}
 
   //------------------------------------------------------------------------------------------------

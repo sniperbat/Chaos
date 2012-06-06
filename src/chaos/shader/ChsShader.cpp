@@ -1,23 +1,20 @@
 #include <stdio.h>
 #include <boost/scoped_ptr.hpp>
+#include "platform/ChsOpenGL.h"
 #include "ChsShader.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
-	
+  
 	//------------------------------------------------------------------------------------------------
-	ChsShader::ChsShader( int type ) : shaderHandle( 0 ){
-		if( type ){
-    	this->type = type;
-	    this->shaderHandle = glCreateShader( type );
-		}
+	ChsShader::ChsShader( void ) : shaderHandle( CHS_INVALID_SHADER_HANDLE ){
 	}
 
 	//------------------------------------------------------------------------------------------------
 	ChsShader::~ChsShader( void ){
 		if( this->shaderHandle ){
 	   	glDeleteShader( this->shaderHandle );
-    	this->shaderHandle = 0;
+    	this->shaderHandle = CHS_INVALID_SHADER_HANDLE;
 		}
 	}
 
@@ -52,6 +49,18 @@ namespace Chaos {
 	  glGetShaderiv( this->shaderHandle, GL_COMPILE_STATUS, &status );
     return status;
 	}
+
+  //------------------------------------------------------------------------------------------------
+  ChsVertexShader::ChsVertexShader( void ){
+    this->shaderHandle = glCreateShader( GL_VERTEX_SHADER );
+    this->type = CHS_SHADER_VERTEX;
+  }
+
+  //------------------------------------------------------------------------------------------------
+  ChsFragmentShader::ChsFragmentShader( void ){
+    this->shaderHandle = glCreateShader( GL_FRAGMENT_SHADER );
+    this->type = CHS_SHADER_FRAGMENT;
+  }
 
   //------------------------------------------------------------------------------------------------
   

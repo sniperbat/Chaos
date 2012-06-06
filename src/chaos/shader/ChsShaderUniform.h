@@ -9,7 +9,6 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
 	class ChsShaderProgram;
-	#define UNLOCATED -1
 
   //------------------------------------------------------------------------------------------------
 	class ChsShaderUniform {
@@ -17,7 +16,7 @@ namespace Chaos {
 		ChsShaderUniform( void );
 		~ChsShaderUniform( void );
 		void init( const std::string & name, ChsShaderUniformDataType type, int count, void * varAddr = nullptr );
-		void apply( ChsShaderProgram * program, bool needUpdateLocation );
+		void bindToShader( ChsShaderProgram * program, bool needUpdateLocation );
 		template<typename T> void set( T value );
  		template<typename T> void set( T* value );
 	private:

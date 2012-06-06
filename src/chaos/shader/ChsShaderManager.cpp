@@ -55,8 +55,9 @@ namespace Chaos{
 			assert( fs );
 			program->attachShader( vs );
 			program->attachShader( fs );
-			printf( "生成ShaderProgram:%s\n", name.c_str() );
-			this->cache.insert( std::make_pair( name, program ) );
+      assert( program->link() );
+ 			printf( "生成ShaderProgram:%s\n", name.c_str() );
+      this->cache.insert( std::make_pair( name, program ) );
 		}
 		return program;
 	}

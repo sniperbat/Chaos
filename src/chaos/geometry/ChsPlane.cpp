@@ -33,8 +33,8 @@ namespace Chaos {
 		};
 		memcpy( this->vertices, vertices, sizeof( vertices ) );
 		
-		this->vertexBuffer->addAttrib( 0, 3, GL_FLOAT, false, "position" );
-		this->vertexBuffer->addAttrib( 4, 4, GL_FLOAT, true, "vertexColor" );
+		this->vertexBuffer->addAttrib( 3, GL_FLOAT, false, "position" );
+		this->vertexBuffer->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
 		this->vertexBuffer->setDataWithArray( vertices, sizeof( vertices ) );
     const GLubyte index[]={0,1,2,3};
 		this->indexBuffer->setDataWithArray( index, 4, GL_UNSIGNED_BYTE );

@@ -32,8 +32,8 @@ namespace Chaos {
   void renderByTag( ChsRenderTag tag ){
     BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
       currentShaderProgram = unit.material->apply( currentShaderProgram );
-      globalUniformSet.apply( currentShaderProgram );
-      unit.vertexBuffer->bind();
+      globalUniformSet.bindToShader( currentShaderProgram );
+      unit.vertexBuffer->bindToShader( currentShaderProgram->getHandle() );
       unit.indexBuffer->draw();
       unit.vertexBuffer->unbind();
     }

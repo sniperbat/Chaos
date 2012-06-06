@@ -50,7 +50,7 @@ namespace Chaos {
 			std::pair<ChsRenderState,unsigned int> p;
 			BOOST_FOREACH( p, this->renderStates )
 				ChsRenderStates::sharedInstance()->set( p.first,p.second );
-			this->shaderUniformSet.apply( currentProgram );
+			this->shaderUniformSet.bindToShader( currentProgram );
 			BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures ){
 				texture->apply();
       }
@@ -71,12 +71,6 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::setShader( const std::string & vshName, const std::string & fshName ){
 		this->shaderProgram = ChsResourceManager::sharedInstance()->getShaderProgram( vshName, fshName );
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void ChsMaterial::linkShader( void )const{
-		if( !this->shaderProgram.expired() )
-			this->shaderProgram.lock()->link();
 	}
 
 	//------------------------------------------------------------------------------------------------

@@ -28,7 +28,6 @@ namespace Chaos {
     void setShader( const std::string & vshName, const std::string & fshName );
 		void setRenderState( ChsRenderState state, unsigned int value );
 		void addTexture( const boost::shared_ptr<ChsTextureEntity> & texture );
-		void linkShader( void )const;
     
     inline boost::weak_ptr<ChsShaderProgram> getShaderProgram( void )const;
 	private:

@@ -88,8 +88,8 @@ namespace Chaos {
 		
 		boost::shared_ptr<ChsMesh> mesh( new ChsMesh() );
 		
-		mesh->getVertexBuffer()->addAttrib( 0, 3, GL_FLOAT, false, "position" );
-		mesh->getVertexBuffer()->addAttrib( 1, 4, GL_FLOAT, true, "vertexColor" );
+		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
+		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
 		mesh->getVertexBuffer()->setDataWithArray( vertices.get(), sizeof( Vertex ) * (vertexCount-6) );
 		
 		int indexCount = vertexCount-6;
@@ -108,8 +108,8 @@ namespace Chaos {
 		this->addMesh(mesh);
 		
 		mesh.reset( new ChsMesh() );
-		mesh->getVertexBuffer()->addAttrib( 0, 3, GL_FLOAT, false, "position" );
-		mesh->getVertexBuffer()->addAttrib( 1, 4, GL_FLOAT, true, "vertexColor" );
+		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
+		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
 		mesh->getVertexBuffer()->setDataWithArray( vertices.get()+(vertexCount-6), sizeof( Vertex ) * 6 );
 		for( int i = 0; i < 6; i++ )
 			indices[i] = ( GLushort )i;

@@ -21,7 +21,7 @@ namespace Chaos{
 	}	
   
   //------------------------------------------------------------------------------------------------
-	void ChsShaderUniformSet::apply ( ChsShaderProgram * program ){
+	void ChsShaderUniformSet::bindToShader ( ChsShaderProgram * program ){
 		if( program == nullptr )
 			return;
 		
@@ -33,7 +33,7 @@ namespace Chaos{
 		
 		std::pair<std::string, boost::shared_ptr<ChsShaderUniform> > p;
 		BOOST_FOREACH( p, this->uniforms )
-			p.second->apply( program, needUpdateLocation );
+			p.second->bindToShader( program, needUpdateLocation );
 	}
 
   //------------------------------------------------------------------------------------------------
