@@ -24,7 +24,15 @@ namespace Chaos {
      	printf("Failed to load vertex shader" );
       return false;
    	}
-    glShaderSource( this->shaderHandle, 1, &source, nullptr );
+    const char * sources[]={
+      "#ifndef GL_ES\n"
+      "#define lowp\n"
+      "#define highp\n"
+      "#define mediump\n"
+      "#endif\n",
+      source,
+    };
+    glShaderSource( this->shaderHandle, 2, sources, nullptr );
    	return this->compile();
 	}
 
