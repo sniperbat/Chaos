@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 #include "ChsNode.h"
 #include "ChsRenderable.h"
-
+#include "math/ChsMatrix.h"
 //--------------------------------------------------------------------------------------------------
 namespace Chaos{
   
@@ -16,8 +16,30 @@ namespace Chaos{
 		ChsRenderNode( const std::string & name = "unnamed" );
 		virtual ~ChsRenderNode( void );
     void updateTree( void );
+
+    inline void applyTransform( const ChsMatrix & matrix );
+    inline void applyTransform( const ChsMatrix * matrix );
+    //return a copy
+    ChsMatrix getTransform( void );
+    
+  private:
+    ChsMatrix transform;
 	};
+
+  //------------------------------------------------------------------------------------------------
+  inline void ChsRenderNode::applyTransform( const ChsMatrix & matrix ){
+    this->transform = matrix;
+  }
   
+  //------------------------------------------------------------------------------------------------
+  inline void ChsRenderNode::applyTransform( const ChsMatrix * matrix ){
+    this->transform = *matrix;
+  }
+
+  //------------------------------------------------------------------------------------------------
+  inline ChsMatrix ChsRenderNode::getTransform( void ){
+    return this->transform;
+  }
 	
   //------------------------------------------------------------------------------------------------
   

@@ -18,7 +18,7 @@ namespace Chaos {
 	void ChsModel::update( void ) {
 		BOOST_FOREACH( boost::shared_ptr<ChsMesh> & mesh, this->meshs )
 			if( mesh )
-				mesh->update();
+				mesh->updateTree();
 	}
 
 	//------------------------------------------------------------------------------------------------

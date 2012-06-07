@@ -17,11 +17,19 @@ namespace Chaos {
 		ChsNode * remove( const std::string & name );
 		ChsNode * get( const std::string & name );
     inline const std::string & getName( void )const;
+    inline ChsNode * getParent( void );
 	protected:
 		std::map< std::string, ChsNode * >  children;
     std::string name;
+  private:
+    ChsNode * parent;
 	};
 
+  //------------------------------------------------------------------------------------------------
+  inline ChsNode * ChsNode::getParent( void ){
+    return this->parent;
+  }
+  
 	//------------------------------------------------------------------------------------------------
 	inline void ChsNode::add( ChsNode * node ){
     if( node != nullptr )

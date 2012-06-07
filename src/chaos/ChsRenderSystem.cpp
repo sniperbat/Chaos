@@ -23,15 +23,20 @@ namespace Chaos {
 	static ChsShaderUniformSet globalUniformSet;
 	static ChsMatrix wvp;
 	static ChsMatrix wvit;
-	static ChsMatrix mtxWorld;
 	static ChsCoordinatePlane * debugCoordinatePlane;
 
   //------------------------------------------------------------------------------------------------
-  void renderByTag( ChsRenderTag tag );
-  void renderByTag( ChsRenderTag tag ){
+  void ChsRenderSystem::renderByTag( ChsRenderTag tag ){
     BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
       unit.material->apply();
+      
+      wvp = *unit.transform * this->currentCamera->getMatrix();
+			wvit = *unit.transform * this->currentCamera->getViewMatrix();
+			wvit.inverse();
+			wvit.transpose();
+      
       globalUniformSet.bind();
+      
       unit.vertexBuffer->bind();
       unit.indexBuffer->draw();
       unit.vertexBuffer->unbind();
@@ -104,10 +109,10 @@ namespace Chaos {
   void ChsRenderSystem::updateCamera( void ){
     if( this->currentCamera ){
 			this->currentCamera->update();
-			wvp = mtxWorld * this->currentCamera->getMatrix();
-			wvit = mtxWorld * this->currentCamera->getViewMatrix();
-			wvit.inverse();
-			wvit.transpose();
+			//wvp = mtxWorld * this->currentCamera->getMatrix();
+			//wvit = mtxWorld * this->currentCamera->getViewMatrix();
+			//wvit.inverse();
+			//wvit.transpose();
 		}
   }
 	//------------------------------------------------------------------------------------------------
@@ -135,8 +140,10 @@ namespace Chaos {
     this->renderStates->save();
     glClear( GL_DEPTH_BUFFER_BIT );
 //    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
-		wvp = ChsHUDManager::sharedInstance()->getCamera()->getViewProjectionMatrix();
+    ChsCamera * oldCamera = this->currentCamera;
+    this->currentCamera = ChsHUDManager::sharedInstance()->getCamera();
     renderByTag( CHS_RENDER_TAG_HUD );
+    this->currentCamera = oldCamera;
     this->renderStates->restore();
   }
 

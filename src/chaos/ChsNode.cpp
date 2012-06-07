@@ -6,7 +6,7 @@ using namespace boost::assign;
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	ChsNode::ChsNode( const std::string & name ){
+	ChsNode::ChsNode( const std::string & name ) : parent( nullptr ) {
     this->name = name;
 		this->children.clear();
 	}
@@ -18,15 +18,19 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsNode::add( const std::string & name, ChsNode * node ){
-    if( node != nullptr && this->children.find( name ) == this->children.end() )
+    if( node != nullptr && this->children.find( name ) == this->children.end() ){
       this->children.insert( std::make_pair( name, node ) );
+      node->parent = this;
+    }
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ChsNode * ChsNode::remove( const std::string & name ){
 		ChsNode * node = this->get( name );
-		if( node != nullptr )
+		if( node != nullptr ){
 			this->children.erase( name );
+      node->parent = nullptr;
+    }
 		return node;
 	}
 	

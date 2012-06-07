@@ -20,7 +20,7 @@ void main(){
   gl_Position = wvp * position;
   vec4 _normal = vec4( normal, 0.0);
   _normal = wvit * _normal;
-  vec3 lightDir = normalize( vec3( -3.0,1.0,1.0) - position.xyz );
+  vec3 lightDir = normalize( vec3( 100.0,100.0,300.0) - position.xyz );
   _normal.xyz = normalize(_normal.xyz);
   varDot = max(dot( _normal.xyz, lightDir ), 0.0);
   vec4 baseColor = vec4(1.0,1.0,1.0,1.0);

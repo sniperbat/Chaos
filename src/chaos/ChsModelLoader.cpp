@@ -160,6 +160,19 @@ namespace Chaos {
       mesh->setMaterial( material );
     }
   }
+
+  //------------------------------------------------------------------------------------------------
+  void setTransform( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );
+  void setTransform( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
+    tinyxml2::XMLElement * transformElement = meshElement->FirstChildElement( "ChsMatrix" );
+    if( transformElement ){
+      std::vector<float> array;
+      const char * valueText = transformElement->GetText();
+      lexicalCastToArray( array, valueText );
+      ChsMatrix transform( array.data() );
+      mesh->applyTransform( transform );
+    }
+  }
   
   //------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::loadAsXML( const char * data ){
@@ -188,6 +201,7 @@ namespace Chaos {
 			setAttributes( meshElement, mesh );
       setVertexBuffer( meshElement, mesh );
       setIndexBuffer( meshElement, mesh );
+      setTransform( meshElement, mesh );
       setMaterial( meshElement, mesh );
 			model->addMesh( mesh );
 			meshElement = meshElement->NextSiblingElement( "ChsMesh" );

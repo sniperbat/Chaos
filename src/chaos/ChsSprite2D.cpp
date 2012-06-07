@@ -90,11 +90,10 @@ namespace Chaos {
    		this->vertexBuffer->setDataWithArray( vertices, sizeof( vertices ) );
       this->needUpdate = false;
     }
-    ChsRenderUnit unit = {
-      this->material.get(),
-      this->vertexBuffer.get(),
-      this->indexBuffer.get()
-    };
+    ChsRenderUnit unit;
+    unit.material = this->material.get();
+    unit.vertexBuffer = this->vertexBuffer.get();
+    unit.indexBuffer = this->indexBuffer.get();
     this->sendToRender( CHS_RENDER_TAG_HUD, unit );
   }
   

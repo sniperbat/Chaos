@@ -36,11 +36,11 @@ namespace Chaos {
     void unloadHUD( const std::string & shudName );
     void purge( void );
     
-    inline const ChsCamera * getCamera( void )const;
+    inline ChsCamera * getCamera( void )const;
   };
 
   //------------------------------------------------------------------------------------------------
-  inline const ChsCamera * ChsHUDManager::getCamera( void )const{
+  inline ChsCamera * ChsHUDManager::getCamera( void )const{
     return this->camera.get();
   }
   

@@ -16,12 +16,14 @@ namespace Chaos {
 	class ChsVertexBuffer;
 	class ChsCamera;
   class ChsRenderStates;
+  class ChsMatrix;
 
   //------------------------------------------------------------------------------------------------
   struct ChsRenderUnit{
 		ChsMaterial * material;
 		ChsVertexBuffer * vertexBuffer;
 		ChsIndexBuffer * indexBuffer;
+    ChsMatrix * transform;
 	};
   typedef std::vector<ChsRenderUnit> ChsRenderChain;
 
@@ -63,6 +65,7 @@ namespace Chaos {
 		void initGL( void );
     void deleteAllBuffers( void );
 
+    void renderByTag( ChsRenderTag tag );
     void renderOpacity( void );
     void renderTransparent( void );
     void renderHUD( void );
