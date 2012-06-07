@@ -39,23 +39,25 @@ namespace Chaos {
 		this->textures.push_back( texture );
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	ChsShaderProgram * ChsMaterial::apply( ChsShaderProgram * sysProgram ) {
-		ChsShaderProgram * currentProgram = sysProgram;
+  //------------------------------------------------------------------------------------------------
+  void ChsMaterial::apply( void ){
+    ChsShaderProgram * activeProgram = ChsShaderManager::getActiveShaderProgram();
+    ChsShaderProgram * program = activeProgram;
     if( !this->shaderProgram.expired() )
-				currentProgram = this->shaderProgram.lock().get();      
-		if( currentProgram ){
-      if( currentProgram != sysProgram )
-        currentProgram->use();
-			std::pair<ChsRenderState,unsigned int> p;
-			BOOST_FOREACH( p, this->renderStates )
-				ChsRenderStates::sharedInstance()->set( p.first,p.second );
-			this->shaderUniformSet.bindToShader( currentProgram );
-			BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures ){
-				texture->apply();
+      program = this->shaderProgram.lock().get();
+    if( program != nullptr ){
+      if( program != activeProgram ){
+        program->use();
+        ChsShaderManager::setActiveShaderProgram( program );
       }
+
+      std::pair<ChsRenderState,unsigned int> p;
+      BOOST_FOREACH( p, this->renderStates )
+        ChsRenderStates::sharedInstance()->set( p.first,p.second );
+      this->shaderUniformSet.bind();
+      BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures )
+        texture->apply();
 		}
-		return currentProgram;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -68,9 +70,14 @@ namespace Chaos {
 	}
 	#endif
 
+  //------------------------------------------------------------------------------------------------
+  void ChsMaterial::setShader( boost::shared_ptr<ChsShaderProgram> shader ){
+    this->shaderProgram = shader;
+  }
+  
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::setShader( const std::string & vshName, const std::string & fshName ){
-		this->shaderProgram = ChsResourceManager::sharedInstance()->getShaderProgram( vshName, fshName );
+		this->setShader( ChsResourceManager::sharedInstance()->getShaderProgram( vshName, fshName ) );
 	}
 
 	//------------------------------------------------------------------------------------------------

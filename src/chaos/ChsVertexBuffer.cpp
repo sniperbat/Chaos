@@ -1,6 +1,7 @@
 #include <boost/foreach.hpp>
 #include "ChsVertexBuffer.h"
 #include "shader/ChsShaderProgram.h"
+#include "shader/ChsShaderManager.h"
 #include "ChsUtility.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -90,19 +91,20 @@ namespace Chaos {
 	}
 
   //------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::attachAttributesToShader( unsigned int programHandle ){
+	void ChsVertexBuffer::attachAttributes( void ){
+    unsigned int programHandle = ChsShaderManager::getActiveShaderProgram()->getHandle();
     BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs )
       attrib->attachToShader( programHandle );
 	}
 
   
 	//------------------------------------------------------------------------------------------------
-	void ChsVertexBuffer::bindToShader( unsigned int programHandle ){
+	void ChsVertexBuffer::bind( void ){
    	glBindVertexArray( this->vaoHandle );
     if( this->isNeedUpdate ){
       glBindBuffer( GL_ARRAY_BUFFER, this->vboHandle );
       glBufferData( GL_ARRAY_BUFFER, this->size, this->buffer,  GL_STATIC_DRAW );
-      this->attachAttributesToShader( programHandle );
+      this->attachAttributes();
       this->bindAttribArrays();
       glBindBuffer( GL_ARRAY_BUFFER, 0 );
       this->isNeedUpdate = false;

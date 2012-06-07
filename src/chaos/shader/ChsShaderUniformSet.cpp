@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include "ChsShaderUniformSet.h"
+#include "ChsShaderManager.h"
 
 //------------------------------------------------------------------------------------------------
 namespace Chaos{
@@ -21,16 +22,15 @@ namespace Chaos{
 	}	
   
   //------------------------------------------------------------------------------------------------
-	void ChsShaderUniformSet::bindToShader ( ChsShaderProgram * program ){
+	void ChsShaderUniformSet::bind( void ){
+    ChsShaderProgram * program = ChsShaderManager::getActiveShaderProgram();
 		if( program == nullptr )
 			return;
-		
 		bool needUpdateLocation = false;
 		if( this->program != program ){
 			needUpdateLocation = true;
 			this->program = program;
 		}
-		
 		std::pair<std::string, boost::shared_ptr<ChsShaderUniform> > p;
 		BOOST_FOREACH( p, this->uniforms )
 			p.second->bindToShader( program, needUpdateLocation );

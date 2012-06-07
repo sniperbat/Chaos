@@ -24,16 +24,15 @@ namespace Chaos {
 	static ChsMatrix wvp;
 	static ChsMatrix wvit;
 	static ChsMatrix mtxWorld;
-  static ChsShaderProgram * currentShaderProgram;
 	static ChsCoordinatePlane * debugCoordinatePlane;
 
   //------------------------------------------------------------------------------------------------
   void renderByTag( ChsRenderTag tag );
   void renderByTag( ChsRenderTag tag ){
     BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
-      currentShaderProgram = unit.material->apply( currentShaderProgram );
-      globalUniformSet.bindToShader( currentShaderProgram );
-      unit.vertexBuffer->bindToShader( currentShaderProgram->getHandle() );
+      unit.material->apply();
+      globalUniformSet.bind();
+      unit.vertexBuffer->bind();
       unit.indexBuffer->draw();
       unit.vertexBuffer->unbind();
     }

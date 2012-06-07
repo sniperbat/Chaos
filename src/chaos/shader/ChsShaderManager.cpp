@@ -8,6 +8,9 @@
 //--------------------------------------------------------------------------------------------------
 namespace Chaos{
 
+  //------------------------------------------------------------------------------------------------
+  ChsShaderProgram * ChsShaderManager::activeShader = nullptr;
+  
 	//------------------------------------------------------------------------------------------------
 	template < typename ShaderType >
 	boost::shared_ptr<ShaderType> ChsShaderManager::getShader( const std::string & name ) {

@@ -14,7 +14,6 @@ using namespace boost::assign;
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
-	class ChsShaderProgram;
 	struct ChsAttribUnit;
 
   //------------------------------------------------------------------------------------------------
@@ -24,7 +23,7 @@ namespace Chaos {
 		~ChsVertexBuffer( void );
 		void addAttrib( int count, int type, bool isNormalized, const std::string & name );
     
-		void bindToShader( unsigned int programHandle );
+		void bind( void );
 		void unbind( void );
 
 		inline void setDataWithVector( const std::vector<float> & vertices );
@@ -32,7 +31,7 @@ namespace Chaos {
 	private:
 		void bindAttribArrays( void );
 		void unbindAttribArrays( void );
-		void attachAttributesToShader( unsigned int programHandle );
+		void attachAttributes( void );
     
 		std::vector< boost::shared_ptr<ChsAttribUnit> > attribs;
 		unsigned int vaoHandle;

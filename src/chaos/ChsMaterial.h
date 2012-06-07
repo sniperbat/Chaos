@@ -2,7 +2,7 @@
 #define _CHSMATERIAL_H
 //--------------------------------------------------------------------------------------------------
 #include <boost/weak_ptr.hpp>
-#include <vector>
+#include <boost/shared_ptr.hpp>
 #include <vector>
 #include "shader/ChsShaderUniformSet.h"
 #include "ChsTextureEntity.h"
@@ -20,12 +20,14 @@ namespace Chaos {
     ChsMaterial( void );
 	  virtual ~ChsMaterial( void );
     
-    ChsShaderProgram * apply( ChsShaderProgram * program );
+    void apply( void );
 		
     void addProperty( const std::string & name, ChsShaderUniformDataType type, int count );
 		template<typename T> void setProperty( const std::string & name, T value );
 	  
     void setShader( const std::string & vshName, const std::string & fshName );
+    void setShader( boost::shared_ptr<ChsShaderProgram> );
+    
 		void setRenderState( ChsRenderState state, unsigned int value );
 		void addTexture( const boost::shared_ptr<ChsTextureEntity> & texture );
     
