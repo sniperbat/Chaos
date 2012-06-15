@@ -234,7 +234,7 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
-	void ChsRenderSystem::showDebugCoordinate( bool isShow ){
+	void ChsRenderSystem::toggleDebugCoordinate( bool isShow ){
 		if( this->isShowDebugCoordinate != isShow ){
       ChsNode * sceneRoot = ChsSceneManager::sharedInstance()->getRoot();
 			if( isShow )

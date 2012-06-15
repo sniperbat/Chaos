@@ -31,7 +31,7 @@ void GameDemo::onInit( void ) {
   ChsTouchEmitter::sharedInstance()->addListener( camera.get() );
   
   this->getRender()->setCurrentCamera( camera.get() );
-	this->getRender()->showDebugCoordinate( true );
+	this->getRender()->toggleDebugCoordinate( true );
 	
 	ChsModel * model = ChsResourceManager::sharedInstance()->getModel( "test.chsmodel" ).get();
 	ChsSceneManager::sharedInstance()->getRoot()->add( model );

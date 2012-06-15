@@ -87,7 +87,7 @@ namespace Chaos {
 		inline void setCurrentCamera( ChsCamera * camera );
     inline ChsCamera * getCurrentCamera( void )const;
     
-		void showDebugCoordinate( bool isShow );
+		void toggleDebugCoordinate( bool isShow );
     inline bool isDebugCoordinateShowing( void )const;
 	};
 	
