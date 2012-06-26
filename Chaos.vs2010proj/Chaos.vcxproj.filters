@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{eaced670-047f-45f4-94fd-14e94cdbeaf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\entrance">
+      <UniqueIdentifier>{a58b861b-aa85-44cb-8a1a-344f7dc04483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tinyxml2">
+      <UniqueIdentifier>{9fe33130-1590-4a33-8a38-3f5c762fa256}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos">
+      <UniqueIdentifier>{2ce79115-cb7b-4972-b713-3be83e9628be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\camera">
+      <UniqueIdentifier>{474fcb2d-167c-4dc2-ae81-297a45492aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\entrance\windows">
+      <UniqueIdentifier>{772f532a-9545-47c6-bed7-5386a3738b1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\shader">
+      <UniqueIdentifier>{d72ea3e5-95cf-424c-abb5-55ef0aeae06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\math">
+      <UniqueIdentifier>{6e30f770-4d7a-4d3e-b98e-455e1e704448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\io">
+      <UniqueIdentifier>{3e18684a-4e91-4c9d-a499-f110008939b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\geometry">
+      <UniqueIdentifier>{365abfb7-ecdb-44d2-9333-9b90066bd243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\hud">
+      <UniqueIdentifier>{23aba6f5-26ad-475e-b179-b18298237dd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\platform">
+      <UniqueIdentifier>{56f642e6-1104-4ea2-b6e7-262a5bfd0cb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\platform\windows">
+      <UniqueIdentifier>{3eb0eb9f-b087-4df4-9dee-e810db317758}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\entrance\windows\main.cpp">
+      <Filter>src\entrance\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GameDemo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tinyxml2\tinyxml2.cpp">
+      <Filter>src\tinyxml2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsArrayBuffer.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsDaeLoader.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsEngine.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsEntity.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsEntityManager.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsGameBase.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsIndexBuffer.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsMaterial.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsMesh.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsModel.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsModelLoader.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsModelManager.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsNode.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsRenderable.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsRenderFactory.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsRenderNode.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsRenderStates.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsRenderSystem.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsResourceManager.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsSceneManager.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsSingleton.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsSprite2D.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsTexture2D.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsTextureEntity.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsTextureFactory.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsTextureManager.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsUtility.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\ChsVertexBuffer.cpp">
+      <Filter>src\chaos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\camera\ChsModelViewCamera.cpp">
+      <Filter>src\chaos\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\camera\ChsCamera.cpp">
+      <Filter>src\chaos\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\shader\ChsShaderUniform.cpp">
+      <Filter>src\chaos\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\shader\ChsShaderUniformSet.cpp">
+      <Filter>src\chaos\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\shader\ChsShader.cpp">
+      <Filter>src\chaos\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\shader\ChsShaderManager.cpp">
+      <Filter>src\chaos\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\shader\ChsShaderProgram.cpp">
+      <Filter>src\chaos\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\math\ChsMath.cpp">
+      <Filter>src\chaos\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\math\ChsMatrix.cpp">
+      <Filter>src\chaos\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\math\ChsQuaternion.cpp">
+      <Filter>src\chaos\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\math\ChsVector2.cpp">
+      <Filter>src\chaos\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\math\ChsVector3.cpp">
+      <Filter>src\chaos\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\math\ChsVector4.cpp">
+      <Filter>src\chaos\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\io\ChsTouchEmitter.cpp">
+      <Filter>src\chaos\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\io\ChsTouchListener.cpp">
+      <Filter>src\chaos\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\geometry\ChsCoordinatePlane.cpp">
+      <Filter>src\chaos\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\geometry\ChsCube.cpp">
+      <Filter>src\chaos\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\geometry\ChsPlane.cpp">
+      <Filter>src\chaos\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\hud\ChsHUD.cpp">
+      <Filter>src\chaos\hud</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\hud\ChsHUDManager.cpp">
+      <Filter>src\chaos\hud</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\platform\ChsOpenGL.cpp">
+      <Filter>src\chaos\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\platform\windows\ChsFileSystemWindows.cpp">
+      <Filter>src\chaos\platform\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\platform\windows\ChsRenderSystemWindows.cpp">
+      <Filter>src\chaos\platform\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\platform\windows\ChsTextureFactoryWindows.cpp">
+      <Filter>src\chaos\platform\windows</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\GameDemo.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tinyxml2\tinyxml2.h">
+      <Filter>src\tinyxml2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\Chaos.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsArrayBuffer.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsDae.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsDaeLoader.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsDefine.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsEngine.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsEntity.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsEntityManager.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsGameBase.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsIndexBuffer.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsManagerWithCache.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsMaterial.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsMesh.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsModel.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsModelLoader.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsModelManager.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsNode.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsRenderable.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsRenderFactory.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsRenderNode.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsRenderStates.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsRenderSystem.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsResourceManager.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsSceneManager.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsSingleton.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsSprite2D.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsTexture2D.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsTextureEntity.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsTextureFactory.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsTextureManager.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsUtility.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\ChsVertexBuffer.h">
+      <Filter>src\chaos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\camera\ChsModelViewCamera.h">
+      <Filter>src\chaos\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\camera\ChsCamera.h">
+      <Filter>src\chaos\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\shader\ChsShaderProgram.h">
+      <Filter>src\chaos\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\shader\ChsShaderUniform.h">
+      <Filter>src\chaos\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\shader\ChsShaderUniformSet.h">
+      <Filter>src\chaos\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\shader\ChsShader.h">
+      <Filter>src\chaos\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\shader\ChsShaderManager.h">
+      <Filter>src\chaos\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\math\ChsMath.h">
+      <Filter>src\chaos\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\math\ChsMatrix.h">
+      <Filter>src\chaos\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\math\ChsQuaternion.h">
+      <Filter>src\chaos\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\math\ChsVector2.h">
+      <Filter>src\chaos\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\math\ChsVector3.h">
+      <Filter>src\chaos\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\math\ChsVector4.h">
+      <Filter>src\chaos\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\io\ChsTouchEmitter.h">
+      <Filter>src\chaos\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\io\ChsTouchListener.h">
+      <Filter>src\chaos\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\io\ChsFileSystem.h">
+      <Filter>src\chaos\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\geometry\ChsCoordinatePlane.h">
+      <Filter>src\chaos\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\geometry\ChsCube.h">
+      <Filter>src\chaos\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\geometry\ChsPlane.h">
+      <Filter>src\chaos\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\hud\ChsHUD.h">
+      <Filter>src\chaos\hud</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\hud\ChsHUDManager.h">
+      <Filter>src\chaos\hud</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\platform\ChsOpenGL.h">
+      <Filter>src\chaos\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\platform\windows\ChsFileSystemWindows.h">
+      <Filter>src\chaos\platform\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\platform\windows\ChsRenderSystemWindows.h">
+      <Filter>src\chaos\platform\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\platform\windows\ChsTextureFactoryWindows.h">
+      <Filter>src\chaos\platform\windows</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

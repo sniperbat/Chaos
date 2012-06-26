@@ -26,7 +26,8 @@
 #elif defined(CHS_PLATFORM_WINDOWS)
 
   #include <GL/glew.h>
-  #include <GL/wglew.h>
+//  #include <GL/wglew.h>
+
 
 #endif
 

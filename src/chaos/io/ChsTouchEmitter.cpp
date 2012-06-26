@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include <vector>
+#include <algorithm>
 #include "ChsTouchEmitter.h"
 #include "ChsTouchListener.h"
 

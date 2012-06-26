@@ -16,15 +16,18 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsModel::update( void ) {
-		BOOST_FOREACH( boost::shared_ptr<ChsMesh> & mesh, this->meshs )
-			if( mesh )
+		BOOST_FOREACH( boost::shared_ptr<ChsMesh> & mesh, this->meshs ){
+			if( mesh ){
 				mesh->updateTree();
+      }
+    }
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ChsModel::addMesh( const boost::shared_ptr<ChsMesh> & mesh ){
-		if( mesh )
+		if( mesh ){
 			this->meshs.push_back( mesh );
+    }
 	}
 	
   //------------------------------------------------------------------------------------------------

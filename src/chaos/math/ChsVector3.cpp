@@ -1,29 +1,30 @@
 ﻿#include <assert.h>
+#include <stdio.h>
 #include "ChsVector3.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
-	
+
 	//------------------------------------------------------------------------------------------------
 	ChsVector3::ChsVector3( float x, float y, float z){
     this->init( x, y, z );
 	}
-	
+
   //------------------------------------------------------------------------------------------------
 	ChsVector3::ChsVector3( void ){
     this->init( 0.0f, 0.0f, 0.0f );
 	}
-	
+
   //------------------------------------------------------------------------------------------------
 	ChsVector3::ChsVector3( const float vec[3] ){
     this->init( vec[0], vec[1], vec[2] );
 	}
-	
+
   //------------------------------------------------------------------------------------------------
 	ChsVector3::ChsVector3( const ChsVector3 & vec ){
     this->init( vec.x, vec.y, vec.z );
 	}
-	
+
   //------------------------------------------------------------------------------------------------
   void ChsVector3::init( float x, float y, float z ){
     this->x = x;
@@ -38,12 +39,12 @@ namespace Chaos {
 		this->z = vec.z;
 		return *this;
 	}
-	
+
   //------------------------------------------------------------------------------------------------
 	bool ChsVector3::operator == (const ChsVector3& vec)const{
 		return this->x == vec.x && this->y == vec.y && this->z == vec.z;
 	}
-	
+
   //------------------------------------------------------------------------------------------------
 	ChsVector3 ChsVector3::operator - ( void )const{
 		return ChsVector3( -this->x, -this->y, -this->z );
@@ -53,7 +54,7 @@ namespace Chaos {
 	ChsVector3 ChsVector3::operator * ( float scale )const{
 		return ChsVector3( this->x * scale, this->y * scale, this->z * scale );
 	}
-	
+
   //------------------------------------------------------------------------------------------------
 	ChsVector3 ChsVector3::operator / ( float scale )const{
 		assert( scale != 0 );
@@ -75,7 +76,7 @@ namespace Chaos {
 		this->z -= vec.z;
 		return *this;
 	}
-	
+
   //------------------------------------------------------------------------------------------------
 	ChsVector3 & ChsVector3::operator *= ( float scale ){
 		this->x *= scale;
@@ -143,7 +144,7 @@ namespace Chaos {
   void ChsVector3::debugPrint( const char * name ){
     printf( "%s:[%f,%f,%f]\n", name, this->x, this->y, this->z );
   }
-  
+
 }//namespace
 
 //--------------------------------------------------------------------------------------------------

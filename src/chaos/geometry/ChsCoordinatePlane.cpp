@@ -23,7 +23,8 @@ namespace Chaos {
 				r = 1.0f;//r
 				g = 1.0f;//g
 				b = 1.0f;//b
-				a = 0.9f;//a
+				a = 1.0f;//a
+        y = 0.0f;
 			}
 		};
 		int vertexCount = 2 * ( divide + 1 ) * 2 + 6;
@@ -122,6 +123,7 @@ namespace Chaos {
 		mesh->setMaterial( material );
 //		material->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
 		this->addMesh(mesh);
+    
 	}
   
 	//------------------------------------------------------------------------------------------------
