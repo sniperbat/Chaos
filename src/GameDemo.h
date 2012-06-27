@@ -1,7 +1,7 @@
 #ifndef _GAMEDEMO_H
 #define _GAMEDEMO_H
 //--------------------------------------------------------------------------------------------------
-#include "chaos/ChsGameBase.h"
+#include "chaos/framework/ChsGameBase.h"
 
 //--------------------------------------------------------------------------------------------------
 class GameDemo : public Chaos::ChsGameBase {

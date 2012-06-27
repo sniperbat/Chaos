@@ -1,5 +1,5 @@
 #include "ChsIndexBuffer.h"
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

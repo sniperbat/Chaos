@@ -1,10 +1,12 @@
 #include "ChsEngine.h"
 #include "ChsRenderFactory.h"
 #include "ChsRenderSystem.h"
-#include "ChsGameBase.h"
 #include "ChsResourceManager.h"
+
 #include "hud/ChsHUDManager.h"
-#include "ChsSceneManager.h"
+
+#include "framework/ChsGameBase.h"
+#include "framework/ChsSceneManager.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -29,7 +31,7 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsEngine::run( void )const{
 		this->getGame()->onUpdate();
-    ChsSceneManager::sharedInstance()->update();
+    ChsSceneManager::sharedInstance()->update( 1.0f );
     ChsHUDManager::sharedInstance()->update();
  		this->getRenderSystem()->render();
 	}

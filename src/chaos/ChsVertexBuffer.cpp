@@ -1,8 +1,8 @@
 #include <boost/foreach.hpp>
-#include "ChsVertexBuffer.h"
+#include "core/ChsUtility.h"
 #include "shader/ChsShaderProgram.h"
 #include "shader/ChsShaderManager.h"
-#include "ChsUtility.h"
+#include "ChsVertexBuffer.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

@@ -1,5 +1,5 @@
+#include "core/ChsUtility.h"
 #include "ChsArrayBuffer.h"
-#include "ChsUtility.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

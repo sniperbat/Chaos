@@ -1,7 +1,7 @@
 #ifndef _CHS_RENDERNODE_H
 #define _CHS_RENDERNODE_H
 //--------------------------------------------------------------------------------------------------
-#include "ChsNode.h"
+#include "core/ChsNode.h"
 #include "ChsRenderable.h"
 #include "math/ChsMatrix.h"
 //--------------------------------------------------------------------------------------------------

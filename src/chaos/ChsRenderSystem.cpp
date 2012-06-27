@@ -1,19 +1,19 @@
 #include <boost/foreach.hpp>
+#include "core/ChsUtility.h"
+#include "camera/ChsCamera.h"
+#include "framework/ChsSceneManager.h"
+#include "framework/ChsScene.h"
+#include "geometry/ChsCoordinatePlane.h"
+#include "hud/ChsHUDManager.h"
+#include "math/ChsMath.h"
+#include "shader/ChsShaderProgram.h"
+#include "shader/ChsShaderUniformSet.h"
 #include "ChsRenderSystem.h"
 #include "ChsRenderStates.h"
 #include "ChsRenderNode.h"
-#include "ChsUtility.h"
 #include "ChsMaterial.h"
-#include "shader/ChsShaderProgram.h"
-#include "shader/ChsShaderUniformSet.h"
 #include "ChsVertexBuffer.h"
 #include "ChsIndexBuffer.h"
-#include "camera/ChsCamera.h"
-#include "math/ChsMath.h"
-#include "geometry/ChsCoordinatePlane.h"
-#include "hud/ChsHUDManager.h"
-#include "ChsSceneManager.h"
-
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
 
@@ -236,7 +236,10 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::toggleDebugCoordinate( bool isShow ){
 		if( this->isShowDebugCoordinate != isShow ){
-      ChsNode * sceneRoot = ChsSceneManager::sharedInstance()->getRoot();
+      boost::weak_ptr<ChsScene> scene = ChsSceneManager::sharedInstance()->getCurrentScene();
+      if( scene.expired() )
+        return;
+      ChsNode * sceneRoot = scene.lock()->getRoot();
 			if( isShow )
 				sceneRoot->add( debugCoordinatePlane->getName(), debugCoordinatePlane );
 			else

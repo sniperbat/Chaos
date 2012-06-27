@@ -1,6 +1,7 @@
+#include "core/ChsUtility.h"
 #include "ChsRenderFactory.h"
 #include "ChsRenderSystem.h"
-#include "ChsUtility.h"
+
 
 #if defined( CHS_PLATFORM_IOS )
 	#include "ChsRenderSystemIOS.h"
