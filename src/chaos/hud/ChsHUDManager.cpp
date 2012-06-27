@@ -10,7 +10,7 @@ using namespace boost::assign;
 #include "ChsSprite2D.h"
 #include "ChsTextureEntity.h"
 #include "ChsResourceManager.h"
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

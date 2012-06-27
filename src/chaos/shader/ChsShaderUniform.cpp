@@ -1,7 +1,7 @@
 #include "platform/ChsOpenGL.h"
 #include "ChsShaderUniform.h"
 #include "ChsShaderProgram.h"
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

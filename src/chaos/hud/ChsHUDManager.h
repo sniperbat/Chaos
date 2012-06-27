@@ -7,7 +7,7 @@
 #include <map>
 #include <boost/scoped_ptr.hpp>
 #include "ChsDefine.h"
-#include "ChsSingleton.h"
+#include "core/ChsSingleton.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

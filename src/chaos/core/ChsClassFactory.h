@@ -33,10 +33,7 @@ namespace Chaos {
       return nullptr;
     }
   };
-  
-#define DEFINE_CLASS_
-#define REGISTER_DYNAMIC_CLASS_CREATOR( a, creator ) 
-  
+
 }
 
 #endif//_CHS_CLASSFACTORY_H

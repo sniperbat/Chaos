@@ -14,19 +14,25 @@ namespace Chaos{
   
   //------------------------------------------------------------------------------------------------
   void ChsSceneManager::update( float dt ){
-    if( !this->currentScene.expired() )
-      this->currentScene.lock()->onUpdate( dt );
+    if( !this->currentScene.expired() ){
+      boost::shared_ptr<ChsScene> & scene = this->currentScene.lock();
+      scene->onUpdate( dt );
+      ((ChsRenderNode*)scene->getRoot())->updateTree();
+    }
   }
  
   //------------------------------------------------------------------------------------------------
   void ChsSceneManager::purge( void ){
   }
- 
+
+  //------------------------------------------------------------------------------------------------
+  static ChsClassFactory<ChsScene> * sceneClassFactory = 
+    ChsClassFactory<ChsScene>::sharedInstance();
   //------------------------------------------------------------------------------------------------
   boost::shared_ptr<ChsScene> ChsSceneManager::getScene( const std::string & className ){
     auto iter = this->scenes.find( className );
     if( iter == this->scenes.end() ){
-      boost::shared_ptr<ChsScene> scene( ChsClassFactory<ChsScene>::sharedInstance()->create( className ) );
+      boost::shared_ptr<ChsScene> scene( sceneClassFactory->create( className ) );
       if( scene ){
         scene->onInit();
         this->scenes.insert( std::make_pair( className, scene ) );

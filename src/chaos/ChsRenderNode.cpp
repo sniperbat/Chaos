@@ -1,6 +1,6 @@
 #include <boost/foreach.hpp>
 #include "ChsRenderNode.h"
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 #include "math/ChsMatrix.h"
 
 //--------------------------------------------------------------------------------------------------

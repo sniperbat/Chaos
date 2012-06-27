@@ -2,7 +2,7 @@
 #include "ChsResourceManager.h"
 #include "ChsRenderStates.h"
 #include "hud/ChsHUDManager.h"
-#include "ChsSceneManager.h"
+#include "framework/ChsSceneManager.h"
 #include "io/ChsTouchEmitter.h"
 
 //--------------------------------------------------------------------------------------------------

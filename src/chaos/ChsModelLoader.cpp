@@ -6,7 +6,7 @@
 #include "ChsVertexBuffer.h"
 #include "io/ChsFileSystem.h"
 #include "ChsResourceManager.h"
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 #include "ChsMaterial.h"
 #include "ChsTextureEntity.h"
 

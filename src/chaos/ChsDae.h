@@ -3,7 +3,7 @@
 
 #include <tinyxml2/tinyxml2.h>
 #include <map>
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 //----------------------------------------------------------------------------------------------
 template<typename DaeInputType>
 void prepareInput( std::vector<DaeInputType> & inputs, tinyxml2::XMLElement * inputElement ){

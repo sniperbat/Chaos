@@ -1,7 +1,7 @@
 #ifndef _CHS_TOUCHEMITTER_H
 #define _CHS_TOUCHEMITTER_H
 //--------------------------------------------------------------------------------------------------
-#include "ChsSingleton.h"
+#include "core/ChsSingleton.h"
 #include "ChsDefine.h"
 
 //--------------------------------------------------------------------------------------------------

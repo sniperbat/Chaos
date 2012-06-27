@@ -40,6 +40,12 @@
     <Filter Include="src\chaos\platform\windows">
       <UniqueIdentifier>{3eb0eb9f-b087-4df4-9dee-e810db317758}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\chaos\core">
+      <UniqueIdentifier>{fdcdf358-1198-439a-8c38-1d8dccaa593b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chaos\framework">
+      <UniqueIdentifier>{d31cf0a7-0105-4d33-b889-6275141144df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\entrance\windows\main.cpp">
@@ -66,9 +72,6 @@
     <ClCompile Include="..\src\chaos\ChsEntityManager.cpp">
       <Filter>src\chaos</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\chaos\ChsGameBase.cpp">
-      <Filter>src\chaos</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\chaos\ChsIndexBuffer.cpp">
       <Filter>src\chaos</Filter>
     </ClCompile>
@@ -85,9 +88,6 @@
       <Filter>src\chaos</Filter>
     </ClCompile>
     <ClCompile Include="..\src\chaos\ChsModelManager.cpp">
-      <Filter>src\chaos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\chaos\ChsNode.cpp">
       <Filter>src\chaos</Filter>
     </ClCompile>
     <ClCompile Include="..\src\chaos\ChsRenderable.cpp">
@@ -108,9 +108,6 @@
     <ClCompile Include="..\src\chaos\ChsResourceManager.cpp">
       <Filter>src\chaos</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\chaos\ChsSceneManager.cpp">
-      <Filter>src\chaos</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\chaos\ChsSingleton.cpp">
       <Filter>src\chaos</Filter>
     </ClCompile>
@@ -127,9 +124,6 @@
       <Filter>src\chaos</Filter>
     </ClCompile>
     <ClCompile Include="..\src\chaos\ChsTextureManager.cpp">
-      <Filter>src\chaos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\chaos\ChsUtility.cpp">
       <Filter>src\chaos</Filter>
     </ClCompile>
     <ClCompile Include="..\src\chaos\ChsVertexBuffer.cpp">
@@ -207,6 +201,27 @@
     <ClCompile Include="..\src\chaos\platform\windows\ChsTextureFactoryWindows.cpp">
       <Filter>src\chaos\platform\windows</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\chaos\core\ChsNode.cpp">
+      <Filter>src\chaos\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\core\ChsUtility.cpp">
+      <Filter>src\chaos\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\framework\ChsGameBase.cpp">
+      <Filter>src\chaos\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\framework\ChsScene.cpp">
+      <Filter>src\chaos\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\framework\ChsSceneManager.cpp">
+      <Filter>src\chaos\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MainMenuScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chaos\core\ChsDynamicClass.cpp">
+      <Filter>src\chaos\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GameDemo.h">
@@ -236,12 +251,6 @@
     <ClInclude Include="..\src\chaos\ChsEntity.h">
       <Filter>src\chaos</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\chaos\ChsEntityManager.h">
-      <Filter>src\chaos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\chaos\ChsGameBase.h">
-      <Filter>src\chaos</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\chaos\ChsIndexBuffer.h">
       <Filter>src\chaos</Filter>
     </ClInclude>
@@ -263,9 +272,6 @@
     <ClInclude Include="..\src\chaos\ChsModelManager.h">
       <Filter>src\chaos</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\chaos\ChsNode.h">
-      <Filter>src\chaos</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\chaos\ChsRenderable.h">
       <Filter>src\chaos</Filter>
     </ClInclude>
@@ -284,12 +290,6 @@
     <ClInclude Include="..\src\chaos\ChsResourceManager.h">
       <Filter>src\chaos</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\chaos\ChsSceneManager.h">
-      <Filter>src\chaos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\chaos\ChsSingleton.h">
-      <Filter>src\chaos</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\chaos\ChsSprite2D.h">
       <Filter>src\chaos</Filter>
     </ClInclude>
@@ -303,9 +303,6 @@
       <Filter>src\chaos</Filter>
     </ClInclude>
     <ClInclude Include="..\src\chaos\ChsTextureManager.h">
-      <Filter>src\chaos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\chaos\ChsUtility.h">
       <Filter>src\chaos</Filter>
     </ClInclude>
     <ClInclude Include="..\src\chaos\ChsVertexBuffer.h">
@@ -385,6 +382,33 @@
     </ClInclude>
     <ClInclude Include="..\src\chaos\platform\windows\ChsTextureFactoryWindows.h">
       <Filter>src\chaos\platform\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\core\ChsNode.h">
+      <Filter>src\chaos\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\core\ChsSingleton.h">
+      <Filter>src\chaos\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\core\ChsUtility.h">
+      <Filter>src\chaos\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\core\ChsClassFactory.h">
+      <Filter>src\chaos\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\framework\ChsGameBase.h">
+      <Filter>src\chaos\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\framework\ChsScene.h">
+      <Filter>src\chaos\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\framework\ChsSceneManager.h">
+      <Filter>src\chaos\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MainMenuScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chaos\core\ChsDynamicClass.h">
+      <Filter>src\chaos\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

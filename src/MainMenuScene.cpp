@@ -5,16 +5,11 @@
 #include "ChsEngine.h"
 #include "ChsModel.h"
 #include "MainMenuScene.h"
-#include "core/ChsClassFactory.h"
 
 using namespace Chaos;
 
-ChsScene * MainMenuScene::creator( void ){
-  return new MainMenuScene();
-}
-
-bool isReg = ChsClassFactory<ChsScene>::sharedInstance()->registerClass( "MainMenuScene",
-                                                                        MainMenuScene::creator );
+//must do this, any other solutions??
+static bool isDynamic = MainMenuScene::registerAsDynamic( "MainMenuScene" ); 
 
 boost::scoped_ptr<ChsModelViewCamera> camera( new ChsModelViewCamera() );
 

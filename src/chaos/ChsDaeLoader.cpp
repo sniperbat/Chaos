@@ -7,7 +7,7 @@ using namespace boost::assign;
 #include "ChsModel.h"
 #include "ChsMesh.h"
 #include "io/ChsFileSystem.h"
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 #include "tinyxml2/tinyxml2.h"
 #include "platform/ChsOpenGL.h"
 #include "ChsIndexBuffer.h"

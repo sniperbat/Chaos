@@ -29,9 +29,10 @@ namespace Chaos {
   void ChsRenderSystem::renderByTag( ChsRenderTag tag ){
     BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
       unit.material->apply();
-      
-      wvp = *unit.transform * this->currentCamera->getMatrix();
-			wvit = *unit.transform * this->currentCamera->getViewMatrix();
+      if( this->currentCamera ){
+        wvp = *unit.transform * this->currentCamera->getMatrix();
+        wvit = *unit.transform * this->currentCamera->getViewMatrix();
+      }
 			wvit.inverse();
 			wvit.transpose();
       
@@ -118,6 +119,8 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::preRender( void ){
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    if( this->isShowDebugCoordinate )
+      debugCoordinatePlane->update();
 	}
   
   //------------------------------------------------------------------------------------------------
@@ -231,21 +234,6 @@ namespace Chaos {
 		this->viewport.w = static_cast<float>( w );
 		this->viewport.h = static_cast<float>( h );
 		glViewport( x, y, w, h );
-	}
-	
-  //------------------------------------------------------------------------------------------------
-	void ChsRenderSystem::toggleDebugCoordinate( bool isShow ){
-		if( this->isShowDebugCoordinate != isShow ){
-      boost::weak_ptr<ChsScene> scene = ChsSceneManager::sharedInstance()->getCurrentScene();
-      if( scene.expired() )
-        return;
-      ChsNode * sceneRoot = scene.lock()->getRoot();
-			if( isShow )
-				sceneRoot->add( debugCoordinatePlane->getName(), debugCoordinatePlane );
-			else
-				sceneRoot->remove( debugCoordinatePlane->getName() );
-			this->isShowDebugCoordinate = isShow;
-		}
 	}
 	
   //------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 #include "ChsShader.h"
 #include "ChsShaderProgram.h"
 #include "io/ChsFileSystem.h"
-#include "ChsUtility.h"
+#include "core/ChsUtility.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos{

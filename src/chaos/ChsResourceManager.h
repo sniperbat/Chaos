@@ -1,7 +1,7 @@
 #ifndef _CHS_RESOURCEMANAGER_H
 #define _CHS_RESOURCEMANAGER_H
 //--------------------------------------------------------------------------------------------------
-#include "ChsSingleton.h"
+#include "core/ChsSingleton.h"
 #include "ChsEntityManager.h"
 #include "ChsTextureManager.h"
 #include "ChsModelManager.h"

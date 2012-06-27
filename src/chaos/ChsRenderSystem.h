@@ -87,7 +87,7 @@ namespace Chaos {
 		inline void setCurrentCamera( ChsCamera * camera );
     inline ChsCamera * getCurrentCamera( void )const;
     
-		void toggleDebugCoordinate( bool isShow );
+		inline void toggleDebugCoordinate( bool isShow );
     inline bool isDebugCoordinateShowing( void )const;
 	};
 	
@@ -110,9 +110,12 @@ namespace Chaos {
   inline bool ChsRenderSystem::isDebugCoordinateShowing( void )const{
     return this->isShowDebugCoordinate;
   }
-  
+
   //------------------------------------------------------------------------------------------------
-  
+  void ChsRenderSystem::toggleDebugCoordinate( bool isShow ){
+    this->isShowDebugCoordinate = isShow;
+  }
+
 }//namespace
 
 //--------------------------------------------------------------------------------------------------

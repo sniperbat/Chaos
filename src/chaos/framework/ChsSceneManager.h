@@ -4,8 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 #include <map>
-#include "ChsSingleton.h"
-
+#include "core/ChsSingleton.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {

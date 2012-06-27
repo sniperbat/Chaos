@@ -1,7 +1,7 @@
 #ifndef _CHS_TEXTUREFACTORY_H
 #define _CHS_TEXTUREFACTORY_H
 //--------------------------------------------------------------------------------------------------
-#include "ChsSingleton.h"
+#include "core/ChsSingleton.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
