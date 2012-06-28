@@ -44,15 +44,26 @@ namespace Chaos{
   
   //------------------------------------------------------------------------------------------------
   void ChsSceneManager::gotoScene( const std::string & name ){
+    if( !this->lastScene.expired() ){
+      if( this->lastScene.lock()->getName() == name ){
+        //if has last scene and goto last scene, then just swap
+        const boost::shared_ptr<ChsScene> & lastScene = this->lastScene.lock();
+        this->lastScene = this->currentScene;
+        this->currentScene = lastScene;
+        return;
+      }
+    }
+    
     boost::shared_ptr<ChsScene> targetScene = this->getScene( name );
     if( targetScene ){//if target scene cannot be found, ignore it
       if( !this->currentScene.expired() ){
-        const boost::shared_ptr<ChsScene> & lastScene = this->currentScene.lock();
-        if( lastScene.get() == targetScene.get() ){
+        const boost::shared_ptr<ChsScene> & currentScene = this->currentScene.lock();
+        if( currentScene.get() == targetScene.get() ){
           //target scene was already running, dont exit and enter again.
           return;
         }
-        lastScene->onExit();
+        currentScene->onExit();
+        this->lastScene = currentScene;
       }
       this->currentScene = targetScene;
       targetScene->onEnter();
