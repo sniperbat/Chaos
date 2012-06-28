@@ -8,9 +8,10 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   class ChsHUD : public ChsRenderNode{
+    friend class ChsHUDManager;
   public:
     ChsHUD( const std::string & name );
-    void update( void );
+    void update( float dt );
   };
 
   //------------------------------------------------------------------------------------------------

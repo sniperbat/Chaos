@@ -26,7 +26,7 @@ namespace Chaos {
     ChsHUDManager( void );
     ~ChsHUDManager( void );
     void init( const ChsRect & viewport );
-    void update( void );
+    void update( float dt );
     void render( void );
     
     void showHUD( const std::string & hudName );

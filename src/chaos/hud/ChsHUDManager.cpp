@@ -36,11 +36,11 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsHUDManager::update( void ){
+  void ChsHUDManager::update( float dt ){
     std::pair<std::string, ChsHUD* > p;
     BOOST_FOREACH( p, this->hudRenderList ){
       ChsHUD * hud = p.second;
-      hud->updateTree();
+      hud->updateTree( dt );
     }
   }
 
