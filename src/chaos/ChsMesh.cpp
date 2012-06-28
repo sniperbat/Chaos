@@ -12,6 +12,7 @@ namespace Chaos {
                                          vertexBuffer( new ChsVertexBuffer() ),
                                          indexBuffer( new ChsIndexBuffer() )
 	{
+    this->setRenderTag( CHS_RENDER_TAG_OPACITY );
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -24,7 +25,7 @@ namespace Chaos {
 		unit.material = this->material.get();
 		unit.vertexBuffer = this->vertexBuffer.get();
 		unit.indexBuffer = this->indexBuffer.get();
-		this->sendToRender( CHS_RENDER_TAG_OPACITY, unit );
+		this->sendToRender( unit );
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ using namespace Chaos;
 static bool isDynamic = MainMenuScene::registerAsDynamic( "MainMenuScene" ); 
 
 //--------------------------------------------------------------------------------------------------
-boost::scoped_ptr<ChsModelViewCamera> camera( new ChsModelViewCamera() );
+boost::shared_ptr<ChsModelViewCamera> camera( new ChsModelViewCamera() );
 
 //--------------------------------------------------------------------------------------------------
 MainMenuScene::MainMenuScene( void ){
@@ -25,7 +25,7 @@ MainMenuScene::~MainMenuScene( void ){
 
 //--------------------------------------------------------------------------------------------------
 void MainMenuScene::onEnter( void ){
-  ChsTouchEmitter::sharedInstance()->addListener( camera.get() );
+  ChsTouchEmitter::sharedInstance()->addListener( camera );
 	ChsModel * model = ChsResourceManager::sharedInstance()->getModel( "test.chsmodel" ).get();
   this->add( model );
   ChsHUDManager::sharedInstance()->showHUD( "demo.chshud" );
@@ -33,7 +33,7 @@ void MainMenuScene::onEnter( void ){
 
 //--------------------------------------------------------------------------------------------------
 void MainMenuScene::onExit( void ){
-  ChsTouchEmitter::sharedInstance()->removeListener( camera.get() );
+  ChsTouchEmitter::sharedInstance()->removeListener( camera );
   this->remove( "test.chsmodel" );
    ChsHUDManager::sharedInstance()->hideHUD( "demo.chshud" );
 }

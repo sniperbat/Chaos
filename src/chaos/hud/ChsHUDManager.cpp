@@ -82,6 +82,7 @@ namespace Chaos {
       sprite2D = new ChsSprite2D( "unnamed" );
     else
       sprite2D = new ChsSprite2D( sprite2DId );
+    sprite2D->setRenderTag( CHS_RENDER_TAG_HUD );
     float depth = spriteElement->FloatAttribute( "depth" );
     sprite2D->setDepth( depth );
     float x = spriteElement->FloatAttribute( "x" );
@@ -110,7 +111,7 @@ namespace Chaos {
       if( wrap_t ){
         texture->setWrap( CHS_TEXTURE_WRAP_T, getTexWrapValue( wrap_t ) );
       }
-      
+     
       sprite2D->setImage( texture, x, y, w, h );
       texEntityElement = texEntityElement->NextSiblingElement( "ChsTexture2D" );
     }

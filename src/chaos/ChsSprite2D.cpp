@@ -11,6 +11,7 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   ChsSprite2D::ChsSprite2D( const std::string & name ) : ChsMesh( name ){
+    this->setRenderTag( CHS_RENDER_TAG_2D );
     this->anchor.x = 0.0f;
     this->anchor.y = 0.0f;
     this->position.x = 0.0f;
@@ -94,7 +95,7 @@ namespace Chaos {
     unit.material = this->material.get();
     unit.vertexBuffer = this->vertexBuffer.get();
     unit.indexBuffer = this->indexBuffer.get();
-    this->sendToRender( CHS_RENDER_TAG_HUD, unit );
+    this->sendToRender( unit );
   }
   
   //------------------------------------------------------------------------------------------------

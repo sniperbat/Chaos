@@ -12,7 +12,7 @@ GameDemo game;
 
 //--------------------------------------------------------------------------------------------------
 void GameDemo::onInit( void ) {
-  ChsSceneManager::sharedInstance()->gotoScene( "MainMenuScene" );
+  ChsSceneManager::sharedInstance()->gotoScene( "SplashScene" );
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -8,7 +8,7 @@
 namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
-  std::vector<ChsTouchListener*> listeners;
+  std::vector< boost::shared_ptr<ChsTouchListener> > listeners;
   
   //------------------------------------------------------------------------------------------------
   ChsTouchEmitter::ChsTouchEmitter( void ){
@@ -26,21 +26,21 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::addListener( ChsTouchListener *listener ){
+  void ChsTouchEmitter::addListener( boost::shared_ptr<ChsTouchListener> listener ){
     auto iter = std::find( listeners.begin(), listeners.end(), listener );
     if( iter == listeners.end() )
       listeners.push_back( listener );
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::removeListener( ChsTouchListener *listener ){
+  void ChsTouchEmitter::removeListener( boost::shared_ptr<ChsTouchListener> listener ){
     auto iter = std::find( listeners.begin(), listeners.end(), listener );
     if( iter != listeners.end() )
       listeners.erase( iter );
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::handleTouches( ChsTouchType type, const ChsTouch & touch ){
+  void ChsTouchEmitter::handleTouches( ChsTouchType type, const ChsTouch & touch )const{
     /*
     const char * types[] = {
       "CHS_TOUCH_TYPE_BEGAN",
@@ -55,7 +55,7 @@ namespace Chaos {
     };
     printf( "%s\n", types[type] );
     */
-    BOOST_FOREACH( ChsTouchListener * listener, listeners ){
+    BOOST_FOREACH( boost::shared_ptr<ChsTouchListener> & listener, listeners ){
       listener->handleTouches( type, touch );
     }
   }

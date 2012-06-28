@@ -5,7 +5,7 @@
 
 namespace Chaos{
 
-  template<typename AbstractClassType, typename ClassType>
+  template< typename ClassType, typename AbstractClassType >
   class ChsDynamicClass : public AbstractClassType{
   public:
     static bool registerAsDynamic( const std::string & className ){

@@ -5,7 +5,7 @@
 #include "chaos/core/ChsDynamicClass.h"
 
 //--------------------------------------------------------------------------------------------------v
-class MainMenuScene : public Chaos::ChsDynamicClass< Chaos::ChsScene, MainMenuScene >{
+class MainMenuScene : public Chaos::ChsDynamicClass< MainMenuScene, Chaos::ChsScene >{
 public:
   MainMenuScene( void );
   ~MainMenuScene( void );
