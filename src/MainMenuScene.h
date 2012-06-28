@@ -1,9 +1,10 @@
 #ifndef _MAINMENUSCENE_H
 #define _MAINMENUSCENE_H
-
+//--------------------------------------------------------------------------------------------------
 #include "chaos/framework/ChsScene.h"
 #include "chaos/core/ChsDynamicClass.h"
 
+//--------------------------------------------------------------------------------------------------v
 class MainMenuScene : public Chaos::ChsDynamicClass< Chaos::ChsScene, MainMenuScene >{
 public:
   MainMenuScene( void );
@@ -15,4 +16,5 @@ public:
   void onRelease( void );
 };
 
+//--------------------------------------------------------------------------------------------------
 #endif

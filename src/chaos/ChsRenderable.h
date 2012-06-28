@@ -15,7 +15,7 @@ namespace Chaos {
 	protected:
     ChsMatrix  renderTransform;
     
-		virtual void update( void )=0;
+		virtual void update( float dt )=0;
     void sendToRender( ChsRenderTag tag, ChsRenderUnit & unit );
     
 	private:

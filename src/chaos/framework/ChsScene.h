@@ -7,7 +7,7 @@
 
 namespace Chaos {
   //------------------------------------------------------------------------------------------------  
-  class ChsScene{
+  class ChsScene : public ChsRenderNode{
     friend class ChsSceneManager;
   public:
     ChsScene( void );
@@ -19,17 +19,13 @@ namespace Chaos {
     virtual void onExit( void ) = 0;
     virtual void onRelease( void ) = 0;
 
-    inline ChsNode * getRoot( void );
   private:
     void update( float dt );
-    boost::scoped_ptr<ChsRenderNode> root;
-  };
 
-  //------------------------------------------------------------------------------------------------
-  inline ChsNode * ChsScene::getRoot( void ){
-    return this->root.get();
-  }
-  //------------------------------------------------------------------------------------------------
+  };
+  
+  //------------------------------------------------------------------------------------------------  
+  
 }
 
 #endif//_CHS_SCENE_H

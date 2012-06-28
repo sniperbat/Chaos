@@ -1,6 +1,6 @@
 <ChsHUD id="demo">
   <ChsTexture2D src="sofaLeather.png" />
-  <ChsSprite2D id="test" depth="2" x="120" y="120" w="100" h="50">
+  <ChsSprite2D id="test" depth="2" x="0" y="0" w="100" h="50">
     <ChsTextureEntity index="0" sampleName="diffuseTexture" activeUnit="0" x="0" y="0" w="1" h="1" />
   </ChsSprite2D>
   <ChsSprite2D depth="1" x="120" y="120" w="128" h="500">

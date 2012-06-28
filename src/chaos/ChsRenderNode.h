@@ -15,7 +15,7 @@ namespace Chaos{
 	public:
 		ChsRenderNode( const std::string & name = "unnamed" );
 		virtual ~ChsRenderNode( void );
-    void updateTree( void );
+    void updateTree( float dt );
 
     inline void applyTransform( const ChsMatrix & matrix );
     inline void applyTransform( const ChsMatrix * matrix );

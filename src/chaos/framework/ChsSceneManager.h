@@ -21,14 +21,14 @@ namespace Chaos {
     void update( float dt );
     void purge( void );
     
-    inline boost::weak_ptr<ChsScene> getCurrentScene( void );
+    inline boost::weak_ptr<ChsScene> & getCurrentScene( void );
     
     boost::shared_ptr<ChsScene> getScene( const std::string & className );
     void gotoScene( const std::string & name );
   };
 
   //------------------------------------------------------------------------------------------------
-  inline boost::weak_ptr<ChsScene> ChsSceneManager::getCurrentScene( void ){
+  inline boost::weak_ptr<ChsScene> & ChsSceneManager::getCurrentScene( void ){
     return this->currentScene;
   }
   

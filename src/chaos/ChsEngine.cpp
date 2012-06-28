@@ -32,7 +32,7 @@ namespace Chaos {
 	void ChsEngine::run( void )const{
 		this->getGame()->onUpdate();
     ChsSceneManager::sharedInstance()->update( 1.0f );
-    ChsHUDManager::sharedInstance()->update();
+    ChsHUDManager::sharedInstance()->update( 1.0f );
  		this->getRenderSystem()->render();
 	}
 	

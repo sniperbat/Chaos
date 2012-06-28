@@ -21,7 +21,7 @@ namespace Chaos {
 		virtual ~ChsMesh( void );
 		void setMaterial( ChsMaterial * material );
 		inline ChsMaterial * getMaterial( void )const;
-		void update( void );
+		virtual void update( float dt );
     inline ChsVertexBuffer * getVertexBuffer( void )const;
     inline ChsIndexBuffer * getIndexBuffer( void )const;
 	protected:

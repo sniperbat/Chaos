@@ -15,6 +15,7 @@ namespace Chaos {
 		void add( const std::string & name, ChsNode * node );
 		inline void add( ChsNode * node );
 		ChsNode * remove( const std::string & name );
+    inline ChsNode * remove( ChsNode * node );
 		ChsNode * get( const std::string & name );
     inline const std::string & getName( void )const;
     inline ChsNode * getParent( void );
@@ -35,7 +36,12 @@ namespace Chaos {
     if( node != nullptr )
       this->add( node->getName(), node );
 	}
-
+  
+  //------------------------------------------------------------------------------------------------
+  inline ChsNode * ChsNode::remove( ChsNode * node ){
+    return this->remove( node->getName() );
+  }
+  
 	//------------------------------------------------------------------------------------------------
 	inline const std::string & ChsNode::getName( void )const{
     return this->name;

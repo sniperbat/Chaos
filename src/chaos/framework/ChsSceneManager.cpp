@@ -15,7 +15,7 @@ namespace Chaos{
   //------------------------------------------------------------------------------------------------
   void ChsSceneManager::update( float dt ){
     if( !this->currentScene.expired() ){
-      this->currentScene.lock()->update( dt );
+      this->currentScene.lock()->updateTree( dt );
     }
   }
  
@@ -36,8 +36,8 @@ namespace Chaos{
     }
     boost::shared_ptr<ChsScene> scene( sceneClassFactory->create( className ) );
     if( scene ){
-      scene->onInit();
       this->scenes.insert( std::make_pair( className, scene ) );
+      scene->onInit();
     }
     return scene;
   }
@@ -54,8 +54,8 @@ namespace Chaos{
         }
         lastScene->onExit();
       }
-      targetScene->onEnter();
       this->currentScene = targetScene;
+      targetScene->onEnter();
     }
   }
   
