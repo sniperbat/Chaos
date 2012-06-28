@@ -45,7 +45,6 @@
     <ClCompile Include="..\src\chaos\ChsTextureFactory.cpp" />
     <ClCompile Include="..\src\chaos\ChsTextureManager.cpp" />
     <ClCompile Include="..\src\chaos\ChsVertexBuffer.cpp" />
-    <ClCompile Include="..\src\chaos\core\ChsDynamicClass.cpp" />
     <ClCompile Include="..\src\chaos\core\ChsNode.cpp" />
     <ClCompile Include="..\src\chaos\core\ChsUtility.cpp" />
     <ClCompile Include="..\src\chaos\framework\ChsGameBase.cpp" />
@@ -75,7 +74,9 @@
     <ClCompile Include="..\src\chaos\shader\ChsShaderUniformSet.cpp" />
     <ClCompile Include="..\src\entrance\windows\main.cpp" />
     <ClCompile Include="..\src\GameDemo.cpp" />
+    <ClCompile Include="..\src\GamingScene.cpp" />
     <ClCompile Include="..\src\MainMenuScene.cpp" />
+    <ClCompile Include="..\src\SplashScene.cpp" />
     <ClCompile Include="..\src\tinyxml2\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,7 +140,9 @@
     <ClInclude Include="..\src\chaos\shader\ChsShaderUniform.h" />
     <ClInclude Include="..\src\chaos\shader\ChsShaderUniformSet.h" />
     <ClInclude Include="..\src\GameDemo.h" />
+    <ClInclude Include="..\src\GamingScene.h" />
     <ClInclude Include="..\src\MainMenuScene.h" />
+    <ClInclude Include="..\src\SplashScene.h" />
     <ClInclude Include="..\src\tinyxml2\tinyxml2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

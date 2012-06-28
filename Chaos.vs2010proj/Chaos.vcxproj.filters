@@ -219,8 +219,11 @@
     <ClCompile Include="..\src\MainMenuScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\chaos\core\ChsDynamicClass.cpp">
-      <Filter>src\chaos\core</Filter>
+    <ClCompile Include="..\src\SplashScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GamingScene.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -409,6 +412,12 @@
     </ClInclude>
     <ClInclude Include="..\src\chaos\core\ChsDynamicClass.h">
       <Filter>src\chaos\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SplashScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GamingScene.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
