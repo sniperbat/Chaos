@@ -15,7 +15,7 @@ namespace Chaos{
   //------------------------------------------------------------------------------------------------
   void ChsSceneManager::update( float dt ){
     if( !this->currentScene.expired() ){
-      boost::shared_ptr<ChsScene> & scene = this->currentScene.lock();
+      const boost::shared_ptr<ChsScene> & scene = this->currentScene.lock();
       scene->onUpdate( dt );
       ((ChsRenderNode*)scene->getRoot())->updateTree();
     }
@@ -49,7 +49,7 @@ namespace Chaos{
     boost::shared_ptr<ChsScene> targetScene = this->getScene( name );
     if( targetScene ){
       if( !this->currentScene.expired() ){
-        boost::shared_ptr<ChsScene> lastScene = this->currentScene.lock();
+        const boost::shared_ptr<ChsScene> & lastScene = this->currentScene.lock();
         if( lastScene.get() == targetScene.get() ){
           return;
         }

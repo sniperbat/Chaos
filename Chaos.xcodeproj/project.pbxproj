@@ -33,6 +33,7 @@
 		745C30F31516FD8F0061F510 /* ChsTexture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745C30F21516FD8E0061F510 /* ChsTexture2D.cpp */; };
 		74645854155900B800C3C762 /* ChsRenderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74645853155900B700C3C762 /* ChsRenderable.cpp */; };
 		747B9D00152433B6007AF122 /* ChsModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */; };
+		747D449F159BEBC20044FED2 /* ChsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D449E159BEBC20044FED2 /* ChsScene.cpp */; };
 		747D5E511563A45A009D766E /* ChsModelViewCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */; };
 		7486D9AA1520531500099441 /* ChsModelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9A91520531400099441 /* ChsModelManager.cpp */; };
 		7486D9AE1520618E00099441 /* ChsModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7486D9AB1520580800099441 /* ChsModel.cpp */; };
@@ -133,6 +134,8 @@
 		74645853155900B700C3C762 /* ChsRenderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsRenderable.cpp; path = src/chaos/ChsRenderable.cpp; sourceTree = "<group>"; };
 		747B9CFE15243350007AF122 /* ChsModelLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelLoader.h; path = src/chaos/ChsModelLoader.h; sourceTree = "<group>"; };
 		747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsModelLoader.cpp; path = src/chaos/ChsModelLoader.cpp; sourceTree = "<group>"; };
+		747D449C159BE7C50044FED2 /* ChsDynamicClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsDynamicClass.h; path = src/chaos/core/ChsDynamicClass.h; sourceTree = "<group>"; };
+		747D449E159BEBC20044FED2 /* ChsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsScene.cpp; path = src/chaos/framework/ChsScene.cpp; sourceTree = "<group>"; };
 		747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsModelViewCamera.cpp; sourceTree = "<group>"; };
 		747D5E4F1563A45A009D766E /* ChsModelViewCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsModelViewCamera.h; sourceTree = "<group>"; };
 		7486D9A815203A8900099441 /* ChsModelManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsModelManager.h; path = src/chaos/ChsModelManager.h; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 				7403B278159AD62C00D1316D /* ChsGameBase.h */,
 				7403B286159AED2300D1316D /* ChsSceneManager.cpp */,
 				7403B287159AED2300D1316D /* ChsSceneManager.h */,
+				747D449E159BEBC20044FED2 /* ChsScene.cpp */,
 				7403B279159AD65D00D1316D /* ChsScene.h */,
 			);
 			name = framework;
@@ -259,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				7403B281159AE2B000D1316D /* ChsSingleton.h */,
+				747D449C159BE7C50044FED2 /* ChsDynamicClass.h */,
 				7403B283159AE33C00D1316D /* ChsClassFactory.h */,
 				7403B27E159AE2B000D1316D /* ChsNode.cpp */,
 				7403B280159AE2B000D1316D /* ChsNode.h */,
@@ -659,6 +664,7 @@
 				74A693CD157C58BB00CD3845 /* ChsTouchEmitter.cpp in Sources */,
 				74A693CE157C58BE00CD3845 /* ChsTouchListener.cpp in Sources */,
 				7403B290159B005F00D1316D /* MainMenuScene.cpp in Sources */,
+				747D449F159BEBC20044FED2 /* ChsScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

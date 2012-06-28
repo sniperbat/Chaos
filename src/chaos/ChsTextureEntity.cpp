@@ -19,7 +19,7 @@ namespace Chaos {
   void ChsTextureEntity::apply( void )const{
     if( this->texture.expired() )
       return;
-    boost::shared_ptr<ChsTexture2D> texture = this->texture.lock();
+    const boost::shared_ptr<ChsTexture2D> & texture = this->texture.lock();
     for( int index = 0; index < CHS_TEXTURE_WRAP_MAX; index++ ){
       ChsTexWrapType type = static_cast<ChsTexWrapType>( index );
       if( texture->getWrap( type ) != this->wraps[index]){

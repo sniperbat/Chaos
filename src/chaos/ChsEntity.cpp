@@ -16,7 +16,7 @@ namespace Chaos {
 	void ChsEntity::update( void ){
 		if( this->model.expired() )
 			return;
-		boost::shared_ptr<ChsModel> model = this->model.lock();
+		const boost::shared_ptr<ChsModel> & model = this->model.lock();
 		model->update();
 	}
 	
