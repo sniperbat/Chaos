@@ -18,6 +18,7 @@ namespace Chaos {
     inline ChsNode * remove( ChsNode * node );
 		ChsNode * get( const std::string & name );
     inline const std::string & getName( void )const;
+    inline void setName( const std::string & name );
     inline ChsNode * getParent( void );
 	protected:
 		std::map< std::string, ChsNode * >  children;
@@ -46,8 +47,13 @@ namespace Chaos {
 	inline const std::string & ChsNode::getName( void )const{
     return this->name;
   }
-
-	//------------------------------------------------------------------------------------------------
+  
+  //------------------------------------------------------------------------------------------------
+  inline void ChsNode::setName( const std::string & name ){
+    this->name = name;
+  }
+	
+  //------------------------------------------------------------------------------------------------
 	typedef std::map< std::string, ChsNode * > ChsNodeList;
 	
 }
