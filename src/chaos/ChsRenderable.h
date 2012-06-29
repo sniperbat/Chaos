@@ -22,7 +22,8 @@ namespace Chaos {
 		bool visible;
     ChsRenderTag renderTag;
 	};
- 
+  
+  //------------------------------------------------------------------------------------------------
   inline void ChsRenderable::setRenderTag( ChsRenderTag tag ){
     this->renderTag = tag;
   }

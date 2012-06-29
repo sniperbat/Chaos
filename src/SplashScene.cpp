@@ -1,34 +1,89 @@
 #include "chaos/framework/ChsSceneManager.h"
+#include "chaos/ChsSprite2D.h"
 #include "SplashScene.h"
 
 //--------------------------------------------------------------------------------------------------
 //must do this, any other solutions??
 static bool isDynamic = SplashScene::registerAsDynamic( "SplashScene" );
 
+static const float FADE_SPEED = 0.01f;
+static const int SPLASH_TIME = 2000;
+static float splashAlpha = 0.0f;
+
+static Chaos::ChsSprite2D * splashImage = nullptr;
+
+enum STEP{
+  FADE_IN,
+  SPLASH_SHOWING,
+  FADE_OUT,
+  GOTO_NEXT,
+  IDLE
+}step;
+
 SplashScene::SplashScene( void ){
 }
 
 SplashScene::~SplashScene( void ){
+  this->onRelease();
 }
 
 void SplashScene::onInit( void ){
   //load splash image
+  splashImage = new Chaos::ChsSprite2D( "splash" );
+  splashImage->setImage( "splash.png" );
+  splashImage->moveTo( 0, 0 );
+  splashImage->changeSizeTo( 100, 100 );
+  splashImage->setAlpha( splashAlpha );
 }
 
 void SplashScene::onEnter( void ){
   //start fade out
+  this->add( splashImage );
+  step = STEP::FADE_IN;
 }
 
 void SplashScene::onUpdate( float dt ){
   //process fade in and out
-  Chaos::ChsSceneManager::sharedInstance()->gotoScene( "MainMenuScene" );
+  switch( step ){
+		case STEP::FADE_IN:
+			splashAlpha += FADE_SPEED;
+			if( splashAlpha >= 1.0f ) {
+				//this.showTime = System.currentTimeMillis();
+				step = STEP::SPLASH_SHOWING;
+				splashAlpha = 1.0f;
+			}
+			splashImage->setAlpha( splashAlpha );
+			break;
+		case STEP::SPLASH_SHOWING:
+        //if ((System.currentTimeMillis() - this.showTime) >= SPLASH_TIME)
+				//step = STEP::FADE_OUT;
+			break;
+		case STEP::FADE_OUT:
+			splashAlpha -= FADE_SPEED;
+			if( splashAlpha <= 0.0f) {
+				splashAlpha = 0.0f;
+				step = STEP::GOTO_NEXT;
+			}
+			//splashImage->setAlpha( splashAlpha );
+			break;
+		case STEP::GOTO_NEXT:
+			Chaos::ChsSceneManager::sharedInstance()->gotoScene( "MainMenuScene", true );
+      step = STEP::IDLE;
+			break;
+		case STEP::IDLE:
+			break;
+  }
 }
 
 void SplashScene::onExit( void ){
-  
+  this->remove( splashImage );
 }
 
 void SplashScene::onRelease( void ){
   //release splash image
+  if(splashImage){
+    delete splashImage;
+    splashImage = nullptr;
+  }
 }
 
