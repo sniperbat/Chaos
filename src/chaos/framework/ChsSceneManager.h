@@ -26,7 +26,7 @@ namespace Chaos {
     inline boost::weak_ptr<ChsScene> & getLastScene( void );
     
     boost::shared_ptr<ChsScene> getScene( const std::string & className );
-    void gotoScene( const std::string & name );
+    void gotoScene( const std::string & name, bool isReleaseLashScene = false );
   };
 
   //------------------------------------------------------------------------------------------------

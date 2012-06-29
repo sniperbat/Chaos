@@ -36,6 +36,7 @@ namespace Chaos{
     }
     boost::shared_ptr<ChsScene> scene( sceneClassFactory->create( className ) );
     if( scene ){
+      scene->setName( className );
       this->scenes.insert( std::make_pair( className, scene ) );
       scene->onInit();
     }
@@ -43,7 +44,7 @@ namespace Chaos{
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsSceneManager::gotoScene( const std::string & name ){
+  void ChsSceneManager::gotoScene( const std::string & name, bool isReleaseLastScene ){
     if( !this->lastScene.expired() ){
       if( this->lastScene.lock()->getName() == name ){
         //if has last scene and goto last scene, then just swap
@@ -64,6 +65,13 @@ namespace Chaos{
         }
         currentScene->onExit();
         this->lastScene = currentScene;
+        if( isReleaseLastScene ){
+          const std::string & lastSceneName = currentScene->getName();
+          auto iter = this->scenes.find( lastSceneName );
+          if( iter != this->scenes.end() )
+            this->scenes.erase( iter );
+          currentScene->onRelease();
+        }
       }
       this->currentScene = targetScene;
       targetScene->onEnter();
