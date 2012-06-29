@@ -68,7 +68,7 @@ namespace Chaos {
     void renderByTag( ChsRenderTag tag );
     void renderOpacity( void );
     void renderTransparent( void );
-    void renderHUD( void );
+    void render2D( void );
 	public:
 		ChsRenderSystem( void );
 		virtual ~ChsRenderSystem( void );

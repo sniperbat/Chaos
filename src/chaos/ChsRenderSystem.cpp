@@ -139,13 +139,14 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsRenderSystem::renderHUD( void ){
+  void ChsRenderSystem::render2D( void ){
     //render hud
     this->renderStates->save();
     glClear( GL_DEPTH_BUFFER_BIT );
 //    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
     ChsCamera * oldCamera = this->currentCamera;
     this->currentCamera = ChsHUDManager::sharedInstance()->getCamera();
+    renderByTag( CHS_RENDER_TAG_2D );
     renderByTag( CHS_RENDER_TAG_HUD );
     this->currentCamera = oldCamera;
     this->renderStates->restore();
@@ -158,7 +159,7 @@ namespace Chaos {
 		this->preRender();
     this->renderOpacity();
     this->renderTransparent();
-    this->renderHUD();
+    this->render2D();
     this->postRender();
     this->present();
 	}
