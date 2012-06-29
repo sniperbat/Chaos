@@ -33,7 +33,7 @@ namespace Chaos {
     ChsSize imageSize;
     ChsRect bound;
     float depth;
-    
+    float alpha;
   public:
     ChsSprite2D( const std::string & name );
     ~ChsSprite2D( void );
@@ -42,7 +42,7 @@ namespace Chaos {
     
     void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float ox, float oy, float w, float h );
     //void setImage( std::string imageName, float ox, float oy, float w, float h );
-    //void setImage( std::string imageName );
+    void setImage( std::string imageName );
 
     void moveTo( float x, float y );
     void anchorAt( float x, float y );
@@ -56,6 +56,9 @@ namespace Chaos {
     inline ChsSize getSize( void )const;
     inline ChsSize getZoom( void )const;
     
+    inline float getAlpha( void )const;
+    inline void setAlpha( float alpha );
+    
     inline float getDepth( void )const;
     inline void setDepth( float depth );
     
@@ -66,6 +69,17 @@ namespace Chaos {
   };
   
  	//------------------------------------------------------------------------------------------------
+  inline float ChsSprite2D::getAlpha( void )const{
+    return this->alpha;
+  }
+
+ 	//------------------------------------------------------------------------------------------------
+  inline void ChsSprite2D::setAlpha( float alpha ){
+    this->alpha = alpha;
+    this->needUpdate = true;
+  }
+
+ 	//------------------------------------------------------------------------------------------------
   inline float ChsSprite2D::getDepth( void )const{
     return this->depth;
   }
@@ -73,6 +87,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   inline void ChsSprite2D::setDepth( float depth ){
     this->depth = depth;
+    this->needUpdate = true;
   }
   
   //------------------------------------------------------------------------------------------------

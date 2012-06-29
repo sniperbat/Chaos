@@ -21,6 +21,7 @@ namespace Chaos {
     this->size.w = 0.0f;
     this->size.h = 0.0f;
     this->depth = 1.0f;
+    this->alpha = 1.0f;
     this->needUpdate = true;
     this->vertexBuffer->addAttrib( 3, GL_FLOAT, false, "position" );
 		this->vertexBuffer->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
@@ -61,31 +62,34 @@ namespace Chaos {
       this->setImage( texture, x, y, w, h );
   }
   
+  */
+
   //------------------------------------------------------------------------------------------------ 
   void ChsSprite2D::setImage( std::string imageName ){
-    boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( imageName );
-    if( texture )
-      this->setImage( texture, 0, 0, texture->getWidth(), texture->getHandle() );
+    boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( ChsResourceManager::sharedInstance()->getTexture2D( imageName ) ) );
+    texture->setSampleName( "diffuseTexture" );
+    texture->setActiveUnit( 0 );
+    this->setImage( texture, 0, 0, texture->getWidth(), texture->getHeight() );
   }
-  */
+
   //-----------------------------------------------------------------------------------------------
   void ChsSprite2D::update( float dt ){
     if( this->needUpdate ){
       const GLfloat vertices[] = {
         this->position.x, this->position.y, this->depth,
-        1.0f, 1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f, this->alpha,
         this->imageBound.x, this->imageBound.h,
         
         this->position.x, this->position.y + this->size.h, this->depth,
-        1.0f, 1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f, this->alpha,
         this->imageBound.x, this->imageBound.y,
         
         this->position.x + this->size.w,  this->position.y, this->depth,
-        1.0f, 1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f, this->alpha,
         this->imageBound.w, this->imageBound.h ,
         
         this->position.x + this->size.w,  this->position.y + this->size.h, this->depth,
-        1.0f, 1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f, this->alpha,
         this->imageBound.w, this->imageBound.y,
       };
    		this->vertexBuffer->setDataWithArray( vertices, sizeof( vertices ) );
