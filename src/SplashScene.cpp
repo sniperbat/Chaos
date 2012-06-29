@@ -1,12 +1,13 @@
 #include "chaos/framework/ChsSceneManager.h"
 #include "chaos/ChsSprite2D.h"
 #include "SplashScene.h"
-
+#include "chaos/ChsEngine.h"
+#include "chaos/ChsRenderSystem.h"
 //--------------------------------------------------------------------------------------------------
 //must do this, any other solutions??
 static bool isDynamic = SplashScene::registerAsDynamic( "SplashScene" );
 
-static const float FADE_SPEED = 0.01f;
+static const float FADE_SPEED = 0.05f;
 static const int SPLASH_TIME = 2000;
 static float splashAlpha = 0.0f;
 
@@ -32,7 +33,9 @@ void SplashScene::onInit( void ){
   splashImage = new Chaos::ChsSprite2D( "splash" );
   splashImage->setImage( "splash.png" );
   splashImage->moveTo( 0, 0 );
-  splashImage->changeSizeTo( 100, 100 );
+  Chaos::ChsRenderSystem * render = Chaos::ChsEngine::sharedInstance()->getRenderSystem();
+  Chaos::ChsRect rect = render->getViewPort();
+  splashImage->changeSizeTo( rect.w, rect.h );
   splashImage->setAlpha( splashAlpha );
 }
 
@@ -64,7 +67,7 @@ void SplashScene::onUpdate( float dt ){
 				splashAlpha = 0.0f;
 				step = STEP::GOTO_NEXT;
 			}
-			//splashImage->setAlpha( splashAlpha );
+			splashImage->setAlpha( splashAlpha );
 			break;
 		case STEP::GOTO_NEXT:
 			Chaos::ChsSceneManager::sharedInstance()->gotoScene( "MainMenuScene", true );

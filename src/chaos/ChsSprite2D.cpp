@@ -69,7 +69,7 @@ namespace Chaos {
     boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( ChsResourceManager::sharedInstance()->getTexture2D( imageName ) ) );
     texture->setSampleName( "diffuseTexture" );
     texture->setActiveUnit( 0 );
-    this->setImage( texture, 0, 0, texture->getWidth(), texture->getHeight() );
+    this->setImage( texture, 0, 0, 1.0f, 1.0f );
   }
 
   //-----------------------------------------------------------------------------------------------
