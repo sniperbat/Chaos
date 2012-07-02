@@ -18,6 +18,7 @@
 		740C3A5C150EDFE40093E952 /* ChsCoordinatePlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 740C3A5B150EDFE40093E952 /* ChsCoordinatePlane.cpp */; };
 		7414711B14FC5F1C00964FA3 /* ChsMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7414711A14FC5F1C00964FA3 /* ChsMaterial.cpp */; };
 		7414711D14FC5FAD00964FA3 /* ChsOpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7414711C14FC5FAD00964FA3 /* ChsOpenGL.cpp */; };
+		7414A21715A16727002AF8A2 /* ChsSystemIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7414A21615A16727002AF8A2 /* ChsSystemIOS.mm */; };
 		741ABD4A14EE37BD00995232 /* ChsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741ABD4814EE37BD00995232 /* ChsEngine.cpp */; };
 		741ABD4F14EE46F300995232 /* ChsRenderFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */; };
 		742F868C14F5ECAB00693E51 /* GameDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F868B14F5ECAB00693E51 /* GameDemo.cpp */; };
@@ -105,6 +106,8 @@
 		740C3A5B150EDFE40093E952 /* ChsCoordinatePlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsCoordinatePlane.cpp; path = src/chaos/geometry/ChsCoordinatePlane.cpp; sourceTree = "<group>"; };
 		7414711A14FC5F1C00964FA3 /* ChsMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsMaterial.cpp; path = src/chaos/ChsMaterial.cpp; sourceTree = "<group>"; };
 		7414711C14FC5FAD00964FA3 /* ChsOpenGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsOpenGL.cpp; path = src/chaos/platform/ChsOpenGL.cpp; sourceTree = "<group>"; };
+		7414A21615A16727002AF8A2 /* ChsSystemIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ChsSystemIOS.mm; path = src/chaos/platform/ios/ChsSystemIOS.mm; sourceTree = "<group>"; };
+		7414A21915A16ED5002AF8A2 /* ChsSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChsSystem.h; path = src/chaos/platform/ChsSystem.h; sourceTree = "<group>"; };
 		741ABD3D14EE33CD00995232 /* ChsRenderSystemIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ChsRenderSystemIOS.mm; path = src/chaos/platform/ios/ChsRenderSystemIOS.mm; sourceTree = "<group>"; };
 		741ABD3E14EE33CD00995232 /* ChsRenderSystemIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsRenderSystemIOS.h; path = src/chaos/platform/ios/ChsRenderSystemIOS.h; sourceTree = "<group>"; };
 		741ABD4814EE37BD00995232 /* ChsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsEngine.cpp; path = src/chaos/ChsEngine.cpp; sourceTree = "<group>"; };
@@ -295,6 +298,7 @@
 			children = (
 				749D799114ECD3B90046F2D9 /* ios */,
 				74614B8E14F4CCD0003396BA /* ChsOpenGL.h */,
+				7414A21915A16ED5002AF8A2 /* ChsSystem.h */,
 				7414711C14FC5FAD00964FA3 /* ChsOpenGL.cpp */,
 			);
 			name = platform;
@@ -309,6 +313,7 @@
 				74EC45061561FE530099E122 /* ChsFileSystemIOS.mm */,
 				74EC45071561FE530099E122 /* ChsFileSystemIOS.h */,
 				74EE3A6A15171D7F00FC9420 /* ChsTextureFactoryIOS.mm */,
+				7414A21615A16727002AF8A2 /* ChsSystemIOS.mm */,
 			);
 			name = ios;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				747D449F159BEBC20044FED2 /* ChsScene.cpp in Sources */,
 				7443F392159D9A4000C7445F /* SplashScene.cpp in Sources */,
 				7443F393159D9A4500C7445F /* GamingScene.cpp in Sources */,
+				7414A21715A16727002AF8A2 /* ChsSystemIOS.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
