@@ -16,7 +16,7 @@ namespace Chaos {
 	protected:
     ChsMatrix  renderTransform;
     
-		virtual void update( float dt )=0;
+		virtual void update( double timeInterval ) = 0;
     void sendToRender( ChsRenderUnit & unit );
 	private:
 		bool visible;

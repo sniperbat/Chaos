@@ -111,7 +111,7 @@ namespace Chaos {
   }
 
   //-----------------------------------------------------------------------------------------------
-  void ChsSprite2D::update( float dt ){
+  void ChsSprite2D::update( double timeInterval ){
     if( this->needUpdate ){
       const GLfloat vertices[] = {
         this->position.x, this->position.y, this->depth,

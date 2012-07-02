@@ -12,13 +12,18 @@ namespace Chaos {
 	public:
 		ChsNode( const std::string & name );
 		~ChsNode( void );
+    
 		void add( const std::string & name, ChsNode * node );
 		inline void add( ChsNode * node );
-		ChsNode * remove( const std::string & name );
+		
+    ChsNode * remove( const std::string & name );
     inline ChsNode * remove( ChsNode * node );
-		ChsNode * get( const std::string & name );
+		
+    ChsNode * get( const std::string & name );
+    
     inline const std::string & getName( void )const;
     inline void setName( const std::string & name );
+    
     inline ChsNode * getParent( void );
 	protected:
 		std::map< std::string, ChsNode * >  children;

@@ -15,12 +15,12 @@ namespace Chaos {
 
     virtual void onInit( void ) = 0;
     virtual void onEnter( void ) = 0;
-    virtual void onUpdate( float dt ) = 0;
+    virtual void onUpdate( double timeInterval ) = 0;
     virtual void onExit( void ) = 0;
     virtual void onRelease( void ) = 0;
 
   private:
-    void update( float dt );
+    void update( double timeInterval );
 
   };
   

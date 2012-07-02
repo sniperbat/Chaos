@@ -19,7 +19,7 @@ namespace Chaos {
     ChsSceneManager( void );
     ~ChsSceneManager( void );
 
-    void update( float dt );
+    void update( double timeInterval );
     void purge( void );
     
     inline boost::weak_ptr<ChsScene> & getCurrentScene( void );

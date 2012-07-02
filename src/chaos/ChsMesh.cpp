@@ -20,7 +20,7 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void ChsMesh::update( float dt ) {
+	void ChsMesh::update( double timeInterval ) {
 		ChsRenderUnit unit;
 		unit.material = this->material.get();
 		unit.vertexBuffer = this->vertexBuffer.get();

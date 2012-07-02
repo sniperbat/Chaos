@@ -13,11 +13,11 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
-	void ChsEntity::update( float dt ){
+	void ChsEntity::update( double timeInterval ){
 		if( this->model.expired() )
 			return;
 		const boost::shared_ptr<ChsModel> & model = this->model.lock();
-		model->update( dt );
+		model->update( timeInterval );
 	}
 	
   //------------------------------------------------------------------------------------------------

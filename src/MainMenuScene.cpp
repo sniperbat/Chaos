@@ -39,7 +39,7 @@ void MainMenuScene::onExit( void ){
 }
 
 //--------------------------------------------------------------------------------------------------
-void MainMenuScene::onUpdate( float dt ){
+void MainMenuScene::onUpdate( double timeInterval ){
 }
 
 //--------------------------------------------------------------------------------------------------

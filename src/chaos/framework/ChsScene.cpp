@@ -6,8 +6,8 @@ namespace Chaos{
   }
 
   //------------------------------------------------------------------------------------------------
-  void ChsScene::update( float dt ){
-    this->onUpdate( dt );
+  void ChsScene::update( double timeInterval ){
+    this->onUpdate( timeInterval );
   }
 
 }

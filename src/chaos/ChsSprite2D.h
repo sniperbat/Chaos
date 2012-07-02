@@ -38,7 +38,7 @@ namespace Chaos {
     ChsSprite2D( const std::string & name );
     ~ChsSprite2D( void );
     
-    void update( float dt );
+    void update( double timeInterval );
     
     //ox,oy,w,h is UVst
     void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float x, float y, float w, float h );

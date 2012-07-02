@@ -13,9 +13,9 @@ namespace Chaos{
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsSceneManager::update( float dt ){
+  void ChsSceneManager::update( double timeInterval ){
     if( !this->currentScene.expired() ){
-      this->currentScene.lock()->updateTree( dt );
+      this->currentScene.lock()->updateTree( timeInterval );
     }
   }
  

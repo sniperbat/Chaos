@@ -16,7 +16,7 @@ void GamingScene::onInit( void ){
 void GamingScene::onEnter( void ){
 }
 
-void GamingScene::onUpdate( float dt ){
+void GamingScene::onUpdate( double timeInterval ){
 }
 
 void GamingScene::onExit( void ){

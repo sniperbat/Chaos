@@ -2,11 +2,10 @@
 #include "ChsRenderFactory.h"
 #include "ChsRenderSystem.h"
 #include "ChsResourceManager.h"
-
 #include "hud/ChsHUDManager.h"
-
 #include "framework/ChsGameBase.h"
 #include "framework/ChsSceneManager.h"
+#include "platform/ChsSystem.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -28,11 +27,15 @@ namespace Chaos {
 		this->getGame()->onInit();
 	}
 	
+  static double lastTime = 0;
 	//------------------------------------------------------------------------------------------------
 	void ChsEngine::run( void )const{
+    double currentTime = getSystemTime();
+    double timeInterval = currentTime - lastTime;
+    lastTime = currentTime;
 		this->getGame()->onUpdate();
-    ChsSceneManager::sharedInstance()->update( 1.0f );
-    ChsHUDManager::sharedInstance()->update( 1.0f );
+    ChsSceneManager::sharedInstance()->update( timeInterval );
+    ChsHUDManager::sharedInstance()->update( timeInterval );
  		this->getRenderSystem()->render();
 	}
 	

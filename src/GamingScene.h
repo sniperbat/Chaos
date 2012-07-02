@@ -10,7 +10,7 @@ public:
   ~GamingScene( void );
   void onEnter( void );
   void onExit( void );
-  void onUpdate( float dt );
+  void onUpdate( double timeInterval );
   void onInit( void );
   void onRelease( void );
 };

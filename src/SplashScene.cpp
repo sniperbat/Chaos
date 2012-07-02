@@ -8,8 +8,9 @@
 static bool isDynamic = SplashScene::registerAsDynamic( "SplashScene" );
 
 static const float FADE_SPEED = 0.05f;
-static const int SPLASH_TIME = 2000;
+static const int SPLASH_TIME = 2.0f;
 static float splashAlpha = 0.0f;
+static float showTime = 0.0f;
 
 static Chaos::ChsSprite2D * splashImage = nullptr;
 
@@ -45,21 +46,21 @@ void SplashScene::onEnter( void ){
   step = STEP::FADE_IN;
 }
 
-void SplashScene::onUpdate( float dt ){
+void SplashScene::onUpdate( double timeInterval ){
   //process fade in and out
   switch( step ){
 		case STEP::FADE_IN:
 			splashAlpha += FADE_SPEED;
 			if( splashAlpha >= 1.0f ) {
-				//this.showTime = System.currentTimeMillis();
 				step = STEP::SPLASH_SHOWING;
 				splashAlpha = 1.0f;
 			}
 			splashImage->setAlpha( splashAlpha );
 			break;
 		case STEP::SPLASH_SHOWING:
-        //if ((System.currentTimeMillis() - this.showTime) >= SPLASH_TIME)
-				step = STEP::FADE_OUT;
+      showTime += timeInterval;
+      if( showTime >= SPLASH_TIME )
+        step = STEP::FADE_OUT;
 			break;
 		case STEP::FADE_OUT:
 			splashAlpha -= FADE_SPEED;
