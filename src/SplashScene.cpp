@@ -32,10 +32,10 @@ void SplashScene::onInit( void ){
   //load splash image
   splashImage = new Chaos::ChsSprite2D( "splash" );
   splashImage->setImage( "splash.png" );
-  splashImage->moveTo( 0, 0 );
-  Chaos::ChsRenderSystem * render = Chaos::ChsEngine::sharedInstance()->getRenderSystem();
-  Chaos::ChsRect rect = render->getViewPort();
-  splashImage->changeSizeTo( rect.w, rect.h );
+  //splashImage->moveTo( 0, 0 );
+  //  Chaos::ChsRenderSystem * render = Chaos::ChsEngine::sharedInstance()->getRenderSystem();
+  //  Chaos::ChsRect<int> rect = render->getViewport();
+  //  splashImage->changeSizeTo( rect.w, rect.h );
   splashImage->setAlpha( splashAlpha );
 }
 
@@ -59,7 +59,7 @@ void SplashScene::onUpdate( float dt ){
 			break;
 		case STEP::SPLASH_SHOWING:
         //if ((System.currentTimeMillis() - this.showTime) >= SPLASH_TIME)
-				//step = STEP::FADE_OUT;
+				step = STEP::FADE_OUT;
 			break;
 		case STEP::FADE_OUT:
 			splashAlpha -= FADE_SPEED;

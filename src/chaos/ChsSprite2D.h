@@ -28,10 +28,10 @@ namespace Chaos {
     //zoom rate
     ChsSize zoom;
     //for UV calculate, position and size in the image
-    ChsRect imageBound;
+    ChsRect<float> imageBound;
     //size of image
     ChsSize imageSize;
-    ChsRect bound;
+    ChsRect<float> bound;
     float depth;
     float alpha;
   public:
@@ -40,10 +40,23 @@ namespace Chaos {
     
     void update( float dt );
     
-    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float ox, float oy, float w, float h );
-    //void setImage( std::string imageName, float ox, float oy, float w, float h );
-    void setImage( std::string imageName );
+    //ox,oy,w,h is UVst
+    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float x, float y, float w, float h );
+    //ox,oy,w,h is pixel
+    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, int x, int y, int  w, int h );
 
+    //in UVst
+    void setImage( const std::string & imageName, float x, float y, float w, float h );
+    //in pixel
+    void setImage( const std::string & imageName, int x, int y, int w, int h );
+
+    //set default uv to whole texture
+    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture );
+    void setImage( const std::string & imageName );
+    
+    template <typename T> void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, const ChsRect<T> & uvBound );
+    template <typename T> void setImage( const std::string & imageName, const ChsRect<T> & uvBound );    
+    
     void moveTo( float x, float y );
     void anchorAt( float x, float y );
     //change size of sprite,and children node
@@ -65,9 +78,22 @@ namespace Chaos {
     //get size of image, read only
     inline ChsSize getImageSize( void )const;
     //get bound of sprite,has no setter
-    ChsRect getBound( void )const;
+    ChsRect<float> getBound( void )const;
   };
   
+  //------------------------------------------------------------------------------------------------
+  template <typename T>
+  void ChsSprite2D::setImage( const std::string & imageName, const ChsRect<T> & uvBound ){
+    this->setImage( imageName, uvBound.left, uvBound.top, uvBound.right, uvBound.bottom );
+  }
+
+  //------------------------------------------------------------------------------------------------
+  template <typename T>
+  void ChsSprite2D::setImage( const boost::shared_ptr<ChsTextureEntity> & texture,
+                                    const ChsRect<T> & uvBound ){
+    this->setImage( texture, uvBound.left, uvBound.top, uvBound.right, uvBound.bottom );
+  }
+
  	//------------------------------------------------------------------------------------------------
   inline float ChsSprite2D::getAlpha( void )const{
     return this->alpha;

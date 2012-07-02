@@ -25,7 +25,7 @@ namespace Chaos {
   public:
     ChsHUDManager( void );
     ~ChsHUDManager( void );
-    void init( const ChsRect & viewport );
+    void init( const ChsRect<int> & viewport );
     void update( float dt );
     void render( void );
     

@@ -45,13 +45,12 @@ void MainMenuScene::onUpdate( float dt ){
 //--------------------------------------------------------------------------------------------------
 void MainMenuScene::onInit( void ){
   ChsEngine * engine = ChsEngine::sharedInstance();
-  ChsRect viewport = engine->getRenderSystem()->getViewPort();
-	camera->perspective( degree2Radian(39.6f), viewport.w/(float)viewport.h, 0.1f, 1000.0f  );
+  ChsRect<int> viewport = engine->getRenderSystem()->getViewport();
+  camera->perspective( degree2Radian(39.6f), viewport.w/(float)viewport.h, 0.1f, 1000.0f  );
   camera->setScreen( viewport.w, viewport.h );
-
   engine->getRenderSystem()->setCurrentCamera( camera.get() );
+  
 	engine->getRenderSystem()->toggleDebugCoordinate( true );
-
   ChsHUDManager::sharedInstance()->loadHUD( "demo.chshud" );
 }
 

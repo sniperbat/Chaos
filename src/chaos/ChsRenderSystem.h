@@ -48,7 +48,7 @@ namespace Chaos {
 		
 	private:
 		//viewport
-		ChsRect viewport;
+		ChsRect<int> viewport;
     ChsRenderStates * renderStates;
 		ChsCamera * currentCamera;
     
@@ -81,8 +81,9 @@ namespace Chaos {
 		void setClearColor( unsigned char r, unsigned char g, unsigned char b, unsigned char a );
 		void setClearColor( unsigned int rgba );
 		
-		void setViewPort( int x, int y, int w, int h );
-		inline ChsRect getViewPort( void )const;
+    void setViewport( const ChsRect<int> & viewport );
+		void setViewport( int x, int y, int w, int h );
+		inline ChsRect<int> getViewport( void )const;
     
 		inline void setCurrentCamera( ChsCamera * camera );
     inline ChsCamera * getCurrentCamera( void )const;
@@ -92,7 +93,7 @@ namespace Chaos {
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	inline ChsRect ChsRenderSystem::getViewPort( void )const{
+	inline ChsRect<int> ChsRenderSystem::getViewport( void )const{
 		return this->viewport;
 	}
 

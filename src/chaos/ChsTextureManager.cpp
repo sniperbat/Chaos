@@ -3,6 +3,7 @@ using namespace boost::assign;
 #include "ChsTextureManager.h"
 #include "ChsTextureFactory.h"
 #include "ChsTexture2D.h"
+#include "ChsTextureEntity.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -22,7 +23,11 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	
+	boost::shared_ptr<ChsTextureEntity> ChsTextureManager::getTextureEntity( const std::string & name ){
+    return boost::shared_ptr<ChsTextureEntity> ( new ChsTextureEntity( this->getTexture2D( name ) ) );
+  }
+  
+  //------------------------------------------------------------------------------------------------
 }
 
 //--------------------------------------------------------------------------------------------------

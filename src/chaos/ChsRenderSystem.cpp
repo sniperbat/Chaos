@@ -79,7 +79,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::initGL( void ){
 		this->setClearColor( 0.3f, 0.3f, 0.7f, 1.0f );
-		this->setViewPort( 0, 0, this->renderbufferWidth, this->renderbufferHeight );
+		this->setViewport( 0, 0, this->renderbufferWidth, this->renderbufferHeight );
 
 		glHint( GL_GENERATE_MIPMAP_HINT, GL_NICEST );
 
@@ -230,7 +230,7 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
-	void ChsRenderSystem::setViewPort( int x, int y, int w, int h ){
+	void ChsRenderSystem::setViewport( int x, int y, int w, int h ){
 		this->viewport.x = static_cast<float>( x );
 		this->viewport.y = static_cast<float>( y );
 		this->viewport.w = static_cast<float>( w );
@@ -239,6 +239,9 @@ namespace Chaos {
 	}
 	
   //------------------------------------------------------------------------------------------------
+  void ChsRenderSystem::setViewport( const ChsRect<int> & viewport ){
+    this->setViewport( viewport.x, viewport.y, viewport.w, viewport.h );
+  }
   
 }//namespace
 

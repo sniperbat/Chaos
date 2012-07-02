@@ -79,11 +79,19 @@ namespace Chaos {
     float h;
   };
 	//------------------------------------------------------------------------------------------------
-	struct ChsRect{
-		float x;
-		float y;
-		float w;
-		float h;
+  template <typename T> union ChsRect{
+    struct{
+      T x;
+      T y;
+      T w;
+      T h;
+    };
+    struct{
+      T left;
+      T top;
+      T right;
+      T bottom;
+    };
 	};
 	
 	//------------------------------------------------------------------------------------------------

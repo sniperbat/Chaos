@@ -24,7 +24,7 @@ namespace Chaos {
   }
 
   //------------------------------------------------------------------------------------------------
-  void ChsHUDManager::init( const ChsRect & viewport ){
+  void ChsHUDManager::init( const ChsRect<int> & viewport ){
     this->camera->ortho( viewport.x, viewport.w, viewport.h, viewport.y, 0.0f, 100.0f);
     this->camera->moveTo( 0.0f , 0.0f, 100.0f );
     this->camera->update();

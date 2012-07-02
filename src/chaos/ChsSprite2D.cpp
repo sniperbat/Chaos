@@ -40,36 +40,74 @@ namespace Chaos {
  	//------------------------------------------------------------------------------------------------ 
   ChsSprite2D::~ChsSprite2D( void ){
   }
+
+  //------------------------------------------------------------------------------------------------ 
+  void ChsSprite2D::setImage( const boost::shared_ptr<ChsTextureEntity> & texture,
+                             int left, int top, int right, int bottom ){
+    float width = static_cast<float>( texture->getWidth() );
+    float height = static_cast<float>( texture->getHeight() );
+    this->setImage( texture, left/width, top/height, right/width, bottom/width );
+  }
   
   //------------------------------------------------------------------------------------------------ 
-  void ChsSprite2D::setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float ox, float oy, float w, float h ){
+  void ChsSprite2D::setImage( const boost::shared_ptr<ChsTextureEntity> & texture, 
+                             float left, float top, float right, float bottom  ){
     this->texture = texture;
     this->imageSize.w = static_cast<float>( texture->getWidth() );
     this->imageSize.h = static_cast<float>( texture->getHeight() );
-    this->imageBound.x = ox;
-    this->imageBound.y = oy;
-    this->imageBound.w = w;
-    this->imageBound.h = h;
+    this->size = this->imageSize;
     this->material->addTexture( texture );
-		this->material->setProperty( "hasTexture", true );
+    this->material->setProperty( "hasTexture", true );
     this->needUpdate = true;
-  }
-  /*
-  //------------------------------------------------------------------------------------------------ 
-  void ChsSprite2D::setImage( std::string imageName, float x, float y, float w, float h ){
-    boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( imageName );
-    if( texture )
-      this->setImage( texture, x, y, w, h );
+
+    this->imageBound.left = left;
+    this->imageBound.top = top;
+    this->imageBound.right =right;
+    this->imageBound.bottom = bottom;
   }
   
-  */
+  //------------------------------------------------------------------------------------------------ 
+  void ChsSprite2D::setImage( const boost::shared_ptr<ChsTextureEntity> & texture ){
+    this->setImage( texture, 0.0f, 0.0f, 1.0f, 1.0f );
+  }
 
   //------------------------------------------------------------------------------------------------ 
-  void ChsSprite2D::setImage( std::string imageName ){
-    boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( ChsResourceManager::sharedInstance()->getTexture2D( imageName ) ) );
-    texture->setSampleName( "diffuseTexture" );
-    texture->setActiveUnit( 0 );
-    this->setImage( texture, 0, 0, 1.0f, 1.0f );
+  void ChsSprite2D::setImage( const std::string & imageName,
+                             int left, int top, int right, int bottom ){
+    boost::shared_ptr<ChsTextureEntity> texture = ChsResourceManager::sharedInstance()->getTextureEntity( imageName );
+    if( texture ){
+      this->setImage( texture );
+      texture->setSampleName( "diffuseTexture" );
+      texture->setActiveUnit( 0 );
+      
+      float width = static_cast<float>( texture->getWidth() );
+      float height = static_cast<float>( texture->getHeight() );
+      this->imageBound.left = left/width;
+      this->imageBound.top = top/height;
+      this->imageBound.right = right/width;
+      this->imageBound.bottom = bottom/width;
+    }
+  }
+
+  //------------------------------------------------------------------------------------------------ 
+  void ChsSprite2D::setImage( const std::string & imageName,
+                             float left, float top, float right, float bottom ){
+    boost::shared_ptr<ChsTextureEntity> texture = ChsResourceManager::sharedInstance()->getTextureEntity( imageName );
+    if( texture ){
+      this->setImage( texture );
+      texture->setSampleName( "diffuseTexture" );
+      texture->setActiveUnit( 0 );
+      
+      this->imageBound.left = left;
+      this->imageBound.top = top;
+      this->imageBound.right =right;
+      this->imageBound.bottom = bottom;
+    }
+  }
+  
+  //------------------------------------------------------------------------------------------------ 
+  void ChsSprite2D::setImage( const std::string & imageName ){
+    this->setImage( imageName, 0.0f, 0.0f, 1.0f, 1.0f );
   }
 
   //-----------------------------------------------------------------------------------------------
@@ -78,19 +116,19 @@ namespace Chaos {
       const GLfloat vertices[] = {
         this->position.x, this->position.y, this->depth,
         1.0f, 1.0f, 1.0f, this->alpha,
-        this->imageBound.x, this->imageBound.h,
+        this->imageBound.left, this->imageBound.bottom,
         
         this->position.x, this->position.y + this->size.h, this->depth,
         1.0f, 1.0f, 1.0f, this->alpha,
-        this->imageBound.x, this->imageBound.y,
+        this->imageBound.left, this->imageBound.top,
         
         this->position.x + this->size.w,  this->position.y, this->depth,
         1.0f, 1.0f, 1.0f, this->alpha,
-        this->imageBound.w, this->imageBound.h ,
+        this->imageBound.right, this->imageBound.bottom ,
         
         this->position.x + this->size.w,  this->position.y + this->size.h, this->depth,
         1.0f, 1.0f, 1.0f, this->alpha,
-        this->imageBound.w, this->imageBound.y,
+        this->imageBound.right, this->imageBound.top,
       };
    		this->vertexBuffer->setDataWithArray( vertices, sizeof( vertices ) );
       this->needUpdate = false;
