@@ -42,8 +42,9 @@ namespace Chaos {
 		}
     
 		void unbind( void ){
-      if( 0 <= this->index )
+      if( 0 <= this->index ){
         glDisableVertexAttribArray( index );
+      }
 		}
 	};
   
@@ -54,8 +55,9 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
 	ChsVertexBuffer::~ChsVertexBuffer( void ){
-    if( this->vaoHandle )
+    if( this->vaoHandle ){
  	    glDeleteVertexArrays( 1, &this->vaoHandle);
+    }
 		attribs.clear();
 	}
   
@@ -74,27 +76,31 @@ namespace Chaos {
    	}
     this->attribs.push_back( attrib );
    	stride += attrib->size;
-		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs )
+		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
 			attrib->stride = stride;
+    }
 	}
 
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::bindAttribArrays( void ){
-		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs )
+		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
 			attrib->bind();
+    }
 	}
 
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::unbindAttribArrays( void ){
-    BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs )
+    BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
 			attrib->unbind();
+    }
 	}
 
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::attachAttributes( void ){
     unsigned int programHandle = ChsShaderManager::getActiveShaderProgram()->getHandle();
-    BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs )
+    BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
       attrib->attachToShader( programHandle );
+    }
 	}
 
   

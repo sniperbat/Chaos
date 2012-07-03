@@ -30,13 +30,13 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::addTexture( const boost::shared_ptr<ChsTextureEntity> & texture ){
-		if( !texture )
-			return;
-    ChsTextureEntity * texturePtr = texture.get();
-    const std::string & sampleName = texturePtr->getSampleName();
-		this->addProperty( sampleName, CHS_SHADER_UNIFORM_1_INT, 1);
-		this->setProperty( sampleName, texturePtr->getActiveUnit() );
-		this->textures.push_back( texture );
+		if( texture ){
+      ChsTextureEntity * texturePtr = texture.get();
+      const std::string & sampleName = texturePtr->getSampleName();
+      this->addProperty( sampleName, CHS_SHADER_UNIFORM_1_INT, 1);
+      this->setProperty( sampleName, texturePtr->getActiveUnit() );
+      this->textures.push_back( texture );
+    }
 	}
 	
   //------------------------------------------------------------------------------------------------
@@ -52,11 +52,14 @@ namespace Chaos {
       }
 
       std::pair<ChsRenderState,unsigned int> p;
-      BOOST_FOREACH( p, this->renderStates )
+      BOOST_FOREACH( p, this->renderStates ){
         ChsRenderStates::sharedInstance()->set( p.first,p.second );
+      }
       this->shaderUniformSet.bind();
-      BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures )
+      BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures ){
         texture->apply();
+      }
+      
 		}
 	}
 
@@ -83,10 +86,12 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsMaterial::setRenderState( ChsRenderState state, unsigned int value ){
 		auto iter = this->renderStates.find( state );
-		if( iter != this->renderStates.end() )
+		if( iter != this->renderStates.end() ){
 			this->renderStates[state] = value;
-		else
+    }
+		else{
       this->renderStates.insert( std::make_pair( state, value ) );
+    }
 	}
   
   //------------------------------------------------------------------------------------------------

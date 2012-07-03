@@ -17,30 +17,32 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   void ChsTextureEntity::apply( void )const{
-    if( this->texture.expired() )
-      return;
-    const boost::shared_ptr<ChsTexture2D> & texture = this->texture.lock();
-    for( int index = 0; index < CHS_TEXTURE_WRAP_MAX; index++ ){
-      ChsTexWrapType type = static_cast<ChsTexWrapType>( index );
-      if( texture->getWrap( type ) != this->wraps[index]){
-        texture->setWrap( type, this->wraps[index] );
+    if( !this->texture.expired() ){
+      const boost::shared_ptr<ChsTexture2D> & texture = this->texture.lock();
+      for( int index = 0; index < CHS_TEXTURE_WRAP_MAX; index++ ){
+        ChsTexWrapType type = static_cast<ChsTexWrapType>( index );
+        if( texture->getWrap( type ) != this->wraps[index]){
+          texture->setWrap( type, this->wraps[index] );
+        }
       }
+      texture->bindToUnit( this->activeUnit );
     }
-    texture->bindToUnit( this->activeUnit );
   }
   
   //------------------------------------------------------------------------------------------------
   int ChsTextureEntity::getWidth( void )const{
-    if( this->texture.expired() )
-      return 0;
-    return this->texture.lock()->getWidth();
+    int width = 0;
+    if( !this->texture.expired() )
+      width =this->texture.lock()->getWidth();
+    return width;
   }
   
   //------------------------------------------------------------------------------------------------
   int ChsTextureEntity::getHeight( void )const{
-    if( this->texture.expired() )
-      return 0;
-    return this->texture.lock()->getHeight();
+    int height = 0;
+    if( !this->texture.expired() )
+      height = this->texture.lock()->getHeight();
+    return height;
   }
 
   //------------------------------------------------------------------------------------------------

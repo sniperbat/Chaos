@@ -35,9 +35,9 @@ namespace Chaos {
 	template<typename T>
 	void ChsShaderUniformSet::set( const std::string & name, T values ){
 		auto iter = this->uniforms.find( name );
-		if( iter == this->uniforms.end() )
-			return;
-		iter->second->set( values );
+		if( iter != this->uniforms.end() ){
+      iter->second->set( values );
+    }
 	}
 	
   //------------------------------------------------------------------------------------------------

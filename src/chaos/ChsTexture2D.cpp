@@ -36,11 +36,11 @@ namespace Chaos {
 	//------------------------------------------------------------------------------------------------
 	void ChsTexture2D::bindToUnit( GLint unit ){
     this->updateWrap();
-		if( currentTextureHandle == this->textureHandle )
-			return;
-		glBindTexture( GL_TEXTURE_2D, this->textureHandle );
-		glActiveTexture( unit );
-		currentTextureHandle = this->textureHandle;
+		if( currentTextureHandle != this->textureHandle ){
+      glBindTexture( GL_TEXTURE_2D, this->textureHandle );
+      glActiveTexture( unit );
+      currentTextureHandle = this->textureHandle;
+    }
 	}
 	
 	//------------------------------------------------------------------------------------------------

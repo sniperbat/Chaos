@@ -6,6 +6,7 @@
 #include "framework/ChsGameBase.h"
 #include "framework/ChsSceneManager.h"
 #include "platform/ChsSystem.h"
+#include "io/ChsTouchEmitter.h"
 
 //--------------------------------------------------------------------------------------------------
 namespace Chaos {
@@ -44,6 +45,7 @@ namespace Chaos {
 		this->getGame()->onShutdown();
 		this->setGame( nullptr );
 		ChsRenderFactory::shutdown();
+    ChsTouchEmitter::sharedInstance()->purge();
     ChsSceneManager::sharedInstance()->purge();
     ChsHUDManager::sharedInstance()->purge();
 		ChsResourceManager::sharedInstance()->purge();

@@ -39,8 +39,9 @@ namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystemIOS::releaseContext( void ) {
-		if( [EAGLContext currentContext] == glContext )
+		if( [EAGLContext currentContext] == glContext ){
 			[EAGLContext setCurrentContext: nil];
+    }
 		[glContext release];
 		glContext = nil;
 	}
@@ -52,8 +53,9 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystemIOS::attachContext( void ){
-		if( [EAGLContext currentContext] != glContext )
+		if( [EAGLContext currentContext] != glContext ){
 			[EAGLContext setCurrentContext:glContext];
+    }
 	}
 
   //------------------------------------------------------------------------------------------------

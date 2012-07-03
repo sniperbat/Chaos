@@ -176,63 +176,66 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::loadAsXML( const char * data ){
+    ChsModel * model = nullptr;
 		tinyxml2::XMLDocument doc;
-		int ret = doc.Parse( data );
-		if( tinyxml2::XML_NO_ERROR != ret ){
-			printf( "errorStr1:%s\n", doc.GetErrorStr1() );
-			printf( "errorStr2:%s\n", doc.GetErrorStr2() );
-			doc.PrintError();//get some error
-			return nullptr;
-		}
-		
-		ChsModel * model = nullptr;
-		tinyxml2::XMLElement * modelElement = doc.FirstChildElement( "ChsModel" );
-		if( !modelElement ){
-			printf( "there no model elements\n" );
-			return nullptr;
-		}
-		
-		std::string modelName = modelElement->Attribute( "id" );
-		model = new ChsModel( modelName );
-		tinyxml2::XMLElement * meshElement = modelElement->FirstChildElement( "ChsMesh" );
-		while( meshElement ){
-			std::string meshName = meshElement->Attribute( "id" );
-			boost::shared_ptr<ChsMesh> mesh( new ChsMesh( meshName ) );
-			setAttributes( meshElement, mesh );
-      setVertexBuffer( meshElement, mesh );
-      setIndexBuffer( meshElement, mesh );
-      setTransform( meshElement, mesh );
-      setMaterial( meshElement, mesh );
-			model->addMesh( mesh );
-			meshElement = meshElement->NextSiblingElement( "ChsMesh" );
-		}
+    do{
+      int ret = doc.Parse( data );
+      if( tinyxml2::XML_NO_ERROR != ret ){
+        printf( "errorStr1:%s\n", doc.GetErrorStr1() );
+        printf( "errorStr2:%s\n", doc.GetErrorStr2() );
+        doc.PrintError();//get some error
+        break;
+      }
+      tinyxml2::XMLElement * modelElement = doc.FirstChildElement( "ChsModel" );
+      if( !modelElement ){
+        printf( "there no model elements\n" );
+        break;
+      }
+      std::string modelName = modelElement->Attribute( "id" );
+      model = new ChsModel( modelName );
+      tinyxml2::XMLElement * meshElement = modelElement->FirstChildElement( "ChsMesh" );
+      while( meshElement ){
+        std::string meshName = meshElement->Attribute( "id" );
+        boost::shared_ptr<ChsMesh> mesh( new ChsMesh( meshName ) );
+        setAttributes( meshElement, mesh );
+        setVertexBuffer( meshElement, mesh );
+        setIndexBuffer( meshElement, mesh );
+        setTransform( meshElement, mesh );
+        setMaterial( meshElement, mesh );
+        model->addMesh( mesh );
+        meshElement = meshElement->NextSiblingElement( "ChsMesh" );
+      }
+    }while(0);
 		return model;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::loadAsBinary( char *data ){
-    if( data[0] != 'c' || data[1] != 'h'||data[2] != 'm' || data[3] != 'o' ){
-      printf( "this is not chsmodel file" );
-      return nullptr;
-    }
-		readData<int>( data );//skip magic number
-    //load xml segment
-    int xmlSize = readData<int>( data );
-    ChsModel * model = this->loadAsXML( data );
-    skipData( data, xmlSize );
-    //load binary segment
-    int meshCount = model->meshs.size();
-    for( int i = 0; i < meshCount; i++ ){
-      ChsMesh * mesh = model->meshs[i].get();
-      int vertexArraySize = readData<int>( data );
-      mesh->getVertexBuffer()->setDataWithArray( data, vertexArraySize );
-      skipData( data, vertexArraySize );
-      int indexArraySize = readData<int>( data );
-      int count = mesh->getIndexBuffer()->getCount();
-      int type = mesh->getIndexBuffer()->getType();
-      mesh->getIndexBuffer()->setDataWithArray( data, count, type );
-      skipData( data, indexArraySize );
-    }
+    ChsModel * model = nullptr;
+    do{
+      if( data[0] != 'c' || data[1] != 'h'||data[2] != 'm' || data[3] != 'o' ){
+        printf( "this is not chsmodel file" );
+        break;
+      }
+      readData<int>( data );//skip magic number
+      //load xml segment
+      int xmlSize = readData<int>( data );
+      model = this->loadAsXML( data );
+      skipData( data, xmlSize );
+      //load binary segment
+      int meshCount = model->meshs.size();
+      for( int i = 0; i < meshCount; i++ ){
+        ChsMesh * mesh = model->meshs[i].get();
+        int vertexArraySize = readData<int>( data );
+        mesh->getVertexBuffer()->setDataWithArray( data, vertexArraySize );
+        skipData( data, vertexArraySize );
+        int indexArraySize = readData<int>( data );
+        int count = mesh->getIndexBuffer()->getCount();
+        int type = mesh->getIndexBuffer()->getType();
+        mesh->getIndexBuffer()->setDataWithArray( data, count, type );
+        skipData( data, indexArraySize );
+      }
+    }while (0);
     return model;
 	}
 	

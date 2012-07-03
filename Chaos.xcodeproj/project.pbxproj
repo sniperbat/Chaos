@@ -245,10 +245,10 @@
 		7403105E14FB6F990009FF1B /* geometry */ = {
 			isa = PBXGroup;
 			children = (
-				7403105814FB6F8E0009FF1B /* ChsCube.cpp */,
 				7403105A14FB6F8F0009FF1B /* ChsCube.h */,
-				7403105914FB6F8E0009FF1B /* ChsPlane.cpp */,
+				7403105814FB6F8E0009FF1B /* ChsCube.cpp */,
 				7403105B14FB6F900009FF1B /* ChsPlane.h */,
+				7403105914FB6F8E0009FF1B /* ChsPlane.cpp */,
 				740C3A59150EDF420093E952 /* ChsCoordinatePlane.h */,
 				740C3A5B150EDFE40093E952 /* ChsCoordinatePlane.cpp */,
 			);
@@ -258,12 +258,12 @@
 		7403B275159AD5D500D1316D /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				7403B277159AD62C00D1316D /* ChsGameBase.cpp */,
 				7403B278159AD62C00D1316D /* ChsGameBase.h */,
-				7403B286159AED2300D1316D /* ChsSceneManager.cpp */,
+				7403B277159AD62C00D1316D /* ChsGameBase.cpp */,
 				7403B287159AED2300D1316D /* ChsSceneManager.h */,
-				747D449E159BEBC20044FED2 /* ChsScene.cpp */,
+				7403B286159AED2300D1316D /* ChsSceneManager.cpp */,
 				7403B279159AD65D00D1316D /* ChsScene.h */,
+				747D449E159BEBC20044FED2 /* ChsScene.cpp */,
 			);
 			name = framework;
 			sourceTree = "<group>";
@@ -274,10 +274,10 @@
 				7403B281159AE2B000D1316D /* ChsSingleton.h */,
 				747D449C159BE7C50044FED2 /* ChsDynamicClass.h */,
 				7403B283159AE33C00D1316D /* ChsClassFactory.h */,
-				7403B27E159AE2B000D1316D /* ChsNode.cpp */,
 				7403B280159AE2B000D1316D /* ChsNode.h */,
-				7403B27F159AE2B000D1316D /* ChsUtility.cpp */,
+				7403B27E159AE2B000D1316D /* ChsNode.cpp */,
 				7403B282159AE2B000D1316D /* ChsUtility.h */,
+				7403B27F159AE2B000D1316D /* ChsUtility.cpp */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -285,10 +285,10 @@
 		745457531560A72200EC8991 /* hud */ = {
 			isa = PBXGroup;
 			children = (
-				745457551560A79F00EC8991 /* ChsHUD.cpp */,
-				745457561560A79F00EC8991 /* ChsHUDManager.cpp */,
 				745457571560A79F00EC8991 /* ChsHUD.h */,
+				745457551560A79F00EC8991 /* ChsHUD.cpp */,
 				745457581560A79F00EC8991 /* ChsHUDManager.h */,
+				745457561560A79F00EC8991 /* ChsHUDManager.cpp */,
 			);
 			name = hud;
 			sourceTree = "<group>";
@@ -297,8 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				749D799114ECD3B90046F2D9 /* ios */,
-				74614B8E14F4CCD0003396BA /* ChsOpenGL.h */,
 				7414A21915A16ED5002AF8A2 /* ChsSystem.h */,
+				74614B8E14F4CCD0003396BA /* ChsOpenGL.h */,
 				7414711C14FC5FAD00964FA3 /* ChsOpenGL.cpp */,
 			);
 			name = platform;
@@ -307,12 +307,12 @@
 		749D799114ECD3B90046F2D9 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				741ABD3D14EE33CD00995232 /* ChsRenderSystemIOS.mm */,
 				741ABD3E14EE33CD00995232 /* ChsRenderSystemIOS.h */,
+				741ABD3D14EE33CD00995232 /* ChsRenderSystemIOS.mm */,
 				74EE3A6915171CCA00FC9420 /* ChsTextureFactoryIOS.h */,
-				74EC45061561FE530099E122 /* ChsFileSystemIOS.mm */,
-				74EC45071561FE530099E122 /* ChsFileSystemIOS.h */,
 				74EE3A6A15171D7F00FC9420 /* ChsTextureFactoryIOS.mm */,
+				74EC45071561FE530099E122 /* ChsFileSystemIOS.h */,
+				74EC45061561FE530099E122 /* ChsFileSystemIOS.mm */,
 				7414A21615A16727002AF8A2 /* ChsSystemIOS.mm */,
 			);
 			name = ios;
@@ -330,40 +330,40 @@
 				749D79CD14ECD6080046F2D9 /* io */,
 				749D79CF14ECD6080046F2D9 /* math */,
 				749D79BD14ECD6010046F2D9 /* shader */,
+				74614B8C14F4BB85003396BA /* ChsDefine.h */,
+				743A296514F337B400486634 /* Chaos.h */,
 				743A296414F337B400486634 /* ChsSingleton.cpp */,
-				741ABD4814EE37BD00995232 /* ChsEngine.cpp */,
 				741ABD4914EE37BD00995232 /* ChsEngine.h */,
-				749D79A114ECD5F50046F2D9 /* ChsIndexBuffer.cpp */,
+				741ABD4814EE37BD00995232 /* ChsEngine.cpp */,
 				749D79AA14ECD5F50046F2D9 /* ChsIndexBuffer.h */,
-				749D79A814ECD5F50046F2D9 /* ChsVertexBuffer.cpp */,
+				749D79A114ECD5F50046F2D9 /* ChsIndexBuffer.cpp */,
 				749D79B214ECD5F50046F2D9 /* ChsVertexBuffer.h */,
+				749D79A814ECD5F50046F2D9 /* ChsVertexBuffer.cpp */,
 				74CD8F0F156F54D000C4398C /* ChsArrayBuffer.h */,
 				74CD8F11156F55CC00C4398C /* ChsArrayBuffer.cpp */,
-				741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */,
 				741ABD4E14EE46F300995232 /* ChsRenderFactory.h */,
+				741ABD4D14EE46F300995232 /* ChsRenderFactory.cpp */,
 				749D79AE14ECD5F50046F2D9 /* ChsRenderSystem.h */,
 				749D79A514ECD5F50046F2D9 /* ChsRenderSystem.cpp */,
 				749364A31526A143007608F4 /* ChsRenderStates.h */,
 				749364A51526A1C3007608F4 /* ChsRenderStates.cpp */,
-				749D79A614ECD5F50046F2D9 /* ChsRenderNode.cpp */,
 				749D79AF14ECD5F50046F2D9 /* ChsRenderNode.h */,
+				749D79A614ECD5F50046F2D9 /* ChsRenderNode.cpp */,
 				7486D9AD152059C000099441 /* ChsRenderable.h */,
 				74645853155900B700C3C762 /* ChsRenderable.cpp */,
-				7414711A14FC5F1C00964FA3 /* ChsMaterial.cpp */,
 				7403105414FB4D980009FF1B /* ChsMaterial.h */,
-				74614B8C14F4BB85003396BA /* ChsDefine.h */,
-				7403104F14FB4D320009FF1B /* ChsMesh.cpp */,
+				7414711A14FC5F1C00964FA3 /* ChsMaterial.cpp */,
 				7403105014FB4D320009FF1B /* ChsMesh.h */,
-				743A296514F337B400486634 /* Chaos.h */,
-				7486D9AB1520580800099441 /* ChsModel.cpp */,
+				7403104F14FB4D320009FF1B /* ChsMesh.cpp */,
 				7486D9AC1520580A00099441 /* ChsModel.h */,
-				742F869414F60A5900693E51 /* ChsEntityManager.cpp */,
+				7486D9AB1520580800099441 /* ChsModel.cpp */,
 				742F868D14F5EF3B00693E51 /* ChsEntityManager.h */,
+				742F869414F60A5900693E51 /* ChsEntityManager.cpp */,
 				748936F214F620EF006CDF7B /* ChsManagerWithCache.h */,
-				742F869814F61F2300693E51 /* ChsResourceManager.cpp */,
 				742F868E14F5F25800693E51 /* ChsResourceManager.h */,
-				742F869614F60B6200693E51 /* ChsEntity.cpp */,
+				742F869814F61F2300693E51 /* ChsResourceManager.cpp */,
 				742F869314F609DB00693E51 /* ChsEntity.h */,
+				742F869614F60B6200693E51 /* ChsEntity.cpp */,
 				747B9CFE15243350007AF122 /* ChsModelLoader.h */,
 				747B9CFF152433B6007AF122 /* ChsModelLoader.cpp */,
 				74EE55E1155A552000FE9325 /* ChsTextureEntity.h */,
@@ -385,12 +385,12 @@
 		749D79BD14ECD6010046F2D9 /* shader */ = {
 			isa = PBXGroup;
 			children = (
-				749D79C014ECD6010046F2D9 /* ChsShader.cpp */,
 				749D79C114ECD6010046F2D9 /* ChsShader.h */,
-				749D79C214ECD6010046F2D9 /* ChsShaderManager.cpp */,
+				749D79C014ECD6010046F2D9 /* ChsShader.cpp */,
 				749D79C314ECD6010046F2D9 /* ChsShaderManager.h */,
-				749D79C414ECD6010046F2D9 /* ChsShaderProgram.cpp */,
+				749D79C214ECD6010046F2D9 /* ChsShaderManager.cpp */,
 				749D79C514ECD6010046F2D9 /* ChsShaderProgram.h */,
+				749D79C414ECD6010046F2D9 /* ChsShaderProgram.cpp */,
 				74C7BE00150061D800194E72 /* ChsShaderUniform.h */,
 				74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */,
 				743FF26C152D2CFB003C4E91 /* ChsShaderUniformSet.h */,
@@ -403,10 +403,10 @@
 		749D79CD14ECD6080046F2D9 /* io */ = {
 			isa = PBXGroup;
 			children = (
-				74A693C9157C56DD00CD3845 /* ChsTouchEmitter.cpp */,
-				74A693CA157C56DD00CD3845 /* ChsTouchListener.cpp */,
 				74A693CB157C56DD00CD3845 /* ChsTouchEmitter.h */,
+				74A693C9157C56DD00CD3845 /* ChsTouchEmitter.cpp */,
 				74A693CC157C56DD00CD3845 /* ChsTouchListener.h */,
+				74A693CA157C56DD00CD3845 /* ChsTouchListener.cpp */,
 				749D79CE14ECD6080046F2D9 /* ChsFileSystem.h */,
 			);
 			name = io;
@@ -416,18 +416,18 @@
 		749D79CF14ECD6080046F2D9 /* math */ = {
 			isa = PBXGroup;
 			children = (
-				749D79D014ECD6080046F2D9 /* ChsMath.cpp */,
 				749D79D114ECD6080046F2D9 /* ChsMath.h */,
-				749D79D214ECD6080046F2D9 /* ChsMatrix.cpp */,
+				749D79D014ECD6080046F2D9 /* ChsMath.cpp */,
 				749D79D314ECD6080046F2D9 /* ChsMatrix.h */,
-				749D79D414ECD6080046F2D9 /* ChsQuaternion.cpp */,
+				749D79D214ECD6080046F2D9 /* ChsMatrix.cpp */,
 				749D79D514ECD6080046F2D9 /* ChsQuaternion.h */,
-				749D79D614ECD6080046F2D9 /* ChsVector2.cpp */,
+				749D79D414ECD6080046F2D9 /* ChsQuaternion.cpp */,
 				749D79D714ECD6080046F2D9 /* ChsVector2.h */,
-				749D79D814ECD6080046F2D9 /* ChsVector3.cpp */,
+				749D79D614ECD6080046F2D9 /* ChsVector2.cpp */,
 				749D79D914ECD6080046F2D9 /* ChsVector3.h */,
-				749D79DA14ECD6080046F2D9 /* ChsVector4.cpp */,
+				749D79D814ECD6080046F2D9 /* ChsVector3.cpp */,
 				749D79DB14ECD6080046F2D9 /* ChsVector4.h */,
+				749D79DA14ECD6080046F2D9 /* ChsVector4.cpp */,
 			);
 			name = math;
 			path = src/chaos/math;
@@ -446,10 +446,10 @@
 		74C7BE061500720F00194E72 /* camera */ = {
 			isa = PBXGroup;
 			children = (
-				747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */,
 				747D5E4F1563A45A009D766E /* ChsModelViewCamera.h */,
-				74C7BE071500727600194E72 /* ChsCamera.cpp */,
+				747D5E4D1563A45A009D766E /* ChsModelViewCamera.cpp */,
 				74C7BE081500727600194E72 /* ChsCamera.h */,
+				74C7BE071500727600194E72 /* ChsCamera.cpp */,
 			);
 			name = camera;
 			path = src/chaos/camera;
@@ -508,10 +508,10 @@
 				742F868B14F5ECAB00693E51 /* GameDemo.cpp */,
 				7403B28E159B004A00D1316D /* MainMenuScene.h */,
 				7403B28F159B005E00D1316D /* MainMenuScene.cpp */,
-				7443F38D159D8CA600C7445F /* GamingScene.cpp */,
+				7443F390159D8CA600C7445F /* SplashScene.h */,
 				7443F38E159D8CA600C7445F /* SplashScene.cpp */,
 				7443F38F159D8CA600C7445F /* GamingScene.h */,
-				7443F390159D8CA600C7445F /* SplashScene.h */,
+				7443F38D159D8CA600C7445F /* GamingScene.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";

@@ -20,20 +20,24 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
 	bool ChsShader::load( const char * source )const{
-   	if ( !source ) {
-     	printf("Failed to load vertex shader" );
-      return false;
-   	}
-    const char * sources[]={
-      "#ifndef GL_ES\n"
-      "#define lowp\n"
-      "#define highp\n"
-      "#define mediump\n"
-      "#endif\n",
-      source,
-    };
-    glShaderSource( this->shaderHandle, 2, sources, nullptr );
-   	return this->compile();
+    bool ret = false;
+    do{
+      if ( !source ) {
+        printf("Failed to load vertex shader" );
+        break;
+      }
+      const char * sources[]={
+        "#ifndef GL_ES\n"
+        "#define lowp\n"
+        "#define highp\n"
+        "#define mediump\n"
+        "#endif\n",
+        source,
+      };
+      glShaderSource( this->shaderHandle, 2, sources, nullptr );
+      ret = this->compile();
+    }while(0);
+   	return ret;
 	}
 
   //------------------------------------------------------------------------------------------------

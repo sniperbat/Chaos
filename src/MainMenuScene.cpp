@@ -35,7 +35,7 @@ void MainMenuScene::onEnter( void ){
 void MainMenuScene::onExit( void ){
   ChsTouchEmitter::sharedInstance()->removeListener( camera );
   this->remove( "test.chsmodel" );
-   ChsHUDManager::sharedInstance()->hideHUD( "demo.chshud" );
+  ChsHUDManager::sharedInstance()->hideHUD( "demo.chshud" );
 }
 
 //--------------------------------------------------------------------------------------------------

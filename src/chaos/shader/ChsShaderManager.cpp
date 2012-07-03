@@ -38,12 +38,12 @@ namespace Chaos{
 
   //------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsVertexShader> ChsShaderManager::getVertexShader( const std::string & name ){
-    	return this->getShader< ChsVertexShader >( name );
+    return this->getShader< ChsVertexShader >( name );
 	}
 
   //------------------------------------------------------------------------------------------------
 	boost::shared_ptr<ChsFragmentShader> ChsShaderManager::getFragmentShader( const std::string & name ){
-    	return this->getShader< ChsFragmentShader >( name );
+    return this->getShader< ChsFragmentShader >( name );
 	}
 
   //------------------------------------------------------------------------------------------------

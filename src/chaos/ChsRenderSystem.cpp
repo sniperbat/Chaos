@@ -111,17 +111,15 @@ namespace Chaos {
   void ChsRenderSystem::updateCamera( void ){
     if( this->currentCamera ){
 			this->currentCamera->update();
-			//wvp = mtxWorld * this->currentCamera->getMatrix();
-			//wvit = mtxWorld * this->currentCamera->getViewMatrix();
-			//wvit.inverse();
-			//wvit.transpose();
 		}
   }
+  
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::preRender( void ){
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    if( this->isShowDebugCoordinate )
+    if( this->isShowDebugCoordinate ){
       debugCoordinatePlane->update( 0.0f );
+    }
 	}
   
   //------------------------------------------------------------------------------------------------
@@ -166,8 +164,9 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::postRender( void ) {
-    for( int i=CHS_RENDER_TAG_OPACITY; i<CHS_RENDER_TAG_MAX;i++)
+    for( int i=CHS_RENDER_TAG_OPACITY; i<CHS_RENDER_TAG_MAX;i++){
       renderChains[i].clear();
+    }
 	}
 	
   //------------------------------------------------------------------------------------------------
@@ -184,8 +183,9 @@ namespace Chaos {
 		glBindFramebuffer( GL_FRAMEBUFFER, this->framebuffer );
 		glFramebufferRenderbuffer( GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, this->renderbuffer );
 		glFramebufferRenderbuffer( GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, this->depthRenderbuffer );
-    if ( glCheckFramebufferStatus( GL_FRAMEBUFFER ) != GL_FRAMEBUFFER_COMPLETE )
+    if ( glCheckFramebufferStatus( GL_FRAMEBUFFER ) != GL_FRAMEBUFFER_COMPLETE ){
       printf( "Failed to make complete framebuffer object %x\n", glCheckFramebufferStatus( GL_FRAMEBUFFER ) );
+    }
 	}
 	
   //------------------------------------------------------------------------------------------------

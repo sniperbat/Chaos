@@ -16,27 +16,27 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   ChsTouchEmitter::~ChsTouchEmitter( void ){
-    this->purge();
   }
   
   //------------------------------------------------------------------------------------------------
   void ChsTouchEmitter::purge( void ){
-    if( !listeners.empty()) 
-      listeners.clear();
+    listeners.clear();
   }
   
   //------------------------------------------------------------------------------------------------
   void ChsTouchEmitter::addListener( boost::shared_ptr<ChsTouchListener> listener ){
     auto iter = std::find( listeners.begin(), listeners.end(), listener );
-    if( iter == listeners.end() )
+    if( iter == listeners.end() ){
       listeners.push_back( listener );
+    }
   }
   
   //------------------------------------------------------------------------------------------------
   void ChsTouchEmitter::removeListener( boost::shared_ptr<ChsTouchListener> listener ){
     auto iter = std::find( listeners.begin(), listeners.end(), listener );
-    if( iter != listeners.end() )
+    if( iter != listeners.end() ){
       listeners.erase( iter );
+    }
   }
   
   //------------------------------------------------------------------------------------------------

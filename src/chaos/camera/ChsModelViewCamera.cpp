@@ -173,13 +173,15 @@ namespace Chaos{
   static ChsVector3 worldUp( 0.0f, 1.0f, 0.0f );
   //------------------------------------------------------------------------------------------------
 	void ChsModelViewCamera::update(){
-		if( !this->isNeedUpdate )
+		if( !this->isNeedUpdate ){
 			return;
+    }
 		this->isNeedUpdate = false;
 
 		// Change the radius from the camera to the model based on wheel scrolling
-		if( this->zoomDelta )
+		if( this->zoomDelta ){
 			this->radius -= this->zoomDelta * this->radius * 0.001f;
+    }
 
 		this->radius = this->maxRadius < this->radius ? this->maxRadius : this->radius;
 		this->radius = this->minRadius > this->radius ? this->minRadius : this->radius;

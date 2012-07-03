@@ -46,20 +46,23 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
   void ChsHUDManager::showHUD( const std::string & hudName ){
-    auto iter = this->hudRenderList.find( hudName );
-    if( iter != this->hudRenderList.end() )
-      return;//already on showing
-    iter = this->hudList.find( hudName );
-    if( iter == this->hudList.end() )
-      return;//this hud does not exsit
-    this->hudRenderList.insert( std::make_pair( hudName, iter->second ) );
+    do{
+      auto iter = this->hudRenderList.find( hudName );
+      if( iter != this->hudRenderList.end() )
+        break;//already on showing
+      iter = this->hudList.find( hudName );
+      if( iter == this->hudList.end() )
+        break;//this hud does not exsit
+      this->hudRenderList.insert( std::make_pair( hudName, iter->second ) );
+    }while( 0 );
   }
   
   //------------------------------------------------------------------------------------------------
   void ChsHUDManager::hideHUD( const std::string & hudName ){
     auto iter = this->hudRenderList.find( hudName );
-    if( iter != this->hudRenderList.end() )
+    if( iter != this->hudRenderList.end() ){
       this->hudRenderList.erase( hudName );
+    }
   }
   
   //------------------------------------------------------------------------------------------------
@@ -78,10 +81,12 @@ namespace Chaos {
   ChsSprite2D * makeSprite( tinyxml2::XMLElement * spriteElement ){
     const char * sprite2DId = spriteElement->Attribute( "id" );
     ChsSprite2D * sprite2D;
-    if( !sprite2DId )
+    if( !sprite2DId ){
       sprite2D = new ChsSprite2D( "unnamed" );
-    else
+    }
+    else{
       sprite2D = new ChsSprite2D( sprite2DId );
+    }
     sprite2D->setRenderTag( CHS_RENDER_TAG_HUD );
     float depth = spriteElement->FloatAttribute( "depth" );
     sprite2D->setDepth( depth );
