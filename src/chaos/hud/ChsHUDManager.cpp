@@ -1,4 +1,4 @@
-#include <tinyxml2/tinyxml2.h>
+#include <tinyxml2.h>
 #include <boost/foreach.hpp>
 #include <boost/assign.hpp>
 using namespace boost::assign;

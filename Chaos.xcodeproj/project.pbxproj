@@ -30,6 +30,7 @@
 		743FF26F152D2D0B003C4E91 /* ChsShaderUniformSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743FF26E152D2D0B003C4E91 /* ChsShaderUniformSet.cpp */; };
 		7443F392159D9A4000C7445F /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7443F38E159D8CA600C7445F /* SplashScene.cpp */; };
 		7443F393159D9A4500C7445F /* GamingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7443F38D159D8CA600C7445F /* GamingScene.cpp */; };
+		7448F68115B933C9002A3CDB /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7448F67F15B933C9002A3CDB /* tinyxml2.cpp */; };
 		744EA4AA14F22F2700669446 /* ChsRenderSystemIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 741ABD3D14EE33CD00995232 /* ChsRenderSystemIOS.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		745457591560A79F00EC8991 /* ChsHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745457551560A79F00EC8991 /* ChsHUD.cpp */; };
 		7454575A1560A79F00EC8991 /* ChsHUDManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745457561560A79F00EC8991 /* ChsHUDManager.cpp */; };
@@ -58,7 +59,6 @@
 		749D79F014ECE5690046F2D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79EF14ECE5690046F2D9 /* QuartzCore.framework */; };
 		74A693CD157C58BB00CD3845 /* ChsTouchEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74A693C9157C56DD00CD3845 /* ChsTouchEmitter.cpp */; };
 		74A693CE157C58BE00CD3845 /* ChsTouchListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74A693CA157C56DD00CD3845 /* ChsTouchListener.cpp */; };
-		74BC079C151034FB003C4429 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74BC079A151034FB003C4429 /* tinyxml2.cpp */; };
 		74C7BE02150062E500194E72 /* ChsShaderUniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */; };
 		74C7BE091500727600194E72 /* ChsCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C7BE071500727600194E72 /* ChsCamera.cpp */; };
 		74CD8F12156F55CC00C4398C /* ChsArrayBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74CD8F11156F55CC00C4398C /* ChsArrayBuffer.cpp */; };
@@ -132,6 +132,8 @@
 		7443F38E159D8CA600C7445F /* SplashScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SplashScene.cpp; path = src/SplashScene.cpp; sourceTree = "<group>"; };
 		7443F38F159D8CA600C7445F /* GamingScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GamingScene.h; path = src/GamingScene.h; sourceTree = "<group>"; };
 		7443F390159D8CA600C7445F /* SplashScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SplashScene.h; path = src/SplashScene.h; sourceTree = "<group>"; };
+		7448F67F15B933C9002A3CDB /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml2.cpp; path = libs/tinyxml2/tinyxml2.cpp; sourceTree = SOURCE_ROOT; };
+		7448F68015B933C9002A3CDB /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinyxml2.h; path = libs/tinyxml2/tinyxml2.h; sourceTree = SOURCE_ROOT; };
 		745457551560A79F00EC8991 /* ChsHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsHUD.cpp; path = src/chaos/hud/ChsHUD.cpp; sourceTree = "<group>"; };
 		745457561560A79F00EC8991 /* ChsHUDManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChsHUDManager.cpp; path = src/chaos/hud/ChsHUDManager.cpp; sourceTree = "<group>"; };
 		745457571560A79F00EC8991 /* ChsHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChsHUD.h; path = src/chaos/hud/ChsHUD.h; sourceTree = "<group>"; };
@@ -188,8 +190,6 @@
 		74A693CA157C56DD00CD3845 /* ChsTouchListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChsTouchListener.cpp; sourceTree = "<group>"; };
 		74A693CB157C56DD00CD3845 /* ChsTouchEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChsTouchEmitter.h; sourceTree = "<group>"; };
 		74A693CC157C56DD00CD3845 /* ChsTouchListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChsTouchListener.h; sourceTree = "<group>"; };
-		74BC079A151034FB003C4429 /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
-		74BC079B151034FB003C4429 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
 		74C7BE00150061D800194E72 /* ChsShaderUniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsShaderUniform.h; sourceTree = "<group>"; };
 		74C7BE01150062E500194E72 /* ChsShaderUniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsShaderUniform.cpp; sourceTree = "<group>"; };
 		74C7BE071500727600194E72 /* ChsCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChsCamera.cpp; sourceTree = "<group>"; };
@@ -436,8 +436,8 @@
 		74BC0799151034FB003C4429 /* tinyxml2 */ = {
 			isa = PBXGroup;
 			children = (
-				74BC079A151034FB003C4429 /* tinyxml2.cpp */,
-				74BC079B151034FB003C4429 /* tinyxml2.h */,
+				7448F67F15B933C9002A3CDB /* tinyxml2.cpp */,
+				7448F68015B933C9002A3CDB /* tinyxml2.h */,
 			);
 			name = tinyxml2;
 			path = src/tinyxml2;
@@ -655,7 +655,6 @@
 				74C7BE02150062E500194E72 /* ChsShaderUniform.cpp in Sources */,
 				74C7BE091500727600194E72 /* ChsCamera.cpp in Sources */,
 				740C3A5C150EDFE40093E952 /* ChsCoordinatePlane.cpp in Sources */,
-				74BC079C151034FB003C4429 /* tinyxml2.cpp in Sources */,
 				745C30F31516FD8F0061F510 /* ChsTexture2D.cpp in Sources */,
 				74EE3A6B15171D7F00FC9420 /* ChsTextureFactoryIOS.mm in Sources */,
 				74EE3A6E1517229400FC9420 /* ChsTextureManager.cpp in Sources */,
@@ -683,6 +682,7 @@
 				7443F392159D9A4000C7445F /* SplashScene.cpp in Sources */,
 				7443F393159D9A4500C7445F /* GamingScene.cpp in Sources */,
 				7414A21715A16727002AF8A2 /* ChsSystemIOS.mm in Sources */,
+				7448F68115B933C9002A3CDB /* tinyxml2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,11 +775,12 @@
 				HEADER_SEARCH_PATHS = (
 					./libs/boost,
 					"./src/**",
+					./libs/tinyxml2,
 				);
 				INFOPLIST_FILE = "Chaos-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/libs\"",
+					"\"./libs\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -797,11 +798,12 @@
 				HEADER_SEARCH_PATHS = (
 					./libs/boost,
 					"./src/**",
+					./libs/tinyxml2,
 				);
 				INFOPLIST_FILE = "Chaos-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/libs\"",
+					"\"./libs\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
