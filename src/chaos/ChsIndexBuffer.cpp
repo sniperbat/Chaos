@@ -26,7 +26,7 @@ namespace Chaos {
     ChsArrayBuffer::setDataWithArray( triangles, getGLDataTypeSize( type ) * count );
    	this->isNeedUpdate = true;
 	}
-//测试
+
 	//------------------------------------------------------------------------------------------------
 	void ChsIndexBuffer::draw( void ){
 		glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, this->vboHandle );
