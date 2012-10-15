@@ -42,8 +42,6 @@ namespace Chaos {
 		if( [EAGLContext currentContext] == glContext ){
 			[EAGLContext setCurrentContext: nil];
     }
-		[glContext release];
-		glContext = nil;
 	}
 
 	//------------------------------------------------------------------------------------------------

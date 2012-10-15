@@ -1,7 +1,7 @@
 #include "GamingScene.h"
 
 //--------------------------------------------------------------------------------------------------
-//must do this, any other solutions??
+//must do this, has any other solutions??
 static bool isDynamic = GamingScene::registerAsDynamic( "GamingScene" );
 
 //--------------------------------------------------------------------------------------------------

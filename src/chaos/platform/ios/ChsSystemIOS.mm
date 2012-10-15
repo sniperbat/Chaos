@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#include "../ChsSystem.h"
+#include "platform/ChsSystem.h"
 
 namespace Chaos{
 

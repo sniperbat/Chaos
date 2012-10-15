@@ -62,7 +62,7 @@ namespace Chaos {
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	enum CHsOrientation{
+	enum ChsOrientation{
 		CHS_LANDSCAPE,
 		CHS_PORTRAIT,
 	};
