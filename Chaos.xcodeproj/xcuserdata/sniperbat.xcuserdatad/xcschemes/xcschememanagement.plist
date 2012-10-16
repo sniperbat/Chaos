@@ -9,9 +9,44 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ChaosEngine.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>ChaosEngine_s.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>252B3868162BFA34003D50AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>252B3877162BFA7F003D50AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>252B387F162BFA91003D50AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>252B3890162BFF69003D50AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>252B3898162BFF86003D50AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>74E047C014ECC88B0024586A</key>
 		<dict>
 			<key>primary</key>

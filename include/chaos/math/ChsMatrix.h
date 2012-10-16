@@ -54,6 +54,12 @@ namespace Chaos {
 		void rotateYTo( float theta );
 		void rotateZTo( float theta );
 			
+    inline void scaleTo( float scaleX, float scaleY, float scaleZ );
+    inline void scaleTo( const ChsVector3 & vec );
+    inline void scaleToX( float scaleX );
+    inline void scaleToY( float scaleY );
+    inline void scaleToZ( float scaleZ );
+    
 		ChsMatrix operator * ( const ChsMatrix & m );
 	};
 
@@ -74,8 +80,32 @@ namespace Chaos {
     this->translation( vec.x, vec.y, vec.z );
   }
 
-	//------------------------------------------------------------------------------------------------
-
+  //------------------------------------------------------------------------------------------------
+  inline void ChsMatrix::scaleTo( float scaleX, float scaleY, float scaleZ ){
+    this->scaleToX( scaleX );
+    this->scaleToY( scaleY );
+    this->scaleToZ( scaleZ );
+  }
+  //------------------------------------------------------------------------------------------------
+  inline void ChsMatrix::scaleTo( const ChsVector3 & vec ){
+    this->scaleTo( vec.x, vec.y, vec.z );
+  }
+  //------------------------------------------------------------------------------------------------
+  inline void ChsMatrix::scaleToX( float scaleX ){
+    this->_m11 *= scaleX;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline void ChsMatrix::scaleToY( float scaleY ){
+    this->_m22 *= scaleY;
+  }
+  
+  //------------------------------------------------------------------------------------------------
+  inline void ChsMatrix::scaleToZ( float scaleZ ){
+    this->_m33 *= scaleZ;
+  }
+  
+  
 }//namespace
 
 //--------------------------------------------------------------------------------------------------

@@ -70,6 +70,18 @@
 		252B3807162BF5A9003D50AC /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B37C1162BF5A9003D50AC /* MainMenuScene.cpp */; };
 		252B3808162BF5A9003D50AC /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B37C2162BF5A9003D50AC /* SplashScene.cpp */; };
 		252B3860162BF719003D50AC /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B385F162BF719003D50AC /* tinyxml2.cpp */; };
+		252B3884162BFC4D003D50AC /* ChsMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3793162BF5A9003D50AC /* ChsMath.cpp */; };
+		252B3885162BFC4D003D50AC /* ChsMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3794162BF5A9003D50AC /* ChsMatrix.cpp */; };
+		252B3886162BFC4D003D50AC /* ChsQuaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3795162BF5A9003D50AC /* ChsQuaternion.cpp */; };
+		252B3887162BFC4D003D50AC /* ChsVector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3796162BF5A9003D50AC /* ChsVector2.cpp */; };
+		252B3888162BFC4D003D50AC /* ChsVector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3797162BF5A9003D50AC /* ChsVector3.cpp */; };
+		252B3889162BFC4D003D50AC /* ChsVector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3798162BF5A9003D50AC /* ChsVector4.cpp */; };
+		252B389D162BFFAC003D50AC /* ChsMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3793162BF5A9003D50AC /* ChsMath.cpp */; };
+		252B389E162BFFAC003D50AC /* ChsMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3794162BF5A9003D50AC /* ChsMatrix.cpp */; };
+		252B389F162BFFAC003D50AC /* ChsQuaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3795162BF5A9003D50AC /* ChsQuaternion.cpp */; };
+		252B38A0162BFFAC003D50AC /* ChsVector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3796162BF5A9003D50AC /* ChsVector2.cpp */; };
+		252B38A1162BFFAC003D50AC /* ChsVector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3797162BF5A9003D50AC /* ChsVector3.cpp */; };
+		252B38A2162BFFAC003D50AC /* ChsVector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3798162BF5A9003D50AC /* ChsVector4.cpp */; };
 		749D79E314ECD77A0046F2D9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79E214ECD77A0046F2D9 /* OpenGLES.framework */; };
 		749D79F014ECE5690046F2D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79EF14ECE5690046F2D9 /* QuartzCore.framework */; };
 		74E047C614ECC88B0024586A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E047C514ECC88B0024586A /* UIKit.framework */; };
@@ -220,6 +232,8 @@
 		252B385B162BF5B7003D50AC /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		252B385E162BF710003D50AC /* tinyxml2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = tinyxml2.h; path = libs/tinyxml2/tinyxml2.h; sourceTree = SOURCE_ROOT; };
 		252B385F162BF719003D50AC /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml2.cpp; path = libs/tinyxml2/tinyxml2.cpp; sourceTree = SOURCE_ROOT; };
+		252B3880162BFA91003D50AC /* libChaosEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libChaosEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		252B3899162BFF86003D50AC /* libChaosEngine_s.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libChaosEngine_s.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		749D79E214ECD77A0046F2D9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		749D79EF14ECE5690046F2D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		74E047C114ECC88B0024586A /* Chaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +249,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		252B387D162BFA91003D50AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		252B3896162BFF86003D50AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74E047BE14ECC88B0024586A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -644,6 +672,8 @@
 			isa = PBXGroup;
 			children = (
 				74E047C114ECC88B0024586A /* Chaos.app */,
+				252B3880162BFA91003D50AC /* libChaosEngine.dylib */,
+				252B3899162BFF86003D50AC /* libChaosEngine_s.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -688,7 +718,58 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		252B387E162BFA91003D50AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		252B3897162BFF86003D50AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		252B387F162BFA91003D50AC /* ChaosEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 252B3881162BFA91003D50AC /* Build configuration list for PBXNativeTarget "ChaosEngine" */;
+			buildPhases = (
+				252B387C162BFA91003D50AC /* Sources */,
+				252B387D162BFA91003D50AC /* Frameworks */,
+				252B387E162BFA91003D50AC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChaosEngine;
+			productName = ChaosEngine;
+			productReference = 252B3880162BFA91003D50AC /* libChaosEngine.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		252B3898162BFF86003D50AC /* ChaosEngine_s */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 252B389A162BFF86003D50AC /* Build configuration list for PBXNativeTarget "ChaosEngine_s" */;
+			buildPhases = (
+				252B3895162BFF86003D50AC /* Sources */,
+				252B3896162BFF86003D50AC /* Frameworks */,
+				252B3897162BFF86003D50AC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChaosEngine_s;
+			productName = ChaosEngine_s;
+			productReference = 252B3899162BFF86003D50AC /* libChaosEngine_s.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		74E047C014ECC88B0024586A /* Chaos */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74E047E214ECC88B0024586A /* Build configuration list for PBXNativeTarget "Chaos" */;
@@ -727,6 +808,8 @@
 			projectRoot = "";
 			targets = (
 				74E047C014ECC88B0024586A /* Chaos */,
+				252B387F162BFA91003D50AC /* ChaosEngine */,
+				252B3898162BFF86003D50AC /* ChaosEngine_s */,
 			);
 		};
 /* End PBXProject section */
@@ -747,6 +830,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		252B387C162BFA91003D50AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				252B3884162BFC4D003D50AC /* ChsMath.cpp in Sources */,
+				252B3885162BFC4D003D50AC /* ChsMatrix.cpp in Sources */,
+				252B3886162BFC4D003D50AC /* ChsQuaternion.cpp in Sources */,
+				252B3887162BFC4D003D50AC /* ChsVector2.cpp in Sources */,
+				252B3888162BFC4D003D50AC /* ChsVector3.cpp in Sources */,
+				252B3889162BFC4D003D50AC /* ChsVector4.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		252B3895162BFF86003D50AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				252B389D162BFFAC003D50AC /* ChsMath.cpp in Sources */,
+				252B389E162BFFAC003D50AC /* ChsMatrix.cpp in Sources */,
+				252B389F162BFFAC003D50AC /* ChsQuaternion.cpp in Sources */,
+				252B38A0162BFFAC003D50AC /* ChsVector2.cpp in Sources */,
+				252B38A1162BFFAC003D50AC /* ChsVector3.cpp in Sources */,
+				252B38A2162BFFAC003D50AC /* ChsVector4.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74E047BD14ECC88B0024586A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -831,6 +940,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		252B3882162BFA91003D50AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = ./libs/boost;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		252B3883162BFA91003D50AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = ./libs/boost;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		252B389B162BFF86003D50AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = ./libs/boost;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		252B389C162BFF86003D50AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = ./libs/boost;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		74E047E014ECC88B0024586A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -947,6 +1132,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		252B3881162BFA91003D50AC /* Build configuration list for PBXNativeTarget "ChaosEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				252B3882162BFA91003D50AC /* Debug */,
+				252B3883162BFA91003D50AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		252B389A162BFF86003D50AC /* Build configuration list for PBXNativeTarget "ChaosEngine_s" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				252B389B162BFF86003D50AC /* Debug */,
+				252B389C162BFF86003D50AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		74E047BB14ECC88B0024586A /* Build configuration list for PBXProject "Chaos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
