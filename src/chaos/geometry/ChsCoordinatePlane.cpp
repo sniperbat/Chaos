@@ -87,7 +87,7 @@ namespace Chaos {
 		vertices[arrowIndex+3].y = .5f;
 		vertices[arrowIndex+5].z = .5f;		
 		
-		boost::shared_ptr<ChsMesh> mesh( new ChsMesh() );
+		ChsMesh * mesh = new ChsMesh();
 		
 		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
 		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
@@ -106,9 +106,9 @@ namespace Chaos {
 		material->addProperty( "hasVertexColor", CHS_SHADER_UNIFORM_1_INT, 1 );
 		material->setProperty( "hasVertexColor", 1 );
 		mesh->setMaterial( material );
-		this->addMesh(mesh);
+		this->add( mesh );
 		
-		mesh.reset( new ChsMesh() );
+		mesh = new ChsMesh();
 		mesh->getVertexBuffer()->addAttrib( 3, GL_FLOAT, false, "position" );
 		mesh->getVertexBuffer()->addAttrib( 4, GL_FLOAT, true, "vertexColor" );
 		mesh->getVertexBuffer()->setDataWithArray( vertices.get()+(vertexCount-6), sizeof( Vertex ) * 6 );
@@ -122,7 +122,7 @@ namespace Chaos {
 		material->setProperty( "hasVertexColor", 1 );
 		mesh->setMaterial( material );
 //		material->setRenderState( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
-		this->addMesh(mesh);
+		this->add( mesh );
     
 	}
   

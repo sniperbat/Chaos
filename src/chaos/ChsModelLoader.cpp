@@ -14,8 +14,8 @@
 namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
-  void setVertexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );
-  void setVertexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
+  void setVertexBuffer( tinyxml2::XMLElement * meshElement, ChsMesh * mesh );
+  void setVertexBuffer( tinyxml2::XMLElement * meshElement, ChsMesh * mesh ){
     tinyxml2::XMLElement * vertexElement = meshElement->FirstChildElement( "ChsVertexBuffer" );
     const char * vertexArrayText = vertexElement->GetText();
     if( vertexArrayText == nullptr ){
@@ -40,8 +40,8 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void setIndexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );  
-  void setIndexBuffer( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
+  void setIndexBuffer( tinyxml2::XMLElement * meshElement, ChsMesh * mesh );
+  void setIndexBuffer( tinyxml2::XMLElement * meshElement, ChsMesh * mesh ){
     tinyxml2::XMLElement * indexElement = meshElement->FirstChildElement( "ChsIndexBuffer" );
     ChsIndexBuffer * indexBuffer = mesh->getIndexBuffer();
     //unsigned short or unsigned int
@@ -63,8 +63,8 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void setAttributes( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );
-  void setAttributes( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
+  void setAttributes( tinyxml2::XMLElement * meshElement, ChsMesh * mesh );
+  void setAttributes( tinyxml2::XMLElement * meshElement, ChsMesh * mesh ){
     tinyxml2::XMLElement * attrElement = meshElement->FirstChildElement( "ChsAttribute" );
     while ( attrElement ) {
       std::string attrName = attrElement->Attribute( "id" );
@@ -148,8 +148,8 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void setMaterial( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );
-  void setMaterial( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
+  void setMaterial( tinyxml2::XMLElement * meshElement, ChsMesh * mesh );
+  void setMaterial( tinyxml2::XMLElement * meshElement, ChsMesh * mesh ){
     tinyxml2::XMLElement * materialElement = meshElement->FirstChildElement( "ChsMaterial" );
     if( materialElement ){
       ChsMaterial * material = new ChsMaterial();
@@ -162,8 +162,8 @@ namespace Chaos {
   }
 
   //------------------------------------------------------------------------------------------------
-  void setTransform( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh );
-  void setTransform( tinyxml2::XMLElement * meshElement, boost::shared_ptr<ChsMesh> & mesh ){
+  void setTransform( tinyxml2::XMLElement * meshElement, ChsMesh * mesh );
+  void setTransform( tinyxml2::XMLElement * meshElement, ChsMesh * mesh ){
     tinyxml2::XMLElement * transformElement = meshElement->FirstChildElement( "ChsMatrix" );
     if( transformElement ){
       std::vector<float> array;
@@ -174,6 +174,27 @@ namespace Chaos {
     }
   }
   
+  std::vector<ChsMesh*> meshList;
+  //------------------------------------------------------------------------------------------------
+  void loadMesh( tinyxml2::XMLElement * parentMeshElement, ChsNode * parentNode );
+  void loadMesh( tinyxml2::XMLElement * parentMeshElement, ChsNode * parentNode ){
+    tinyxml2::XMLElement * meshElement = parentMeshElement->FirstChildElement( "ChsMesh" );
+      while( meshElement ){
+        std::string meshName = meshElement->Attribute( "id" );
+        int index = meshElement->IntAttribute( "index" );
+        ChsMesh * mesh = new ChsMesh( meshName );
+        meshList[index] = mesh;
+        setAttributes( meshElement, mesh );
+        setVertexBuffer( meshElement, mesh );
+        setIndexBuffer( meshElement, mesh );
+        setTransform( meshElement, mesh );
+        setMaterial( meshElement, mesh );
+        parentNode->add( mesh );
+        
+        loadMesh( meshElement, mesh );
+        meshElement = meshElement->NextSiblingElement( "ChsMesh" );
+      }
+  }
   //------------------------------------------------------------------------------------------------
 	ChsModel * ChsModelLoader::loadAsXML( const char * data ){
     ChsModel * model = nullptr;
@@ -192,19 +213,9 @@ namespace Chaos {
         break;
       }
       std::string modelName = modelElement->Attribute( "id" );
+      meshList.resize( modelElement->IntAttribute( "meshCount" ) );
       model = new ChsModel( modelName );
-      tinyxml2::XMLElement * meshElement = modelElement->FirstChildElement( "ChsMesh" );
-      while( meshElement ){
-        std::string meshName = meshElement->Attribute( "id" );
-        boost::shared_ptr<ChsMesh> mesh( new ChsMesh( meshName ) );
-        setAttributes( meshElement, mesh );
-        setVertexBuffer( meshElement, mesh );
-        setIndexBuffer( meshElement, mesh );
-        setTransform( meshElement, mesh );
-        setMaterial( meshElement, mesh );
-        model->addMesh( mesh );
-        meshElement = meshElement->NextSiblingElement( "ChsMesh" );
-      }
+      loadMesh( modelElement, model );
     }while(0);
 		return model;
 	}
@@ -213,7 +224,7 @@ namespace Chaos {
 	ChsModel * ChsModelLoader::loadAsBinary( char *data ){
     ChsModel * model = nullptr;
     do{
-      if( data[0] != 'c' || data[1] != 'h'||data[2] != 'm' || data[3] != 'o' ){
+      if( data[0] != 'c' || data[1] != 'h'||data[2] != 's' || data[3] != 'm' ){
         printf( "this is not chsmodel file" );
         break;
       }
@@ -223,15 +234,18 @@ namespace Chaos {
       model = this->loadAsXML( data );
       skipData( data, xmlSize );
       //load binary segment
-      int meshCount = model->meshs.size();
+      unsigned int meshCount = meshList.size();
       for( int i = 0; i < meshCount; i++ ){
-        ChsMesh * mesh = model->meshs[i].get();
+        ChsMesh * mesh = meshList[i];
         int vertexArraySize = readData<int>( data );
+
         mesh->getVertexBuffer()->setDataWithArray( data, vertexArraySize );
         skipData( data, vertexArraySize );
+        
         int indexArraySize = readData<int>( data );
         int count = mesh->getIndexBuffer()->getCount();
         int type = mesh->getIndexBuffer()->getType();
+        
         mesh->getIndexBuffer()->setDataWithArray( data, count, type );
         skipData( data, indexArraySize );
       }
@@ -272,6 +286,7 @@ namespace Chaos {
       return this->loadAsXML( modelData.get() );
     else
       return this->loadAsBinary( modelData.get() );
+    meshList.clear();
 	}
   
   //------------------------------------------------------------------------------------------------

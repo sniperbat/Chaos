@@ -154,7 +154,7 @@ namespace Chaos {
 			makeVertexList( vertexIndexList, vertexList, vertexAttributeCount, vertexAttributes );
 			vertexIndexList.clear();
 			
-			boost::shared_ptr<ChsMesh> mesh( new ChsMesh( meshName ) );
+      ChsMesh * mesh = new ChsMesh( meshName );
 			for( int i = 0; i < vertexAttributeCount ; i++ ){
 				const VertexAttribute & attribute = vertexAttributes[i];
 				bool isNormalized = attribute.name.compare( "normal" ) ? false : true;
@@ -171,7 +171,7 @@ namespace Chaos {
 			ChsMaterial * material = new ChsMaterial();
 			mesh->setMaterial( material );
 			
-			model->addMesh( mesh );
+			model->add( mesh );
 			geometryElement = geometryElement->NextSiblingElement();
 		}
 		return model;

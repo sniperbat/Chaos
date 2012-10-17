@@ -118,7 +118,7 @@ namespace Chaos {
 	void ChsRenderSystem::preRender( void ){
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     if( this->isShowDebugCoordinate ){
-      debugCoordinatePlane->update( 0.0f );
+      debugCoordinatePlane->updateTree( 0.0f );
     }
 	}
   
