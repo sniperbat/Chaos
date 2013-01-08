@@ -7,10 +7,10 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	class ChsFileSystemWindows: public ChsFileSystem {
+	class ChsFileSystemWindows final : public ChsFileSystem {
 	public:
-    int readFileAsUTF8( const char * path, char ** data );
-		int readFileAsRaw( const char *  path , char ** data );
+    int readFileAsUTF8( const char * path, char ** data ) override;
+		int readFileAsRaw( const char *  path , char ** data ) override;
 	};
 
 	//------------------------------------------------------------------------------------------------

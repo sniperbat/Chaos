@@ -7,9 +7,9 @@
 namespace Chaos {
   
 	//------------------------------------------------------------------------------------------------
-	class ChsTextureFactoryWindows : public ChsTextureFactory {
+	class ChsTextureFactoryWindows final : public ChsTextureFactory {
 	public:
-		ChsTexture2D * createTexture2D( const char * filename );
+		ChsTexture2D * createTexture2D( const char * filename ) override;
 	};
 	
   //------------------------------------------------------------------------------------------------

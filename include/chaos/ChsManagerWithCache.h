@@ -11,7 +11,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	template <typename ValueType> class ChsManagerWithCache {
 	public:
-    void purge( void );
+    virtual void purge( void );
 	protected:
 		typedef std::map< std::string, boost::shared_ptr<ValueType> > CacheType;
 	  CacheType cache;

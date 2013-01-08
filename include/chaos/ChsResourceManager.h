@@ -11,14 +11,14 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	class ChsResourceManager :	public ChsSingleton< ChsResourceManager >,
+	class ChsResourceManager final :	public ChsSingleton< ChsResourceManager >,
                               public ChsShaderManager,
                               public ChsEntityManager,
                               public ChsTextureManager,
                               public ChsModelManager
 	{
 	public:
-		void purge( void );
+		void purge( void ) override;
 	};
   
 	//------------------------------------------------------------------------------------------------

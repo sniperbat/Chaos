@@ -7,15 +7,15 @@
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
-	class ChsRenderSystemIOS : public ChsRenderSystem {
+	class ChsRenderSystemIOS final : public ChsRenderSystem {
 	private:
-		void present( void );
+		void present( void ) override;
 		
-		void initContext( void );
-		void releaseContext( void );
-		void attachContext( void );
+		void initContext( void ) override;
+		void releaseContext( void ) override;
+		void attachContext( void ) override;
 		
-		void initRenderBuffer( void );
+		void initRenderBuffer( void ) override;
 	};
 
 	//------------------------------------------------------------------------------------------------

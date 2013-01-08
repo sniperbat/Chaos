@@ -10,7 +10,7 @@
 namespace Chaos {
   class ChsScene;
   //------------------------------------------------------------------------------------------------
-  class ChsSceneManager : public ChsSingleton<ChsSceneManager> {
+  class ChsSceneManager final : public ChsSingleton<ChsSceneManager> {
   private:
     std::map< std::string, boost::shared_ptr<ChsScene> > scenes;
     boost::weak_ptr<ChsScene> currentScene;

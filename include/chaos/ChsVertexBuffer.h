@@ -17,7 +17,7 @@ namespace Chaos {
 	struct ChsAttribUnit;
 
   //------------------------------------------------------------------------------------------------
-	class ChsVertexBuffer : public ChsArrayBuffer {
+	class ChsVertexBuffer final : public ChsArrayBuffer {
 	public:
 		ChsVertexBuffer( void );
 		~ChsVertexBuffer( void );

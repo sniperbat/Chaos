@@ -17,7 +17,7 @@ namespace Chaos {
   class ChsCamera;
   
   //------------------------------------------------------------------------------------------------
-  class ChsHUDManager : public ChsSingleton<ChsHUDManager> {
+  class ChsHUDManager final : public ChsSingleton<ChsHUDManager> {
   private:
     boost::scoped_ptr<ChsCamera> camera;
     std::map< std::string, ChsHUD * > hudRenderList;

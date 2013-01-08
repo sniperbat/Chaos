@@ -12,7 +12,7 @@ namespace Chaos {
 	class ChsGameBase;
 	
   //------------------------------------------------------------------------------------------------
-	class ChsEngine : public ChsSingleton<ChsEngine>, boost::noncopyable {
+	class ChsEngine final : public ChsSingleton<ChsEngine>, boost::noncopyable {
 	public:
 		ChsEngine();
 		~ChsEngine();

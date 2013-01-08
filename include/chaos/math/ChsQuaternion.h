@@ -10,7 +10,7 @@ namespace Chaos {
 	class ChsVector3;
 
   //------------------------------------------------------------------------------------------------
-	class ChsQuaternion : boost::multipliable<ChsQuaternion> {
+	class ChsQuaternion final : boost::multipliable<ChsQuaternion> {
 	public:
 		float w;
 		float x;

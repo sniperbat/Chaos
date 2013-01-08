@@ -13,7 +13,7 @@ namespace Chaos {
 	public:
 		ChsModel( const std::string & name = "unnamed" );
 		virtual ~ChsModel( void );
-    void update( double timeInterval );
+    void update( double timeInterval ) override;
 	private:
 	};
 

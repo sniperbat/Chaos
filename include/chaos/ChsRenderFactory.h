@@ -7,7 +7,7 @@ namespace Chaos {
 	class ChsRenderSystem;
   
 	//------------------------------------------------------------------------------------------------
-	class ChsRenderFactory{
+	class ChsRenderFactory final {
 	public:
 		static ChsRenderSystem * create( void );
 		static void shutdown( void );

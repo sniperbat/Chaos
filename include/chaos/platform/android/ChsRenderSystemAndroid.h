@@ -5,9 +5,9 @@
 
 namespace Chaos {
 	
-	class ChsRenderSystemAndroid : public ChsRenderSystem {
+	class ChsRenderSystemAndroid final : public ChsRenderSystem {
 	public:
-		void initContext( void );
+		void initContext( void ) override;
 	};
 }
 

@@ -8,7 +8,7 @@
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
-	class ChsIndexBuffer : public ChsArrayBuffer {
+	class ChsIndexBuffer final : public ChsArrayBuffer {
 	public:
 		ChsIndexBuffer( void );
 		~ChsIndexBuffer( void );

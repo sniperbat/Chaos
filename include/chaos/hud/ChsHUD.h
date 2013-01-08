@@ -10,7 +10,7 @@ namespace Chaos {
   class ChsHUD : public ChsRenderNode{
   public:
     ChsHUD( const std::string & name );
-    void update( double timeInterval );
+    void update( double timeInterval ) override;
   };
 
   //------------------------------------------------------------------------------------------------

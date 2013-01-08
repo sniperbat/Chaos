@@ -7,7 +7,7 @@
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
-	class ChsVector4 : boost::additive<ChsVector4>, boost::equality_comparable<ChsVector4> {
+	class ChsVector4 final : boost::additive<ChsVector4>, boost::equality_comparable<ChsVector4> {
   private:
     void init( float x, float y, float z, float w );
 	public:

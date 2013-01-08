@@ -4,7 +4,7 @@
 namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
-	class ChsVector2 {
+	class ChsVector2 final {
   private:
     void init( float x, float y );
 	public:

@@ -12,7 +12,7 @@ namespace Chaos {
   class ChsTouchListener;
   
   //------------------------------------------------------------------------------------------------
-  class ChsTouchEmitter : public ChsSingleton<ChsTouchEmitter> {
+  class ChsTouchEmitter final : public ChsSingleton<ChsTouchEmitter> {
   public:
     ChsTouchEmitter( void );
     ~ChsTouchEmitter( void );
