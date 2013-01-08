@@ -2,13 +2,11 @@
 #define _CHS_UTILITY_H
 //--------------------------------------------------------------------------------------------------
 #include <vector>
-#include <boost/foreach.hpp>
 #include <boost/checked_delete.hpp>
 #define BOOST_NO_CHAR16_T
 #define BOOST_NO_CHAR32_T
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
-#include <boost/foreach.hpp>
 #include <string>
 #include <vector>
 #include "ChsDefine.h"
@@ -77,7 +75,7 @@ namespace Chaos {
 	void lexicalCastToArray( std::vector<T> & array, std::string stream ){
 		std::vector<std::string> rs;
 		boost::split( rs, stream, boost::is_any_of("\n ") );
-		BOOST_FOREACH( const std::string & str, rs){
+		for( const std::string & str : rs){
 			if(!str.empty())
 				array.push_back( boost::lexical_cast<T>( str ) );
 		}

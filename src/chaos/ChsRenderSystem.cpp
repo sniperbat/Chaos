@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "core/ChsUtility.h"
 #include "camera/ChsCamera.h"
 #include "framework/ChsSceneManager.h"
@@ -27,7 +26,7 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
   void ChsRenderSystem::renderByTag( ChsRenderTag tag ){
-    BOOST_FOREACH( const ChsRenderUnit & unit, renderChains[tag] ){
+    for( const ChsRenderUnit & unit : renderChains[tag] ){
       unit.material->apply();
       if( this->currentCamera ){
         wvp = *unit.transform * this->currentCamera->getMatrix();

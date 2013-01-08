@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ChsModel.h"
 #include "ChsMesh.h"
 

@@ -1,5 +1,4 @@
 #include <tinyxml2.h>
-#include <boost/foreach.hpp>
 #include <boost/assign.hpp>
 using namespace boost::assign;
 #include "ChsHUDManager.h"
@@ -37,8 +36,8 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   void ChsHUDManager::update( float dt ){
-    std::pair<std::string, ChsHUD* > p;
-    BOOST_FOREACH( p, this->hudRenderList ){
+    //    std::pair<std::string, ChsHUD* > p;
+    for( std::pair<std::string, ChsHUD* > p : this->hudRenderList ){
       ChsHUD * hud = p.second;
       hud->updateTree( dt );
     }

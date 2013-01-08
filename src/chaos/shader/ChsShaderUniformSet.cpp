@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ChsShaderUniformSet.h"
 #include "ChsShaderManager.h"
 
@@ -30,8 +29,7 @@ namespace Chaos{
         needUpdateLocation = true;
         this->program = program;
       }
-      std::pair<std::string, boost::shared_ptr<ChsShaderUniform> > p;
-      BOOST_FOREACH( p, this->uniforms ){
+      for( const auto & p : this->uniforms ){
         p.second->bindToShader( program, needUpdateLocation );
       }
     }

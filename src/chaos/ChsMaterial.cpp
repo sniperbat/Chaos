@@ -1,6 +1,5 @@
 #include <boost/assign.hpp>
 using namespace boost::assign;
-#include <boost/foreach.hpp>
 
 #include "ChsMaterial.h"
 #include "shader/ChsShaderProgram.h"
@@ -51,12 +50,11 @@ namespace Chaos {
         ChsShaderManager::setActiveShaderProgram( program );
       }
 
-      std::pair<ChsRenderState,unsigned int> p;
-      BOOST_FOREACH( p, this->renderStates ){
+      for( const auto & p : this->renderStates ){
         ChsRenderStates::sharedInstance()->set( p.first,p.second );
       }
       this->shaderUniformSet.bind();
-      BOOST_FOREACH( boost::shared_ptr<ChsTextureEntity> & texture, this->textures ){
+      for( boost::shared_ptr<ChsTextureEntity> & texture : this->textures ){
         texture->apply();
       }
       

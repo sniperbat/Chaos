@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <vector>
 #include <algorithm>
 #include "ChsTouchEmitter.h"
@@ -55,7 +54,7 @@ namespace Chaos {
     };
     printf( "%s\n", types[type] );
     */
-    BOOST_FOREACH( boost::shared_ptr<ChsTouchListener> & listener, listeners ){
+    for( const auto & listener : listeners ){
       listener->handleTouches( type, touch );
     }
   }

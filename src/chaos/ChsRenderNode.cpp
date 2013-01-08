@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ChsRenderNode.h"
 #include "core/ChsUtility.h"
 #include "math/ChsMatrix.h"
@@ -24,8 +23,8 @@ namespace Chaos {
       if( parent ){
         this->renderTransform =  parent->transform * this->renderTransform;
       }
-      std::pair<std::string, ChsNode *> p;
-      BOOST_FOREACH( p, this->children ){
+      //std::pair<std::string, ChsNode *> p;
+      for( auto & p : this->children ){
         ( ( ChsRenderNode * )p.second )->updateTree( timeInterval );
       }
     }

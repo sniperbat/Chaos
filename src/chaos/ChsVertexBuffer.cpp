@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "core/ChsUtility.h"
 #include "shader/ChsShaderProgram.h"
 #include "shader/ChsShaderManager.h"
@@ -67,7 +66,7 @@ namespace Chaos {
    	size_t lastOne = this->attribs.size();
     int stride = 0;
    	if( lastOne ) {
-     	const boost::shared_ptr<ChsAttribUnit> & lastAttrib = this->attribs[lastOne-1];
+     	const auto & lastAttrib = this->attribs[lastOne-1];
       attrib->offset = lastAttrib->offset + lastAttrib->size;
  	    stride = lastAttrib->stride;
     }
@@ -76,21 +75,21 @@ namespace Chaos {
    	}
     this->attribs.push_back( attrib );
    	stride += attrib->size;
-		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
+		for( const auto & attrib : this->attribs ){
 			attrib->stride = stride;
     }
 	}
 
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::bindAttribArrays( void ){
-		BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
+		for( const auto & attrib : this->attribs ){
 			attrib->bind();
     }
 	}
 
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::unbindAttribArrays( void ){
-    BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
+    for( const auto & attrib : this->attribs ){
 			attrib->unbind();
     }
 	}
@@ -98,7 +97,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::attachAttributes( void ){
     unsigned int programHandle = ChsShaderManager::getActiveShaderProgram()->getHandle();
-    BOOST_FOREACH( const boost::shared_ptr<ChsAttribUnit> & attrib, this->attribs ){
+    for( const auto & attrib : this->attribs ){
       attrib->attachToShader( programHandle );
     }
 	}

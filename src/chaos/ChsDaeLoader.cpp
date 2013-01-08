@@ -59,7 +59,7 @@ namespace Chaos {
 		if( input.semantic.compare( "VERTEX" ) )
 			return;
 		//from verteices
-		BOOST_FOREACH( const DaeUnsharedInput & vertexInput, daeMesh.vertices.input ){
+		for( const DaeUnsharedInput & vertexInput : daeMesh.vertices.input ){
 			if( !vertexInput.semantic.compare( "POSITION" )){
 				input.source = vertexInput.source;
 				input.semantic = vertexInput.semantic;
@@ -98,7 +98,7 @@ namespace Chaos {
 	
 	void makeVertexAttributes( DaeMesh & daeMesh, const VertexAttributePtr & vertexAttributes ){
 		std::vector<DaeSharedInput> & inputs = daeMesh.triangles.input;
-		BOOST_FOREACH( DaeSharedInput & input, inputs ){
+		for( DaeSharedInput & input : inputs ){
 			vertexInputRedirection( daeMesh, input );
 			std::string sourceId = input.source;
 			std::string semantic = input.semantic;
