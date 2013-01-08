@@ -82,6 +82,7 @@
 		252B38A0162BFFAC003D50AC /* ChsVector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3796162BF5A9003D50AC /* ChsVector2.cpp */; };
 		252B38A1162BFFAC003D50AC /* ChsVector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3797162BF5A9003D50AC /* ChsVector3.cpp */; };
 		252B38A2162BFFAC003D50AC /* ChsVector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 252B3798162BF5A9003D50AC /* ChsVector4.cpp */; };
+		25737B7F164409A700FB233C /* TransTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25737B7D164409A700FB233C /* TransTestScene.cpp */; };
 		749D79E314ECD77A0046F2D9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79E214ECD77A0046F2D9 /* OpenGLES.framework */; };
 		749D79F014ECE5690046F2D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749D79EF14ECE5690046F2D9 /* QuartzCore.framework */; };
 		74E047C614ECC88B0024586A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E047C514ECC88B0024586A /* UIKit.framework */; };
@@ -234,6 +235,8 @@
 		252B385F162BF719003D50AC /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml2.cpp; path = libs/tinyxml2/tinyxml2.cpp; sourceTree = SOURCE_ROOT; };
 		252B3880162BFA91003D50AC /* libChaosEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libChaosEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		252B3899162BFF86003D50AC /* libChaosEngine_s.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libChaosEngine_s.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		25737B7B1644099700FB233C /* TransTestScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransTestScene.h; sourceTree = "<group>"; };
+		25737B7D164409A700FB233C /* TransTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransTestScene.cpp; sourceTree = "<group>"; };
 		749D79E214ECD77A0046F2D9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		749D79EF14ECE5690046F2D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		74E047C114ECC88B0024586A /* Chaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +291,7 @@
 				252B37C0162BF5A9003D50AC /* GamingScene.cpp */,
 				252B37C1162BF5A9003D50AC /* MainMenuScene.cpp */,
 				252B37C2162BF5A9003D50AC /* SplashScene.cpp */,
+				25737B7D164409A700FB233C /* TransTestScene.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -465,6 +469,7 @@
 				252B3859162BF5B7003D50AC /* GamingScene.h */,
 				252B385A162BF5B7003D50AC /* MainMenuScene.h */,
 				252B385B162BF5B7003D50AC /* SplashScene.h */,
+				25737B7B1644099700FB233C /* TransTestScene.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -923,6 +928,7 @@
 				252B3807162BF5A9003D50AC /* MainMenuScene.cpp in Sources */,
 				252B3808162BF5A9003D50AC /* SplashScene.cpp in Sources */,
 				252B3860162BF719003D50AC /* tinyxml2.cpp in Sources */,
+				25737B7F164409A700FB233C /* TransTestScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
