@@ -133,8 +133,8 @@ namespace Chaos {
     tinyxml2::XMLElement * renderStateElement = materialElement->FirstChildElement( "ChsRenderState" );
     while( renderStateElement ){
       int index = renderStateElement->IntAttribute( "index" );
-      int value = renderStateElement->IntAttribute( "value" );
-      material->setRenderState( static_cast<ChsRenderState>( index ), value );
+      //int value = renderStateElement->IntAttribute( "value" );
+      //material->setRenderState( static_cast<ChsRenderStateId>( index ), value );
       renderStateElement = renderStateElement->NextSiblingElement( "ChsRenderState");
     }
   }

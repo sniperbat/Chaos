@@ -20,7 +20,7 @@ namespace Chaos{
 	public:
 		ChsModelViewCamera( void );
 
-    void update( void );
+    void update( void ) override;
     void setScreen( float width, float height, float radius = 1.0f );
 
 	private:

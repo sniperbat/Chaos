@@ -77,7 +77,7 @@ namespace Chaos {
 	
   //------------------------------------------------------------------------------------------------
 	void ChsRenderSystem::initGL( void ){
-		this->setClearColor( 0.3f, 0.3f, 0.7f, 1.0f );
+		//this->setClearColor( 0.3f, 0.3f, 0.7f, 1.0f );
 		this->setViewport( 0, 0, this->renderbufferWidth, this->renderbufferHeight );
 
 		glHint( GL_GENERATE_MIPMAP_HINT, GL_NICEST );
@@ -124,7 +124,8 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   void ChsRenderSystem::renderOpacity( void ){
     //先从前往后渲染不透明物体
- 		this->renderStates->set( CHS_RS_BLEND, CHS_RS_DISABLE );
+    this->renderStates->set( CHS_RS_BLEND, CHS_RS_DISABLE );
+    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_ENABLE );
     renderByTag( CHS_RENDER_TAG_OPACITY );
   }
   
@@ -140,7 +141,8 @@ namespace Chaos {
     //render hud
     this->renderStates->save();
     glClear( GL_DEPTH_BUFFER_BIT );
-//    this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
+    //this->renderStates->set( CHS_RS_DEPTH_TEST, CHS_RS_DISABLE );
+    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
     ChsCamera * oldCamera = this->currentCamera;
     this->currentCamera = ChsHUDManager::sharedInstance()->getCamera();
     renderByTag( CHS_RENDER_TAG_2D );

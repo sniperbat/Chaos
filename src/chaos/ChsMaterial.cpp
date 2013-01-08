@@ -82,13 +82,13 @@ namespace Chaos {
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void ChsMaterial::setRenderState( ChsRenderState state, unsigned int value ){
-		auto iter = this->renderStates.find( state );
+	void ChsMaterial::setRenderState( ChsRenderStateId id, ChsRenderState state ){
+		auto iter = this->renderStates.find( id );
 		if( iter != this->renderStates.end() ){
-			this->renderStates[state] = value;
+			this->renderStates[ id ] = state;
     }
 		else{
-      this->renderStates.insert( std::make_pair( state, value ) );
+      this->renderStates.insert( std::make_pair( id, state ) );
     }
 	}
   

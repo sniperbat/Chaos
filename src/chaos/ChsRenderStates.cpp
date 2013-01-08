@@ -19,32 +19,47 @@ namespace Chaos {
 		GL_SAMPLE_COVERAGE,
 	};
 	
+  GLenum glBlendFactors[]={
+    GL_ZERO,
+    GL_ONE,
+    GL_SRC_COLOR,
+    GL_ONE_MINUS_SRC_COLOR,
+    GL_SRC_ALPHA,
+    GL_ONE_MINUS_SRC_ALPHA,
+    GL_DST_ALPHA,
+    GL_ONE_MINUS_DST_ALPHA,
+    GL_DST_COLOR,
+    GL_ONE_MINUS_DST_COLOR,
+    GL_SRC_ALPHA_SATURATE,
+  };
+  
   //------------------------------------------------------------------------------------------------
-	void setEnableOrDisable( ChsRenderState index, unsigned int value );
-	void setEnableOrDisable( ChsRenderState index, unsigned int value ){
-		if( value )
-			glEnable( glStates[index] );
-		else
-			glDisable( glStates[index] );
-	}
-	
-  //------------------------------------------------------------------------------------------------
-	void ChsRenderStates::set( ChsRenderState index, unsigned int value ){
+	void ChsRenderStates::set( ChsRenderStateId id, const ChsRenderState state ){
     do{
-      if( this->states[ index ] == value )
-        break;
-      this->states[ index ] = value;
-      if( CHS_RS_ENABLECAP < index )
-        break;
-      setEnableOrDisable( index, value );
+      if( id >=0 && id < CHS_RS_ENABLECAP ){
+        if( this->states[ id ].value == state.value )
+          break;
+        this->states[id ].value = state.value;
+        if( state.value )
+          glEnable( glStates[ id ] );
+        else
+          glDisable( glStates[ id ] );
+      }
+      switch ( id ) {
+        case CHS_RS_BLEND_FUNC:
+          glBlendFunc( glBlendFactors[ state.value2.v1 ], glBlendFactors[ state.value2.v2 ] );
+          break;
+        default:
+          break;
+      }
     }while(0);
 	}
-	
+  
   //------------------------------------------------------------------------------------------------
 	void ChsRenderStates::queryCurrentStates( void ){
 		for( int i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ ) {
 			if( i <= CHS_RS_ENABLECAP){
-        this->states[i] = glIsEnabled( glStates[i] ) ? CHS_RS_ENABLE : CHS_RS_DISABLE;
+        this->states[i].value = glIsEnabled( glStates[i] ) ? CHS_RS_ENABLE : CHS_RS_DISABLE;
 			}
 		}
 	}
@@ -56,19 +71,17 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   void ChsRenderStates::restore( void ){
-    for( int i = CHS_RS_TEXTURE_2D; i < CHS_RS_MAX; i++ ){
-      this->set( static_cast<ChsRenderState>( i ), this->statesBackup[i] );
-    }
+    memcpy( this->states, this->statesBackup, sizeof( this->statesBackup ) );
   }
 
   //------------------------------------------------------------------------------------------------
-  void ChsRenderStates::save( ChsRenderState state ){
-    this->statesBackup[state] = this->states[state];
+  void ChsRenderStates::save( ChsRenderStateId id ){
+    this->statesBackup[id] = this->states[id];
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsRenderStates::restore( ChsRenderState state ){
-    this->set( state, this->statesBackup[state] );
+  void ChsRenderStates::restore( ChsRenderStateId id ){
+    this->states[id] = this->statesBackup[id];
   }
 
   //------------------------------------------------------------------------------------------------

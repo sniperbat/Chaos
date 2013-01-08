@@ -26,7 +26,7 @@ MainMenuScene::~MainMenuScene( void ){
 //--------------------------------------------------------------------------------------------------
 void MainMenuScene::onEnter( void ){
   ChsTouchEmitter::sharedInstance()->addListener( camera );
-	ChsModel * model = ChsResourceManager::sharedInstance()->getModel( "test.chsmodel" ).get();
+	ChsModel * model = ChsResourceManager::sharedInstance()->getModel( "test.chsmodelx" ).get();
   this->add( model );
   ChsHUDManager::sharedInstance()->showHUD( "demo.chshud" );
 }

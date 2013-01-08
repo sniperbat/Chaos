@@ -28,12 +28,12 @@ namespace Chaos {
     void setShader( const std::string & vshName, const std::string & fshName );
     void setShader( boost::shared_ptr<ChsShaderProgram> );
     
-		void setRenderState( ChsRenderState state, unsigned int value );
+		void setRenderState( ChsRenderStateId id, ChsRenderState state );
 		void addTexture( const boost::shared_ptr<ChsTextureEntity> & texture );
     
     inline boost::weak_ptr<ChsShaderProgram> getShaderProgram( void )const;
 	private:
-		std::map<ChsRenderState,unsigned int> renderStates;
+		std::map<ChsRenderStateId,ChsRenderState > renderStates;
 		std::vector< boost::shared_ptr<ChsTextureEntity> > textures;
 		
 		ChsShaderUniformSet shaderUniformSet;

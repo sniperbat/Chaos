@@ -1,5 +1,9 @@
 #include "GamingScene.h"
 
+
+
+
+
 //--------------------------------------------------------------------------------------------------
 //must do this, has any other solutions??
 static bool isDynamic = GamingScene::registerAsDynamic( "GamingScene" );
@@ -31,3 +35,7 @@ void GamingScene::onExit( void ){
 //--------------------------------------------------------------------------------------------------
 void GamingScene::onRelease( void ){
 }
+
+
+
+

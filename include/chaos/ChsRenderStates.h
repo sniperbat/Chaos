@@ -11,15 +11,15 @@ namespace Chaos {
 	class ChsRenderStates : public ChsSingleton<ChsRenderStates> {
 	public:
 		void queryCurrentStates( void );
-		void set( ChsRenderState state, unsigned int value );
+		void set( ChsRenderStateId id, const ChsRenderState state );
     void save( void );
     void restore( void );
-    void save( ChsRenderState state );
-    void restore( ChsRenderState state );
+    void save( ChsRenderStateId id );
+    void restore( ChsRenderStateId id );
 
 	private:
-		unsigned int states[CHS_RS_MAX];
-    unsigned int statesBackup[CHS_RS_MAX];
+		ChsRenderState states[CHS_RS_MAX];
+    ChsRenderState statesBackup[CHS_RS_MAX];
 	};
 
   //--------------------------------------------------------------------------------------------------

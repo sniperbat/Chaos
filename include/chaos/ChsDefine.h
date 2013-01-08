@@ -94,11 +94,10 @@ namespace Chaos {
     };
 	};
 	
+  const boolean CHS_RS_DISABLE = 0;
+  const boolean CHS_RS_ENABLE = 1;
 	//------------------------------------------------------------------------------------------------
-	enum ChsRenderState{
-		CHS_RS_DISABLE,
-		CHS_RS_ENABLE,
-		
+	enum ChsRenderStateId{
 		CHS_RS_TEXTURE_2D = 0,
 		CHS_RS_CULL_FACE,
 		CHS_RS_BLEND,
@@ -110,10 +109,42 @@ namespace Chaos {
 		CHS_RS_SAMPLE_ALPHA_TO_COVERAGE,
 		CHS_RS_SAMPLE_COVERAGE,
 		CHS_RS_ENABLECAP = CHS_RS_SAMPLE_COVERAGE,
-		
+
+    CHS_RS_BLEND_FUNC,
+    
 		CHS_RS_MAX,
 	};
 
+  //------------------------------------------------------------------------------------------------
+  enum ChsBlendFactor{
+    CHS_BF_ZERO,
+    CHS_BF_FIX_ONE,
+    CHS_BF_SRC_COLOR,
+    CHS_BF_ONE_MINUS_SRC_COLOR,
+    CHS_BF_SRC_ALPHA,
+    CHS_BF_ONE_MINUS_SRC_ALPHA,
+    CHS_BF_DST_ALPHA,
+    CHS_BF_ONE_MINUS_DST_ALPHA,
+    CHS_BF_DST_COLOR,
+    CHS_BF_ONE_MINUS_DST_COLOR,
+    CHS_BF_SRC_ALPHA_SATURATE,
+  };
+ 
+  union ChsRenderState{
+    unsigned int value;
+    struct {
+      unsigned int v1;
+      unsigned int v2;
+    }value2;
+    ChsRenderState(){};
+    ChsRenderState( unsigned int value  ){
+      this->value = value;
+    };
+    ChsRenderState( unsigned int value1, unsigned int value2 ){
+      this->value2.v1 = value1;
+      this->value2.v2 = value2;
+    };
+  };
   //------------------------------------------------------------------------------------------------
   enum ChsRenderTag{
     CHS_RENDER_TAG_OPACITY,
