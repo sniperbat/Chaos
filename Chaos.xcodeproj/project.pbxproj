@@ -227,16 +227,16 @@
 		252B3855162BF5B7003D50AC /* ChsShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsShaderProgram.h; sourceTree = "<group>"; };
 		252B3856162BF5B7003D50AC /* ChsShaderUniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsShaderUniform.h; sourceTree = "<group>"; };
 		252B3857162BF5B7003D50AC /* ChsShaderUniformSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChsShaderUniformSet.h; sourceTree = "<group>"; };
-		252B3858162BF5B7003D50AC /* GameDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDemo.h; sourceTree = "<group>"; };
-		252B3859162BF5B7003D50AC /* GamingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamingScene.h; sourceTree = "<group>"; };
-		252B385A162BF5B7003D50AC /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
-		252B385B162BF5B7003D50AC /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		252B385E162BF710003D50AC /* tinyxml2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = tinyxml2.h; path = libs/tinyxml2/tinyxml2.h; sourceTree = SOURCE_ROOT; };
 		252B385F162BF719003D50AC /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml2.cpp; path = libs/tinyxml2/tinyxml2.cpp; sourceTree = SOURCE_ROOT; };
 		252B3880162BFA91003D50AC /* libChaosEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libChaosEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		252B3899162BFF86003D50AC /* libChaosEngine_s.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libChaosEngine_s.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		25737B7B1644099700FB233C /* TransTestScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransTestScene.h; sourceTree = "<group>"; };
 		25737B7D164409A700FB233C /* TransTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransTestScene.cpp; sourceTree = "<group>"; };
+		25DBE6FE17E76526000A3AA4 /* GameDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDemo.h; sourceTree = "<group>"; };
+		25DBE6FF17E76526000A3AA4 /* GamingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamingScene.h; sourceTree = "<group>"; };
+		25DBE70017E76526000A3AA4 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
+		25DBE70117E76526000A3AA4 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
+		25DBE70217E76526000A3AA4 /* TransTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransTestScene.h; sourceTree = "<group>"; };
 		749D79E214ECD77A0046F2D9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		749D79EF14ECE5690046F2D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		74E047C114ECC88B0024586A /* Chaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,10 +287,15 @@
 				252B385C162BF6F6003D50AC /* tinyxml */,
 				252B3765162BF5A9003D50AC /* chaos */,
 				252B37AC162BF5A9003D50AC /* entrance */,
+				25DBE6FE17E76526000A3AA4 /* GameDemo.h */,
 				252B37BF162BF5A9003D50AC /* GameDemo.cpp */,
+				25DBE6FF17E76526000A3AA4 /* GamingScene.h */,
 				252B37C0162BF5A9003D50AC /* GamingScene.cpp */,
+				25DBE70017E76526000A3AA4 /* MainMenuScene.h */,
 				252B37C1162BF5A9003D50AC /* MainMenuScene.cpp */,
+				25DBE70117E76526000A3AA4 /* SplashScene.h */,
 				252B37C2162BF5A9003D50AC /* SplashScene.cpp */,
+				25DBE70217E76526000A3AA4 /* TransTestScene.h */,
 				25737B7D164409A700FB233C /* TransTestScene.cpp */,
 			);
 			path = src;
@@ -465,11 +470,6 @@
 			children = (
 				252B385D162BF702003D50AC /* tinyxml */,
 				252B380A162BF5B7003D50AC /* chaos */,
-				252B3858162BF5B7003D50AC /* GameDemo.h */,
-				252B3859162BF5B7003D50AC /* GamingScene.h */,
-				252B385A162BF5B7003D50AC /* MainMenuScene.h */,
-				252B385B162BF5B7003D50AC /* SplashScene.h */,
-				25737B7B1644099700FB233C /* TransTestScene.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
