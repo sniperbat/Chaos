@@ -15,7 +15,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
 	void ChsEntity::update( double timeInterval ){
 		if( !this->model.expired() ){
-      const boost::shared_ptr<ChsModel> & model = this->model.lock();
+      const std::shared_ptr<ChsModel> & model = this->model.lock();
       model->update( timeInterval );
     }
 	}

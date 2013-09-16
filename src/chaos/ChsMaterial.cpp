@@ -1,6 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
-
 #include "ChsMaterial.h"
 #include "shader/ChsShaderProgram.h"
 #include "ChsResourceManager.h"
@@ -28,7 +25,7 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ChsMaterial::addTexture( const boost::shared_ptr<ChsTextureEntity> & texture ){
+	void ChsMaterial::addTexture( const std::shared_ptr<ChsTextureEntity> & texture ){
 		if( texture ){
       ChsTextureEntity * texturePtr = texture.get();
       const std::string & sampleName = texturePtr->getSampleName();
@@ -54,7 +51,7 @@ namespace Chaos {
         ChsRenderStates::sharedInstance()->set( p.first,p.second );
       }
       this->shaderUniformSet.bind();
-      for( boost::shared_ptr<ChsTextureEntity> & texture : this->textures ){
+      for( std::shared_ptr<ChsTextureEntity> & texture : this->textures ){
         texture->apply();
       }
       
@@ -72,7 +69,7 @@ namespace Chaos {
 	#endif
 
   //------------------------------------------------------------------------------------------------
-  void ChsMaterial::setShader( boost::shared_ptr<ChsShaderProgram> shader ){
+  void ChsMaterial::setShader( std::shared_ptr<ChsShaderProgram> shader ){
     this->shaderProgram = shader;
   }
   

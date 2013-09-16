@@ -13,7 +13,7 @@ using namespace Chaos;
 static bool isDynamic = MainMenuScene::registerAsDynamic( "MainMenuScene" ); 
 
 //--------------------------------------------------------------------------------------------------
-boost::shared_ptr<ChsModelViewCamera> camera( new ChsModelViewCamera() );
+std::shared_ptr<ChsModelViewCamera> camera( new ChsModelViewCamera() );
 
 //--------------------------------------------------------------------------------------------------
 MainMenuScene::MainMenuScene( void ){

@@ -1,8 +1,6 @@
 #ifndef _CHSMATERIAL_H
 #define _CHSMATERIAL_H
 //--------------------------------------------------------------------------------------------------
-#include <boost/weak_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <vector>
 #include "shader/ChsShaderUniformSet.h"
 #include "ChsTextureEntity.h"
@@ -26,22 +24,22 @@ namespace Chaos {
 		template<typename T> void setProperty( const std::string & name, T value );
 	  
     void setShader( const std::string & vshName, const std::string & fshName );
-    void setShader( boost::shared_ptr<ChsShaderProgram> );
+    void setShader( std::shared_ptr<ChsShaderProgram> );
     
 		void setRenderState( ChsRenderStateId id, ChsRenderState state );
-		void addTexture( const boost::shared_ptr<ChsTextureEntity> & texture );
+		void addTexture( const std::shared_ptr<ChsTextureEntity> & texture );
     
-    inline boost::weak_ptr<ChsShaderProgram> getShaderProgram( void )const;
+    inline std::weak_ptr<ChsShaderProgram> getShaderProgram( void )const;
 	private:
 		std::map<ChsRenderStateId,ChsRenderState > renderStates;
-		std::vector< boost::shared_ptr<ChsTextureEntity> > textures;
+		std::vector< std::shared_ptr<ChsTextureEntity> > textures;
 		
 		ChsShaderUniformSet shaderUniformSet;
-    boost::weak_ptr<ChsShaderProgram> shaderProgram;
+    std::weak_ptr<ChsShaderProgram> shaderProgram;
 	};
 
   //------------------------------------------------------------------------------------------------
-	boost::weak_ptr<ChsShaderProgram> ChsMaterial::getShaderProgram( void )const{
+	std::weak_ptr<ChsShaderProgram> ChsMaterial::getShaderProgram( void )const{
     return this->shaderProgram;
   }
 

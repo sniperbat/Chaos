@@ -119,7 +119,7 @@ namespace Chaos {
     ChsResourceManager * resMgr = ChsResourceManager::sharedInstance();
     while( textureElement ){
       std::string textureFileName = textureElement->Attribute( "src" );
-      boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( resMgr->getTexture2D( textureFileName ) ) );
+      std::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( resMgr->getTexture2D( textureFileName ) ) );
       texture->setSampleName( textureElement->Attribute( "sampleName" ) );
       texture->setActiveUnit( textureElement->IntAttribute( "activeUnit" ) );
       material->addTexture( texture );
@@ -133,8 +133,8 @@ namespace Chaos {
     tinyxml2::XMLElement * renderStateElement = materialElement->FirstChildElement( "ChsRenderState" );
     while( renderStateElement ){
       int index = renderStateElement->IntAttribute( "index" );
-      //int value = renderStateElement->IntAttribute( "value" );
-      //material->setRenderState( static_cast<ChsRenderStateId>( index ), value );
+      int value = renderStateElement->IntAttribute( "value" );
+      material->setRenderState( static_cast<ChsRenderStateId>( index ), value );
       renderStateElement = renderStateElement->NextSiblingElement( "ChsRenderState");
     }
   }
@@ -281,7 +281,7 @@ namespace Chaos {
     ChsFileSystem::sharedInstance()->readFileAsRaw( filename, &data );
     if( data == nullptr )
       return nullptr;
-    boost::scoped_ptr<char> modelData( data );
+    std::unique_ptr<char[]> modelData( data );
     if( XML_FORMAT == fileType )
       return this->loadAsXML( modelData.get() );
     else

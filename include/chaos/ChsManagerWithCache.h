@@ -2,7 +2,6 @@
 #define _CHS_MANAGERWITHCACHE_H
 //--------------------------------------------------------------------------------------------------
 #include <map>
-#include <boost/shared_ptr.hpp>
 #include "core/ChsUtility.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -13,9 +12,9 @@ namespace Chaos {
 	public:
     virtual void purge( void );
 	protected:
-		typedef std::map< std::string, boost::shared_ptr<ValueType> > CacheType;
+		typedef std::map< std::string, std::shared_ptr<ValueType> > CacheType;
 	  CacheType cache;
-		boost::shared_ptr<ValueType> getFromCache( const std::string & key );
+		std::shared_ptr<ValueType> getFromCache( const std::string & key );
 		void remove( const std::string & key );
 	};
 
@@ -27,8 +26,8 @@ namespace Chaos {
 	
 	//------------------------------------------------------------------------------------------------
 	template < typename ValueType >
-	boost::shared_ptr<ValueType> ChsManagerWithCache< ValueType >::getFromCache( const std::string & key ){
-		boost::shared_ptr<ValueType> objPtr;
+	std::shared_ptr<ValueType> ChsManagerWithCache< ValueType >::getFromCache( const std::string & key ){
+		std::shared_ptr<ValueType> objPtr;
 		typename CacheType::iterator iter = this->cache.find( key );
 		if( iter != this->cache.end() )
 			objPtr = iter->second;

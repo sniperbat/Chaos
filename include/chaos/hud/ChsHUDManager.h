@@ -1,11 +1,8 @@
 #ifndef _CHS_HUDMANAGER_H
 #define _CHS_HUDMANAGER_H
 //--------------------------------------------------------------------------------------------------
-#include <boost/scoped_ptr.hpp>
-#include <map>
 #include <string>
 #include <map>
-#include <boost/scoped_ptr.hpp>
 #include "ChsDefine.h"
 #include "core/ChsSingleton.h"
 
@@ -19,7 +16,7 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   class ChsHUDManager final : public ChsSingleton<ChsHUDManager> {
   private:
-    boost::scoped_ptr<ChsCamera> camera;
+    std::unique_ptr<ChsCamera> camera;
     std::map< std::string, ChsHUD * > hudRenderList;
     std::map< std::string, ChsHUD * > hudList;
   public:

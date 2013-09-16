@@ -1,5 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsModelManager.h"
 #include "ChsModelLoader.h"
 #include "ChsModel.h"
@@ -8,8 +6,8 @@ using namespace boost::assign;
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
-	boost::shared_ptr<ChsModel> ChsModelManager::getModel( const std::string & name ){
-		boost::shared_ptr<ChsModel> model = this->getFromCache( name );
+	std::shared_ptr<ChsModel> ChsModelManager::getModel( const std::string & name ){
+		std::shared_ptr<ChsModel> model = this->getFromCache( name );
 		if( !model ){
 			//load from file
 			ChsModelLoader loader;

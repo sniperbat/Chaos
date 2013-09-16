@@ -17,7 +17,7 @@ namespace Chaos {
   private:
     std::string name;
     bool needUpdate;
-    boost::shared_ptr<ChsTextureEntity> texture;
+    std::shared_ptr<ChsTextureEntity> texture;
   protected:
     //anchor default at left top (0,0)
     ChsPoint anchor;
@@ -41,9 +41,9 @@ namespace Chaos {
     void update( double timeInterval );
     
     //ox,oy,w,h is UVst
-    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, float x, float y, float w, float h );
+    void setImage( const std::shared_ptr<ChsTextureEntity> & texture, float x, float y, float w, float h );
     //ox,oy,w,h is pixel
-    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, int x, int y, int  w, int h );
+    void setImage( const std::shared_ptr<ChsTextureEntity> & texture, int x, int y, int  w, int h );
 
     //in UVst
     void setImage( const std::string & imageName, float x, float y, float w, float h );
@@ -51,10 +51,10 @@ namespace Chaos {
     void setImage( const std::string & imageName, int x, int y, int w, int h );
 
     //set default uv to whole texture
-    void setImage( const boost::shared_ptr<ChsTextureEntity> & texture );
+    void setImage( const std::shared_ptr<ChsTextureEntity> & texture );
     void setImage( const std::string & imageName );
     
-    template <typename T> void setImage( const boost::shared_ptr<ChsTextureEntity> & texture, const ChsRect<T> & uvBound );
+    template <typename T> void setImage( const std::shared_ptr<ChsTextureEntity> & texture, const ChsRect<T> & uvBound );
     template <typename T> void setImage( const std::string & imageName, const ChsRect<T> & uvBound );    
     
     void moveTo( float x, float y );
@@ -89,7 +89,7 @@ namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
   template <typename T>
-  void ChsSprite2D::setImage( const boost::shared_ptr<ChsTextureEntity> & texture,
+  void ChsSprite2D::setImage( const std::shared_ptr<ChsTextureEntity> & texture,
                                     const ChsRect<T> & uvBound ){
     this->setImage( texture, uvBound.left, uvBound.top, uvBound.right, uvBound.bottom );
   }

@@ -71,7 +71,7 @@ void SplashScene::onUpdate( double timeInterval ){
 			splashImage->setAlpha( splashAlpha );
 			break;
 		case STEP::GOTO_NEXT:
-			Chaos::ChsSceneManager::sharedInstance()->gotoScene( "TransTestScene", true );
+			Chaos::ChsSceneManager::sharedInstance()->gotoScene( "MainMenuScene", true );
       step = STEP::IDLE;
 			break;
 		case STEP::IDLE:

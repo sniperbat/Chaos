@@ -1,7 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
-#include <boost/scoped_array.hpp>
-
 #include "ChsDae.h"
 #include "ChsDaeLoader.h"
 #include "ChsModel.h"
@@ -30,7 +26,7 @@ namespace Chaos {
 			for( int inputIndex = 0; inputIndex < vertexComponentCount; inputIndex++ ){
 				int idx = daeMesh.triangles.p[triangleIndex + inputIndex];
 				key += boost::lexical_cast<std::string>( idx );
-				vertexIndex += idx;
+				vertexIndex.push_back( idx );
 			}
 			int index = 0;
 			auto iter = vertexLookupList.find( key );
@@ -38,16 +34,16 @@ namespace Chaos {
 				//this is a new vertex,it will add into last of vertex list
 				index = vertexIndexList.size() / vertexComponentCount;
 				for( int inputIndex = 0; inputIndex < vertexComponentCount; inputIndex++ )
-					vertexIndexList += vertexIndex[inputIndex];//store all vertex component index
+					vertexIndexList.push_back( vertexIndex[inputIndex] );//store all vertex component index
 				//save this vertex into lookup table
-				insert( vertexLookupList ) ( key, index );
+				vertexLookupList.insert(  std::make_pair( key, index ) );
 			}
 			else{
 				//this vertex was exist in vertex list,
 				//just use it`s index
 				index = iter->second;
 			}
-			triangleList += index;
+			triangleList.push_back( index );
 		}
 		vertexLookupList.clear();
 	}
@@ -74,7 +70,7 @@ namespace Chaos {
 		const float * array;
 		int stride;
 	};
-	typedef boost::scoped_array<VertexAttribute> VertexAttributePtr;
+	typedef std::unique_ptr<VertexAttribute[]> VertexAttributePtr;
 	//----------------------------------------------------------------------------------------------
 	void makeVertexList( const std::vector<int> & vertexIndexList, std::vector<float> & vertexList, 
 						int vertexAttributeCount, const VertexAttributePtr & VertexAttributes );
@@ -88,7 +84,7 @@ namespace Chaos {
 				int stride = VertexAttributes[attribute].stride;
 				const float * array = VertexAttributes[attribute].array;
 				for( int i = 0; i < stride; i++ )
-					vertexList += array[index*stride + i];
+					vertexList.push_back( array[index*stride + i] );
 			}
 		}
 	}
@@ -124,7 +120,7 @@ namespace Chaos {
 			return nullptr;
 		}
 		
-		boost::scoped_array<char> fileDataPtr( fileData );
+		std::unique_ptr<char[]> fileDataPtr( fileData );
 		tinyxml2::XMLDocument doc;
 		int ret = doc.Parse( fileDataPtr.get() );
 		if( tinyxml2::XML_NO_ERROR != ret ){

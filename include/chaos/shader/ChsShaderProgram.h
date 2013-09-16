@@ -1,7 +1,7 @@
 #ifndef _CHS_SHADERPROGRAM_H
 #define _CHS_SHADERPROGRAM_H
 //--------------------------------------------------------------------------------------------------
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "ChsShader.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ namespace Chaos {
 		bool link( void )const;
 		void use( void )const;
 		bool validate( void )const;
-		void attachShader( const boost::shared_ptr<ChsShader> & shader )const;
+		void attachShader( const std::shared_ptr<ChsShader> & shader )const;
 		int getUniformLocation( const char * name );
 		
 	private:

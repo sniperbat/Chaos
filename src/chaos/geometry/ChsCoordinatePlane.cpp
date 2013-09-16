@@ -1,4 +1,3 @@
-#include <boost/scoped_array.hpp>
 #include "ChsCoordinatePlane.h"
 #include "platform/ChsOpenGL.h"
 #include "ChsVertexBuffer.h"
@@ -28,7 +27,7 @@ namespace Chaos {
 			}
 		};
 		int vertexCount = 2 * ( divide + 1 ) * 2 + 6;
-		boost::scoped_array<Vertex> vertices( new Vertex[vertexCount] );
+		std::unique_ptr<Vertex[]> vertices( new Vertex[vertexCount] );
 		float stepSize = size / divide;
 		float width = size / 2;
     int halfDiveide = divide >> 1;
@@ -94,7 +93,7 @@ namespace Chaos {
 		mesh->getVertexBuffer()->setDataWithArray( vertices.get(), sizeof( Vertex ) * (vertexCount-6) );
 		
 		int indexCount = vertexCount-6;
-		boost::scoped_array<GLushort> indices( new GLushort [indexCount] );
+		std::unique_ptr<GLushort[]> indices( new GLushort [indexCount] );
 		for( int i = 0; i < indexCount; i++ )
 			indices[i] = ( GLushort )i;
 		

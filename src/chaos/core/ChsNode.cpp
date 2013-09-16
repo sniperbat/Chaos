@@ -1,5 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsNode.h"
 
 //--------------------------------------------------------------------------------------------------

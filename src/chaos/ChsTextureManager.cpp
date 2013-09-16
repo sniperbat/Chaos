@@ -1,5 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsTextureManager.h"
 #include "ChsTextureFactory.h"
 #include "ChsTexture2D.h"
@@ -9,8 +7,8 @@ using namespace boost::assign;
 namespace Chaos {
 
   //------------------------------------------------------------------------------------------------
-	boost::shared_ptr<ChsTexture2D> ChsTextureManager::getTexture2D( const std::string & name ){
-		boost::shared_ptr<ChsTexture2D> texture = this->getFromCache( name );
+	std::shared_ptr<ChsTexture2D> ChsTextureManager::getTexture2D( const std::string & name ){
+		std::shared_ptr<ChsTexture2D> texture = this->getFromCache( name );
 		if( !texture ){
       std::string fullpath = "assets/" + name;
 			texture.reset( ChsTextureFactory::sharedInstance()->createTexture2D( fullpath.c_str() ) );
@@ -23,8 +21,8 @@ namespace Chaos {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	boost::shared_ptr<ChsTextureEntity> ChsTextureManager::getTextureEntity( const std::string & name ){
-    return boost::shared_ptr<ChsTextureEntity> ( new ChsTextureEntity( this->getTexture2D( name ) ) );
+	std::shared_ptr<ChsTextureEntity> ChsTextureManager::getTextureEntity( const std::string & name ){
+    return std::shared_ptr<ChsTextureEntity> ( new ChsTextureEntity( this->getTexture2D( name ) ) );
   }
   
   //------------------------------------------------------------------------------------------------

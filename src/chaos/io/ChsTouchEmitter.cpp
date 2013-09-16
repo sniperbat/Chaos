@@ -7,7 +7,7 @@
 namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
-  std::vector< boost::shared_ptr<ChsTouchListener> > listeners;
+  std::vector< std::shared_ptr<ChsTouchListener> > listeners;
   
   //------------------------------------------------------------------------------------------------
   ChsTouchEmitter::ChsTouchEmitter( void ){
@@ -23,7 +23,7 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::addListener( boost::shared_ptr<ChsTouchListener> listener ){
+  void ChsTouchEmitter::addListener( std::shared_ptr<ChsTouchListener> listener ){
     auto iter = std::find( listeners.begin(), listeners.end(), listener );
     if( iter == listeners.end() ){
       listeners.push_back( listener );
@@ -31,7 +31,7 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  void ChsTouchEmitter::removeListener( boost::shared_ptr<ChsTouchListener> listener ){
+  void ChsTouchEmitter::removeListener( std::shared_ptr<ChsTouchListener> listener ){
     auto iter = std::find( listeners.begin(), listeners.end(), listener );
     if( iter != listeners.end() ){
       listeners.erase( iter );

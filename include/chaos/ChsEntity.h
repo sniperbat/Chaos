@@ -1,9 +1,6 @@
 #ifndef _CHS_ENTITY_H
 #define _CHS_ENTITY_H
 //--------------------------------------------------------------------------------------------------
-#include <boost/weak_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 #include "ChsRenderNode.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -21,13 +18,13 @@ namespace Chaos {
 		ChsEntity( const std::string & name );
 		virtual ~ChsEntity( void );
 		
-		boost::weak_ptr<ChsModel> model;
-		inline void setModel( const boost::shared_ptr<ChsModel> & model );
+		std::weak_ptr<ChsModel> model;
+		inline void setModel( const std::shared_ptr<ChsModel> & model );
 		
 	};
   
 	//------------------------------------------------------------------------------------------------
-	inline void ChsEntity::setModel( const boost::shared_ptr<ChsModel> & model ){
+	inline void ChsEntity::setModel( const std::shared_ptr<ChsModel> & model ){
 		this->model = model;
 	}
   

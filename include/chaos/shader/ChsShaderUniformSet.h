@@ -3,9 +3,6 @@
 //--------------------------------------------------------------------------------------------------
 #include <string>
 #include <map>
-#include <boost/shared_ptr.hpp>
-#include <map>
-#include <boost/shared_ptr.hpp>
 #include "ChsShaderUniform.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -23,7 +20,7 @@ namespace Chaos {
 	private:
 		inline bool isExist( const std::string & name )const;
 		ChsShaderProgram * program;
-		std::map< std::string, boost::shared_ptr<ChsShaderUniform> > uniforms;
+		std::map< std::string, std::shared_ptr<ChsShaderUniform> > uniforms;
 	};
   
 	//------------------------------------------------------------------------------------------------

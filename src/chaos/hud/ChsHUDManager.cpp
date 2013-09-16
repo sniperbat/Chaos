@@ -1,6 +1,4 @@
 #include <tinyxml2.h>
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsHUDManager.h"
 #include "camera/ChsCamera.h"
 #include "ChsRenderNode.h"
@@ -36,7 +34,6 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
   void ChsHUDManager::update( float dt ){
-    //    std::pair<std::string, ChsHUD* > p;
     for( std::pair<std::string, ChsHUD* > p : this->hudRenderList ){
       ChsHUD * hud = p.second;
       hud->updateTree( dt );
@@ -65,13 +62,13 @@ namespace Chaos {
   }
   
   //------------------------------------------------------------------------------------------------
-  static std::vector< boost::shared_ptr<ChsTexture2D> > textureList;
-  
+  static std::vector< std::shared_ptr<ChsTexture2D> > textureList;
+ 
   //------------------------------------------------------------------------------------------------
   void prepareTextureList( const tinyxml2::XMLElement * textureElement );
   void prepareTextureList( const tinyxml2::XMLElement * textureElement ){
     std::string textureFileName = textureElement->Attribute( "src" );
-    boost::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
+    std::shared_ptr<ChsTexture2D> texture = ChsResourceManager::sharedInstance()->getTexture2D( textureFileName );
     textureList.push_back( texture );
   }
   
@@ -98,7 +95,7 @@ namespace Chaos {
     tinyxml2::XMLElement * texEntityElement = spriteElement->FirstChildElement( "ChsTextureEntity" );
     while( texEntityElement != nullptr ){
       int index = texEntityElement->IntAttribute( "index" );
-      boost::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( textureList[index] ) );
+      std::shared_ptr<ChsTextureEntity> texture( new ChsTextureEntity( textureList[index] ) );
       std::string sampleName = texEntityElement->Attribute( "sampleName" );
       texture->setSampleName( sampleName );
       texture->setActiveUnit( texEntityElement->IntAttribute( "activeUnit" ) );
@@ -127,7 +124,7 @@ namespace Chaos {
     char * data;
     std::string fullpath = "assets/" + hudName;
 		ChsFileSystem::sharedInstance()->readFileAsUTF8( fullpath.c_str(), &data );
-		boost::scoped_ptr<char> modelData( data );
+		std::unique_ptr<char[]> modelData( data );
 		tinyxml2::XMLDocument doc;
 		int ret = doc.Parse( data );
 		if( tinyxml2::XML_NO_ERROR != ret ){

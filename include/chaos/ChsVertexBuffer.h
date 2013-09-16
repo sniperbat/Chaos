@@ -2,12 +2,6 @@
 #define _CHS_VERTEXBUFFER_H
 #include <string>
 #include <vector>
-#include <boost/shared_ptr.hpp>
-#include <boost/assign.hpp>
-using namespace boost::assign;
-#include <vector>
-#include <string>
-#include <boost/shared_ptr.hpp>
 #include "ChsArrayBuffer.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -33,7 +27,7 @@ namespace Chaos {
 		void unbindAttribArrays( void );
 		void attachAttributes( void );
     
-		std::vector< boost::shared_ptr<ChsAttribUnit> > attribs;
+		std::vector< std::shared_ptr<ChsAttribUnit> > attribs;
 		unsigned int vaoHandle;
 	};
   

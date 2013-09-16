@@ -1,7 +1,6 @@
 #ifndef _CHS_SCENE_H
 #define _CHS_SCENE_H
 
-#include <boost/scoped_ptr.hpp>
 #include <string>
 #include "ChsRenderNode.h"
 

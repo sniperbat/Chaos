@@ -1,8 +1,8 @@
 #ifndef _CHS_TEXTUREENTITY_H
 #define _CHS_TEXTUREENTITY_H
 //--------------------------------------------------------------------------------------------------
-#include <boost/weak_ptr.hpp>
-#include <boost/weak_ptr.hpp>
+#include <memory>
+#include <string>
 #include "ChsDefine.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -14,12 +14,12 @@ namespace Chaos {
   //------------------------------------------------------------------------------------------------
   class ChsTextureEntity {
   private:
-    boost::weak_ptr<ChsTexture2D> texture;
+    std::weak_ptr<ChsTexture2D> texture;
 		int activeUnit;
 		std::string sampleName;
     int wraps[CHS_TEXTURE_WRAP_MAX];
   public:
-    ChsTextureEntity( const boost::shared_ptr<ChsTexture2D> & texture );
+    ChsTextureEntity( const std::shared_ptr<ChsTexture2D> & texture );
     inline int getActiveUnit( void )const;
     inline void setActiveUnit( int unit );
     

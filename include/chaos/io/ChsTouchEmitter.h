@@ -1,7 +1,7 @@
 #ifndef _CHS_TOUCHEMITTER_H
 #define _CHS_TOUCHEMITTER_H
 //--------------------------------------------------------------------------------------------------
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "core/ChsSingleton.h"
 #include "ChsDefine.h"
 
@@ -17,8 +17,8 @@ namespace Chaos {
     ChsTouchEmitter( void );
     ~ChsTouchEmitter( void );
     
-    void addListener( boost::shared_ptr<ChsTouchListener> listener );
-    void removeListener( boost::shared_ptr<ChsTouchListener> listener );
+    void addListener( std::shared_ptr<ChsTouchListener> listener );
+    void removeListener( std::shared_ptr<ChsTouchListener> listener );
     
     void purge( void );
     

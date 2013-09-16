@@ -1,4 +1,3 @@
-#include <boost/scoped_array.hpp>
 #include "ChsTexture2D.h"
 #include "io/ChsFileSystem.h"
 #include "core/ChsUtility.h"
@@ -49,7 +48,7 @@ namespace Chaos {
 		this->height = height;
 		this->format = format;
 		//this->_data = data;
-		boost::scoped_array<GLubyte> dataPtr( data );
+		std::unique_ptr<GLubyte[]> dataPtr( data );
 		glGenTextures( 1, &(this->textureHandle) );
 		glBindTexture( GL_TEXTURE_2D, this->textureHandle );
 

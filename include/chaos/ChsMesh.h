@@ -1,9 +1,5 @@
 #ifndef _CHSMESH_H
 #define _CHSMESH_H
-#include <boost/shared_ptr.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include "ChsRenderNode.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -25,9 +21,9 @@ namespace Chaos {
     inline ChsVertexBuffer * getVertexBuffer( void )const;
     inline ChsIndexBuffer * getIndexBuffer( void )const;
 	protected:
-		boost::shared_ptr<ChsMaterial> material;
-    boost::scoped_ptr<ChsVertexBuffer> vertexBuffer;
-    boost::scoped_ptr<ChsIndexBuffer> indexBuffer;
+		std::shared_ptr<ChsMaterial> material;
+    std::unique_ptr<ChsVertexBuffer> vertexBuffer;
+    std::unique_ptr<ChsIndexBuffer> indexBuffer;
 	};
 
   //------------------------------------------------------------------------------------------------

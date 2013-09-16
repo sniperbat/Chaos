@@ -1,5 +1,3 @@
-#include <boost/assign.hpp>
-using namespace boost::assign;
 #include "ChsEntityManager.h"
 #include "ChsEntity.h"
 
@@ -7,10 +5,10 @@ using namespace boost::assign;
 namespace Chaos {
 
 	//------------------------------------------------------------------------------------------------
-	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntity( const std::string & entityName ){
-		boost::shared_ptr<ChsEntity> entityPtr = this->getFromCache( entityName );
+	std::shared_ptr<ChsEntity> ChsEntityManager::getEntity( const std::string & entityName ){
+		std::shared_ptr<ChsEntity> entityPtr = this->getFromCache( entityName );
 		if( !entityPtr ){
-			entityPtr = boost::shared_ptr<ChsEntity>( new ChsEntity( entityName ) );
+			entityPtr = std::shared_ptr<ChsEntity>( new ChsEntity( entityName ) );
 			printf( "生成Entity:%s\n", entityName.c_str() );
 			this->cache.insert( std::make_pair( entityName, entityPtr ) );
 		}
@@ -19,7 +17,7 @@ namespace Chaos {
   
 #if 0
   //------------------------------------------------------------------------------------------------
-	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModel( const std::string & entityName,
+	std::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModel( const std::string & entityName,
                                                                      const std::string &  modelName ){
 		if( entityName.empty() )
 			return nullptr;
@@ -30,7 +28,7 @@ namespace Chaos {
 
 
 	//------------------------------------------------------------------------------------------------
-	boost::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModelAndAnimation( const std::string & entityName,
+	std::shared_ptr<ChsEntity> ChsEntityManager::getEntityWithModelAndAnimation( const std::string & entityName,
                                                                                  const std::string &  modelName,
                                                                                  const std::string &  animationName ){
 		if( entityName.empty() )

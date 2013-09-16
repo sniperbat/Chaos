@@ -62,7 +62,7 @@ namespace Chaos {
   
   //------------------------------------------------------------------------------------------------
 	void ChsVertexBuffer::addAttrib( int count, int type, bool isNormalized, const std::string & name ) {
-		boost::shared_ptr<ChsAttribUnit> attrib( new ChsAttribUnit( count, type, isNormalized, name ) );
+		std::shared_ptr<ChsAttribUnit> attrib( new ChsAttribUnit( count, type, isNormalized, name ) );
    	size_t lastOne = this->attribs.size();
     int stride = 0;
    	if( lastOne ) {
